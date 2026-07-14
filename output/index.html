@@ -206,7 +206,9 @@
 
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+
+    // Basemap under zones; place names drawn above the heat overlays.
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
       attribution: "&copy; OpenStreetMap &copy; CARTO",
       subdomains: "abcd",
       maxZoom: 20
@@ -216,6 +218,15 @@
     map.getPane("isochronePane").style.zIndex = 350;
     map.createPane("contourPane");
     map.getPane("contourPane").style.zIndex = 360;
+    map.createPane("labelsPane");
+    map.getPane("labelsPane").style.zIndex = 450;
+    map.getPane("labelsPane").style.pointerEvents = "none";
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
+      pane: "labelsPane",
+      subdomains: "abcd",
+      maxZoom: 20,
+      opacity: 0.95
+    }).addTo(map);
 
     L.marker([WORK.lat, WORK.lng], {
       title: "Work"
