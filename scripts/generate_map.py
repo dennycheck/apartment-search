@@ -31,6 +31,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NYC Apartment Commute Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -188,6 +189,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js"></script>
   <script>
     const ISOCHRONES = __ISOCHRONES_JSON__;
     const LISTINGS = __LISTINGS_JSON__;
@@ -214,9 +217,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
 
-    // Basemap under zones; place names drawn above the heat overlays.
+    // Basemap under zones; vector place labels above (real white + black halo + opacity).
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
-      attribution: "&copy; OpenStreetMap &copy; CARTO",
+      attribution: "&copy; OpenStreetMap &copy; CARTO &copy; OpenFreeMap",
       subdomains: "abcd",
       maxZoom: 20
     }).addTo(map);
@@ -228,15 +231,52 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     map.createPane("labelsPane");
     map.getPane("labelsPane").style.zIndex = 450;
     map.getPane("labelsPane").style.pointerEvents = "none";
-    // Recolor baked-in gray Carto labels → white @ ~75% opacity.
-    map.getPane("labelsPane").style.filter = "brightness(0) invert(1)";
-    map.getPane("labelsPane").style.opacity = "0.75";
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
-      pane: "labelsPane",
-      subdomains: "abcd",
-      maxZoom: 20,
-      opacity: 1
-    }).addTo(map);
+
+    fetch("https://tiles.openfreemap.org/styles/dark")
+      .then(r => r.json())
+      .then(style => {
+        delete style.sources.ne2_shaded;
+        style.layers = style.layers
+          .filter(l => l.type === "symbol" && String(l.id).startsWith("place_"))
+          .map(l => {
+            const layout = { ...(l.layout || {}), "text-optional": true };
+            delete layout["icon-image"];
+            delete layout["icon-size"];
+            delete layout["icon-offset"];
+            return {
+              ...l,
+              layout,
+              paint: {
+                ...(l.paint || {}),
+                "text-color": "#ffffff",
+                "text-halo-color": "#000000",
+                "text-halo-width": 1.15,
+                "text-halo-blur": 0.25,
+                "text-opacity": 0.75,
+                "icon-opacity": 0
+              }
+            };
+          });
+        const labels = L.maplibreGL({
+          style,
+          interactive: false,
+          pane: "labelsPane"
+        }).addTo(map);
+        const el = labels.getContainer && labels.getContainer();
+        if (el) {
+          el.style.pointerEvents = "none";
+          el.style.zIndex = "450";
+        }
+      })
+      .catch(() => {
+        // Fallback: Carto raster labels if vector style fails to load.
+        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
+          pane: "labelsPane",
+          subdomains: "abcd",
+          maxZoom: 20,
+          opacity: 0.75
+        }).addTo(map);
+      });
 
     L.marker([WORK.lat, WORK.lng], {
       title: "Work"
