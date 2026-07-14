@@ -228,11 +228,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     map.createPane("labelsPane");
     map.getPane("labelsPane").style.zIndex = 450;
     map.getPane("labelsPane").style.pointerEvents = "none";
+    // Recolor baked-in gray Carto labels → white @ ~75% opacity.
+    map.getPane("labelsPane").style.filter = "brightness(0) invert(1)";
+    map.getPane("labelsPane").style.opacity = "0.75";
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
       pane: "labelsPane",
       subdomains: "abcd",
       maxZoom: 20,
-      opacity: 0.95
+      opacity: 1
     }).addTo(map);
 
     L.marker([WORK.lat, WORK.lng], {
