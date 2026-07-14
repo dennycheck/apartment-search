@@ -1,0 +1,35 @@
+[
+  {
+    "id": "current_apt",
+    "label": "My apartment (Bushwick)",
+    "address": "292 Stockholm St, Brooklyn, NY",
+    "color": "#ffffff",
+    "lat": 40.7026759,
+    "lng": -73.9195304,
+    "commute_min": 40,
+    "geocode_error": false,
+    "shape": "square"
+  },
+  {
+    "id": "brother_apt",
+    "label": "Brother & sister-in-law (UES)",
+    "address": "344 E 81st St, New York, NY",
+    "color": "#ffffff",
+    "lat": 40.7738696,
+    "lng": -73.9526408,
+    "commute_min": 40,
+    "geocode_error": false,
+    "shape": "triangle"
+  },
+  {
+    "id": "dan_chloe",
+    "label": "Dan & Chloe's (Pacific St)",
+    "address": "1148 Pacific St, Brooklyn, NY",
+    "color": "#ffffff",
+    "lat": 40.677884,
+    "lng": -73.9542173,
+    "commute_min": 30,
+    "geocode_error": false,
+    "shape": "diamond"
+  }
+]

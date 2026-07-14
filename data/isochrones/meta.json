@@ -1,0 +1,19 @@
+{
+  "bands_saved": [
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "work_address": "240 Greenwich St, New York, NY",
+  "arrival_time": "2026-07-09T08:30:00-04:00",
+  "transport": "public_transport",
+  "notes": "Bands pasted from TravelTime playground; feed remaining bands as 10,20,30,40,60 min",
+  "contours_saved": [
+    15,
+    25,
+    35,
+    45
+  ]
+}

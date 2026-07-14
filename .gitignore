@@ -1,0 +1,12 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+.Python
+.DS_Store
+*.egg-info/
+.pytest_cache/
+
+# Large raw dumps (bands/contours kept; regenerate map from those)
+data/isochrones/incoming/

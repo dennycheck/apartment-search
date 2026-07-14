@@ -1,0 +1,38 @@
+[
+  {
+    "address": "123 Bedford Ave, Brooklyn, NY",
+    "rent": "$3200",
+    "beds": "2",
+    "url": "https://example.com/listing1",
+    "notes": "Sample \u2014 replace with StreetEasy export",
+    "lat": 40.7195242,
+    "lng": -73.9556141,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false
+  },
+  {
+    "address": "789 Atlantic Ave, Brooklyn, NY",
+    "rent": "$3500",
+    "beds": "2",
+    "url": "",
+    "notes": "Near Barclays",
+    "lat": 40.6818845,
+    "lng": -73.9676942,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false
+  },
+  {
+    "address": "456 Park Ave, Brooklyn, NY",
+    "rent": "$2800",
+    "beds": "1",
+    "url": "https://example.com/listing2",
+    "notes": "",
+    "lat": 40.6964838,
+    "lng": -73.9582537,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false
+  }
+]

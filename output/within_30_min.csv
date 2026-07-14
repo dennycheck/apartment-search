@@ -1,0 +1,3 @@
+address,rent,beds,commute_min,url,notes,source
+"123 Bedford Ave, Brooklyn, NY",$3200,2,30,https://example.com/listing1,Sample — replace with StreetEasy export,
+"789 Atlantic Ave, Brooklyn, NY",$3500,2,30,,Near Barclays,
