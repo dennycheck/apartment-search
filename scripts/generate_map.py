@@ -217,13 +217,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
 
-    // Basemap under zones; vector place labels above (real white + black halo + opacity).
+    // Basemap (no labels). Streets sit under zones; neighborhoods/places sit above.
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
       attribution: "&copy; OpenStreetMap &copy; CARTO &copy; OpenFreeMap",
       subdomains: "abcd",
       maxZoom: 20
     }).addTo(map);
 
+    map.createPane("streetLabelsPane");
+    map.getPane("streetLabelsPane").style.zIndex = 250;
+    map.getPane("streetLabelsPane").style.pointerEvents = "none";
     map.createPane("isochronePane");
     map.getPane("isochronePane").style.zIndex = 350;
     map.createPane("contourPane");
@@ -232,66 +235,87 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     map.getPane("labelsPane").style.zIndex = 450;
     map.getPane("labelsPane").style.pointerEvents = "none";
 
+    function stripIcons(layout) {
+      const next = { ...(layout || {}), "text-optional": true };
+      delete next["icon-image"];
+      delete next["icon-size"];
+      delete next["icon-offset"];
+      delete next["icon-anchor"];
+      return next;
+    }
+
+    function addVectorLabelLayer(baseStyle, { pane, zIndex, keepLayer, paint, clearMaxZoom }) {
+      const style = JSON.parse(JSON.stringify(baseStyle));
+      delete style.sources.ne2_shaded;
+      style.layers = (style.layers || [])
+        .filter(l => l.type === "symbol" && keepLayer(l))
+        .map(l => {
+          const layer = {
+            ...l,
+            layout: stripIcons(l.layout),
+            paint: { ...(typeof paint === "function" ? paint(l) : paint) }
+          };
+          if (clearMaxZoom) delete layer.maxzoom;
+          return layer;
+        });
+      style.layers.unshift({
+        id: "transparent-bg",
+        type: "background",
+        paint: { "background-color": "rgba(0,0,0,0)" }
+      });
+      const layer = L.maplibreGL({ style, interactive: false, pane }).addTo(map);
+      const el = layer.getContainer && layer.getContainer();
+      if (el) {
+        el.style.pointerEvents = "none";
+        el.style.zIndex = String(zIndex);
+      }
+      return layer;
+    }
+
+    const PLACE_PAINT = {
+      "text-color": "#ffffff",
+      "text-halo-color": "#000000",
+      "text-halo-width": 1,
+      "text-halo-blur": 0,
+      "text-opacity": 1,
+      "icon-opacity": 0
+    };
+    const STREET_PAINT = {
+      "text-color": "rgba(220,220,220,0.9)",
+      "text-halo-color": "rgba(0,0,0,0.85)",
+      "text-halo-width": 1,
+      "text-halo-blur": 0,
+      "text-opacity": 1,
+      "icon-opacity": 0
+    };
+
     fetch("https://tiles.openfreemap.org/styles/dark")
       .then(r => r.json())
-      .then(style => {
-        delete style.sources.ne2_shaded;
-        // Keep place layers only. Color alphas control fill vs halo separately —
-        // MapLibre text-opacity would fade both the same amount.
-        style.layers = style.layers
-          .filter(l => l.type === "symbol" && String(l.id).startsWith("place_"))
-          .map(l => {
-            const layout = { ...(l.layout || {}), "text-optional": true };
-            delete layout["icon-image"];
-            delete layout["icon-size"];
-            delete layout["icon-offset"];
-            return {
-              ...l,
-              layout,
-              paint: {
-                "text-color": "rgba(255,255,255,0.55)",
-                "text-halo-color": "rgba(0,0,0,0.9)",
-                "text-halo-width": 0.85,
-                "text-halo-blur": 0,
-                "text-opacity": 1,
-                "icon-opacity": 0
-              }
-            };
-          });
-        const labels = L.maplibreGL({
-          style,
-          interactive: false,
-          pane: "labelsPane"
-        }).addTo(map);
-        const el = labels.getContainer && labels.getContainer();
-        if (el) {
-          el.style.pointerEvents = "none";
-          el.style.zIndex = "450";
-        }
-        const gl = labels.getMaplibreMap && labels.getMaplibreMap();
-        if (gl) {
-          const restyle = () => {
-            (gl.getStyle().layers || []).forEach(l => {
-              if (l.type !== "symbol") return;
-              gl.setPaintProperty(l.id, "text-color", "rgba(255,255,255,0.55)");
-              gl.setPaintProperty(l.id, "text-halo-color", "rgba(0,0,0,0.9)");
-              gl.setPaintProperty(l.id, "text-halo-width", 0.85);
-              gl.setPaintProperty(l.id, "text-halo-blur", 0);
-              gl.setPaintProperty(l.id, "text-opacity", 1);
-              gl.setPaintProperty(l.id, "icon-opacity", 0);
-            });
-          };
-          if (gl.isStyleLoaded()) restyle();
-          else gl.once("load", restyle);
-        }
+      .then(baseStyle => {
+        // Streets / major roads under the isochrones.
+        addVectorLabelLayer(baseStyle, {
+          pane: "streetLabelsPane",
+          zIndex: 250,
+          keepLayer: l => String(l.id).startsWith("highway_name"),
+          paint: STREET_PAINT,
+          clearMaxZoom: false
+        });
+        // Neighborhoods, boroughs, cities above the isochrones (no maxzoom cutoff).
+        addVectorLabelLayer(baseStyle, {
+          pane: "labelsPane",
+          zIndex: 450,
+          keepLayer: l => String(l.id).startsWith("place_"),
+          paint: PLACE_PAINT,
+          clearMaxZoom: true
+        });
       })
       .catch(() => {
-        // Fallback: Carto raster labels if vector style fails to load.
+        // Fallback: full Carto label stack under zones if vector tiles fail.
         L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
-          pane: "labelsPane",
+          pane: "streetLabelsPane",
           subdomains: "abcd",
           maxZoom: 20,
-          opacity: 0.55
+          opacity: 0.85
         }).addTo(map);
       });
 
