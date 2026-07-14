@@ -87,8 +87,57 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .badge-err { background: #c0392b; color: #fff; }
     #map { height: 100%; background: #0d0d0d; }
     a { color: #4fc3f7; }
+    #controls-pill {
+      display: none;
+      position: fixed; z-index: 1200;
+      left: 50%; bottom: max(16px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      border: none; border-radius: 999px;
+      padding: 12px 20px;
+      background: #1a1a2e; color: #eee;
+      font: 600 0.9rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+      cursor: pointer;
+    }
+    #controls-pill:active { transform: translateX(-50%) scale(0.98); }
+    .sidebar-close {
+      display: none;
+      margin-left: auto;
+      border: 1px solid #444; border-radius: 8px;
+      background: #16213e; color: #eee;
+      padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
+    }
+    #sidebar header {
+      display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px;
+    }
+    #sidebar header .header-text { flex: 1 1 200px; min-width: 0; }
     @media (max-width: 768px) {
-      #app { grid-template-columns: 1fr; grid-template-rows: 45vh 55vh; }
+      #app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        height: 100dvh;
+      }
+      #map { min-height: 100dvh; }
+      #sidebar {
+        position: fixed; z-index: 1100;
+        inset: auto 0 0 0;
+        max-height: min(78dvh, 640px);
+        border-right: none;
+        border-top: 1px solid #333;
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -12px 40px rgba(0,0,0,0.45);
+        transform: translateY(110%);
+        transition: transform 0.25s ease;
+        pointer-events: none;
+      }
+      #app.controls-open #sidebar {
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      #controls-pill { display: block; }
+      #app.controls-open #controls-pill { display: none; }
+      .sidebar-close { display: inline-flex; align-items: center; }
+      #listings-table-wrap { max-height: 40vh; }
     }
   </style>
 </head>
@@ -96,9 +145,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <div id="app">
     <aside id="sidebar">
       <header>
-        <h1>Apartment Commute Map</h1>
-        <p>Work: __WORK_ADDRESS__<br>Arrive by 8:30 AM · Public transit</p>
-        <p style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
+        <div class="header-text">
+          <h1>Apartment Commute Map</h1>
+          <p>Work: __WORK_ADDRESS__<br>Arrive by 8:30 AM · Public transit</p>
+          <p style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
+        </div>
+        <button type="button" class="sidebar-close" id="controls-close" aria-label="Close controls">Map</button>
       </header>
       <div class="section">
         <h2>Isochrone bands</h2>
@@ -132,6 +184,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       </div>
     </aside>
     <div id="map"></div>
+    <button type="button" id="controls-pill" aria-expanded="false" aria-controls="sidebar">Controls</button>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -146,7 +199,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     let sortKey = "commute_min";
     let sortAsc = true;
 
+    const appEl = document.getElementById("app");
+    const controlsPill = document.getElementById("controls-pill");
+    const controlsClose = document.getElementById("controls-close");
+
+    function setControlsOpen(open) {
+      appEl.classList.toggle("controls-open", open);
+      controlsPill.setAttribute("aria-expanded", open ? "true" : "false");
+      if (window.map) setTimeout(() => map.invalidateSize(), 260);
+    }
+    controlsPill.addEventListener("click", () => setControlsOpen(true));
+    controlsClose.addEventListener("click", () => setControlsOpen(false));
+
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
+    window.map = map;
     L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
       attribution: "&copy; OpenStreetMap &copy; CARTO",
       subdomains: "abcd",
