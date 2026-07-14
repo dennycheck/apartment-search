@@ -236,6 +236,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       .then(r => r.json())
       .then(style => {
         delete style.sources.ne2_shaded;
+        // Keep place layers only. Color alphas control fill vs halo separately —
+        // MapLibre text-opacity would fade both the same amount.
         style.layers = style.layers
           .filter(l => l.type === "symbol" && String(l.id).startsWith("place_"))
           .map(l => {
@@ -247,12 +249,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
               ...l,
               layout,
               paint: {
-                ...(l.paint || {}),
-                "text-color": "#ffffff",
-                "text-halo-color": "#000000",
-                "text-halo-width": 1.15,
-                "text-halo-blur": 0.25,
-                "text-opacity": 0.75,
+                "text-color": "rgba(255,255,255,0.55)",
+                "text-halo-color": "rgba(0,0,0,0.9)",
+                "text-halo-width": 0.85,
+                "text-halo-blur": 0,
+                "text-opacity": 1,
                 "icon-opacity": 0
               }
             };
@@ -267,6 +268,22 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           el.style.pointerEvents = "none";
           el.style.zIndex = "450";
         }
+        const gl = labels.getMaplibreMap && labels.getMaplibreMap();
+        if (gl) {
+          const restyle = () => {
+            (gl.getStyle().layers || []).forEach(l => {
+              if (l.type !== "symbol") return;
+              gl.setPaintProperty(l.id, "text-color", "rgba(255,255,255,0.55)");
+              gl.setPaintProperty(l.id, "text-halo-color", "rgba(0,0,0,0.9)");
+              gl.setPaintProperty(l.id, "text-halo-width", 0.85);
+              gl.setPaintProperty(l.id, "text-halo-blur", 0);
+              gl.setPaintProperty(l.id, "text-opacity", 1);
+              gl.setPaintProperty(l.id, "icon-opacity", 0);
+            });
+          };
+          if (gl.isStyleLoaded()) restyle();
+          else gl.once("load", restyle);
+        }
       })
       .catch(() => {
         // Fallback: Carto raster labels if vector style fails to load.
@@ -274,7 +291,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           pane: "labelsPane",
           subdomains: "abcd",
           maxZoom: 20,
-          opacity: 0.75
+          opacity: 0.55
         }).addTo(map);
       });
 
