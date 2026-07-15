@@ -249,6 +249,20 @@
             paint: { ...(typeof paint === "function" ? paint(l) : paint) }
           };
           if (clearMaxZoom) delete layer.maxzoom;
+          // OpenMapTiles tags many NYC neighborhoods (Williamsburg, Bushwick, …) as
+          // "quarter", not "neighbourhood" — include both.
+          if (layer.id === "place_other") {
+            const walk = (node) => {
+              if (!Array.isArray(node)) return node;
+              if (node[0] === "match" && node[1] && node[1][0] === "get" && node[1][1] === "class"
+                  && Array.isArray(node[2])) {
+                if (!node[2].includes("quarter")) node[2] = [...node[2], "quarter"];
+                return node;
+              }
+              return node.map(walk);
+            };
+            layer.filter = walk(layer.filter);
+          }
           return layer;
         });
       style.layers.unshift({
