@@ -21,16 +21,18 @@
     .section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 10px; }
     .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.9rem; }
     .band-toggle input, .poi-toggle input, .subway-toggle input { accent-color: #4fc3f7; }
-    /* Soft opacity pulse — no direction, so overlapping routes don't fight. */
-    .leaflet-subway-pane path.subway-line {
-      animation: subway-pulse 2.4s ease-in-out infinite;
+    /* Whole subway system pulses together — no direction, no stagger. */
+    .leaflet-subway-pane path.subway-line,
+    .leaflet-subway-pane path.subway-station {
+      animation: subway-pulse 2.15s ease-in-out infinite;
     }
-    .leaflet-subway-pane.subway-paused path.subway-line {
+    .leaflet-subway-pane.subway-paused path.subway-line,
+    .leaflet-subway-pane.subway-paused path.subway-station {
       animation: none;
       opacity: 0.9;
     }
     @keyframes subway-pulse {
-      0%, 100% { opacity: 0.45; }
+      0%, 100% { opacity: 0.35; }
       50% { opacity: 1; }
     }
     .band-swatch {
@@ -457,15 +459,15 @@
       if (poi.lat == null) return;
       const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon(poi, false), zIndexOffset: 600 });
       marker.poi = poi;
+      marker.bindTooltip(poi.label || "POI", { direction: "top", opacity: 0.9 });
       marker.bindPopup(() => buildPoiPopup(poi));
       poiMarkers[poi.id] = marker;
       poiLayer.addLayer(marker);
     });
 
     const subwayLayer = L.layerGroup();
-    const subwayLineLayers = [];
     if (SUBWAY_LINES && SUBWAY_LINES.features && SUBWAY_LINES.features.length) {
-      SUBWAY_LINES.features.forEach((f, i) => {
+      SUBWAY_LINES.features.forEach(f => {
         const color = (f.properties && f.properties.color) || "#888";
         const layer = L.geoJSON(f, {
           pane: "subwayPane",
@@ -482,13 +484,6 @@
           (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway",
           { sticky: true, opacity: 0.9 }
         );
-        // Stagger pulse phase so stacked routes don't blink in lockstep.
-        layer.eachLayer(path => {
-          if (path._path) {
-            path._path.style.animationDelay = `${(i % 6) * 0.35}s`;
-          }
-        });
-        subwayLineLayers.push(layer);
         subwayLayer.addLayer(layer);
       });
     }
@@ -498,16 +493,17 @@
         if (!coords) return;
         const minutes = f.properties && f.properties.minutes;
         const fill = (minutes != null && BAND_COLORS[minutes]) || "#555";
+        const label = (f.properties && f.properties.name) || "Station";
         const marker = L.circleMarker([coords[1], coords[0]], {
           pane: "subwayPane",
           radius: 4,
           fillColor: fill,
-          color: "#111",
-          weight: 1,
-          fillOpacity: 0.95
+          fillOpacity: 0.95,
+          stroke: false,
+          className: "subway-station"
         });
-        const label = (f.properties && f.properties.name) || "Station";
         const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
+        marker.bindTooltip(label, { direction: "top", opacity: 0.9 });
         marker.bindPopup(`<b>${label}</b><br>${commute}`);
         subwayLayer.addLayer(marker);
       });
