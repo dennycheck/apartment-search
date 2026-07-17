@@ -19,6 +19,7 @@ from config import (
     OVERLAY_DEFAULT_OPACITY,
     OVERLAY_HTML,
     POIS_JSON,
+    ROOT,
     SUBWAY_LINES_PATH,
     SUBWAY_STATIONS_PATH,
     WORK_ADDRESS,
@@ -33,13 +34,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NYC Apartment Commute Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.11.0/dist/maplibre-gl.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    @font-face {
+      font-family: "IBM Plex Mono";
+      src: url("fonts/IBMPlexMono-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     #app { display: grid; grid-template-columns: 320px 1fr; height: 100vh; }
     #sidebar {
-      background: #1a1a2e; color: #eee; overflow-y: auto;
+      background: #1a1a1a; color: #eee; overflow-y: auto;
       display: flex; flex-direction: column; border-right: 1px solid #333;
     }
     #sidebar header { padding: 16px; border-bottom: 1px solid #333; }
@@ -47,8 +55,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     #sidebar header p { font-size: 0.8rem; color: #aaa; line-height: 1.4; }
     .section { padding: 16px; border-bottom: 1px solid #333; }
     .section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 10px; }
-    .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.9rem; }
-    .band-toggle input, .poi-toggle input, .subway-toggle input, .listing-toggle input { accent-color: #4fc3f7; }
+    #sidebar button,
+    #sidebar a,
+    #sidebar label,
+    #sidebar summary,
+    #sidebar select,
+    #sidebar input,
+    #sidebar th[data-sort] {
+      cursor: pointer;
+    }
+    #sidebar input:disabled,
+    #sidebar .subway-toggle-nested:has(input:disabled) {
+      cursor: default;
+    }
+    .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 0.9rem; }
+    .band-toggle input, .poi-toggle input, .subway-toggle input, .listing-toggle input { accent-color: #c8c8c8; }
     .subway-toggle-nested { margin-left: 22px; }
     .subway-toggle-nested:has(input:disabled) { opacity: 0.45; cursor: default; }
     details.accordion.section { padding: 0; border-bottom: 1px solid #333; }
@@ -111,7 +132,107 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
     .band-swatch {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
-      border: 2px solid rgba(255,255,255,0.85);
+    }
+    .band-range {
+      display: flex; gap: 10px; align-items: stretch;
+      margin-bottom: 4px;
+      --band-row-h: 20px;
+      --band-thumb-h: 10px;
+      --band-off: #3d3d3d;
+      --unfilled: 0%;
+    }
+    .band-range-labels {
+      flex: 1; display: flex; flex-direction: column; gap: 0;
+    }
+    .band-range-row {
+      display: flex; align-items: center; gap: 8px;
+      height: var(--band-row-h);
+      font-size: 0.85rem; line-height: 1.2;
+      transition: opacity 0.15s ease;
+    }
+    .band-range-row.is-off { opacity: 0.32; }
+    .band-range-track {
+      position: relative; width: 32px; flex-shrink: 0;
+    }
+    /* Full rail: muted track always visible; gradient only on the filled (lower) portion. */
+    .band-range-fill {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 10px;
+      transform: translateX(-50%);
+      border-radius: 5px;
+      border: none;
+      pointer-events: none;
+      background-color: var(--band-off);
+      background-image:
+        linear-gradient(var(--band-off), var(--band-off)),
+        var(--band-gradient);
+      background-size: 100% var(--unfilled), 100% 100%;
+      background-position: top, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .band-range-track input[type=range] {
+      position: absolute;
+      left: 50%;
+      /* Inset so each thumb stop centers on a label/swatch row. */
+      top: calc(var(--band-row-h) / 2 - var(--band-thumb-h) / 2);
+      height: calc(100% - var(--band-row-h) + var(--band-thumb-h));
+      bottom: auto;
+      /* Body 2×H + tip H/2 (right angle); wider body, then re-centered. */
+      width: calc(var(--band-thumb-h) * 2.5);
+      margin: 0; padding: 0;
+      transform: translateX(-50%);
+      writing-mode: vertical-lr;
+      direction: rtl;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+    /* Native range inputs ignore most cursor CSS while pressed — force it on <html>. */
+    html.band-slider-active,
+    html.band-slider-active * {
+      cursor: grabbing !important;
+    }
+    .band-range-track input[type=range]::-webkit-slider-runnable-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-moz-range-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      /* Inset left edge + round left corners; tip still right-angled on the right. */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
+    }
+    .band-range-track input[type=range]::-moz-range-thumb {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
     }
     .poi-swatch {
       width: 16px; height: 16px; flex-shrink: 0; display: inline-flex;
@@ -126,7 +247,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
     .active-cutoff select {
       width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #444;
-      background: #16213e; color: #eee; font-size: 0.9rem;
+      background: #242424; color: #eee; font-size: 0.9rem;
     }
     #stats { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
     #listings-accordion { flex: 1; min-height: 0; display: flex; flex-direction: column; border-bottom: none; }
@@ -137,12 +258,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     #listings-table-wrap { flex: 1; overflow-y: auto; min-height: 0; margin-top: 8px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     th {
-      position: sticky; top: 0; background: #16213e; padding: 8px 10px;
+      position: sticky; top: 0; background: #242424; padding: 8px 10px;
       text-align: left; cursor: pointer; user-select: none; white-space: nowrap;
     }
-    th:hover { background: #1f3460; }
+    th:hover { background: #333333; }
     td { padding: 8px 10px; border-bottom: 1px solid #2a2a4a; vertical-align: top; }
-    tr:hover td { background: #16213e; }
+    tr:hover td { background: #242424; }
     tr.in-zone td { background: rgba(26, 152, 80, 0.12); }
     tr.out-zone td { opacity: 0.55; }
     tr.geocode-error td { opacity: 0.4; }
@@ -154,7 +275,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .badge-out { background: #555; color: #ccc; }
     .badge-err { background: #c0392b; color: #fff; }
     #map { height: 100%; background: #0d0d0d; }
-    a { color: #4fc3f7; }
+    a { color: #c8c8c8; }
     #controls-pill {
       display: none;
       position: fixed; z-index: 1200;
@@ -162,7 +283,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       transform: translateX(-50%);
       border: none; border-radius: 999px;
       padding: 12px 20px;
-      background: #1a1a2e; color: #eee;
+      background: #1a1a1a; color: #eee;
       font: 600 0.9rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       box-shadow: 0 8px 28px rgba(0,0,0,0.45);
       cursor: pointer;
@@ -172,7 +293,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       display: none;
       margin-left: auto;
       border: 1px solid #444; border-radius: 8px;
-      background: #16213e; color: #eee;
+      background: #242424; color: #eee;
       padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
     }
     #sidebar header {
@@ -262,7 +383,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/maplibre-gl@5.11.0/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.3/leaflet-maplibre-gl.js"></script>
   <script>
     const ISOCHRONES = __ISOCHRONES_JSON__;
@@ -325,12 +446,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     function addVectorLabelLayer(baseStyle, { pane, zIndex, keepLayer, paint, clearMaxZoom }) {
       const style = JSON.parse(JSON.stringify(baseStyle));
       delete style.sources.ne2_shaded;
+      // Use the page's IBM Plex Mono via local TinySDF (no remote glyph atlas).
+      delete style.glyphs;
       style.layers = (style.layers || [])
         .filter(l => l.type === "symbol" && keepLayer(l))
         .map(l => {
+          const layout = {
+            ...stripIcons(l.layout),
+            "text-font": ["IBM Plex Mono"]
+          };
           const layer = {
             ...l,
-            layout: stripIcons(l.layout),
+            layout,
             paint: { ...(typeof paint === "function" ? paint(l) : paint) }
           };
           if (clearMaxZoom) delete layer.maxzoom;
@@ -526,8 +653,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       if (poi.lat == null) return;
       const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon(poi, false), zIndexOffset: 600 });
       marker.poi = poi;
-      marker.bindTooltip(poi.label || "POI", { direction: "top", opacity: 0.9 });
-      marker.bindPopup(() => buildPoiPopup(poi));
+      marker.bindTooltip(() => buildPoiTooltip(poi), { direction: "top", opacity: 0.9 });
       poiMarkers[poi.id] = marker;
       poiLayer.addLayer(marker);
     });
@@ -699,9 +825,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     }
 
-    function buildPoiPopup(poi) {
+    function buildPoiTooltip(poi) {
       const commute = poi.commute_min != null ? `≤ ${poi.commute_min} min to work` : "Outside isochrone bands";
-      return `<b>${poi.label}</b><br>${poi.address}<br>${commute}`;
+      const addr = poi.address ? `<br>${poi.address}` : "";
+      return `<b>${poi.label || "POI"}</b>${addr}<br>${commute}`;
     }
 
     function buildListingPopup(l) {
@@ -834,20 +961,77 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     });
 
-    document.querySelectorAll(".band-toggle input").forEach(cb => {
-      cb.addEventListener("change", () => {
-        const min = parseInt(cb.dataset.minutes);
+    const bandRange = document.getElementById("band-range");
+    function setBandRangeHidden(hiddenCount) {
+      const visibleThrough = bandMins.length - 1 - hiddenCount;
+      bandMins.forEach((min, idx) => {
+        const show = idx <= visibleThrough;
         const layer = bandLayers[min];
         const stroke = contourLayers[min];
-        if (cb.checked) {
+        if (show) {
           if (layer) map.addLayer(layer);
           if (stroke) map.addLayer(stroke);
         } else {
           if (layer) map.removeLayer(layer);
           if (stroke) map.removeLayer(stroke);
         }
+        const row = document.querySelector(`#band-range-control .band-range-row[data-minutes="${min}"]`);
+        if (row) row.classList.toggle("is-off", !show);
       });
-    });
+    }
+    function bandRangeHiddenFromValue() {
+      // Vertical rtl range: max sits at the top (filled). Map that to "all bands on".
+      const maxHidden = parseInt(bandRange.max, 10);
+      return maxHidden - parseInt(bandRange.value, 10);
+    }
+    function syncBandRangeFill() {
+      if (!bandRange) return;
+      const root = document.getElementById("band-range-control");
+      const track = bandRange.closest(".band-range-track");
+      const rows = root ? root.querySelectorAll(".band-range-row") : [];
+      if (!root || !track || !rows.length) return;
+      const maxHidden = parseInt(bandRange.max, 10) || 0;
+      const value = parseInt(bandRange.value, 10);
+      // Top stop: fill the entire rail (no muted gap above the knob).
+      if (value >= maxHidden) {
+        root.style.setProperty("--unfilled", "0%");
+        return;
+      }
+      const i = Math.max(0, Math.min(rows.length - 1, maxHidden - value));
+      const trackRect = track.getBoundingClientRect();
+      const rowRect = rows[i].getBoundingClientRect();
+      const thumbH = parseFloat(getComputedStyle(root).getPropertyValue("--band-thumb-h")) || 10;
+      const rowCenter = rowRect.top + rowRect.height / 2 - trackRect.top;
+      const thumbTop = rowCenter - thumbH / 2;
+      const unfilled = Math.max(0, Math.min(100, (thumbTop / trackRect.height) * 100));
+      root.style.setProperty("--unfilled", `${unfilled}%`);
+    }
+    if (bandRange) {
+      bandRange.addEventListener("input", () => {
+        setBandRangeHidden(bandRangeHiddenFromValue());
+        syncBandRangeFill();
+      });
+      function setBandSliderActive(on) {
+        document.documentElement.classList.toggle("band-slider-active", on);
+      }
+      function endBandSliderActive() {
+        setBandSliderActive(false);
+        window.removeEventListener("pointerup", endBandSliderActive, true);
+        window.removeEventListener("mouseup", endBandSliderActive, true);
+        window.removeEventListener("pointercancel", endBandSliderActive, true);
+        window.removeEventListener("blur", endBandSliderActive, true);
+      }
+      // Apply fist immediately on press (browsers won't honor cursor on <input type=range>).
+      bandRange.addEventListener("pointerdown", e => {
+        if (e.button != null && e.button !== 0) return;
+        setBandSliderActive(true);
+        window.addEventListener("pointerup", endBandSliderActive, true);
+        window.addEventListener("mouseup", endBandSliderActive, true);
+        window.addEventListener("pointercancel", endBandSliderActive, true);
+        window.addEventListener("blur", endBandSliderActive, true);
+      });
+      syncBandRangeFill();
+    }
 
     document.getElementById("cutoff-select").addEventListener("change", e => {
       activeCutoff = parseInt(e.target.value);
@@ -913,7 +1097,7 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       max-width: 280px;
       padding: 12px 14px;
       border-radius: 10px;
-      background: rgba(20, 20, 30, 0.82);
+      background: rgba(20, 20, 20, 0.82);
       color: #eee;
       font-size: 0.8rem;
       backdrop-filter: blur(8px);
@@ -926,6 +1110,16 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       display: flex; align-items: center; gap: 8px;
       margin-bottom: 6px; cursor: pointer;
     }
+    #controls button,
+    #controls a,
+    #controls label,
+    #controls select,
+    #controls input {
+      cursor: pointer;
+    }
+    #controls input:disabled {
+      cursor: default;
+    }
     #controls .swatch {
       width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
       border: 1px solid rgba(255,255,255,0.5);
@@ -933,7 +1127,7 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
     #controls select, #controls input[type=range] { width: 100%; }
     #controls select {
       padding: 6px 8px; border-radius: 6px; border: 1px solid #444;
-      background: #16213e; color: #eee; font-size: 0.8rem;
+      background: #242424; color: #eee; font-size: 0.8rem;
     }
     .ctrl-block { margin-top: 10px; }
     .ctrl-block label.title {
@@ -941,7 +1135,106 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       letter-spacing: 0.05em; color: #888; margin-bottom: 4px;
     }
     #opacity-val { color: #aaa; font-size: 0.72rem; }
-    #controls a { color: #4fc3f7; font-size: 0.75rem; }
+    #controls a { color: #c8c8c8; font-size: 0.75rem; }
+    .band-swatch {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    }
+    .band-range {
+      display: flex; gap: 8px; align-items: stretch;
+      --band-row-h: 18px;
+      --band-thumb-h: 9px;
+      --band-off: #3d3d3d;
+      --unfilled: 0%;
+    }
+    .band-range-labels {
+      flex: 1; display: flex; flex-direction: column; gap: 0;
+    }
+    .band-range-row {
+      display: flex; align-items: center; gap: 6px;
+      height: var(--band-row-h);
+      font-size: 0.72rem; line-height: 1.2;
+      transition: opacity 0.15s ease;
+    }
+    .band-range-row.is-off { opacity: 0.32; }
+    .band-range-track {
+      position: relative; width: 28px; flex-shrink: 0;
+    }
+    .band-range-fill {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 8px;
+      transform: translateX(-50%);
+      border-radius: 4px;
+      border: none;
+      pointer-events: none;
+      background-color: var(--band-off);
+      background-image:
+        linear-gradient(var(--band-off), var(--band-off)),
+        var(--band-gradient);
+      background-size: 100% var(--unfilled), 100% 100%;
+      background-position: top, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .band-range-track input[type=range] {
+      position: absolute;
+      left: 50%;
+      top: calc(var(--band-row-h) / 2 - var(--band-thumb-h) / 2);
+      height: calc(100% - var(--band-row-h) + var(--band-thumb-h));
+      bottom: auto;
+      width: calc(var(--band-thumb-h) * 2.5) !important;
+      margin: 0; padding: 0;
+      transform: translateX(-50%);
+      writing-mode: vertical-lr;
+      direction: rtl;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+    /* Native range inputs ignore most cursor CSS while pressed — force it on <html>. */
+    html.band-slider-active,
+    html.band-slider-active * {
+      cursor: grabbing !important;
+    }
+    .band-range-track input[type=range]::-webkit-slider-runnable-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-moz-range-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
+    }
+    .band-range-track input[type=range]::-moz-range-thumb {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
+    }
     #hide-hint {
       position: fixed; bottom: 10px; right: 12px; z-index: 1000;
       font-size: 0.7rem; color: rgba(255,255,255,0.45);
@@ -1090,20 +1383,76 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       styleBands();
     });
 
-    document.querySelectorAll(".band-toggle input").forEach(cb => {
-      cb.addEventListener("change", () => {
-        const min = parseInt(cb.dataset.minutes, 10);
+    const bandRange = document.getElementById("band-range");
+    function setBandRangeHidden(hiddenCount) {
+      const visibleThrough = bandMins.length - 1 - hiddenCount;
+      bandMins.forEach((min, idx) => {
+        const show = idx <= visibleThrough;
         const layer = bandLayers[min];
         const stroke = contourLayers[min];
-        if (cb.checked) {
+        if (show) {
           if (layer) map.addLayer(layer);
           if (stroke) map.addLayer(stroke);
         } else {
           if (layer) map.removeLayer(layer);
           if (stroke) map.removeLayer(stroke);
         }
+        const row = document.querySelector(`#band-range-control .band-range-row[data-minutes="${min}"]`);
+        if (row) row.classList.toggle("is-off", !show);
       });
-    });
+    }
+    function bandRangeHiddenFromValue() {
+      // Vertical rtl range: max sits at the top (filled). Map that to "all bands on".
+      const maxHidden = parseInt(bandRange.max, 10);
+      return maxHidden - parseInt(bandRange.value, 10);
+    }
+    function syncBandRangeFill() {
+      if (!bandRange) return;
+      const root = document.getElementById("band-range-control");
+      const track = bandRange.closest(".band-range-track");
+      const rows = root ? root.querySelectorAll(".band-range-row") : [];
+      if (!root || !track || !rows.length) return;
+      const maxHidden = parseInt(bandRange.max, 10) || 0;
+      const value = parseInt(bandRange.value, 10);
+      // Top stop: fill the entire rail (no muted gap above the knob).
+      if (value >= maxHidden) {
+        root.style.setProperty("--unfilled", "0%");
+        return;
+      }
+      const i = Math.max(0, Math.min(rows.length - 1, maxHidden - value));
+      const trackRect = track.getBoundingClientRect();
+      const rowRect = rows[i].getBoundingClientRect();
+      const thumbH = parseFloat(getComputedStyle(root).getPropertyValue("--band-thumb-h")) || 10;
+      const rowCenter = rowRect.top + rowRect.height / 2 - trackRect.top;
+      const thumbTop = rowCenter - thumbH / 2;
+      const unfilled = Math.max(0, Math.min(100, (thumbTop / trackRect.height) * 100));
+      root.style.setProperty("--unfilled", `${unfilled}%`);
+    }
+    if (bandRange) {
+      bandRange.addEventListener("input", () => {
+        setBandRangeHidden(bandRangeHiddenFromValue());
+        syncBandRangeFill();
+      });
+      function setBandSliderActive(on) {
+        document.documentElement.classList.toggle("band-slider-active", on);
+      }
+      function endBandSliderActive() {
+        setBandSliderActive(false);
+        window.removeEventListener("pointerup", endBandSliderActive, true);
+        window.removeEventListener("mouseup", endBandSliderActive, true);
+        window.removeEventListener("pointercancel", endBandSliderActive, true);
+        window.removeEventListener("blur", endBandSliderActive, true);
+      }
+      bandRange.addEventListener("pointerdown", e => {
+        if (e.button != null && e.button !== 0) return;
+        setBandSliderActive(true);
+        window.addEventListener("pointerup", endBandSliderActive, true);
+        window.addEventListener("mouseup", endBandSliderActive, true);
+        window.addEventListener("pointercancel", endBandSliderActive, true);
+        window.addEventListener("blur", endBandSliderActive, true);
+      });
+      syncBandRangeFill();
+    }
 
     document.getElementById("show-work").addEventListener("change", e => {
       if (e.target.checked) workMarker.addTo(map);
@@ -1234,20 +1583,48 @@ def isochrones_to_boundaries(isochrones: dict) -> dict:
 
 
 def build_band_toggles(saved_mins: list[int]) -> str:
-    lines = []
+    if not saved_mins:
+        return '<p class="cutoff-help">No isochrone bands loaded.</p>'
+    labels_by_min: dict[int, str] = {}
     prev_min = None
     for minutes in saved_mins:
-        color = BAND_COLORS.get(minutes, "#888")
-        label = band_ring_label(minutes, prev_min)
-        lines.append(
-            f'<label class="band-toggle">'
-            f'<input type="checkbox" data-minutes="{minutes}" checked>'
-            f'<span class="band-swatch" style="background:{color}"></span>'
-            f"{label}"
-            f"</label>"
-        )
+        labels_by_min[minutes] = band_ring_label(minutes, prev_min)
         prev_min = minutes
-    return "\n        ".join(lines)
+    max_hidden = max(0, len(saved_mins) - 1)
+    rows = []
+    top_down = list(reversed(saved_mins))
+    for minutes in top_down:
+        color = BAND_COLORS.get(minutes, "#888")
+        label = labels_by_min[minutes]
+        rows.append(
+            f'<div class="band-range-row" data-minutes="{minutes}">'
+            f'<span class="band-swatch" style="background:{color}"></span>'
+            f'<span class="band-range-label">{label}</span>'
+            f"</div>"
+        )
+    rows_html = "\n          ".join(rows)
+    colors = [BAND_COLORS.get(m, "#888") for m in top_down]
+    if len(colors) == 1:
+        gradient = colors[0]
+    else:
+        stops = []
+        last = len(colors) - 1
+        for i, color in enumerate(colors):
+            pct = (i / last) * 100
+            stops.append(f"{color} {pct:.2f}%")
+        gradient = f"linear-gradient(to bottom, {', '.join(stops)})"
+    return (
+        f"<style>#band-range-control{{--band-gradient:{gradient};}}</style>"
+        f'<div class="band-range" id="band-range-control" style="--band-count:{len(saved_mins)}">'
+        f'<div class="band-range-track">'
+        f'<div class="band-range-fill" aria-hidden="true"></div>'
+        f'<input type="range" id="band-range" min="0" max="{max_hidden}" value="{max_hidden}" step="1"'
+        f' aria-label="Hide outer commute bands" orient="vertical">'
+        f"</div>"
+        f'<div class="band-range-labels">{rows_html}</div>'
+        f"</div>"
+        f'<p class="cutoff-help">Slide down to hide outer bands one at a time.</p>'
+    )
 
 
 def _poi_shape_svg(shape: str, fill: str = "#fff", size: int = 16) -> str:
@@ -1432,6 +1809,13 @@ def main():
     )
 
     MAP_HTML.parent.mkdir(parents=True, exist_ok=True)
+    font_src = ROOT / "fonts" / "IBMPlexMono-Regular.ttf"
+    if font_src.exists():
+        font_dest_dir = MAP_HTML.parent / "fonts"
+        font_dest_dir.mkdir(parents=True, exist_ok=True)
+        (font_dest_dir / font_src.name).write_bytes(font_src.read_bytes())
+    else:
+        print(f"Missing label font at {font_src}", file=sys.stderr)
     MAP_HTML.write_text(html)
 
     opacity_pct = int(OVERLAY_DEFAULT_OPACITY * 100)

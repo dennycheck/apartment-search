@@ -27,7 +27,7 @@
       max-width: 280px;
       padding: 12px 14px;
       border-radius: 10px;
-      background: rgba(20, 20, 30, 0.82);
+      background: rgba(20, 20, 20, 0.82);
       color: #eee;
       font-size: 0.8rem;
       backdrop-filter: blur(8px);
@@ -40,6 +40,16 @@
       display: flex; align-items: center; gap: 8px;
       margin-bottom: 6px; cursor: pointer;
     }
+    #controls button,
+    #controls a,
+    #controls label,
+    #controls select,
+    #controls input {
+      cursor: pointer;
+    }
+    #controls input:disabled {
+      cursor: default;
+    }
     #controls .swatch {
       width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
       border: 1px solid rgba(255,255,255,0.5);
@@ -47,7 +57,7 @@
     #controls select, #controls input[type=range] { width: 100%; }
     #controls select {
       padding: 6px 8px; border-radius: 6px; border: 1px solid #444;
-      background: #16213e; color: #eee; font-size: 0.8rem;
+      background: #242424; color: #eee; font-size: 0.8rem;
     }
     .ctrl-block { margin-top: 10px; }
     .ctrl-block label.title {
@@ -55,7 +65,106 @@
       letter-spacing: 0.05em; color: #888; margin-bottom: 4px;
     }
     #opacity-val { color: #aaa; font-size: 0.72rem; }
-    #controls a { color: #4fc3f7; font-size: 0.75rem; }
+    #controls a { color: #c8c8c8; font-size: 0.75rem; }
+    .band-swatch {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+    }
+    .band-range {
+      display: flex; gap: 8px; align-items: stretch;
+      --band-row-h: 18px;
+      --band-thumb-h: 9px;
+      --band-off: #3d3d3d;
+      --unfilled: 0%;
+    }
+    .band-range-labels {
+      flex: 1; display: flex; flex-direction: column; gap: 0;
+    }
+    .band-range-row {
+      display: flex; align-items: center; gap: 6px;
+      height: var(--band-row-h);
+      font-size: 0.72rem; line-height: 1.2;
+      transition: opacity 0.15s ease;
+    }
+    .band-range-row.is-off { opacity: 0.32; }
+    .band-range-track {
+      position: relative; width: 28px; flex-shrink: 0;
+    }
+    .band-range-fill {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 8px;
+      transform: translateX(-50%);
+      border-radius: 4px;
+      border: none;
+      pointer-events: none;
+      background-color: var(--band-off);
+      background-image:
+        linear-gradient(var(--band-off), var(--band-off)),
+        var(--band-gradient);
+      background-size: 100% var(--unfilled), 100% 100%;
+      background-position: top, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .band-range-track input[type=range] {
+      position: absolute;
+      left: 50%;
+      top: calc(var(--band-row-h) / 2 - var(--band-thumb-h) / 2);
+      height: calc(100% - var(--band-row-h) + var(--band-thumb-h));
+      bottom: auto;
+      width: calc(var(--band-thumb-h) * 2.5) !important;
+      margin: 0; padding: 0;
+      transform: translateX(-50%);
+      writing-mode: vertical-lr;
+      direction: rtl;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+    /* Native range inputs ignore most cursor CSS while pressed — force it on <html>. */
+    html.band-slider-active,
+    html.band-slider-active * {
+      cursor: grabbing !important;
+    }
+    .band-range-track input[type=range]::-webkit-slider-runnable-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-moz-range-track {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: 100%;
+      background: transparent;
+      border: none;
+    }
+    .band-range-track input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
+    }
+    .band-range-track input[type=range]::-moz-range-thumb {
+      width: calc(var(--band-thumb-h) * 2.5);
+      height: var(--band-thumb-h);
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 10'%3E%3Cpath fill='%23fff' d='M5 0H20L25 5L20 10H5Q3 10 3 8V2Q3 0 5 0Z'/%3E%3C/svg%3E");
+      box-shadow: none;
+      cursor: pointer;
+    }
     #hide-hint {
       position: fixed; bottom: 10px; right: 12px; z-index: 1000;
       font-size: 0.7rem; color: rgba(255,255,255,0.45);
@@ -89,15 +198,15 @@
     </div>
     <div class="ctrl-block">
       <label class="title">Bands</label>
-      <label class="band-toggle"><input type="checkbox" data-minutes="10" checked><span class="band-swatch" style="background:#195dfa"></span>≤ 10 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="15" checked><span class="band-swatch" style="background:#08c158"></span>10–15 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="20" checked><span class="band-swatch" style="background:#09da48"></span>15–20 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="25" checked><span class="band-swatch" style="background:#f7df05"></span>20–25 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="30" checked><span class="band-swatch" style="background:#fac61c"></span>25–30 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="35" checked><span class="band-swatch" style="background:#f26100"></span>30–35 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="40" checked><span class="band-swatch" style="background:#ff4d0d"></span>35–40 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="45" checked><span class="band-swatch" style="background:#f519ac"></span>40–45 min</label>
-        <label class="band-toggle"><input type="checkbox" data-minutes="50" checked><span class="band-swatch" style="background:#f62cd8"></span>45–50 min</label>
+      <style>#band-range-control{--band-gradient:linear-gradient(to bottom, #f62cd8 0.00%, #f519ac 12.50%, #ff4d0d 25.00%, #f26100 37.50%, #fac61c 50.00%, #f7df05 62.50%, #09da48 75.00%, #08c158 87.50%, #195dfa 100.00%);}</style><div class="band-range" id="band-range-control" style="--band-count:9"><div class="band-range-track"><div class="band-range-fill" aria-hidden="true"></div><input type="range" id="band-range" min="0" max="8" value="8" step="1" aria-label="Hide outer commute bands" orient="vertical"></div><div class="band-range-labels"><div class="band-range-row" data-minutes="50"><span class="band-swatch" style="background:#f62cd8"></span><span class="band-range-label">45–50 min</span></div>
+          <div class="band-range-row" data-minutes="45"><span class="band-swatch" style="background:#f519ac"></span><span class="band-range-label">40–45 min</span></div>
+          <div class="band-range-row" data-minutes="40"><span class="band-swatch" style="background:#ff4d0d"></span><span class="band-range-label">35–40 min</span></div>
+          <div class="band-range-row" data-minutes="35"><span class="band-swatch" style="background:#f26100"></span><span class="band-range-label">30–35 min</span></div>
+          <div class="band-range-row" data-minutes="30"><span class="band-swatch" style="background:#fac61c"></span><span class="band-range-label">25–30 min</span></div>
+          <div class="band-range-row" data-minutes="25"><span class="band-swatch" style="background:#f7df05"></span><span class="band-range-label">20–25 min</span></div>
+          <div class="band-range-row" data-minutes="20"><span class="band-swatch" style="background:#09da48"></span><span class="band-range-label">15–20 min</span></div>
+          <div class="band-range-row" data-minutes="15"><span class="band-swatch" style="background:#08c158"></span><span class="band-range-label">10–15 min</span></div>
+          <div class="band-range-row" data-minutes="10"><span class="band-swatch" style="background:#195dfa"></span><span class="band-range-label">≤ 10 min</span></div></div></div><p class="cutoff-help">Slide down to hide outer bands one at a time.</p>
     </div>
     <div class="ctrl-block">
       <label class="row"><input type="checkbox" id="show-work" checked> Show work pin</label>
@@ -220,20 +329,76 @@
       styleBands();
     });
 
-    document.querySelectorAll(".band-toggle input").forEach(cb => {
-      cb.addEventListener("change", () => {
-        const min = parseInt(cb.dataset.minutes, 10);
+    const bandRange = document.getElementById("band-range");
+    function setBandRangeHidden(hiddenCount) {
+      const visibleThrough = bandMins.length - 1 - hiddenCount;
+      bandMins.forEach((min, idx) => {
+        const show = idx <= visibleThrough;
         const layer = bandLayers[min];
         const stroke = contourLayers[min];
-        if (cb.checked) {
+        if (show) {
           if (layer) map.addLayer(layer);
           if (stroke) map.addLayer(stroke);
         } else {
           if (layer) map.removeLayer(layer);
           if (stroke) map.removeLayer(stroke);
         }
+        const row = document.querySelector(`#band-range-control .band-range-row[data-minutes="${min}"]`);
+        if (row) row.classList.toggle("is-off", !show);
       });
-    });
+    }
+    function bandRangeHiddenFromValue() {
+      // Vertical rtl range: max sits at the top (filled). Map that to "all bands on".
+      const maxHidden = parseInt(bandRange.max, 10);
+      return maxHidden - parseInt(bandRange.value, 10);
+    }
+    function syncBandRangeFill() {
+      if (!bandRange) return;
+      const root = document.getElementById("band-range-control");
+      const track = bandRange.closest(".band-range-track");
+      const rows = root ? root.querySelectorAll(".band-range-row") : [];
+      if (!root || !track || !rows.length) return;
+      const maxHidden = parseInt(bandRange.max, 10) || 0;
+      const value = parseInt(bandRange.value, 10);
+      // Top stop: fill the entire rail (no muted gap above the knob).
+      if (value >= maxHidden) {
+        root.style.setProperty("--unfilled", "0%");
+        return;
+      }
+      const i = Math.max(0, Math.min(rows.length - 1, maxHidden - value));
+      const trackRect = track.getBoundingClientRect();
+      const rowRect = rows[i].getBoundingClientRect();
+      const thumbH = parseFloat(getComputedStyle(root).getPropertyValue("--band-thumb-h")) || 10;
+      const rowCenter = rowRect.top + rowRect.height / 2 - trackRect.top;
+      const thumbTop = rowCenter - thumbH / 2;
+      const unfilled = Math.max(0, Math.min(100, (thumbTop / trackRect.height) * 100));
+      root.style.setProperty("--unfilled", `${unfilled}%`);
+    }
+    if (bandRange) {
+      bandRange.addEventListener("input", () => {
+        setBandRangeHidden(bandRangeHiddenFromValue());
+        syncBandRangeFill();
+      });
+      function setBandSliderActive(on) {
+        document.documentElement.classList.toggle("band-slider-active", on);
+      }
+      function endBandSliderActive() {
+        setBandSliderActive(false);
+        window.removeEventListener("pointerup", endBandSliderActive, true);
+        window.removeEventListener("mouseup", endBandSliderActive, true);
+        window.removeEventListener("pointercancel", endBandSliderActive, true);
+        window.removeEventListener("blur", endBandSliderActive, true);
+      }
+      bandRange.addEventListener("pointerdown", e => {
+        if (e.button != null && e.button !== 0) return;
+        setBandSliderActive(true);
+        window.addEventListener("pointerup", endBandSliderActive, true);
+        window.addEventListener("mouseup", endBandSliderActive, true);
+        window.addEventListener("pointercancel", endBandSliderActive, true);
+        window.addEventListener("blur", endBandSliderActive, true);
+      });
+      syncBandRangeFill();
+    }
 
     document.getElementById("show-work").addEventListener("change", e => {
       if (e.target.checked) workMarker.addTo(map);
