@@ -48,7 +48,22 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .section { padding: 16px; border-bottom: 1px solid #333; }
     .section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 10px; }
     .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.9rem; }
-    .band-toggle input, .poi-toggle input, .subway-toggle input { accent-color: #4fc3f7; }
+    .band-toggle input, .poi-toggle input, .subway-toggle input, .listing-toggle input { accent-color: #4fc3f7; }
+    .subway-toggle-nested { margin-left: 22px; }
+    .subway-toggle-nested:has(input:disabled) { opacity: 0.45; cursor: default; }
+    details.accordion.section { padding: 0; border-bottom: 1px solid #333; }
+    details.accordion > summary {
+      list-style: none; cursor: pointer; user-select: none;
+      padding: 16px; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.05em; color: #888;
+    }
+    details.accordion > summary::-webkit-details-marker { display: none; }
+    details.accordion > summary::before {
+      content: "▸"; display: inline-block; margin-right: 8px;
+      transition: transform 0.15s ease;
+    }
+    details.accordion[open] > summary::before { transform: rotate(90deg); }
+    details.accordion .accordion-body { padding: 0 16px 16px; }
     /* Whole subway system pulses together — no direction, no stagger. */
     .leaflet-subway-pane path.subway-line,
     .leaflet-subway-pane path.subway-station {
@@ -105,7 +120,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       background: #16213e; color: #eee; font-size: 0.9rem;
     }
     #stats { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
-    #listings-table-wrap { flex: 1; overflow-y: auto; }
+    #listings-accordion { flex: 1; min-height: 0; display: flex; flex-direction: column; border-bottom: none; }
+    #listings-accordion[open] { min-height: 120px; }
+    #listings-accordion .accordion-body {
+      flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden;
+    }
+    #listings-table-wrap { flex: 1; overflow-y: auto; min-height: 0; margin-top: 8px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     th {
       position: sticky; top: 0; background: #16213e; padding: 8px 10px;
@@ -205,23 +225,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <div class="section">
         <h2>Summary</h2>
         __POI_TOGGLES__
-        __LISTING_TOGGLE__
         __SUBWAY_TOGGLE__
         <div id="stats" style="margin-top:12px"></div>
       </div>
-      <div id="listings-table-wrap" class="section" style="border-bottom:none;padding-top:0">
-        <table>
-          <thead>
-            <tr>
-              <th data-sort="address">Address</th>
-              <th data-sort="rent">Rent</th>
-              <th data-sort="beds">Beds</th>
-              <th data-sort="commute_min">Commute</th>
-            </tr>
-          </thead>
-          <tbody id="listings-body"></tbody>
-        </table>
-      </div>
+      <details class="section accordion" id="listings-accordion">
+        <summary>__LISTINGS_ACCORDION_LABEL__</summary>
+        <div class="accordion-body">
+          __LISTING_TOGGLE__
+          <div id="listings-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-sort="address">Address</th>
+                  <th data-sort="rent">Rent</th>
+                  <th data-sort="beds">Beds</th>
+                  <th data-sort="commute_min">Commute</th>
+                </tr>
+              </thead>
+              <tbody id="listings-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </details>
     </aside>
     <div id="map"></div>
     <button type="button" id="controls-pill" aria-expanded="false" aria-controls="sidebar">Controls</button>
@@ -441,7 +466,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     });
 
     const listingMarkers = [];
-    const listingsLayer = L.layerGroup().addTo(map);
+    const listingsLayer = L.layerGroup();
     LISTINGS.forEach(listing => {
       if (listing.lat == null) return;
       const marker = L.circleMarker([listing.lat, listing.lng], {
@@ -499,6 +524,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     });
 
     const subwayLayer = L.layerGroup();
+    const stationDots = [];
+    const stationHits = [];
+
+    // Screen-pixel radii grow gently with zoom so dots stay readable when zoomed in.
+    function stationDotRadius(z) {
+      return Math.max(3.5, Math.min(9, 3.5 + Math.max(0, z - 11) * 0.9));
+    }
+    function stationHitRadius(z) {
+      return stationDotRadius(z) + 6;
+    }
+    function updateStationSizes() {
+      const z = map.getZoom();
+      const r = stationDotRadius(z);
+      const hr = stationHitRadius(z);
+      stationDots.forEach(m => m.setRadius(r));
+      stationHits.forEach(m => m.setRadius(hr));
+    }
 
     function stationTooltipHtml(name, routes, commute) {
       const title = `<div><strong>${name || "Station"}</strong></div>`;
@@ -534,6 +576,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     }
     if (SUBWAY_STATIONS && SUBWAY_STATIONS.features && SUBWAY_STATIONS.features.length) {
+      const z0 = map.getZoom();
+      const r0 = stationDotRadius(z0);
+      const hr0 = stationHitRadius(z0);
       SUBWAY_STATIONS.features.forEach(f => {
         const coords = f.geometry && f.geometry.coordinates;
         if (!coords) return;
@@ -546,7 +591,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         // Invisible hover target under the visible dot (no click popup).
         const hit = L.circleMarker(latlng, {
           pane: "subwayPane",
-          radius: 10,
+          radius: hr0,
           stroke: false,
           fillColor: "#000",
           fillOpacity: 0.01,
@@ -560,9 +605,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
         hit.on("click", e => L.DomEvent.stop(e));
         subwayLayer.addLayer(hit);
+        stationHits.push(hit);
         const marker = L.circleMarker(latlng, {
           pane: "subwayPane",
-          radius: 4,
+          radius: r0,
           fillColor: fill,
           fillOpacity: 0.95,
           stroke: false,
@@ -570,7 +616,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           className: "subway-station"
         });
         subwayLayer.addLayer(marker);
+        stationDots.push(marker);
       });
+      map.on("zoomend", updateStationSizes);
     }
 
     function setSubwayVisible(on) {
@@ -584,13 +632,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
     const showSubway = document.getElementById("show-subway");
     const animSubway = document.getElementById("animate-subway");
+    function syncSubwayControls() {
+      const on = !!(showSubway && showSubway.checked);
+      setSubwayVisible(on);
+      if (animSubway) {
+        animSubway.disabled = !on;
+        if (!on) animSubway.checked = false;
+        setSubwayAnimating(on && animSubway.checked);
+      } else {
+        setSubwayAnimating(false);
+      }
+    }
     if (showSubway) {
-      setSubwayVisible(showSubway.checked);
-      showSubway.addEventListener("change", () => setSubwayVisible(showSubway.checked));
+      showSubway.addEventListener("change", () => {
+        // Turning subway on also turns pulse on; turning off clears pulse.
+        // While subway is on, pulse can still be toggled independently.
+        if (showSubway.checked && animSubway) animSubway.checked = true;
+        syncSubwayControls();
+      });
+      syncSubwayControls();
     }
     if (animSubway) {
-      setSubwayAnimating(animSubway.checked);
-      animSubway.addEventListener("change", () => setSubwayAnimating(animSubway.checked));
+      animSubway.addEventListener("change", () => {
+        setSubwayAnimating(!!(showSubway && showSubway.checked && animSubway.checked));
+      });
     }
 
     function buildPoiPopup(poi) {
@@ -711,10 +776,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     }
 
     document.querySelectorAll(".listing-toggle input").forEach(cb => {
-      cb.addEventListener("change", () => {
+      const syncListings = () => {
         if (cb.checked) map.addLayer(listingsLayer);
         else map.removeLayer(listingsLayer);
-      });
+      };
+      syncListings();
+      cb.addEventListener("change", syncListings);
     });
 
     document.querySelectorAll(".poi-toggle input").forEach(cb => {
@@ -1183,15 +1250,20 @@ def build_poi_toggles(pois: list[dict]) -> str:
 
 def build_listing_toggle(listing_count: int) -> str:
     if listing_count == 0:
-        return ""
+        return '<p class="cutoff-help">No listings loaded.</p>'
     return (
-        '<h2 style="margin-top:12px;margin-bottom:10px">Listings</h2>'
         '<label class="band-toggle listing-toggle">'
-        '<input type="checkbox" id="show-listings" checked>'
+        '<input type="checkbox" id="show-listings">'
         '<span class="band-swatch" style="background:#ffffff"></span>'
         f"Show listing pins ({listing_count})"
         "</label>"
     )
+
+
+def build_listings_accordion_label(listing_count: int) -> str:
+    if listing_count:
+        return f"Listings ({listing_count})"
+    return "Listings"
 
 
 def build_subway_toggle(has_subway: bool) -> str:
@@ -1203,12 +1275,12 @@ def build_subway_toggle(has_subway: bool) -> str:
     return (
         '<h2 style="margin-top:12px;margin-bottom:10px">Subway</h2>'
         '<label class="band-toggle subway-toggle">'
-        '<input type="checkbox" id="show-subway" checked>'
+        '<input type="checkbox" id="show-subway">'
         '<span class="band-swatch" style="background:#D82233"></span>'
         "Show subway lines &amp; stations"
         "</label>"
-        '<label class="band-toggle subway-toggle">'
-        '<input type="checkbox" id="animate-subway" checked>'
+        '<label class="band-toggle subway-toggle subway-toggle-nested">'
+        '<input type="checkbox" id="animate-subway" disabled>'
         "Pulse lines"
         "</label>"
         '<p class="cutoff-help">Lines use MTA colors; stations use your commute band colors.</p>'
@@ -1305,6 +1377,7 @@ def main():
         .replace("__BAND_TOGGLES__", build_band_toggles(saved_mins))
         .replace("__POI_TOGGLES__", build_poi_toggles(pois))
         .replace("__LISTING_TOGGLE__", build_listing_toggle(len(listings)))
+        .replace("__LISTINGS_ACCORDION_LABEL__", build_listings_accordion_label(len(listings)))
         .replace("__SUBWAY_TOGGLE__", build_subway_toggle(has_subway))
         .replace("__CUTOFF_OPTIONS__", build_cutoff_options(saved_mins))
         .replace("__ISOCHRONES_JSON__", json.dumps(isochrones))
