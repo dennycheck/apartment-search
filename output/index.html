@@ -35,12 +35,15 @@
       0%, 100% { opacity: 0.35; }
       50% { opacity: 1; }
     }
-    /* Invisible fat hit targets for tracks/stations — easier hover. */
-    .leaflet-subway-pane path.subway-line-hit,
+    /* Invisible hit targets for stations only (lines are non-interactive). */
     .leaflet-subway-pane path.subway-station-hit {
       fill: transparent !important;
       stroke: transparent !important;
-      pointer-events: stroke;
+    }
+    /* Kill Leaflet/browser focus rings on paths (blue/white click borders). */
+    .leaflet-container path.leaflet-interactive:focus,
+    .leaflet-container .leaflet-interactive:focus {
+      outline: none !important;
     }
     .subway-tip-routes {
       display: inline-flex; flex-wrap: wrap; gap: 4px 6px;
@@ -396,6 +399,7 @@
       const fill = BAND_COLORS[min] || "#888";
       const layer = L.geoJSON(f, {
         pane: "isochronePane",
+        interactive: false,
         style: {
           stroke: false,
           fillColor: fill,
@@ -414,6 +418,7 @@
       const stroke = BAND_COLORS[min] || "#888";
       const layer = L.geoJSON(f, {
         pane: "contourPane",
+        interactive: false,
         style: {
           color: stroke,
           weight: ringStrokeWeight(min, min <= activeCutoff),
@@ -486,37 +491,24 @@
 
     const subwayLayer = L.layerGroup();
 
-    function stationTooltipHtml(name, routes) {
+    function stationTooltipHtml(name, routes, commute) {
       const title = `<div><strong>${name || "Station"}</strong></div>`;
-      if (!routes || !routes.length) return title;
+      const commuteLine = commute
+        ? `<div style="margin-top:2px;opacity:0.9">${commute}</div>`
+        : "";
+      if (!routes || !routes.length) return `${title}${commuteLine}`;
       const chips = routes.map(r => {
         const color = r.color || "#888";
         const label = r.name || "?";
         return `<span class="subway-tip-route"><span class="subway-tip-dot" style="background:${color}"></span>${label}</span>`;
       }).join("");
-      return `${title}<div class="subway-tip-routes">${chips}</div>`;
+      return `${title}${commuteLine}<div class="subway-tip-routes">${chips}</div>`;
     }
 
     if (SUBWAY_LINES && SUBWAY_LINES.features && SUBWAY_LINES.features.length) {
       SUBWAY_LINES.features.forEach(f => {
         const color = (f.properties && f.properties.color) || "#888";
-        const tip =
-          (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway";
-        // Fat invisible stroke under the visible line for easier hover.
-        const hit = L.geoJSON(f, {
-          pane: "subwayPane",
-          interactive: true,
-          style: {
-            color: "#000",
-            weight: 14,
-            opacity: 0.01,
-            lineCap: "round",
-            lineJoin: "round",
-            className: "subway-line-hit"
-          }
-        });
-        hit.bindTooltip(tip, { sticky: true, opacity: 0.9 });
-        subwayLayer.addLayer(hit);
+        // Visible route only — no hover/click hit target on the stroke.
         const layer = L.geoJSON(f, {
           pane: "subwayPane",
           interactive: false,
@@ -541,22 +533,23 @@
         const label = (f.properties && f.properties.name) || "Station";
         const routes = (f.properties && f.properties.routes) || [];
         const latlng = [coords[1], coords[0]];
-        // Larger invisible target under the visible dot.
+        const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
+        // Invisible hover target under the visible dot (no click popup).
         const hit = L.circleMarker(latlng, {
           pane: "subwayPane",
-          radius: 12,
+          radius: 10,
           stroke: false,
           fillColor: "#000",
           fillOpacity: 0.01,
           className: "subway-station-hit"
         });
-        hit.bindTooltip(stationTooltipHtml(label, routes), {
+        hit.bindTooltip(stationTooltipHtml(label, routes, commute), {
           direction: "top",
           opacity: 0.95,
           className: "subway-station-tip"
         });
-        const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
-        hit.bindPopup(`<b>${label}</b><br>${commute}<br>${stationTooltipHtml("", routes)}`);
+        // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
+        hit.on("click", e => L.DomEvent.stop(e));
         subwayLayer.addLayer(hit);
         const marker = L.circleMarker(latlng, {
           pane: "subwayPane",

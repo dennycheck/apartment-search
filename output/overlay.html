@@ -146,6 +146,7 @@
       if (!min) return;
       const fill = BAND_COLORS[min] || "#888";
       const layer = L.geoJSON(f, {
+        interactive: false,
         style: {
           stroke: false,
           fillColor: fill,
@@ -163,6 +164,7 @@
       if (!min) return;
       const stroke = BAND_COLORS[min] || "#888";
       const layer = L.geoJSON(f, {
+        interactive: false,
         style: {
           color: stroke,
           weight: ringStrokeWeight(min, min <= activeCutoff),
