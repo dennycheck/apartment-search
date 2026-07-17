@@ -162,18 +162,23 @@ def build_stations(zf: zipfile.ZipFile) -> dict:
                 }
             )
 
-    # Deduplicate near-identical station names at same complex by rounding coords.
-    seen: set[tuple] = set()
-    uniq = []
+    # Deduplicate near-identical station names; merge route lists across complexes.
+    by_key: dict[tuple, dict] = {}
     for f in features:
         lon, lat = f["geometry"]["coordinates"]
-        key = (f["properties"]["name"], round(lon, 4), round(lat, 4))
-        if key in seen:
+        key = (f["properties"]["name"], round(lon, 3), round(lat, 3))
+        if key not in by_key:
+            by_key[key] = f
             continue
-        seen.add(key)
-        uniq.append(f)
+        existing = by_key[key]["properties"].setdefault("routes", [])
+        seen_names = {r["name"] for r in existing}
+        for r in f["properties"].get("routes") or []:
+            if r["name"] not in seen_names:
+                existing.append(r)
+                seen_names.add(r["name"])
+        existing.sort(key=lambda r: r["name"])
 
-    return {"type": "FeatureCollection", "features": uniq}
+    return {"type": "FeatureCollection", "features": list(by_key.values())}
 
 
 def main() -> None:
