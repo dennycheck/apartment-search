@@ -162,23 +162,34 @@ def build_stations(zf: zipfile.ZipFile) -> dict:
                 }
             )
 
-    # Deduplicate near-identical station names; merge route lists across complexes.
-    by_key: dict[tuple, dict] = {}
+    # Merge same-name stations that sit near each other (transfer complexes).
+    # Keep one point; union route lists so tooltips show every line that stops there.
+    MERGE_DEG = 0.0025  # ~250m
+    merged: list[dict] = []
     for f in features:
+        name = f["properties"]["name"]
         lon, lat = f["geometry"]["coordinates"]
-        key = (f["properties"]["name"], round(lon, 3), round(lat, 3))
-        if key not in by_key:
-            by_key[key] = f
+        routes = list(f["properties"].get("routes") or [])
+        found = None
+        for m in merged:
+            if m["properties"]["name"] != name:
+                continue
+            mlon, mlat = m["geometry"]["coordinates"]
+            if abs(mlon - lon) <= MERGE_DEG and abs(mlat - lat) <= MERGE_DEG:
+                found = m
+                break
+        if found is None:
+            merged.append(f)
             continue
-        existing = by_key[key]["properties"].setdefault("routes", [])
+        existing = found["properties"].setdefault("routes", [])
         seen_names = {r["name"] for r in existing}
-        for r in f["properties"].get("routes") or []:
+        for r in routes:
             if r["name"] not in seen_names:
                 existing.append(r)
                 seen_names.add(r["name"])
         existing.sort(key=lambda r: r["name"])
 
-    return {"type": "FeatureCollection", "features": list(by_key.values())}
+    return {"type": "FeatureCollection", "features": merged}
 
 
 def main() -> None:
