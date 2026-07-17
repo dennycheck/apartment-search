@@ -49,13 +49,17 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 10px; }
     .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.9rem; }
     .band-toggle input, .poi-toggle input, .subway-toggle input { accent-color: #4fc3f7; }
+    /* Soft opacity pulse — no direction, so overlapping routes don't fight. */
     .leaflet-subway-pane path.subway-line {
-      stroke-dasharray: 8 12;
-      animation: subway-flow 1.1s linear infinite;
+      animation: subway-pulse 2.4s ease-in-out infinite;
     }
-    .leaflet-subway-pane.subway-paused path.subway-line { animation: none; stroke-dasharray: none; }
-    @keyframes subway-flow {
-      to { stroke-dashoffset: -20; }
+    .leaflet-subway-pane.subway-paused path.subway-line {
+      animation: none;
+      opacity: 0.9;
+    }
+    @keyframes subway-pulse {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 1; }
     }
     .band-swatch {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
@@ -470,7 +474,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const subwayLayer = L.layerGroup();
     const subwayLineLayers = [];
     if (SUBWAY_LINES && SUBWAY_LINES.features && SUBWAY_LINES.features.length) {
-      SUBWAY_LINES.features.forEach(f => {
+      SUBWAY_LINES.features.forEach((f, i) => {
         const color = (f.properties && f.properties.color) || "#888";
         const layer = L.geoJSON(f, {
           pane: "subwayPane",
@@ -487,6 +491,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway",
           { sticky: true, opacity: 0.9 }
         );
+        // Stagger pulse phase so stacked routes don't blink in lockstep.
+        layer.eachLayer(path => {
+          if (path._path) {
+            path._path.style.animationDelay = `${(i % 6) * 0.35}s`;
+          }
+        });
         subwayLineLayers.push(layer);
         subwayLayer.addLayer(layer);
       });
@@ -1146,7 +1156,7 @@ def build_subway_toggle(has_subway: bool) -> str:
         "</label>"
         '<label class="band-toggle subway-toggle">'
         '<input type="checkbox" id="animate-subway" checked>'
-        "Animate line flow"
+        "Pulse lines"
         "</label>"
         '<p class="cutoff-help">Lines use MTA colors; stations use your commute band colors.</p>'
     )
