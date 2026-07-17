@@ -87,7 +87,49 @@ def build_lines(zf: zipfile.ZipFile) -> dict:
     return {"type": "FeatureCollection", "features": features}
 
 
+def _route_meta(zf: zipfile.ZipFile) -> dict[str, dict]:
+    out = {}
+    for r in _read_csv(zf, "routes.txt"):
+        color = (r.get("route_color") or "888888").lstrip("#")
+        out[r["route_id"]] = {
+            "name": r.get("route_short_name") or r["route_id"],
+            "color": f"#{color}",
+        }
+    return out
+
+
+def _routes_by_station(zf: zipfile.ZipFile) -> dict[str, set[str]]:
+    """Map station stop_id → set of route_ids that stop there (via platforms)."""
+    stops = _read_csv(zf, "stops.txt")
+    stop_to_station: dict[str, str] = {}
+    for s in stops:
+        sid = s["stop_id"]
+        parent = (s.get("parent_station") or "").strip()
+        loc = (s.get("location_type") or "").strip()
+        if loc == "1":
+            stop_to_station[sid] = sid
+        elif parent:
+            stop_to_station[sid] = parent
+        else:
+            stop_to_station[sid] = sid
+
+    trip_route = {t["trip_id"]: t["route_id"] for t in _read_csv(zf, "trips.txt")}
+    station_routes: dict[str, set[str]] = defaultdict(set)
+    with zf.open("stop_times.txt") as f:
+        text = io.TextIOWrapper(f, encoding="utf-8-sig", newline="")
+        for row in csv.DictReader(text):
+            rid = trip_route.get(row["trip_id"])
+            if not rid:
+                continue
+            station = stop_to_station.get(row["stop_id"])
+            if station:
+                station_routes[station].add(rid)
+    return station_routes
+
+
 def build_stations(zf: zipfile.ZipFile) -> dict:
+    routes = _route_meta(zf)
+    station_routes = _routes_by_station(zf)
     stops = _read_csv(zf, "stops.txt")
     features = []
     for s in stops:
@@ -99,12 +141,19 @@ def build_stations(zf: zipfile.ZipFile) -> dict:
                 continue
             if loc == "" and parent:
                 continue
+            stop_id = s["stop_id"]
+            served = []
+            for rid in sorted(station_routes.get(stop_id, ()), key=lambda x: routes.get(x, {}).get("name") or x):
+                meta = routes.get(rid)
+                if meta:
+                    served.append(meta)
             features.append(
                 {
                     "type": "Feature",
                     "properties": {
-                        "stop_id": s["stop_id"],
-                        "name": s.get("stop_name") or s["stop_id"],
+                        "stop_id": stop_id,
+                        "name": s.get("stop_name") or stop_id,
+                        "routes": served,
                     },
                     "geometry": {
                         "type": "Point",

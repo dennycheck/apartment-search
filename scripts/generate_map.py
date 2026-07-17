@@ -63,6 +63,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       0%, 100% { opacity: 0.35; }
       50% { opacity: 1; }
     }
+    /* Invisible fat hit targets for tracks/stations — easier hover. */
+    .leaflet-subway-pane path.subway-line-hit,
+    .leaflet-subway-pane path.subway-station-hit {
+      fill: transparent !important;
+      stroke: transparent !important;
+      pointer-events: stroke;
+    }
+    .subway-tip-routes {
+      display: inline-flex; flex-wrap: wrap; gap: 4px 6px;
+      margin-top: 4px; align-items: center;
+    }
+    .subway-tip-route {
+      display: inline-flex; align-items: center; gap: 3px;
+      font-weight: 600; font-size: 0.85em;
+    }
+    .subway-tip-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,0.35);
+    }
     .band-swatch {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
       border: 2px solid rgba(255,255,255,0.85);
@@ -475,11 +494,41 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     });
 
     const subwayLayer = L.layerGroup();
+
+    function stationTooltipHtml(name, routes) {
+      const title = `<div><strong>${name || "Station"}</strong></div>`;
+      if (!routes || !routes.length) return title;
+      const chips = routes.map(r => {
+        const color = r.color || "#888";
+        const label = r.name || "?";
+        return `<span class="subway-tip-route"><span class="subway-tip-dot" style="background:${color}"></span>${label}</span>`;
+      }).join("");
+      return `${title}<div class="subway-tip-routes">${chips}</div>`;
+    }
+
     if (SUBWAY_LINES && SUBWAY_LINES.features && SUBWAY_LINES.features.length) {
       SUBWAY_LINES.features.forEach(f => {
         const color = (f.properties && f.properties.color) || "#888";
+        const tip =
+          (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway";
+        // Fat invisible stroke under the visible line for easier hover.
+        const hit = L.geoJSON(f, {
+          pane: "subwayPane",
+          interactive: true,
+          style: {
+            color: "#000",
+            weight: 14,
+            opacity: 0.01,
+            lineCap: "round",
+            lineJoin: "round",
+            className: "subway-line-hit"
+          }
+        });
+        hit.bindTooltip(tip, { sticky: true, opacity: 0.9 });
+        subwayLayer.addLayer(hit);
         const layer = L.geoJSON(f, {
           pane: "subwayPane",
+          interactive: false,
           style: {
             color,
             weight: 3,
@@ -489,10 +538,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             className: "subway-line"
           }
         });
-        layer.bindTooltip(
-          (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway",
-          { sticky: true, opacity: 0.9 }
-        );
         subwayLayer.addLayer(layer);
       });
     }
@@ -503,17 +548,34 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const minutes = f.properties && f.properties.minutes;
         const fill = (minutes != null && BAND_COLORS[minutes]) || "#555";
         const label = (f.properties && f.properties.name) || "Station";
-        const marker = L.circleMarker([coords[1], coords[0]], {
+        const routes = (f.properties && f.properties.routes) || [];
+        const latlng = [coords[1], coords[0]];
+        // Larger invisible target under the visible dot.
+        const hit = L.circleMarker(latlng, {
+          pane: "subwayPane",
+          radius: 12,
+          stroke: false,
+          fillColor: "#000",
+          fillOpacity: 0.01,
+          className: "subway-station-hit"
+        });
+        hit.bindTooltip(stationTooltipHtml(label, routes), {
+          direction: "top",
+          opacity: 0.95,
+          className: "subway-station-tip"
+        });
+        const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
+        hit.bindPopup(`<b>${label}</b><br>${commute}<br>${stationTooltipHtml("", routes)}`);
+        subwayLayer.addLayer(hit);
+        const marker = L.circleMarker(latlng, {
           pane: "subwayPane",
           radius: 4,
           fillColor: fill,
           fillOpacity: 0.95,
           stroke: false,
+          interactive: false,
           className: "subway-station"
         });
-        const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
-        marker.bindTooltip(label, { direction: "top", opacity: 0.9 });
-        marker.bindPopup(`<b>${label}</b><br>${commute}`);
         subwayLayer.addLayer(marker);
       });
     }
