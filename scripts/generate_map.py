@@ -68,6 +68,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .leaflet-subway-pane path.subway-line,
     .leaflet-subway-pane path.subway-station {
       animation: subway-pulse 2.15s ease-in-out infinite;
+      /* Decorative only — never steal hover from station hit targets. */
+      pointer-events: none !important;
     }
     .leaflet-subway-pane.subway-paused path.subway-line,
     .leaflet-subway-pane.subway-paused path.subway-station {
@@ -82,6 +84,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .leaflet-subway-pane path.subway-station-hit {
       fill: transparent !important;
       stroke: transparent !important;
+      pointer-events: auto !important;
+      cursor: pointer;
+    }
+    /* Tooltips must never capture the pointer or they leave sticky tips. */
+    .leaflet-tooltip,
+    .leaflet-tooltip.subway-station-tip {
+      pointer-events: none !important;
     }
     /* Kill Leaflet/browser focus rings on paths (blue/white click borders). */
     .leaflet-container path.leaflet-interactive:focus,
@@ -526,13 +535,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const subwayLayer = L.layerGroup();
     const stationDots = [];
     const stationHits = [];
+    // One shared tip — avoids leftover bound tooltips when SVG mouseout is flaky.
+    const stationTip = L.tooltip({
+      direction: "top",
+      opacity: 0.95,
+      className: "subway-station-tip",
+      sticky: false,
+      interactive: false,
+      offset: [0, -8]
+    });
+    let stationTipOwner = null;
+
+    function closeStationTip() {
+      if (stationTipOwner) {
+        map.closeTooltip(stationTip);
+        stationTipOwner = null;
+      }
+    }
 
     // Screen-pixel radii grow gently with zoom so dots stay readable when zoomed in.
     function stationDotRadius(z) {
       return Math.max(3.5, Math.min(9, 3.5 + Math.max(0, z - 11) * 0.9));
     }
     function stationHitRadius(z) {
-      return stationDotRadius(z) + 6;
+      return stationDotRadius(z) + 5;
     }
     function updateStationSizes() {
       const z = map.getZoom();
@@ -588,24 +614,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         const routes = (f.properties && f.properties.routes) || [];
         const latlng = [coords[1], coords[0]];
         const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
-        // Invisible hover target under the visible dot (no click popup).
-        const hit = L.circleMarker(latlng, {
-          pane: "subwayPane",
-          radius: hr0,
-          stroke: false,
-          fillColor: "#000",
-          fillOpacity: 0.01,
-          className: "subway-station-hit"
-        });
-        hit.bindTooltip(stationTooltipHtml(label, routes, commute), {
-          direction: "top",
-          opacity: 0.95,
-          className: "subway-station-tip"
-        });
-        // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
-        hit.on("click", e => L.DomEvent.stop(e));
-        subwayLayer.addLayer(hit);
-        stationHits.push(hit);
+        const tipHtml = stationTooltipHtml(label, routes, commute);
+
+        // Visible decorative dot first (pointer-events: none via CSS).
         const marker = L.circleMarker(latlng, {
           pane: "subwayPane",
           radius: r0,
@@ -617,13 +628,43 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         });
         subwayLayer.addLayer(marker);
         stationDots.push(marker);
+
+        // Hit target on top — owns hover open/close explicitly.
+        const hit = L.circleMarker(latlng, {
+          pane: "subwayPane",
+          radius: hr0,
+          stroke: false,
+          fillColor: "#000",
+          fillOpacity: 0.01,
+          className: "subway-station-hit",
+          bubblingMouseEvents: false
+        });
+        hit.on("mouseover", () => {
+          stationTipOwner = hit;
+          stationTip.setContent(tipHtml);
+          stationTip.setLatLng(latlng);
+          map.openTooltip(stationTip);
+        });
+        hit.on("mouseout", () => {
+          if (stationTipOwner === hit) closeStationTip();
+        });
+        // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
+        hit.on("click", e => L.DomEvent.stop(e));
+        subwayLayer.addLayer(hit);
+        stationHits.push(hit);
       });
       map.on("zoomend", updateStationSizes);
+      // Safety nets: stuck tips if SVG mouseout is skipped while leaving the map.
+      map.getContainer().addEventListener("mouseleave", closeStationTip);
+      map.on("movestart zoomstart", closeStationTip);
     }
 
     function setSubwayVisible(on) {
       if (on) map.addLayer(subwayLayer);
-      else map.removeLayer(subwayLayer);
+      else {
+        closeStationTip();
+        map.removeLayer(subwayLayer);
+      }
     }
     function setSubwayAnimating(on) {
       const pane = map.getPane("subwayPane");
