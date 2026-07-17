@@ -19,6 +19,8 @@ from config import (
     OVERLAY_DEFAULT_OPACITY,
     OVERLAY_HTML,
     POIS_JSON,
+    SUBWAY_LINES_PATH,
+    SUBWAY_STATIONS_PATH,
     WORK_ADDRESS,
     WORK_LAT,
     WORK_LNG,
@@ -46,7 +48,15 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .section { padding: 16px; border-bottom: 1px solid #333; }
     .section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 10px; }
     .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 0.9rem; }
-    .band-toggle input, .poi-toggle input { accent-color: #4fc3f7; }
+    .band-toggle input, .poi-toggle input, .subway-toggle input { accent-color: #4fc3f7; }
+    .leaflet-subway-pane path.subway-line {
+      stroke-dasharray: 8 12;
+      animation: subway-flow 1.1s linear infinite;
+    }
+    .leaflet-subway-pane.subway-paused path.subway-line { animation: none; stroke-dasharray: none; }
+    @keyframes subway-flow {
+      to { stroke-dashoffset: -20; }
+    }
     .band-swatch {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
       border: 2px solid rgba(255,255,255,0.85);
@@ -168,6 +178,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <h2>Summary</h2>
         __POI_TOGGLES__
         __LISTING_TOGGLE__
+        __SUBWAY_TOGGLE__
         <div id="stats" style="margin-top:12px"></div>
       </div>
       <div id="listings-table-wrap" class="section" style="border-bottom:none;padding-top:0">
@@ -195,6 +206,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const ISOCHRONES = __ISOCHRONES_JSON__;
     const LISTINGS = __LISTINGS_JSON__;
     const POIS = __POIS_JSON__;
+    const SUBWAY_LINES = __SUBWAY_LINES_JSON__;
+    const SUBWAY_STATIONS = __SUBWAY_STATIONS_JSON__;
     const BAND_COLORS = __BAND_COLORS_JSON__;
     const WORK = { lat: __WORK_LAT__, lng: __WORK_LNG__ };
 
@@ -231,6 +244,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     map.getPane("isochronePane").style.zIndex = 350;
     map.createPane("contourPane");
     map.getPane("contourPane").style.zIndex = 360;
+    map.createPane("subwayPane");
+    map.getPane("subwayPane").style.zIndex = 370;
+    map.getPane("subwayPane").classList.add("leaflet-subway-pane");
     map.createPane("labelsPane");
     map.getPane("labelsPane").style.zIndex = 450;
     map.getPane("labelsPane").style.pointerEvents = "none";
@@ -450,6 +466,71 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       poiMarkers[poi.id] = marker;
       poiLayer.addLayer(marker);
     });
+
+    const subwayLayer = L.layerGroup();
+    const subwayLineLayers = [];
+    if (SUBWAY_LINES && SUBWAY_LINES.features && SUBWAY_LINES.features.length) {
+      SUBWAY_LINES.features.forEach(f => {
+        const color = (f.properties && f.properties.color) || "#888";
+        const layer = L.geoJSON(f, {
+          pane: "subwayPane",
+          style: {
+            color,
+            weight: 3,
+            opacity: 0.9,
+            lineCap: "round",
+            lineJoin: "round",
+            className: "subway-line"
+          }
+        });
+        layer.bindTooltip(
+          (f.properties && (f.properties.name + " — " + (f.properties.long_name || ""))) || "Subway",
+          { sticky: true, opacity: 0.9 }
+        );
+        subwayLineLayers.push(layer);
+        subwayLayer.addLayer(layer);
+      });
+    }
+    if (SUBWAY_STATIONS && SUBWAY_STATIONS.features && SUBWAY_STATIONS.features.length) {
+      SUBWAY_STATIONS.features.forEach(f => {
+        const coords = f.geometry && f.geometry.coordinates;
+        if (!coords) return;
+        const minutes = f.properties && f.properties.minutes;
+        const fill = (minutes != null && BAND_COLORS[minutes]) || "#555";
+        const marker = L.circleMarker([coords[1], coords[0]], {
+          pane: "subwayPane",
+          radius: 4,
+          fillColor: fill,
+          color: "#111",
+          weight: 1,
+          fillOpacity: 0.95
+        });
+        const label = (f.properties && f.properties.name) || "Station";
+        const commute = minutes != null ? `≤ ${minutes} min to work` : "Outside mapped bands";
+        marker.bindPopup(`<b>${label}</b><br>${commute}`);
+        subwayLayer.addLayer(marker);
+      });
+    }
+
+    function setSubwayVisible(on) {
+      if (on) map.addLayer(subwayLayer);
+      else map.removeLayer(subwayLayer);
+    }
+    function setSubwayAnimating(on) {
+      const pane = map.getPane("subwayPane");
+      if (!pane) return;
+      pane.classList.toggle("subway-paused", !on);
+    }
+    const showSubway = document.getElementById("show-subway");
+    const animSubway = document.getElementById("animate-subway");
+    if (showSubway) {
+      setSubwayVisible(showSubway.checked);
+      showSubway.addEventListener("change", () => setSubwayVisible(showSubway.checked));
+    }
+    if (animSubway) {
+      setSubwayAnimating(animSubway.checked);
+      animSubway.addEventListener("change", () => setSubwayAnimating(animSubway.checked));
+    }
 
     function buildPoiPopup(poi) {
       const commute = poi.commute_min != null ? `≤ ${poi.commute_min} min to work` : "Outside isochrone bands";
@@ -1050,6 +1131,61 @@ def build_listing_toggle(listing_count: int) -> str:
     )
 
 
+def build_subway_toggle(has_subway: bool) -> str:
+    if not has_subway:
+        return (
+            '<h2 style="margin-top:12px;margin-bottom:6px">Subway</h2>'
+            '<p style="font-size:0.85rem;color:#888">Run <code>python scripts/fetch_subway.py</code> to add lines.</p>'
+        )
+    return (
+        '<h2 style="margin-top:12px;margin-bottom:10px">Subway</h2>'
+        '<label class="band-toggle subway-toggle">'
+        '<input type="checkbox" id="show-subway" checked>'
+        '<span class="band-swatch" style="background:#D82233"></span>'
+        "Show subway lines &amp; stations"
+        "</label>"
+        '<label class="band-toggle subway-toggle">'
+        '<input type="checkbox" id="animate-subway" checked>'
+        "Animate line flow"
+        "</label>"
+        '<p class="cutoff-help">Lines use MTA colors; stations use your commute band colors.</p>'
+    )
+
+
+def color_stations_by_band(stations: dict, rings: dict) -> dict:
+    """Tag each station with the tightest isochrone ring that contains it."""
+    band_polys = []
+    for f in rings.get("features", []):
+        minutes = f.get("properties", {}).get("minutes")
+        if minutes is None:
+            continue
+        try:
+            band_polys.append((int(minutes), shape(f["geometry"])))
+        except Exception:
+            continue
+    band_polys.sort(key=lambda x: x[0])
+
+    out_features = []
+    for f in stations.get("features", []):
+        props = dict(f.get("properties") or {})
+        coords = (f.get("geometry") or {}).get("coordinates")
+        minutes = None
+        if coords and len(coords) >= 2:
+            pt = shape({"type": "Point", "coordinates": coords})
+            for m, poly in band_polys:
+                if poly.contains(pt) or poly.touches(pt):
+                    minutes = m
+                    break
+        if minutes is not None:
+            props["minutes"] = minutes
+            props["color"] = BAND_COLORS.get(minutes, "#555")
+        else:
+            props.pop("minutes", None)
+            props["color"] = "#555"
+        out_features.append({**f, "properties": props})
+    return {"type": "FeatureCollection", "features": out_features}
+
+
 def build_cutoff_options(saved_mins: list[int]) -> str:
     return "\n            ".join(
         f'<option value="{m}"{" selected" if m == DEFAULT_COMMUTE_MAX else ""}>Within {m} minutes</option>'
@@ -1085,6 +1221,20 @@ def main():
     else:
         print(f"No POIs at {POIS_JSON} — run: python scripts/process_pois.py", file=sys.stderr)
 
+    subway_lines = {"type": "FeatureCollection", "features": []}
+    subway_stations = {"type": "FeatureCollection", "features": []}
+    has_subway = SUBWAY_LINES_PATH.exists() and SUBWAY_STATIONS_PATH.exists()
+    if has_subway:
+        subway_lines = json.loads(SUBWAY_LINES_PATH.read_text())
+        subway_stations = color_stations_by_band(
+            json.loads(SUBWAY_STATIONS_PATH.read_text()), isochrones
+        )
+    else:
+        print(
+            f"No subway data — run: python scripts/fetch_subway.py",
+            file=sys.stderr,
+        )
+
     html = (
         HTML_TEMPLATE.replace("__WORK_ADDRESS__", WORK_ADDRESS)
         .replace("__WORK_LAT__", str(WORK_LAT))
@@ -1092,11 +1242,14 @@ def main():
         .replace("__BAND_TOGGLES__", build_band_toggles(saved_mins))
         .replace("__POI_TOGGLES__", build_poi_toggles(pois))
         .replace("__LISTING_TOGGLE__", build_listing_toggle(len(listings)))
+        .replace("__SUBWAY_TOGGLE__", build_subway_toggle(has_subway))
         .replace("__CUTOFF_OPTIONS__", build_cutoff_options(saved_mins))
         .replace("__ISOCHRONES_JSON__", json.dumps(isochrones))
         .replace("__CONTOURS_JSON__", json.dumps(contours))
         .replace("__LISTINGS_JSON__", json.dumps(listings))
         .replace("__POIS_JSON__", json.dumps(pois))
+        .replace("__SUBWAY_LINES_JSON__", json.dumps(subway_lines))
+        .replace("__SUBWAY_STATIONS_JSON__", json.dumps(subway_stations))
         .replace("__BAND_COLORS_JSON__", json.dumps(BAND_COLORS))
         .replace("__DEFAULT_CUTOFF__", str(DEFAULT_COMMUTE_MAX))
     )

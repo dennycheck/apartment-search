@@ -46,6 +46,9 @@ MAP_HTML = OUTPUT_DIR / "index.html"
 OVERLAY_HTML = OUTPUT_DIR / "overlay.html"
 OVERLAY_DEFAULT_OPACITY = 0.5
 POIS_JSON = DATA_DIR / "pois_processed.json"
+SUBWAY_DIR = DATA_DIR / "subway"
+SUBWAY_LINES_PATH = SUBWAY_DIR / "lines.geojson"
+SUBWAY_STATIONS_PATH = SUBWAY_DIR / "stations.geojson"
 
 # Points of interest shown on the map (geocoded via scripts/process_pois.py).
 # shape: square | triangle | diamond | star | circle — primary way to tell pins apart.
