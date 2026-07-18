@@ -68,9 +68,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     #sidebar .subway-toggle-nested:has(input:disabled) {
       cursor: default;
     }
-    .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 0.9rem; }
-    .band-toggle input, .poi-toggle input, .subway-toggle input, .listing-toggle input { accent-color: #c8c8c8; }
-    .subway-toggle-nested { margin-left: 22px; }
+    .band-toggle {
+      display: flex; align-items: center; gap: 10px;
+      min-height: 36px; margin-bottom: 2px; padding: 4px 0;
+      font-size: 0.9rem; -webkit-tap-highlight-color: transparent;
+    }
+    .band-toggle input[type=checkbox] {
+      width: 18px; height: 18px; flex-shrink: 0;
+      accent-color: #c8c8c8;
+    }
+    .subway-toggle-nested { margin-left: 28px; }
     .subway-toggle-nested:has(input:disabled) { opacity: 0.45; cursor: default; }
     details.accordion.section { padding: 0; border-bottom: 1px solid #333; }
     details.accordion > summary {
@@ -282,19 +289,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       left: 50%; bottom: max(16px, env(safe-area-inset-bottom));
       transform: translateX(-50%);
       border: none; border-radius: 999px;
-      padding: 12px 20px;
+      min-height: 48px; min-width: 140px;
+      padding: 14px 28px;
       background: #1a1a1a; color: #eee;
-      font: 600 0.9rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font: 600 1rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       box-shadow: 0 8px 28px rgba(0,0,0,0.45);
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     #controls-pill:active { transform: translateX(-50%) scale(0.98); }
+    #controls-scrim {
+      display: none;
+      position: fixed; inset: 0; z-index: 1050;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sheet-grabber {
+      display: none;
+      width: 44px; height: 5px; margin: 10px auto 2px;
+      border-radius: 999px; background: #555; flex-shrink: 0;
+    }
     .sidebar-close {
       display: none;
       margin-left: auto;
-      border: 1px solid #444; border-radius: 8px;
+      border: 1px solid #444; border-radius: 10px;
       background: #242424; color: #eee;
-      padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
+      min-height: 44px; min-width: 72px;
+      padding: 10px 16px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     #sidebar header {
       display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px;
@@ -307,37 +331,108 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         height: 100dvh;
       }
       #map { min-height: 100dvh; }
+      /* Keep zoom clear of the Controls pill. */
+      .leaflet-bottom.leaflet-right {
+        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+      }
+      .leaflet-control-zoom a {
+        width: 44px !important; height: 44px !important;
+        line-height: 44px !important; font-size: 22px !important;
+      }
+      #controls-scrim { display: none; }
+      #app.controls-open #controls-scrim { display: block; }
       #sidebar {
         position: fixed; z-index: 1100;
         inset: auto 0 0 0;
-        max-height: min(78dvh, 640px);
+        max-height: min(88dvh, 760px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         border-right: none;
         border-top: 1px solid #333;
-        border-radius: 16px 16px 0 0;
+        border-radius: 18px 18px 0 0;
         box-shadow: 0 -12px 40px rgba(0,0,0,0.45);
         transform: translateY(110%);
         transition: transform 0.25s ease;
         pointer-events: none;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
       }
       #app.controls-open #sidebar {
         transform: translateY(0);
         pointer-events: auto;
       }
-      #controls-pill { display: block; }
+      .sheet-grabber { display: block; }
+      #controls-pill { display: inline-flex; align-items: center; justify-content: center; }
       #app.controls-open #controls-pill { display: none; }
-      .sidebar-close { display: inline-flex; align-items: center; }
-      #listings-table-wrap { max-height: 40vh; }
+      .sidebar-close { display: inline-flex; align-items: center; justify-content: center; }
+      #sidebar header {
+        position: sticky; top: 0; z-index: 2;
+        background: #1a1a1a;
+        padding: 8px 18px 14px;
+        align-items: center; gap: 12px;
+        border-bottom: 1px solid #333;
+      }
+      #sidebar header .header-text { flex: 1 1 auto; }
+      #sidebar header h1 { font-size: 1.05rem; margin-bottom: 2px; }
+      #sidebar header p { font-size: 0.85rem; }
+      #sidebar header .overlay-link { display: none; }
+      .section { padding: 14px 18px 18px; }
+      .section h2 {
+        font-size: 0.8rem; margin-bottom: 12px; letter-spacing: 0.06em;
+      }
+      details.accordion > summary {
+        display: flex; align-items: center;
+        min-height: 52px; padding: 16px 18px;
+        font-size: 0.8rem;
+      }
+      details.accordion .accordion-body { padding: 0 18px 18px; }
+      .band-toggle {
+        min-height: 48px; padding: 12px 0; gap: 14px;
+        font-size: 1rem; margin-bottom: 0;
+      }
+      .band-toggle + .band-toggle { border-top: 1px solid #2a2a2a; }
+      .band-toggle input[type=checkbox] {
+        width: 24px; height: 24px;
+      }
+      .subway-toggle-nested { margin-left: 38px; }
+      .band-range {
+        --band-row-h: 44px;
+        --band-thumb-h: 18px;
+        gap: 16px;
+        margin: 4px 0 8px;
+      }
+      .band-range-track { width: 48px; }
+      .band-range-fill { width: 14px; border-radius: 7px; }
+      .band-range-row {
+        font-size: 1rem; gap: 12px;
+      }
+      .band-swatch { width: 16px; height: 16px; }
+      .poi-swatch, .poi-swatch svg { width: 20px; height: 20px; }
+      .active-cutoff { margin-top: 16px; }
+      .active-cutoff select {
+        min-height: 48px; padding: 12px 14px;
+        font-size: 1rem; border-radius: 10px;
+        touch-action: manipulation;
+      }
+      .cutoff-help { font-size: 0.85rem; margin-top: 10px; }
+      #stats { font-size: 0.95rem; line-height: 1.55; }
+      #listings-table-wrap { max-height: 42vh; margin-top: 12px; }
+      table { font-size: 0.9rem; }
+      th, td { padding: 12px 10px; }
+      th { font-size: 0.85rem; }
+      .badge { padding: 4px 8px; font-size: 0.75rem; }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <aside id="sidebar">
+    <div id="controls-scrim" hidden></div>
+    <aside id="sidebar" aria-labelledby="controls-title">
+      <div class="sheet-grabber" aria-hidden="true"></div>
       <header>
         <div class="header-text">
-          <h1>Apartment Commute Map</h1>
+          <h1 id="controls-title">Apartment Commute Map</h1>
           <p>Work: __WORK_ADDRESS__<br>Arrive by 8:30 AM · Public transit</p>
-          <p style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
+          <p class="overlay-link" style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
         </div>
         <button type="button" class="sidebar-close" id="controls-close" aria-label="Close controls">Map</button>
       </header>
@@ -401,14 +496,66 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const appEl = document.getElementById("app");
     const controlsPill = document.getElementById("controls-pill");
     const controlsClose = document.getElementById("controls-close");
+    const controlsScrim = document.getElementById("controls-scrim");
+    const sidebarEl = document.getElementById("sidebar");
 
     function setControlsOpen(open) {
+      const mobileSheet = window.matchMedia("(max-width: 768px)").matches;
       appEl.classList.toggle("controls-open", open);
       controlsPill.setAttribute("aria-expanded", open ? "true" : "false");
+      controlsScrim.hidden = !open;
+      document.body.style.overflow = open && mobileSheet ? "hidden" : "";
+      if (mobileSheet) {
+        sidebarEl.setAttribute("role", open ? "dialog" : "complementary");
+        sidebarEl.setAttribute("aria-modal", open ? "true" : "false");
+        const focusEl = open ? controlsClose : controlsPill;
+        if (focusEl) focusEl.focus({ preventScroll: true });
+      }
       if (window.map) setTimeout(() => map.invalidateSize(), 260);
     }
     controlsPill.addEventListener("click", () => setControlsOpen(true));
     controlsClose.addEventListener("click", () => setControlsOpen(false));
+    controlsScrim.addEventListener("click", () => setControlsOpen(false));
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && appEl.classList.contains("controls-open")) {
+        setControlsOpen(false);
+      }
+    });
+    // Swipe sheet down from the grabber/header to dismiss on phones.
+    (function enableSheetSwipeClose() {
+      let startY = null;
+      let dragging = false;
+      const threshold = 72;
+      function onStart(e) {
+        if (!appEl.classList.contains("controls-open")) return;
+        const t = e.target;
+        if (!(t.closest("header") || t.closest(".sheet-grabber"))) return;
+        if (t.closest("button, a, input, select, label, summary")) return;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+        dragging = true;
+      }
+      function onMove(e) {
+        if (!dragging || startY == null) return;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const dy = Math.max(0, y - startY);
+        sidebarEl.style.transition = "none";
+        sidebarEl.style.transform = `translateY(${dy}px)`;
+      }
+      function onEnd(e) {
+        if (!dragging || startY == null) return;
+        const y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY);
+        const dy = y - startY;
+        dragging = false;
+        startY = null;
+        sidebarEl.style.transition = "";
+        sidebarEl.style.transform = "";
+        if (dy > threshold) setControlsOpen(false);
+      }
+      sidebarEl.addEventListener("touchstart", onStart, { passive: true });
+      sidebarEl.addEventListener("touchmove", onMove, { passive: true });
+      sidebarEl.addEventListener("touchend", onEnd);
+      sidebarEl.addEventListener("touchcancel", onEnd);
+    })();
 
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
