@@ -248,7 +248,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .poi-swatch svg { width: 16px; height: 16px; display: block; }
     .poi-marker-icon { background: none !important; border: none !important; }
     .poi-marker-icon.dimmed { opacity: 0.3; }
-    .active-cutoff { margin-top: 12px; }
+    .commute-panel {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .commute-bands { min-width: 0; }
+    .active-cutoff { margin-top: 12px; min-width: 0; }
     .cutoff-help {
       margin-top: 8px; font-size: 0.75rem; color: #888; line-height: 1.4;
     }
@@ -256,6 +260,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #444;
       background: #242424; color: #eee; font-size: 0.9rem;
     }
+    .band-range-label .label-short { display: none; }
+    .mobile-only { display: none; }
     #stats { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
     #listings-accordion { flex: 1; min-height: 0; display: flex; flex-direction: column; border-bottom: none; }
     #listings-accordion[open] { min-height: 120px; }
@@ -394,32 +400,79 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         width: 24px; height: 24px;
       }
       .subway-toggle-nested { margin-left: 38px; }
+      /* Mobile-native commute cluster: keep vertical band metaphor, fill the gutter. */
+      .commute-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 0 16px;
+        align-items: stretch;
+      }
+      .commute-bands > .cutoff-help { display: none; }
       .band-range {
-        --band-row-h: 44px;
-        --band-thumb-h: 18px;
-        gap: 16px;
-        margin: 4px 0 8px;
+        --band-row-h: 34px;
+        --band-thumb-h: 16px;
+        gap: 10px;
+        margin: 0;
       }
-      .band-range-track { width: 48px; }
-      .band-range-fill { width: 14px; border-radius: 7px; }
+      .band-range-track { width: 40px; }
+      .band-range-fill { width: 12px; border-radius: 6px; }
       .band-range-row {
-        font-size: 1rem; gap: 12px;
+        font-size: 0.9rem; gap: 8px;
       }
-      .band-swatch { width: 16px; height: 16px; }
+      .band-range-label .label-full { display: none; }
+      .band-range-label .label-short { display: inline; }
+      .band-swatch { width: 12px; height: 12px; }
       .poi-swatch, .poi-swatch svg { width: 20px; height: 20px; }
-      .active-cutoff { margin-top: 16px; }
+      .active-cutoff {
+        margin-top: 0;
+        padding: 0 0 0 16px;
+        border-left: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .cutoff-primary {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .active-cutoff h2 {
+        margin: 0;
+        font-size: 0.8rem;
+      }
       .active-cutoff select {
-        min-height: 48px; padding: 12px 14px;
-        font-size: 1rem; border-radius: 10px;
+        min-height: 48px; padding: 12px 10px;
+        font-size: 0.95rem; border-radius: 10px;
         touch-action: manipulation;
       }
-      .cutoff-help { font-size: 0.85rem; margin-top: 10px; }
+      .cutoff-notes .cutoff-help {
+        margin-top: 0;
+        font-size: 0.8rem;
+      }
+      .cutoff-notes .cutoff-help + .cutoff-help { margin-top: 8px; }
+      .mobile-only { display: block; }
       #stats { font-size: 0.95rem; line-height: 1.55; }
       #listings-table-wrap { max-height: 42vh; margin-top: 12px; }
       table { font-size: 0.9rem; }
       th, td { padding: 12px 10px; }
       th { font-size: 0.85rem; }
       .badge { padding: 4px 8px; font-size: 0.75rem; }
+    }
+    /* Narrow phones: keep the cluster, tighten the band column. */
+    @media (max-width: 390px) {
+      .commute-panel {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        gap: 0 12px;
+      }
+      .band-range {
+        --band-row-h: 32px;
+        --band-thumb-h: 15px;
+        gap: 8px;
+      }
+      .band-range-track { width: 36px; }
+      .active-cutoff { padding-left: 12px; }
+      .active-cutoff select { font-size: 0.9rem; padding: 12px 8px; }
     }
   </style>
 </head>
@@ -436,19 +489,28 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
         <button type="button" class="sidebar-close" id="controls-close" aria-label="Close controls">Map</button>
       </header>
-      <div class="section">
-        <h2>Isochrone bands</h2>
-        __BAND_TOGGLES__
-        <div class="active-cutoff">
-          <h2 style="margin-top:12px">Max commute</h2>
-          <select id="cutoff-select">
-            __CUTOFF_OPTIONS__
-          </select>
-          <p class="cutoff-help">Highlights zones within this time; fades farther bands on the map.</p>
+      <div class="section commute-section">
+        <h2>Commute</h2>
+        <div class="commute-panel">
+          <div class="commute-bands">
+            __BAND_TOGGLES__
+          </div>
+          <div class="active-cutoff">
+            <div class="cutoff-primary">
+              <h2>Max commute</h2>
+              <select id="cutoff-select">
+                __CUTOFF_OPTIONS__
+              </select>
+            </div>
+            <div class="cutoff-notes">
+              <p class="cutoff-help">Highlights zones within this time; fades farther bands on the map.</p>
+              <p class="cutoff-help mobile-only">Drag the slider to peel off outer bands.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="section">
-        <h2>Summary</h2>
+      <div class="section layers-section">
+        <h2>Layers</h2>
         __POI_TOGGLES__
         __SUBWAY_TOGGLE__
         <div id="stats" style="margin-top:12px"></div>
@@ -1302,6 +1364,7 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       font-size: 0.72rem; line-height: 1.2;
       transition: opacity 0.15s ease;
     }
+    .band-range-label .label-short { display: none; }
     .band-range-row.is-off { opacity: 0.32; }
     .band-range-track {
       position: relative; width: 28px; flex-shrink: 0;
@@ -1630,6 +1693,13 @@ def band_ring_label(minutes: int, prev_min: int | None) -> str:
     return f"{prev_min}–{minutes} min"
 
 
+def band_ring_label_short(minutes: int, prev_min: int | None) -> str:
+    """Compact label for narrow mobile layouts beside the vertical slider."""
+    if prev_min is None:
+        return f"≤{minutes}"
+    return f"{prev_min}–{minutes}"
+
+
 def _feature_minutes(feature: dict) -> int | None:
     props = feature.get("properties") or {}
     if props.get("minutes") is not None:
@@ -1732,21 +1802,27 @@ def isochrones_to_boundaries(isochrones: dict) -> dict:
 def build_band_toggles(saved_mins: list[int]) -> str:
     if not saved_mins:
         return '<p class="cutoff-help">No isochrone bands loaded.</p>'
-    labels_by_min: dict[int, str] = {}
+    labels_by_min: dict[int, tuple[str, str]] = {}
     prev_min = None
     for minutes in saved_mins:
-        labels_by_min[minutes] = band_ring_label(minutes, prev_min)
+        labels_by_min[minutes] = (
+            band_ring_label(minutes, prev_min),
+            band_ring_label_short(minutes, prev_min),
+        )
         prev_min = minutes
     max_hidden = max(0, len(saved_mins) - 1)
     rows = []
     top_down = list(reversed(saved_mins))
     for minutes in top_down:
         color = BAND_COLORS.get(minutes, "#888")
-        label = labels_by_min[minutes]
+        label_full, label_short = labels_by_min[minutes]
         rows.append(
             f'<div class="band-range-row" data-minutes="{minutes}">'
             f'<span class="band-swatch" style="background:{color}"></span>'
-            f'<span class="band-range-label">{label}</span>'
+            f'<span class="band-range-label">'
+            f'<span class="label-full">{label_full}</span>'
+            f'<span class="label-short">{label_short}</span>'
+            f"</span>"
             f"</div>"
         )
     rows_html = "\n          ".join(rows)
