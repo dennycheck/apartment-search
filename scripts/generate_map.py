@@ -68,10 +68,47 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     #sidebar .subway-toggle-nested:has(input:disabled) {
       cursor: default;
     }
-    .band-toggle { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 0.9rem; }
-    .band-toggle input, .poi-toggle input, .subway-toggle input, .listing-toggle input { accent-color: #c8c8c8; }
-    .subway-toggle-nested { margin-left: 22px; }
-    .subway-toggle-nested:has(input:disabled) { opacity: 0.45; cursor: default; }
+    .band-toggle {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      min-height: 40px; margin-bottom: 4px; padding: 6px 0;
+      font-size: 0.9rem; -webkit-tap-highlight-color: transparent;
+    }
+    .band-toggle .toggle-main {
+      display: flex; align-items: center; gap: 10px;
+      flex: 1; min-width: 0;
+    }
+    .band-toggle .toggle-text { line-height: 1.25; }
+    /* Switch control — larger hit target than a native checkbox. */
+    .band-toggle input[type=checkbox] {
+      appearance: none; -webkit-appearance: none;
+      width: 46px; height: 28px; flex-shrink: 0;
+      margin: 0; padding: 0; border: none; border-radius: 999px;
+      background: #3a3a3a; position: relative; cursor: pointer;
+      transition: background 0.18s ease;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .band-toggle input[type=checkbox]::after {
+      content: "";
+      position: absolute; top: 2px; left: 2px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #f2f2f2;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+      transition: transform 0.18s ease;
+    }
+    .band-toggle input[type=checkbox]:checked {
+      background: #8a8a8a;
+    }
+    .band-toggle input[type=checkbox]:checked::after {
+      transform: translateX(18px);
+    }
+    .band-toggle input[type=checkbox]:disabled {
+      opacity: 0.4; cursor: default;
+    }
+    .band-toggle input[type=checkbox]:focus-visible {
+      outline: 2px solid #c8c8c8; outline-offset: 2px;
+    }
+    .subway-toggle-nested { margin-left: 0; padding-left: 28px; }
+    .subway-toggle-nested:has(input:disabled) { opacity: 0.55; cursor: default; }
     details.accordion.section { padding: 0; border-bottom: 1px solid #333; }
     details.accordion > summary {
       list-style: none; cursor: pointer; user-select: none;
@@ -241,7 +278,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     .poi-swatch svg { width: 16px; height: 16px; display: block; }
     .poi-marker-icon { background: none !important; border: none !important; }
     .poi-marker-icon.dimmed { opacity: 0.3; }
-    .active-cutoff { margin-top: 12px; }
+    .commute-panel {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .commute-bands { min-width: 0; }
+    .active-cutoff { margin-top: 12px; min-width: 0; }
     .cutoff-help {
       margin-top: 8px; font-size: 0.75rem; color: #888; line-height: 1.4;
     }
@@ -249,6 +290,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #444;
       background: #242424; color: #eee; font-size: 0.9rem;
     }
+    .band-range-label .label-short { display: none; }
+    .mobile-only { display: none; }
     #stats { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
     #listings-accordion { flex: 1; min-height: 0; display: flex; flex-direction: column; border-bottom: none; }
     #listings-accordion[open] { min-height: 120px; }
@@ -282,19 +325,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       left: 50%; bottom: max(16px, env(safe-area-inset-bottom));
       transform: translateX(-50%);
       border: none; border-radius: 999px;
-      padding: 12px 20px;
+      min-height: 48px; min-width: 140px;
+      padding: 14px 28px;
       background: #1a1a1a; color: #eee;
-      font: 600 0.9rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font: 600 1rem/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       box-shadow: 0 8px 28px rgba(0,0,0,0.45);
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     #controls-pill:active { transform: translateX(-50%) scale(0.98); }
+    #controls-scrim {
+      display: none;
+      position: fixed; inset: 0; z-index: 1050;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sheet-grabber {
+      display: none;
+      width: 44px; height: 5px; margin: 10px auto 2px;
+      border-radius: 999px; background: #555; flex-shrink: 0;
+    }
     .sidebar-close {
       display: none;
       margin-left: auto;
-      border: 1px solid #444; border-radius: 8px;
+      border: 1px solid #444; border-radius: 10px;
       background: #242424; color: #eee;
-      padding: 6px 10px; font-size: 0.8rem; cursor: pointer;
+      min-height: 44px; min-width: 72px;
+      padding: 10px 16px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     #sidebar header {
       display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px;
@@ -307,53 +367,189 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         height: 100dvh;
       }
       #map { min-height: 100dvh; }
+      /* Keep zoom clear of the Controls pill. */
+      .leaflet-bottom.leaflet-right {
+        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+      }
+      .leaflet-control-zoom a {
+        width: 44px !important; height: 44px !important;
+        line-height: 44px !important; font-size: 22px !important;
+      }
+      #controls-scrim { display: none; }
+      #app.controls-open #controls-scrim { display: block; }
       #sidebar {
         position: fixed; z-index: 1100;
         inset: auto 0 0 0;
-        max-height: min(78dvh, 640px);
+        max-height: min(88dvh, 760px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         border-right: none;
         border-top: 1px solid #333;
-        border-radius: 16px 16px 0 0;
+        border-radius: 18px 18px 0 0;
         box-shadow: 0 -12px 40px rgba(0,0,0,0.45);
         transform: translateY(110%);
         transition: transform 0.25s ease;
         pointer-events: none;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
       }
       #app.controls-open #sidebar {
         transform: translateY(0);
         pointer-events: auto;
       }
-      #controls-pill { display: block; }
+      .sheet-grabber { display: block; }
+      #controls-pill { display: inline-flex; align-items: center; justify-content: center; }
       #app.controls-open #controls-pill { display: none; }
-      .sidebar-close { display: inline-flex; align-items: center; }
-      #listings-table-wrap { max-height: 40vh; }
+      .sidebar-close { display: inline-flex; align-items: center; justify-content: center; }
+      #sidebar header {
+        position: sticky; top: 0; z-index: 2;
+        background: #1a1a1a;
+        padding: 8px 18px 14px;
+        align-items: center; gap: 12px;
+        border-bottom: 1px solid #333;
+      }
+      #sidebar header .header-text { flex: 1 1 auto; }
+      #sidebar header h1 { font-size: 1.05rem; margin-bottom: 2px; }
+      #sidebar header p { font-size: 0.85rem; }
+      #sidebar header .overlay-link { display: none; }
+      .section { padding: 14px 18px 18px; }
+      .section h2 {
+        font-size: 0.8rem; margin-bottom: 12px; letter-spacing: 0.06em;
+      }
+      details.accordion > summary {
+        display: flex; align-items: center;
+        min-height: 52px; padding: 16px 18px;
+        font-size: 0.8rem;
+      }
+      details.accordion .accordion-body { padding: 0 18px 18px; }
+      .band-toggle {
+        min-height: 52px; padding: 14px 4px; gap: 16px;
+        font-size: 1.02rem; margin-bottom: 0;
+        border-radius: 12px;
+      }
+      .band-toggle + .band-toggle { border-top: 1px solid #2a2a2a; }
+      .band-toggle .toggle-main { gap: 12px; }
+      .band-toggle input[type=checkbox] {
+        width: 52px; height: 32px;
+      }
+      .band-toggle input[type=checkbox]::after {
+        width: 28px; height: 28px;
+      }
+      .band-toggle input[type=checkbox]:checked::after {
+        transform: translateX(20px);
+      }
+      .subway-toggle-nested { padding-left: 34px; }
+      .band-swatch { width: 14px; height: 14px; }
+      /* Mobile-native commute cluster: keep vertical band metaphor, fill the gutter. */
+      .commute-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 0 16px;
+        align-items: stretch;
+      }
+      .commute-bands > .cutoff-help { display: none; }
+      .band-range {
+        --band-row-h: 34px;
+        --band-thumb-h: 16px;
+        gap: 10px;
+        margin: 0;
+      }
+      .band-range-track { width: 40px; }
+      .band-range-fill { width: 12px; border-radius: 6px; }
+      .band-range-row {
+        font-size: 0.9rem; gap: 8px;
+      }
+      .band-range-label .label-full { display: none; }
+      .band-range-label .label-short { display: inline; }
+      .band-swatch { width: 12px; height: 12px; }
+      .poi-swatch, .poi-swatch svg { width: 22px; height: 22px; }
+      .active-cutoff {
+        margin-top: 0;
+        padding: 0 0 0 16px;
+        border-left: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .cutoff-primary {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .active-cutoff h2 {
+        margin: 0;
+        font-size: 0.8rem;
+      }
+      .active-cutoff select {
+        min-height: 48px; padding: 12px 10px;
+        font-size: 0.95rem; border-radius: 10px;
+        touch-action: manipulation;
+      }
+      .cutoff-notes .cutoff-help {
+        margin-top: 0;
+        font-size: 0.8rem;
+      }
+      .cutoff-notes .cutoff-help + .cutoff-help { margin-top: 8px; }
+      .mobile-only { display: block; }
+      #stats { font-size: 0.95rem; line-height: 1.55; }
+      #listings-table-wrap { max-height: 42vh; margin-top: 12px; }
+      table { font-size: 0.9rem; }
+      th, td { padding: 12px 10px; }
+      th { font-size: 0.85rem; }
+      .badge { padding: 4px 8px; font-size: 0.75rem; }
+    }
+    /* Narrow phones: keep the cluster, tighten the band column. */
+    @media (max-width: 390px) {
+      .commute-panel {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        gap: 0 12px;
+      }
+      .band-range {
+        --band-row-h: 32px;
+        --band-thumb-h: 15px;
+        gap: 8px;
+      }
+      .band-range-track { width: 36px; }
+      .active-cutoff { padding-left: 12px; }
+      .active-cutoff select { font-size: 0.9rem; padding: 12px 8px; }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <aside id="sidebar">
+    <div id="controls-scrim" hidden></div>
+    <aside id="sidebar" aria-labelledby="controls-title">
+      <div class="sheet-grabber" aria-hidden="true"></div>
       <header>
         <div class="header-text">
-          <h1>Apartment Commute Map</h1>
+          <h1 id="controls-title">Apartment Commute Map</h1>
           <p>Work: __WORK_ADDRESS__<br>Arrive by 8:30 AM · Public transit</p>
-          <p style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
+          <p class="overlay-link" style="margin-top:10px"><a href="overlay.html" target="_blank">Open overlay mode ↗</a></p>
         </div>
         <button type="button" class="sidebar-close" id="controls-close" aria-label="Close controls">Map</button>
       </header>
-      <div class="section">
-        <h2>Isochrone bands</h2>
-        __BAND_TOGGLES__
-        <div class="active-cutoff">
-          <h2 style="margin-top:12px">Max commute</h2>
-          <select id="cutoff-select">
-            __CUTOFF_OPTIONS__
-          </select>
-          <p class="cutoff-help">Highlights zones within this time; fades farther bands on the map.</p>
+      <div class="section commute-section">
+        <h2>Commute</h2>
+        <div class="commute-panel">
+          <div class="commute-bands">
+            __BAND_TOGGLES__
+          </div>
+          <div class="active-cutoff">
+            <div class="cutoff-primary">
+              <h2>Max commute</h2>
+              <select id="cutoff-select">
+                __CUTOFF_OPTIONS__
+              </select>
+            </div>
+            <div class="cutoff-notes">
+              <p class="cutoff-help">Highlights zones within this time; fades farther bands on the map.</p>
+              <p class="cutoff-help mobile-only">Drag the slider to peel off outer bands.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="section">
-        <h2>Summary</h2>
+      <div class="section layers-section">
+        <h2>Layers</h2>
         __POI_TOGGLES__
         __SUBWAY_TOGGLE__
         <div id="stats" style="margin-top:12px"></div>
@@ -401,14 +597,66 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const appEl = document.getElementById("app");
     const controlsPill = document.getElementById("controls-pill");
     const controlsClose = document.getElementById("controls-close");
+    const controlsScrim = document.getElementById("controls-scrim");
+    const sidebarEl = document.getElementById("sidebar");
 
     function setControlsOpen(open) {
+      const mobileSheet = window.matchMedia("(max-width: 768px)").matches;
       appEl.classList.toggle("controls-open", open);
       controlsPill.setAttribute("aria-expanded", open ? "true" : "false");
+      controlsScrim.hidden = !open;
+      document.body.style.overflow = open && mobileSheet ? "hidden" : "";
+      if (mobileSheet) {
+        sidebarEl.setAttribute("role", open ? "dialog" : "complementary");
+        sidebarEl.setAttribute("aria-modal", open ? "true" : "false");
+        const focusEl = open ? controlsClose : controlsPill;
+        if (focusEl) focusEl.focus({ preventScroll: true });
+      }
       if (window.map) setTimeout(() => map.invalidateSize(), 260);
     }
     controlsPill.addEventListener("click", () => setControlsOpen(true));
     controlsClose.addEventListener("click", () => setControlsOpen(false));
+    controlsScrim.addEventListener("click", () => setControlsOpen(false));
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && appEl.classList.contains("controls-open")) {
+        setControlsOpen(false);
+      }
+    });
+    // Swipe sheet down from the grabber/header to dismiss on phones.
+    (function enableSheetSwipeClose() {
+      let startY = null;
+      let dragging = false;
+      const threshold = 72;
+      function onStart(e) {
+        if (!appEl.classList.contains("controls-open")) return;
+        const t = e.target;
+        if (!(t.closest("header") || t.closest(".sheet-grabber"))) return;
+        if (t.closest("button, a, input, select, label, summary")) return;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+        dragging = true;
+      }
+      function onMove(e) {
+        if (!dragging || startY == null) return;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const dy = Math.max(0, y - startY);
+        sidebarEl.style.transition = "none";
+        sidebarEl.style.transform = `translateY(${dy}px)`;
+      }
+      function onEnd(e) {
+        if (!dragging || startY == null) return;
+        const y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY);
+        const dy = y - startY;
+        dragging = false;
+        startY = null;
+        sidebarEl.style.transition = "";
+        sidebarEl.style.transform = "";
+        if (dy > threshold) setControlsOpen(false);
+      }
+      sidebarEl.addEventListener("touchstart", onStart, { passive: true });
+      sidebarEl.addEventListener("touchmove", onMove, { passive: true });
+      sidebarEl.addEventListener("touchend", onEnd);
+      sidebarEl.addEventListener("touchcancel", onEnd);
+    })();
 
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
@@ -647,13 +895,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     }
 
+    // Detect if device supports touch (mobile/tablet).
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
     const poiMarkers = {};
     const poiLayer = L.layerGroup().addTo(map);
     POIS.forEach(poi => {
       if (poi.lat == null) return;
       const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon(poi, false), zIndexOffset: 600 });
       marker.poi = poi;
-      marker.bindTooltip(() => buildPoiTooltip(poi), { direction: "top", opacity: 0.9 });
+      
+      if (isTouchDevice) {
+        // Mobile: click to open tooltip, don't auto-open on hover
+        marker.bindTooltip(() => buildPoiTooltip(poi), { 
+          direction: "top", 
+          opacity: 0.9,
+          interactive: false
+        });
+        // Open tooltip on click
+        marker.on("click", () => {
+          if (marker.isTooltipOpen()) {
+            marker.closeTooltip();
+          } else {
+            marker.openTooltip();
+          }
+        });
+      } else {
+        // Desktop: normal hover behavior
+        marker.bindTooltip(() => buildPoiTooltip(poi), { direction: "top", opacity: 0.9 });
+      }
+      
       poiMarkers[poi.id] = marker;
       poiLayer.addLayer(marker);
     });
@@ -755,7 +1026,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         subwayLayer.addLayer(marker);
         stationDots.push(marker);
 
-        // Hit target on top — owns hover open/close explicitly.
+        // Hit target on top — owns hover/click open/close explicitly.
         const hit = L.circleMarker(latlng, {
           pane: "subwayPane",
           radius: hr0,
@@ -765,17 +1036,35 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           className: "subway-station-hit",
           bubblingMouseEvents: false
         });
-        hit.on("mouseover", () => {
-          stationTipOwner = hit;
-          stationTip.setContent(tipHtml);
-          stationTip.setLatLng(latlng);
-          map.openTooltip(stationTip);
-        });
-        hit.on("mouseout", () => {
-          if (stationTipOwner === hit) closeStationTip();
-        });
-        // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
-        hit.on("click", e => L.DomEvent.stop(e));
+        
+        if (isTouchDevice) {
+          // Mobile: tap to toggle tooltip
+          hit.on("click", e => {
+            L.DomEvent.stop(e);
+            if (stationTipOwner === hit) {
+              closeStationTip();
+            } else {
+              stationTipOwner = hit;
+              stationTip.setContent(tipHtml);
+              stationTip.setLatLng(latlng);
+              map.openTooltip(stationTip);
+            }
+          });
+        } else {
+          // Desktop: hover behavior
+          hit.on("mouseover", () => {
+            stationTipOwner = hit;
+            stationTip.setContent(tipHtml);
+            stationTip.setLatLng(latlng);
+            map.openTooltip(stationTip);
+          });
+          hit.on("mouseout", () => {
+            if (stationTipOwner === hit) closeStationTip();
+          });
+          // Swallow clicks to prevent focus rings / map-drag fights.
+          hit.on("click", e => L.DomEvent.stop(e));
+        }
+        
         subwayLayer.addLayer(hit);
         stationHits.push(hit);
       });
@@ -783,6 +1072,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       // Safety nets: stuck tips if SVG mouseout is skipped while leaving the map.
       map.getContainer().addEventListener("mouseleave", closeStationTip);
       map.on("movestart zoomstart", closeStationTip);
+      
+      // Mobile: close tooltips when clicking on the map background
+      if (isTouchDevice) {
+        map.on("click", e => {
+          // Close subway station tooltips
+          closeStationTip();
+          // Close POI tooltips
+          Object.values(poiMarkers).forEach(m => {
+            if (m.isTooltipOpen()) m.closeTooltip();
+          });
+        });
+      }
     }
 
     function setSubwayVisible(on) {
@@ -1155,6 +1456,7 @@ OVERLAY_TEMPLATE = """<!DOCTYPE html>
       font-size: 0.72rem; line-height: 1.2;
       transition: opacity 0.15s ease;
     }
+    .band-range-label .label-short { display: none; }
     .band-range-row.is-off { opacity: 0.32; }
     .band-range-track {
       position: relative; width: 28px; flex-shrink: 0;
@@ -1483,6 +1785,13 @@ def band_ring_label(minutes: int, prev_min: int | None) -> str:
     return f"{prev_min}–{minutes} min"
 
 
+def band_ring_label_short(minutes: int, prev_min: int | None) -> str:
+    """Compact label for narrow mobile layouts beside the vertical slider."""
+    if prev_min is None:
+        return f"≤{minutes}"
+    return f"{prev_min}–{minutes}"
+
+
 def _feature_minutes(feature: dict) -> int | None:
     props = feature.get("properties") or {}
     if props.get("minutes") is not None:
@@ -1585,21 +1894,27 @@ def isochrones_to_boundaries(isochrones: dict) -> dict:
 def build_band_toggles(saved_mins: list[int]) -> str:
     if not saved_mins:
         return '<p class="cutoff-help">No isochrone bands loaded.</p>'
-    labels_by_min: dict[int, str] = {}
+    labels_by_min: dict[int, tuple[str, str]] = {}
     prev_min = None
     for minutes in saved_mins:
-        labels_by_min[minutes] = band_ring_label(minutes, prev_min)
+        labels_by_min[minutes] = (
+            band_ring_label(minutes, prev_min),
+            band_ring_label_short(minutes, prev_min),
+        )
         prev_min = minutes
     max_hidden = max(0, len(saved_mins) - 1)
     rows = []
     top_down = list(reversed(saved_mins))
     for minutes in top_down:
         color = BAND_COLORS.get(minutes, "#888")
-        label = labels_by_min[minutes]
+        label_full, label_short = labels_by_min[minutes]
         rows.append(
             f'<div class="band-range-row" data-minutes="{minutes}">'
             f'<span class="band-swatch" style="background:{color}"></span>'
-            f'<span class="band-range-label">{label}</span>'
+            f'<span class="band-range-label">'
+            f'<span class="label-full">{label_full}</span>'
+            f'<span class="label-short">{label_short}</span>'
+            f"</span>"
             f"</div>"
         )
     rows_html = "\n          ".join(rows)
@@ -1658,9 +1973,11 @@ def build_poi_toggles(pois: list[dict]) -> str:
         swatch = _poi_shape_svg(shape, color, 16)
         lines.append(
             f'<label class="band-toggle poi-toggle">'
-            f'<input type="checkbox" data-poi-id="{poi["id"]}" checked>'
+            f'<span class="toggle-main">'
             f'<span class="poi-swatch">{swatch}</span>'
-            f'{poi["label"]}'
+            f'<span class="toggle-text">{poi["label"]}</span>'
+            f"</span>"
+            f'<input type="checkbox" data-poi-id="{poi["id"]}" checked>'
             f"</label>"
         )
     return "\n        ".join(lines)
@@ -1671,9 +1988,11 @@ def build_listing_toggle(listing_count: int) -> str:
         return '<p class="cutoff-help">No listings loaded.</p>'
     return (
         '<label class="band-toggle listing-toggle">'
-        '<input type="checkbox" id="show-listings">'
+        '<span class="toggle-main">'
         '<span class="band-swatch" style="background:#ffffff"></span>'
-        f"Show listing pins ({listing_count})"
+        f'<span class="toggle-text">Show listing pins ({listing_count})</span>'
+        "</span>"
+        '<input type="checkbox" id="show-listings">'
         "</label>"
     )
 
@@ -1693,13 +2012,17 @@ def build_subway_toggle(has_subway: bool) -> str:
     return (
         '<h2 style="margin-top:12px;margin-bottom:10px">Subway</h2>'
         '<label class="band-toggle subway-toggle">'
-        '<input type="checkbox" id="show-subway">'
+        '<span class="toggle-main">'
         '<span class="band-swatch" style="background:#D82233"></span>'
-        "Show subway lines &amp; stations"
+        '<span class="toggle-text">Show subway lines &amp; stations</span>'
+        "</span>"
+        '<input type="checkbox" id="show-subway">'
         "</label>"
         '<label class="band-toggle subway-toggle subway-toggle-nested">'
+        '<span class="toggle-main">'
+        '<span class="toggle-text">Pulse lines</span>'
+        "</span>"
         '<input type="checkbox" id="animate-subway" disabled>'
-        "Pulse lines"
         "</label>"
         '<p class="cutoff-help">Lines use MTA colors; stations use your commute band colors.</p>'
     )
