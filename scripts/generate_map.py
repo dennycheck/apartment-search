@@ -69,16 +69,46 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       cursor: default;
     }
     .band-toggle {
-      display: flex; align-items: center; gap: 10px;
-      min-height: 36px; margin-bottom: 2px; padding: 4px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      min-height: 40px; margin-bottom: 4px; padding: 6px 0;
       font-size: 0.9rem; -webkit-tap-highlight-color: transparent;
     }
-    .band-toggle input[type=checkbox] {
-      width: 18px; height: 18px; flex-shrink: 0;
-      accent-color: #c8c8c8;
+    .band-toggle .toggle-main {
+      display: flex; align-items: center; gap: 10px;
+      flex: 1; min-width: 0;
     }
-    .subway-toggle-nested { margin-left: 28px; }
-    .subway-toggle-nested:has(input:disabled) { opacity: 0.45; cursor: default; }
+    .band-toggle .toggle-text { line-height: 1.25; }
+    /* Switch control — larger hit target than a native checkbox. */
+    .band-toggle input[type=checkbox] {
+      appearance: none; -webkit-appearance: none;
+      width: 46px; height: 28px; flex-shrink: 0;
+      margin: 0; padding: 0; border: none; border-radius: 999px;
+      background: #3a3a3a; position: relative; cursor: pointer;
+      transition: background 0.18s ease;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .band-toggle input[type=checkbox]::after {
+      content: "";
+      position: absolute; top: 2px; left: 2px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #f2f2f2;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+      transition: transform 0.18s ease;
+    }
+    .band-toggle input[type=checkbox]:checked {
+      background: #8a8a8a;
+    }
+    .band-toggle input[type=checkbox]:checked::after {
+      transform: translateX(18px);
+    }
+    .band-toggle input[type=checkbox]:disabled {
+      opacity: 0.4; cursor: default;
+    }
+    .band-toggle input[type=checkbox]:focus-visible {
+      outline: 2px solid #c8c8c8; outline-offset: 2px;
+    }
+    .subway-toggle-nested { margin-left: 0; padding-left: 28px; }
+    .subway-toggle-nested:has(input:disabled) { opacity: 0.55; cursor: default; }
     details.accordion.section { padding: 0; border-bottom: 1px solid #333; }
     details.accordion > summary {
       list-style: none; cursor: pointer; user-select: none;
@@ -392,14 +422,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       }
       details.accordion .accordion-body { padding: 0 18px 18px; }
       .band-toggle {
-        min-height: 48px; padding: 12px 0; gap: 14px;
-        font-size: 1rem; margin-bottom: 0;
+        min-height: 52px; padding: 14px 4px; gap: 16px;
+        font-size: 1.02rem; margin-bottom: 0;
+        border-radius: 12px;
       }
       .band-toggle + .band-toggle { border-top: 1px solid #2a2a2a; }
+      .band-toggle .toggle-main { gap: 12px; }
       .band-toggle input[type=checkbox] {
-        width: 24px; height: 24px;
+        width: 52px; height: 32px;
       }
-      .subway-toggle-nested { margin-left: 38px; }
+      .band-toggle input[type=checkbox]::after {
+        width: 28px; height: 28px;
+      }
+      .band-toggle input[type=checkbox]:checked::after {
+        transform: translateX(20px);
+      }
+      .subway-toggle-nested { padding-left: 34px; }
+      .band-swatch { width: 14px; height: 14px; }
       /* Mobile-native commute cluster: keep vertical band metaphor, fill the gutter. */
       .commute-panel {
         display: grid;
@@ -422,7 +461,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       .band-range-label .label-full { display: none; }
       .band-range-label .label-short { display: inline; }
       .band-swatch { width: 12px; height: 12px; }
-      .poi-swatch, .poi-swatch svg { width: 20px; height: 20px; }
+      .poi-swatch, .poi-swatch svg { width: 22px; height: 22px; }
       .active-cutoff {
         margin-top: 0;
         padding: 0 0 0 16px;
@@ -1881,9 +1920,11 @@ def build_poi_toggles(pois: list[dict]) -> str:
         swatch = _poi_shape_svg(shape, color, 16)
         lines.append(
             f'<label class="band-toggle poi-toggle">'
-            f'<input type="checkbox" data-poi-id="{poi["id"]}" checked>'
+            f'<span class="toggle-main">'
             f'<span class="poi-swatch">{swatch}</span>'
-            f'{poi["label"]}'
+            f'<span class="toggle-text">{poi["label"]}</span>'
+            f"</span>"
+            f'<input type="checkbox" data-poi-id="{poi["id"]}" checked>'
             f"</label>"
         )
     return "\n        ".join(lines)
@@ -1894,9 +1935,11 @@ def build_listing_toggle(listing_count: int) -> str:
         return '<p class="cutoff-help">No listings loaded.</p>'
     return (
         '<label class="band-toggle listing-toggle">'
-        '<input type="checkbox" id="show-listings">'
+        '<span class="toggle-main">'
         '<span class="band-swatch" style="background:#ffffff"></span>'
-        f"Show listing pins ({listing_count})"
+        f'<span class="toggle-text">Show listing pins ({listing_count})</span>'
+        "</span>"
+        '<input type="checkbox" id="show-listings">'
         "</label>"
     )
 
@@ -1916,13 +1959,17 @@ def build_subway_toggle(has_subway: bool) -> str:
     return (
         '<h2 style="margin-top:12px;margin-bottom:10px">Subway</h2>'
         '<label class="band-toggle subway-toggle">'
-        '<input type="checkbox" id="show-subway">'
+        '<span class="toggle-main">'
         '<span class="band-swatch" style="background:#D82233"></span>'
-        "Show subway lines &amp; stations"
+        '<span class="toggle-text">Show subway lines &amp; stations</span>'
+        "</span>"
+        '<input type="checkbox" id="show-subway">'
         "</label>"
         '<label class="band-toggle subway-toggle subway-toggle-nested">'
+        '<span class="toggle-main">'
+        '<span class="toggle-text">Pulse lines</span>'
+        "</span>"
         '<input type="checkbox" id="animate-subway" disabled>'
-        "Pulse lines"
         "</label>"
         '<p class="cutoff-help">Lines use MTA colors; stations use your commute band colors.</p>'
     )
