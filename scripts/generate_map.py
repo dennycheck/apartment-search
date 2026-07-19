@@ -895,13 +895,36 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       });
     }
 
+    // Detect if device supports touch (mobile/tablet).
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
     const poiMarkers = {};
     const poiLayer = L.layerGroup().addTo(map);
     POIS.forEach(poi => {
       if (poi.lat == null) return;
       const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon(poi, false), zIndexOffset: 600 });
       marker.poi = poi;
-      marker.bindTooltip(() => buildPoiTooltip(poi), { direction: "top", opacity: 0.9 });
+      
+      if (isTouchDevice) {
+        // Mobile: click to open tooltip, don't auto-open on hover
+        marker.bindTooltip(() => buildPoiTooltip(poi), { 
+          direction: "top", 
+          opacity: 0.9,
+          interactive: false
+        });
+        // Open tooltip on click
+        marker.on("click", () => {
+          if (marker.isTooltipOpen()) {
+            marker.closeTooltip();
+          } else {
+            marker.openTooltip();
+          }
+        });
+      } else {
+        // Desktop: normal hover behavior
+        marker.bindTooltip(() => buildPoiTooltip(poi), { direction: "top", opacity: 0.9 });
+      }
+      
       poiMarkers[poi.id] = marker;
       poiLayer.addLayer(marker);
     });
@@ -1003,7 +1026,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         subwayLayer.addLayer(marker);
         stationDots.push(marker);
 
-        // Hit target on top — owns hover open/close explicitly.
+        // Hit target on top — owns hover/click open/close explicitly.
         const hit = L.circleMarker(latlng, {
           pane: "subwayPane",
           radius: hr0,
@@ -1013,17 +1036,35 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           className: "subway-station-hit",
           bubblingMouseEvents: false
         });
-        hit.on("mouseover", () => {
-          stationTipOwner = hit;
-          stationTip.setContent(tipHtml);
-          stationTip.setLatLng(latlng);
-          map.openTooltip(stationTip);
-        });
-        hit.on("mouseout", () => {
-          if (stationTipOwner === hit) closeStationTip();
-        });
-        // Hover only — swallow clicks so focus rings / map-drag fights don't appear.
-        hit.on("click", e => L.DomEvent.stop(e));
+        
+        if (isTouchDevice) {
+          // Mobile: tap to toggle tooltip
+          hit.on("click", e => {
+            L.DomEvent.stop(e);
+            if (stationTipOwner === hit) {
+              closeStationTip();
+            } else {
+              stationTipOwner = hit;
+              stationTip.setContent(tipHtml);
+              stationTip.setLatLng(latlng);
+              map.openTooltip(stationTip);
+            }
+          });
+        } else {
+          // Desktop: hover behavior
+          hit.on("mouseover", () => {
+            stationTipOwner = hit;
+            stationTip.setContent(tipHtml);
+            stationTip.setLatLng(latlng);
+            map.openTooltip(stationTip);
+          });
+          hit.on("mouseout", () => {
+            if (stationTipOwner === hit) closeStationTip();
+          });
+          // Swallow clicks to prevent focus rings / map-drag fights.
+          hit.on("click", e => L.DomEvent.stop(e));
+        }
+        
         subwayLayer.addLayer(hit);
         stationHits.push(hit);
       });
@@ -1031,6 +1072,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       // Safety nets: stuck tips if SVG mouseout is skipped while leaving the map.
       map.getContainer().addEventListener("mouseleave", closeStationTip);
       map.on("movestart zoomstart", closeStationTip);
+      
+      // Mobile: close tooltips when clicking on the map background
+      if (isTouchDevice) {
+        map.on("click", e => {
+          // Close subway station tooltips
+          closeStationTip();
+          // Close POI tooltips
+          Object.values(poiMarkers).forEach(m => {
+            if (m.isTooltipOpen()) m.closeTooltip();
+          });
+        });
+      }
     }
 
     function setSubwayVisible(on) {
