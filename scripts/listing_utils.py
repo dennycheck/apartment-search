@@ -1,10 +1,66 @@
-"""Shared helpers for reading, merging, and deduplicating listing CSV rows."""
+"""Shared helpers for reading, merging, and deduplicating listing rows."""
+
+from __future__ import annotations
 
 import csv
+import json
 import re
 from pathlib import Path
 
-LISTING_COLUMNS = ["address", "rent", "beds", "url", "notes", "source"]
+# Core + optional enrichment fields. Empty strings when unknown.
+LISTING_COLUMNS = [
+    "address",
+    "rent",
+    "beds",
+    "baths",
+    "sqft",
+    "url",
+    "neighborhood",
+    "dishwasher",
+    "in_unit_laundry",
+    "amenities",
+    "notes",
+    "source",
+]
+
+BOOL_TRUE = {"1", "true", "yes", "y", "t"}
+
+
+def cell_value(value) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bool):
+        return "yes" if value else ""
+    if isinstance(value, list):
+        return ", ".join(str(v) for v in value).strip()
+    return str(value).strip()
+
+
+def parse_bool(value) -> bool | None:
+    text = cell_value(value).lower()
+    if not text:
+        return None
+    if text in BOOL_TRUE:
+        return True
+    if text in {"0", "false", "no", "n", "f"}:
+        return False
+    return None
+
+
+def parse_rent(value) -> int | None:
+    digits = re.sub(r"[^\d]", "", cell_value(value))
+    return int(digits) if digits else None
+
+
+def parse_int(value) -> int | None:
+    text = cell_value(value).lower()
+    if not text:
+        return None
+    if "studio" in text:
+        return 0
+    match = re.search(r"\d+", text)
+    return int(match.group(0)) if match else None
+
 
 ABBREV = {
     "st": "street",
@@ -30,14 +86,6 @@ ABBREV = {
 }
 
 
-def cell_value(value) -> str:
-    if value is None:
-        return ""
-    if isinstance(value, list):
-        return ", ".join(str(v) for v in value).strip()
-    return str(value).strip()
-
-
 def normalize_address(address: str) -> str:
     """Normalize address for dedupe comparisons."""
     text = cell_value(address).lower()
@@ -57,6 +105,15 @@ def listing_row(listing: dict) -> dict:
     row = {col: cell_value(listing.get(col, "")) for col in LISTING_COLUMNS}
     if not row["source"]:
         row["source"] = "manual"
+    # Normalize bool-ish amenity flags to yes/blank for CSV stability
+    for flag in ("dishwasher", "in_unit_laundry"):
+        parsed = parse_bool(row[flag])
+        if parsed is True:
+            row[flag] = "yes"
+        elif parsed is False:
+            row[flag] = "no"
+        else:
+            row[flag] = ""
     return row
 
 
@@ -118,3 +175,27 @@ def append_listings_csv(path: Path, incoming: list[dict]) -> tuple[int, int, int
     merged, added, updated = merge_listings(existing, incoming)
     write_listings_csv(path, merged)
     return len(merged), added, updated
+
+
+def read_listings_json(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(data, dict) and "listings" in data:
+        data = data["listings"]
+    if not isinstance(data, list):
+        raise ValueError(f"Expected list of listings in {path}")
+    return [listing_row(row) for row in data if cell_value(row.get("address"))]
+
+
+def write_json(path: Path, payload) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+
+def amenity_list(value) -> list[str]:
+    text = cell_value(value)
+    if not text:
+        return []
+    parts = re.split(r"[,;|/]+", text)
+    return [p.strip() for p in parts if p.strip()]

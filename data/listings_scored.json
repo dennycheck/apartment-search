@@ -1,0 +1,533 @@
+[
+  {
+    "address": "117 Albany Avenue #2, Brooklyn, NY",
+    "rent": "$3204",
+    "beds": "2",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/117-albany-avenue-brooklyn/2",
+    "neighborhood": "Crown Heights",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "base $3495; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6766474,
+    "lng": -73.9385076,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 65.4,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 16.0,
+      "rent": 9.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "2BR (sqft unknown \u2014 bed label only)",
+      "$3204/mo"
+    ],
+    "concerns": [],
+    "rent_num": 3204,
+    "beds_num": 2,
+    "sqft_num": null
+  },
+  {
+    "address": "500 Degraw Street #203, Brooklyn, NY",
+    "rent": "$3321",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "463",
+    "url": "https://streeteasy.com/building/society-brooklyn-at-degraw/203",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "base $3795; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6806574,
+    "lng": -73.9870292,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 58.4,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 10.0,
+      "rent": 8.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3321/mo"
+    ],
+    "concerns": [
+      "compact (~463 sqft)"
+    ],
+    "rent_num": 3321,
+    "beds_num": 0,
+    "sqft_num": 463
+  },
+  {
+    "address": "309 Gold Street #14GAIR, Brooklyn, NY",
+    "rent": "$3845",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/bklyn-air/14gair",
+    "neighborhood": "Downtown Brooklyn",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "base $4195; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6950281,
+    "lng": -73.9827878,
+    "commute_min": 20,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 58.2,
+    "score_breakdown": {
+      "commute": 43.0,
+      "size": 11.0,
+      "rent": 4.2,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "excellent commute (\u226420)",
+      "$3845/mo"
+    ],
+    "concerns": [
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3845,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "66 Rockwell Place #11E, Brooklyn, NY",
+    "rent": "$3445",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "516",
+    "url": "https://streeteasy.com/building/66-rockwell-place-brooklyn/11e",
+    "neighborhood": "Fort Greene",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.688125,
+    "lng": -73.9793788,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 57.4,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 10.0,
+      "rent": 7.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3445/mo"
+    ],
+    "concerns": [
+      "compact (~516 sqft)"
+    ],
+    "rent_num": 3445,
+    "beds_num": 0,
+    "sqft_num": 516
+  },
+  {
+    "address": "1211 Fulton Street #8A, Brooklyn, NY",
+    "rent": "$3700",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/1211-fulton-street-brooklyn/8a",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6807748,
+    "lng": -73.9529728,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 56.4,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 11.0,
+      "rent": 5.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3700/mo"
+    ],
+    "concerns": [
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3700,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "12 Halsey Street #PH127, Brooklyn, NY",
+    "rent": "$3793",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/12-halsey-street-brooklyn/ph127",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "base $4425; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.68136,
+    "lng": -73.9529923,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 55.7,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 11.0,
+      "rent": 4.7,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3793/mo"
+    ],
+    "concerns": [
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3793,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "210 East 22nd Street #GLL, New York, NY",
+    "rent": "$3650",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/210-east-22-street-new_york/gll",
+    "neighborhood": "Gramercy Park",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.7377391,
+    "lng": -73.9830981,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 54.8,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 9.0,
+      "rent": 5.8,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3650/mo"
+    ],
+    "concerns": [
+      "studio (sqft unknown)"
+    ],
+    "rent_num": 3650,
+    "beds_num": 0,
+    "sqft_num": null
+  },
+  {
+    "address": "395 Carroll Street #1427, Brooklyn, NY",
+    "rent": "$3925",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6784961,
+    "lng": -73.9896825,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 54.6,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 11.0,
+      "rent": 3.6,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3925/mo"
+    ],
+    "concerns": [
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3925,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "20 Rockwell Place #2502D, New York, NY",
+    "rent": "$3702",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-rocklyn/2502d",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6891474,
+    "lng": -73.979519,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 54.4,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 9.0,
+      "rent": 5.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3702/mo"
+    ],
+    "concerns": [
+      "studio (sqft unknown)"
+    ],
+    "rent_num": 3702,
+    "beds_num": 0,
+    "sqft_num": null
+  },
+  {
+    "address": "196 Willoughby Street #30B, Brooklyn, NY",
+    "rent": "$3983",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "404",
+    "url": "https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b",
+    "neighborhood": "Downtown Brooklyn",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.691896,
+    "lng": -73.980528,
+    "commute_min": 20,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 52.1,
+    "score_breakdown": {
+      "commute": 43.0,
+      "size": 6.0,
+      "rent": 3.1,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "excellent commute (\u226420)",
+      "$3983/mo"
+    ],
+    "concerns": [
+      "small (~404 sqft)"
+    ],
+    "rent_num": 3983,
+    "beds_num": 0,
+    "sqft_num": 404
+  },
+  {
+    "address": "2715 Fulton Street #506, New York, NY",
+    "rent": "$3250",
+    "beds": "2",
+    "baths": "2",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-cypress-park/506",
+    "neighborhood": "Cypress Hills",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6777406,
+    "lng": -73.8945681,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 41.0,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 16.0,
+      "rent": 9.0,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "2BR (sqft unknown \u2014 bed label only)",
+      "$3250/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move"
+    ],
+    "rent_num": 3250,
+    "beds_num": 2,
+    "sqft_num": null
+  },
+  {
+    "address": "931 Carroll Street #C1309, Brooklyn, NY",
+    "rent": "$3019",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309",
+    "neighborhood": "Crown Heights",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "base $3450; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6683603,
+    "lng": -73.95956,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 37.8,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 10.8,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3019/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3019,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "11 Ocean Parkway #817, New York, NY",
+    "rent": "$3258",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/one-park-point/817",
+    "neighborhood": "Windsor Terrace",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "notes": "base $3850; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6501829,
+    "lng": -73.9725965,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 35.9,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 8.9,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3258/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3258,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "126 Sandford Street #502, New York, NY",
+    "rent": "$3298",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/prisma-house/502",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "notes": "base $3573; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6953644,
+    "lng": -73.953617,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 35.6,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 8.6,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3298/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)"
+    ],
+    "rent_num": 3298,
+    "beds_num": 1,
+    "sqft_num": null
+  }
+]

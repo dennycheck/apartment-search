@@ -1,4 +1,15 @@
-address,rent,beds,url,notes
-"123 Bedford Ave, Brooklyn, NY",$3200,2,https://example.com/listing1,Sample — replace with StreetEasy export
-"456 Park Ave, Brooklyn, NY",$2800,1,https://example.com/listing2,
-"789 Atlantic Ave, Brooklyn, NY",$3500,2,,Near Barclays
+address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,amenities,notes,source
+"11 Ocean Parkway #817, New York, NY",$3258,1,1,,https://streeteasy.com/building/one-park-point/817,Windsor Terrace,,,,base $3850; using net effective rent,streeteasy_html
+"117 Albany Avenue #2, Brooklyn, NY",$3204,2,1,,https://streeteasy.com/building/117-albany-avenue-brooklyn/2,Crown Heights,,,,base $3495; using net effective rent,streeteasy_html
+"12 Halsey Street #PH127, Brooklyn, NY",$3793,1,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/ph127,,,,new development,base $4425; using net effective rent,streeteasy_html
+"1211 Fulton Street #8A, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/8a,,,,new development,,streeteasy_html
+"126 Sandford Street #502, New York, NY",$3298,1,1,,https://streeteasy.com/building/prisma-house/502,,,,new development,base $3573; using net effective rent,streeteasy_html
+"196 Willoughby Street #30B, Brooklyn, NY",$3983,0,1,404,https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b,Downtown Brooklyn,,,,,streeteasy_html
+"20 Rockwell Place #2502D, New York, NY",$3702,0,1,,https://streeteasy.com/building/the-rocklyn/2502d,,,,new development,,streeteasy_html
+"210 East 22nd Street #GLL, New York, NY",$3650,0,1,,https://streeteasy.com/building/210-east-22-street-new_york/gll,Gramercy Park,,,,,streeteasy_html
+"2715 Fulton Street #506, New York, NY",$3250,2,2,,https://streeteasy.com/building/the-cypress-park/506,Cypress Hills,,,,,streeteasy_html
+"309 Gold Street #14GAIR, Brooklyn, NY",$3845,1,1,,https://streeteasy.com/building/bklyn-air/14gair,Downtown Brooklyn,,,,base $4195; using net effective rent,streeteasy_html
+"395 Carroll Street #1427, Brooklyn, NY",$3925,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427,,,,new development,,streeteasy_html
+"500 Degraw Street #203, Brooklyn, NY",$3321,0,1,463,https://streeteasy.com/building/society-brooklyn-at-degraw/203,,,,new development,base $3795; using net effective rent,streeteasy_html
+"66 Rockwell Place #11E, Brooklyn, NY",$3445,0,1,516,https://streeteasy.com/building/66-rockwell-place-brooklyn/11e,Fort Greene,,,,,streeteasy_html
+"931 Carroll Street #C1309, Brooklyn, NY",$3019,1,1,,https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309,Crown Heights,,,,base $3450; using net effective rent,streeteasy_html

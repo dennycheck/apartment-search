@@ -116,6 +116,48 @@ open output/index.html
 
 ---
 
+## Hit list pipeline (separate from the map)
+
+The map is for exploring neighborhoods and commute bands. **Listing ingest + ranking does not plot on the map** — it only reuses `data/isochrones.geojson` to tag each address with `commute_min`, then scores against `data/apartment_preferences.md`.
+
+```
+Zillow/SE dump (HTML or screenshot→JSON)
+  → data/listings.csv
+  → geocode + isochrone band
+  → composite score
+  → output/hit_list.md
+```
+
+### One-shot
+
+```bash
+# Drop saved search HTML (and/or JSON extracts) into data/listings/incoming/
+python scripts/run_hitlist_pipeline.py
+open output/hit_list.md
+```
+
+Or step by step:
+
+```bash
+python scripts/import_listings_html.py data/listings/incoming/
+python scripts/process_listings.py      # commute_min only — no map write
+python scripts/score_listings.py        # → output/hit_list.md
+```
+
+### How to feed listings (no one-by-one paste)
+
+| Method | What you do | Best for |
+|--------|-------------|----------|
+| **Saved HTML** | File → Save Page As into `data/listings/incoming/` | Batch structured extract (automated) |
+| **Screenshots in Cursor chat** | Attach results-page screenshots here | Easiest vision extract; I write JSON into `incoming/` then you run the pipeline |
+| **JSON extract** | Drop a list like `sample/listings_from_screenshot.sample.json` into `incoming/` | When you already have structured rows |
+
+A dedicated drop GUI is optional later — chat screenshots + HTML folder cover the bottleneck for now.
+
+Preferences / weights live in [`data/apartment_preferences.md`](data/apartment_preferences.md) (max rent $4k; commute weight 45; soft bands, not a hard 30-min wall).
+
+---
+
 ## Listing ingestion (three tiers)
 
 ### Tier 1 — RentCast API (bulk NYC rentals)
@@ -165,14 +207,20 @@ Writes `output/within_30_min.csv` and prints qualifying addresses sorted by comm
 
 Export or hand-build a CSV with these columns:
 
-| Column  | Required | Example |
-|---------|----------|---------|
-| address | yes      | 123 Bedford Ave, Brooklyn, NY |
-| rent    | no       | $3200 |
-| beds    | no       | 2 |
-| url     | no       | https://streeteasy.com/... |
-| notes   | no       | Has laundry |
-| source  | no       | rentcast, zillow_html, manual |
+| Column | Required | Example |
+|--------|----------|---------|
+| address | yes | 123 Bedford Ave, Brooklyn, NY |
+| rent | no | $3200 |
+| beds | no | 2 (use `0` for studio) |
+| baths | no | 1 |
+| sqft | no | 650 |
+| url | no | https://streeteasy.com/... |
+| neighborhood | no | Williamsburg |
+| dishwasher | no | yes |
+| in_unit_laundry | no | yes |
+| amenities | no | gym, pool, elevator |
+| notes | no | Has laundry |
+| source | no | rentcast, zillow_html, screenshot_json, manual |
 
 Geocoding uses [Nominatim](https://nominatim.openstreetmap.org/) (free, 1 request/sec). Addresses should include borough/city for accuracy.
 

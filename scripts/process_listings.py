@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""Geocode CSV listings and filter by commute isochrone bands."""
+"""Geocode CSV listings and tag commute_min via isochrone point-in-polygon.
+
+Map-independent: writes data/listings_processed.json for scoring/reports.
+Does not update the Leaflet map.
+"""
 
 import csv
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -42,23 +47,49 @@ def load_isochrones(path: Path) -> dict[int, object]:
     return bands
 
 
-def geocode_address(address: str) -> tuple[float, float] | None:
+def strip_unit(address: str) -> str:
+    """Remove apt/unit suffixes that confuse Nominatim (#11E, Apt 2, PH127, etc.)."""
+    text = address.strip()
+    text = re.sub(r"\s+#\s*[\w-]+\s*", " ", text, flags=re.I)
+    text = re.sub(r"\s+(?:apt|apartment|unit|ste|suite)\.?\s*[\w-]+\s*", " ", text, flags=re.I)
+    return re.sub(r"\s+", " ", text).strip(" ,")
+
+
+def geocode_address(address: str, hint_url: str = "") -> tuple[float, float] | None:
     """Geocode a NYC-area address via Nominatim (free, rate-limited)."""
-    params = {
-        "q": address if "NY" in address.upper() else f"{address}, New York, NY",
-        "format": "json",
-        "limit": 1,
-        "countrycodes": "us",
-    }
+    queries = []
+    raw = address if "NY" in address.upper() else f"{address}, New York, NY"
+    # Prefer borough from StreetEasy URL when city line is wrong/ambiguous
+    if "brooklyn" in (hint_url or "").lower() and "Brooklyn" not in raw:
+        raw_bk = strip_unit(raw).replace("New York, NY", "Brooklyn, NY")
+        queries.append(raw_bk)
+    queries.append(raw)
+    cleaned = strip_unit(raw)
+    if cleaned != raw:
+        queries.append(cleaned)
+
     headers = {"User-Agent": NOMINATIM_USER_AGENT}
-
-    response = requests.get(NOMINATIM_URL, params=params, headers=headers, timeout=30)
-    response.raise_for_status()
-    results = response.json()
-    if not results:
-        return None
-
-    return float(results[0]["lat"]), float(results[0]["lon"])
+    seen_q = set()
+    for q in queries:
+        if q in seen_q:
+            continue
+        seen_q.add(q)
+        params = {
+            "q": q,
+            "format": "json",
+            "limit": 1,
+            "countrycodes": "us",
+        }
+        response = requests.get(NOMINATIM_URL, params=params, headers=headers, timeout=30)
+        response.raise_for_status()
+        results = response.json()
+        if results:
+            lat, lon = float(results[0]["lat"]), float(results[0]["lon"])
+            # Reject obvious non-NYC hits (e.g. same street name upstate)
+            if 40.40 <= lat <= 40.95 and -74.30 <= lon <= -73.70:
+                return lat, lon
+        time.sleep(1.1)
+    return None
 
 
 def minutes_in_zone(point: Point, bands: dict[int, object]) -> int | None:
@@ -84,7 +115,7 @@ def process_listings(listings: list[dict], bands: dict[int, object], default_cut
         address = listing["address"]
         print(f"  [{i}/{len(listings)}] Geocoding: {address}")
 
-        coords = geocode_address(address)
+        coords = geocode_address(address, hint_url=listing.get("url", ""))
         if coords is None:
             print(f"    ✗ Could not geocode")
             processed.append(

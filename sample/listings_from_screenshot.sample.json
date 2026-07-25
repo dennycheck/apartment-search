@@ -1,0 +1,16 @@
+[
+  {
+    "address": "123 Example Ave, Brooklyn, NY",
+    "rent": "$3200",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "650",
+    "url": "https://www.zillow.com/homedetails/example",
+    "neighborhood": "Williamsburg",
+    "dishwasher": "yes",
+    "in_unit_laundry": "yes",
+    "amenities": "gym, elevator",
+    "notes": "Extracted from screenshot",
+    "source": "screenshot_json"
+  }
+]

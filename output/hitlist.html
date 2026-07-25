@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apartment hit list</title>
+<style>
+  :root {
+    --bg: #f3efe6;
+    --ink: #1c1a16;
+    --muted: #6b6458;
+    --card: #fffdf8;
+    --line: #d9d0c0;
+    --strong: #0f6b4c;
+    --mid: #9a6b12;
+    --weak: #7a4a3a;
+    --reject: #8a3030;
+    --tag: #ebe4d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+  h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.85rem;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.02em;
+  }
+  .sub {
+    color: var(--muted);
+    margin: 0 0 1.75rem;
+    max-width: 40rem;
+  }
+  .stats {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .stats strong { font-variant-numeric: tabular-nums; }
+  .card {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1rem 1rem 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+  .rank {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: start;
+  }
+  .title {
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+  }
+  a.title:hover { text-decoration: underline; }
+  .score {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: 1.25rem;
+    min-width: 3.5rem;
+    text-align: right;
+  }
+  .tone-strong .score { color: var(--strong); }
+  .tone-mid .score { color: var(--mid); }
+  .tone-weak .score { color: var(--weak); }
+  .meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0.2rem 0 0.55rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .tag {
+    background: var(--tag);
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.78rem;
+    color: var(--ink);
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .cols { grid-template-columns: 1fr; }
+  }
+  .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+  }
+  ul.concerns { color: var(--weak); }
+  .breakdown {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .filtered {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .filtered h2 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Apartment hit list</h1>
+  <p class="sub">
+    Ranked by composite score from <code>apartment_preferences.md</code>.
+    Commute uses isochrone bands only — this page is separate from the map.
+  </p>
+  <div class="stats">
+    <div><strong>14</strong> ranked</div>
+    <div><strong>0</strong> filtered (hard rules)</div>
+    <div><strong>14</strong> total ingested</div>
+  </div>
+  
+<article class="card tone-mid">
+  <div class="rank">1</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/117-albany-avenue-brooklyn/2" target="_blank" rel="noopener">117 Albany Avenue #2, Brooklyn, NY</a>
+      <div class="score">65.4</div>
+    </div>
+    <div class="meta">$3204 · 2BR</div>
+    <div class="tags"><span class="tag">Crown Heights</span><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>2BR (sqft unknown — bed label only)</li><li>$3204/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>None flagged</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 16.0
+      · rent 9.4
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">2</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/society-brooklyn-at-degraw/203" target="_blank" rel="noopener">500 Degraw Street #203, Brooklyn, NY</a>
+      <div class="score">58.4</div>
+    </div>
+    <div class="meta">$3321 · Studio · 463 sqft</div>
+    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3321/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>compact (~463 sqft)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 10.0
+      · rent 8.4
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">3</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/bklyn-air/14gair" target="_blank" rel="noopener">309 Gold Street #14GAIR, Brooklyn, NY</a>
+      <div class="score">58.2</div>
+    </div>
+    <div class="meta">$3845 · 1BR</div>
+    <div class="tags"><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>excellent commute (≤20)</li><li>$3845/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 43.0
+      · size 11.0
+      · rent 4.2
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">4</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/66-rockwell-place-brooklyn/11e" target="_blank" rel="noopener">66 Rockwell Place #11E, Brooklyn, NY</a>
+      <div class="score">57.4</div>
+    </div>
+    <div class="meta">$3445 · Studio · 516 sqft</div>
+    <div class="tags"><span class="tag">Fort Greene</span><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3445/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>compact (~516 sqft)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 10.0
+      · rent 7.4
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">5</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/1211-fulton-street-brooklyn/8a" target="_blank" rel="noopener">1211 Fulton Street #8A, Brooklyn, NY</a>
+      <div class="score">56.4</div>
+    </div>
+    <div class="meta">$3700 · 1BR</div>
+    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3700/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 11.0
+      · rent 5.4
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">6</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph127" target="_blank" rel="noopener">12 Halsey Street #PH127, Brooklyn, NY</a>
+      <div class="score">55.7</div>
+    </div>
+    <div class="meta">$3793 · 1BR</div>
+    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3793/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 11.0
+      · rent 4.7
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">7</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/210-east-22-street-new_york/gll" target="_blank" rel="noopener">210 East 22nd Street #GLL, New York, NY</a>
+      <div class="score">54.8</div>
+    </div>
+    <div class="meta">$3650 · Studio</div>
+    <div class="tags"><span class="tag">Gramercy Park</span><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3650/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>studio (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 9.0
+      · rent 5.8
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">8</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427" target="_blank" rel="noopener">395 Carroll Street #1427, Brooklyn, NY</a>
+      <div class="score">54.6</div>
+    </div>
+    <div class="meta">$3925 · 1BR</div>
+    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3925/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 11.0
+      · rent 3.6
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">9</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/the-rocklyn/2502d" target="_blank" rel="noopener">20 Rockwell Place #2502D, New York, NY</a>
+      <div class="score">54.4</div>
+    </div>
+    <div class="meta">$3702 · Studio</div>
+    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>ideal band (≤30) — worthwhile vs current ~40</li><li>$3702/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>studio (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 40.0
+      · size 9.0
+      · rent 5.4
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-mid">
+  <div class="rank">10</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b" target="_blank" rel="noopener">196 Willoughby Street #30B, Brooklyn, NY</a>
+      <div class="score">52.1</div>
+    </div>
+    <div class="meta">$3983 · Studio · 404 sqft</div>
+    <div class="tags"><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>excellent commute (≤20)</li><li>$3983/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>small (~404 sqft)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 43.0
+      · size 6.0
+      · rent 3.1
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-weak">
+  <div class="rank">11</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/the-cypress-park/506" target="_blank" rel="noopener">2715 Fulton Street #506, New York, NY</a>
+      <div class="score">41.0</div>
+    </div>
+    <div class="meta">$3250 · 2BR</div>
+    <div class="tags"><span class="tag">Cypress Hills</span><span class="tag">≤40 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>2BR (sqft unknown — bed label only)</li><li>$3250/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>similar to current (~40) — weak reason to move</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 16.0
+      · size 16.0
+      · rent 9.0
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-weak">
+  <div class="rank">12</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309" target="_blank" rel="noopener">931 Carroll Street #C1309, Brooklyn, NY</a>
+      <div class="score">37.8</div>
+    </div>
+    <div class="meta">$3019 · 1BR</div>
+    <div class="tags"><span class="tag">Crown Heights</span><span class="tag">≤40 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>$3019/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>similar to current (~40) — weak reason to move</li><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 16.0
+      · size 11.0
+      · rent 10.8
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-weak">
+  <div class="rank">13</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/one-park-point/817" target="_blank" rel="noopener">11 Ocean Parkway #817, New York, NY</a>
+      <div class="score">35.9</div>
+    </div>
+    <div class="meta">$3258 · 1BR</div>
+    <div class="tags"><span class="tag">Windsor Terrace</span><span class="tag">≤40 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>$3258/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>similar to current (~40) — weak reason to move</li><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 16.0
+      · size 11.0
+      · rent 8.9
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+<article class="card tone-weak">
+  <div class="rank">14</div>
+  <div class="body">
+    <div class="topline">
+      <a class="title" href="https://streeteasy.com/building/prisma-house/502" target="_blank" rel="noopener">126 Sandford Street #502, New York, NY</a>
+      <div class="score">35.6</div>
+    </div>
+    <div class="meta">$3298 · 1BR</div>
+    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="cols">
+      <div>
+        <div class="label">Why it ranks</div>
+        <ul><li>$3298/mo</li></ul>
+      </div>
+      <div>
+        <div class="label">Watch-outs</div>
+        <ul class="concerns"><li>similar to current (~40) — weak reason to move</li><li>1BR (sqft unknown)</li></ul>
+      </div>
+    </div>
+    <div class="breakdown">
+      commute 16.0
+      · size 11.0
+      · rent 8.6
+      · unit 0.0
+      · building 0.0
+    </div>
+  </div>
+</article>
+
+  
+</main>
+</body>
+</html>

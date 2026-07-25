@@ -43,7 +43,20 @@ def main():
     out_path = args.output or OUTPUT_DIR / f"within_{args.max}_min.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    fields = ["address", "rent", "beds", "commute_min", "url", "notes", "source"]
+    fields = [
+        "address",
+        "rent",
+        "beds",
+        "baths",
+        "sqft",
+        "commute_min",
+        "dishwasher",
+        "in_unit_laundry",
+        "amenities",
+        "url",
+        "notes",
+        "source",
+    ]
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()

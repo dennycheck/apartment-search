@@ -10,3 +10,9 @@ __pycache__/
 
 # Large raw dumps (bands/contours kept; regenerate map from those)
 data/isochrones/incoming/
+
+# Saved listing page dumps / OCR scratch (keep JSON extracts if small)
+data/listings/incoming/*.html
+data/listings/incoming/*.htm
+data/listings/incoming/_pdf/
+data/listings/incoming/_shots/

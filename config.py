@@ -42,6 +42,12 @@ ISOCHRONES_CONTOURS_PATH = DATA_DIR / "isochrones_contours.geojson"
 COMMUTE_CONTOURS_MIN = [15, 25, 35, 45]
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 LISTINGS_JSON = DATA_DIR / "listings_processed.json"
+LISTINGS_SCORED_JSON = DATA_DIR / "listings_scored.json"
+PREFERENCES_MD = DATA_DIR / "apartment_preferences.md"
+HIT_LIST_MD = OUTPUT_DIR / "hit_list.md"
+# Soft scoring baseline: current apartment ~ darker orange (~40 min band).
+CURRENT_COMMUTE_MIN = 40
+MAX_RENT = 4000
 MAP_HTML = OUTPUT_DIR / "index.html"
 OVERLAY_HTML = OUTPUT_DIR / "overlay.html"
 OVERLAY_DEFAULT_OPACITY = 0.5
