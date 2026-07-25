@@ -11,6 +11,7 @@ import html
 import json
 import sys
 from pathlib import Path
+from urllib.parse import quote_plus
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -82,11 +83,17 @@ def render(scored: list[dict]) -> str:
         tone = score_tone(score, False)
         title = row.get("address") or "(no address)"
         url = row.get("url") or ""
+        
+        # Maps link for iPhone - uses Apple Maps
+        maps_url = f"https://maps.apple.com/?address={quote_plus(title)}"
+        maps_button = f'<a class="maps-btn" href="{maps_url}" target="_blank" rel="noopener" title="Open in Maps">📍</a>'
+        
         title_html = (
             f'<a class="title" href="{esc(url)}" target="_blank" rel="noopener">{esc(title)}</a>'
             if url
             else f'<span class="title">{esc(title)}</span>'
         )
+        title_html = f'<div class="title-with-maps">{title_html}{maps_button}</div>'
         rent = row.get("rent") or "—"
         size = beds_label(row)
         if row.get("sqft_num"):
@@ -214,12 +221,34 @@ def render(scored: list[dict]) -> str:
     gap: 1rem;
     align-items: start;
   }}
+  .title-with-maps {{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }}
   .title {{
     font-weight: 600;
     color: inherit;
     text-decoration: none;
   }}
   a.title:hover {{ text-decoration: underline; }}
+  .maps-btn {{
+    font-size: 1.1rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0.25rem;
+  }}
+  .maps-btn:hover {{
+    opacity: 1;
+    transform: scale(1.15);
+  }}
+  .maps-btn:active {{
+    transform: scale(0.95);
+  }}
   .score {{
     font-variant-numeric: tabular-nums;
     font-weight: 700;

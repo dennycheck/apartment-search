@@ -72,12 +72,34 @@
     gap: 1rem;
     align-items: start;
   }
+  .title-with-maps {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
   .title {
     font-weight: 600;
     color: inherit;
     text-decoration: none;
   }
   a.title:hover { text-decoration: underline; }
+  .maps-btn {
+    font-size: 1.1rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0.25rem;
+  }
+  .maps-btn:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  .maps-btn:active {
+    transform: scale(0.95);
+  }
   .score {
     font-variant-numeric: tabular-nums;
     font-weight: 700;
@@ -161,7 +183,7 @@
   <div class="rank">1</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/117-albany-avenue-brooklyn/2" target="_blank" rel="noopener">117 Albany Avenue #2, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/117-albany-avenue-brooklyn/2" target="_blank" rel="noopener">117 Albany Avenue #2, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=117+Albany+Avenue+%232%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">65.4</div>
     </div>
     <div class="meta">$3204 · 2BR</div>
@@ -190,7 +212,7 @@
   <div class="rank">2</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a" target="_blank" rel="noopener">654 Saint Marks Avenue #2A, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a" target="_blank" rel="noopener">654 Saint Marks Avenue #2A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=654+Saint+Marks+Avenue+%232A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">65.0</div>
     </div>
     <div class="meta">$2995 · 1BR · 650 sqft</div>
@@ -219,7 +241,7 @@
   <div class="rank">3</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/598-myrtle-avenue-brooklyn/4a" target="_blank" rel="noopener">598 Myrtle Avenue #4A, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/598-myrtle-avenue-brooklyn/4a" target="_blank" rel="noopener">598 Myrtle Avenue #4A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=598+Myrtle+Avenue+%234A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">63.5</div>
     </div>
     <div class="meta">$3438 · 2BR</div>
@@ -248,7 +270,7 @@
   <div class="rank">4</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/1134-fulton-street-brooklyn/5t" target="_blank" rel="noopener">1134 Fulton Street #5T, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/1134-fulton-street-brooklyn/5t" target="_blank" rel="noopener">1134 Fulton Street #5T, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1134+Fulton+Street+%235T%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">62.6</div>
     </div>
     <div class="meta">$3552 · 2BR</div>
@@ -277,7 +299,7 @@
   <div class="rank">5</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/106-fulton-street-new_york/9b" target="_blank" rel="noopener">106 Fulton Street #9B, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/106-fulton-street-new_york/9b" target="_blank" rel="noopener">106 Fulton Street #9B, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=106+Fulton+Street+%239B%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">62.2</div>
     </div>
     <div class="meta">$3600 · 1BR</div>
@@ -306,7 +328,7 @@
   <div class="rank">6</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/60-duffield-street/11h" target="_blank" rel="noopener">60 Duffield Street #11H, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/60-duffield-street/11h" target="_blank" rel="noopener">60 Duffield Street #11H, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=60+Duffield+Street+%2311H%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">61.6</div>
     </div>
     <div class="meta">$3804 · 1BR · 600 sqft</div>
@@ -335,7 +357,7 @@
   <div class="rank">7</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/60-duffield-street/10d" target="_blank" rel="noopener">60 Duffield Street #10D, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/60-duffield-street/10d" target="_blank" rel="noopener">60 Duffield Street #10D, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=60+Duffield+Street+%2310D%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">61.3</div>
     </div>
     <div class="meta">$3333 · Studio · 500 sqft</div>
@@ -364,7 +386,7 @@
   <div class="rank">8</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/60-duffield-street/10g" target="_blank" rel="noopener">60 Duffield Street #10G, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/60-duffield-street/10g" target="_blank" rel="noopener">60 Duffield Street #10G, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=60+Duffield+Street+%2310G%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">61.2</div>
     </div>
     <div class="meta">$3850 · 1BR · 619 sqft</div>
@@ -393,7 +415,7 @@
   <div class="rank">9</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/5u" target="_blank" rel="noopener">196 Willoughby Street #5U, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/5u" target="_blank" rel="noopener">196 Willoughby Street #5U, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=196+Willoughby+Street+%235U%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">61.0</div>
     </div>
     <div class="meta">$3381 · Studio · 472 sqft</div>
@@ -422,7 +444,7 @@
   <div class="rank">10</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/211" target="_blank" rel="noopener">12 Halsey Street #211, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/211" target="_blank" rel="noopener">12 Halsey Street #211, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23211%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">60.4</div>
     </div>
     <div class="meta">$3827 · 2BR</div>
@@ -451,7 +473,7 @@
   <div class="rank">11</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/163-hancock-street-brooklyn/1" target="_blank" rel="noopener">163 Hancock Street #1, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/163-hancock-street-brooklyn/1" target="_blank" rel="noopener">163 Hancock Street #1, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=163+Hancock+Street+%231%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">60.4</div>
     </div>
     <div class="meta">$3950 · 1BR · 750 sqft</div>
@@ -480,7 +502,7 @@
   <div class="rank">12</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/428-halsey-street-brooklyn/1" target="_blank" rel="noopener">428 Halsey Street #1, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/428-halsey-street-brooklyn/1" target="_blank" rel="noopener">428 Halsey Street #1, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=428+Halsey+Street+%231%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">60.0</div>
     </div>
     <div class="meta">$3000 · Studio</div>
@@ -509,7 +531,7 @@
   <div class="rank">13</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/921" target="_blank" rel="noopener">251 Douglass Street #921, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/921" target="_blank" rel="noopener">251 Douglass Street #921, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=251+Douglass+Street+%23921%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">59.8</div>
     </div>
     <div class="meta">$3023 · Studio</div>
@@ -538,7 +560,7 @@
   <div class="rank">14</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/81-willoughby-street-brooklyn/408" target="_blank" rel="noopener">81 Willoughby Street #408, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/81-willoughby-street-brooklyn/408" target="_blank" rel="noopener">81 Willoughby Street #408, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=81+Willoughby+Street+%23408%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">59.4</div>
     </div>
     <div class="meta">$3700 · 1BR</div>
@@ -567,7 +589,7 @@
   <div class="rank">15</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/639-henry-street-brooklyn/2" target="_blank" rel="noopener">639 Henry Street #2, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/639-henry-street-brooklyn/2" target="_blank" rel="noopener">639 Henry Street #2, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=639+Henry+Street+%232%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">59.4</div>
     </div>
     <div class="meta">$3700 · 1BR · 700 sqft</div>
@@ -596,7 +618,7 @@
   <div class="rank">16</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/prosper-brooklyn/11l" target="_blank" rel="noopener">1042 Atlantic Avenue #11L, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/11l" target="_blank" rel="noopener">1042 Atlantic Avenue #11L, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%2311L%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">59.1</div>
     </div>
     <div class="meta">$3115 · Studio</div>
@@ -625,7 +647,7 @@
   <div class="rank">17</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/40-clinton-street-new_york/1d" target="_blank" rel="noopener">40 Clinton Street #1D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/40-clinton-street-new_york/1d" target="_blank" rel="noopener">40 Clinton Street #1D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=40+Clinton+Street+%231D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.6</div>
     </div>
     <div class="meta">$3795 · 1BR</div>
@@ -654,7 +676,7 @@
   <div class="rank">18</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/275-park-avenue-brooklyn/5i" target="_blank" rel="noopener">275 Park Avenue #5I, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/275-park-avenue-brooklyn/5i" target="_blank" rel="noopener">275 Park Avenue #5I, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=275+Park+Avenue+%235I%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.6</div>
     </div>
     <div class="meta">$3806 · 1BR · 670 sqft</div>
@@ -683,7 +705,7 @@
   <div class="rank">19</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/society-brooklyn-at-degraw/203" target="_blank" rel="noopener">500 Degraw Street #203, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/society-brooklyn-at-degraw/203" target="_blank" rel="noopener">500 Degraw Street #203, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=500+Degraw+Street+%23203%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.4</div>
     </div>
     <div class="meta">$3321 · Studio · 463 sqft</div>
@@ -712,7 +734,7 @@
   <div class="rank">20</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/499-president/518" target="_blank" rel="noopener">499 President Street #518, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/499-president/518" target="_blank" rel="noopener">499 President Street #518, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=499+President+Street+%23518%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.3</div>
     </div>
     <div class="meta">$3218 · Studio</div>
@@ -741,7 +763,7 @@
   <div class="rank">21</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/bklyn-air/14gair" target="_blank" rel="noopener">309 Gold Street #14GAIR, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/bklyn-air/14gair" target="_blank" rel="noopener">309 Gold Street #14GAIR, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=309+Gold+Street+%2314GAIR%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.2</div>
     </div>
     <div class="meta">$3845 · 1BR</div>
@@ -770,7 +792,7 @@
   <div class="rank">22</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/731" target="_blank" rel="noopener">12 Halsey Street #731, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/731" target="_blank" rel="noopener">12 Halsey Street #731, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23731%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.2</div>
     </div>
     <div class="meta">$3225 · Studio</div>
@@ -799,7 +821,7 @@
   <div class="rank">23</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/724" target="_blank" rel="noopener">251 Douglass Street #724, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/724" target="_blank" rel="noopener">251 Douglass Street #724, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=251+Douglass+Street+%23724%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.2</div>
     </div>
     <div class="meta">$3231 · Studio</div>
@@ -828,7 +850,7 @@
   <div class="rank">24</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/maxwell-downtown/22b" target="_blank" rel="noopener">111 Willoughby Street #22B, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/maxwell-downtown/22b" target="_blank" rel="noopener">111 Willoughby Street #22B, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=111+Willoughby+Street+%2322B%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.1</div>
     </div>
     <div class="meta">$3739 · Studio · 453 sqft</div>
@@ -857,7 +879,7 @@
   <div class="rank">25</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1706" target="_blank" rel="noopener">1057 Atlantic Avenue #1706, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1706" target="_blank" rel="noopener">1057 Atlantic Avenue #1706, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231706%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.1</div>
     </div>
     <div class="meta">$3488 · 1BR</div>
@@ -886,7 +908,7 @@
   <div class="rank">26</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1712" target="_blank" rel="noopener">1057 Atlantic Avenue #1712, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1712" target="_blank" rel="noopener">1057 Atlantic Avenue #1712, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231712%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3496 · 1BR</div>
@@ -915,7 +937,7 @@
   <div class="rank">27</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/130-2nd-street/12h" target="_blank" rel="noopener">130 2nd Street #12H, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/130-2nd-street/12h" target="_blank" rel="noopener">130 2nd Street #12H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=130+2nd+Street+%2312H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3496 · 1BR</div>
@@ -944,7 +966,7 @@
   <div class="rank">28</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/527-grand-avenue-brooklyn/411" target="_blank" rel="noopener">527 Grand Avenue #411, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/527-grand-avenue-brooklyn/411" target="_blank" rel="noopener">527 Grand Avenue #411, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=527+Grand+Avenue+%23411%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3500 · 1BR</div>
@@ -973,7 +995,7 @@
   <div class="rank">29</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/527-grand-avenue-brooklyn/6g" target="_blank" rel="noopener">527 Grand Avenue #6G, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/527-grand-avenue-brooklyn/6g" target="_blank" rel="noopener">527 Grand Avenue #6G, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=527+Grand+Avenue+%236G%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3500 · 1BR</div>
@@ -1002,7 +1024,7 @@
   <div class="rank">30</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1024" target="_blank" rel="noopener">1057 Atlantic Avenue #1024, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1024" target="_blank" rel="noopener">1057 Atlantic Avenue #1024, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231024%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3505 · 1BR</div>
@@ -1031,7 +1053,7 @@
   <div class="rank">31</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/411" target="_blank" rel="noopener">251 Douglass Street #411, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/411" target="_blank" rel="noopener">251 Douglass Street #411, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=251+Douglass+Street+%23411%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.8</div>
     </div>
     <div class="meta">$3275 · Studio</div>
@@ -1060,7 +1082,7 @@
   <div class="rank">32</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/ph18" target="_blank" rel="noopener">1057 Atlantic Avenue #PH18, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/ph18" target="_blank" rel="noopener">1057 Atlantic Avenue #PH18, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%23PH18%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.8</div>
     </div>
     <div class="meta">$3531 · 1BR</div>
@@ -1089,7 +1111,7 @@
   <div class="rank">33</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/s1022" target="_blank" rel="noopener">395 Carroll Street #S1022, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/s1022" target="_blank" rel="noopener">395 Carroll Street #S1022, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%23S1022%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.7</div>
     </div>
     <div class="meta">$3283 · Studio</div>
@@ -1118,7 +1140,7 @@
   <div class="rank">34</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/lawrence-tower/2121" target="_blank" rel="noopener">150 Lawrence Street #2121, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/lawrence-tower/2121" target="_blank" rel="noopener">150 Lawrence Street #2121, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=150+Lawrence+Street+%232121%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.6</div>
     </div>
     <div class="meta">$3930 · 1BR</div>
@@ -1147,7 +1169,7 @@
   <div class="rank">35</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1022" target="_blank" rel="noopener">1057 Atlantic Avenue #1022, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1022" target="_blank" rel="noopener">1057 Atlantic Avenue #1022, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231022%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.6</div>
     </div>
     <div class="meta">$3552 · 1BR</div>
@@ -1176,7 +1198,7 @@
   <div class="rank">36</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/66-rockwell-place-brooklyn/11e" target="_blank" rel="noopener">66 Rockwell Place #11E, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/66-rockwell-place-brooklyn/11e" target="_blank" rel="noopener">66 Rockwell Place #11E, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=66+Rockwell+Place+%2311E%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.4</div>
     </div>
     <div class="meta">$3445 · Studio · 516 sqft</div>
@@ -1205,7 +1227,7 @@
   <div class="rank">37</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1507" target="_blank" rel="noopener">1057 Atlantic Avenue #1507, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1507" target="_blank" rel="noopener">1057 Atlantic Avenue #1507, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231507%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.4</div>
     </div>
     <div class="meta">$3574 · 1BR</div>
@@ -1234,7 +1256,7 @@
   <div class="rank">38</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/18h" target="_blank" rel="noopener">505 State Street #18H, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/18h" target="_blank" rel="noopener">505 State Street #18H, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=505+State+Street+%2318H%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.4</div>
     </div>
     <div class="meta">$3575 · 1BR</div>
@@ -1263,7 +1285,7 @@
   <div class="rank">39</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/21-west-street/16f" target="_blank" rel="noopener">21 West Street #16F, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/21-west-street/16f" target="_blank" rel="noopener">21 West Street #16F, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=21+West+Street+%2316F%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3850 · Studio · 595 sqft</div>
@@ -1292,7 +1314,7 @@
   <div class="rank">40</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/716" target="_blank" rel="noopener">67 Prince Street #716, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/716" target="_blank" rel="noopener">67 Prince Street #716, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%23716%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3346 · Studio</div>
@@ -1321,7 +1343,7 @@
   <div class="rank">41</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/717" target="_blank" rel="noopener">67 Prince Street #717, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/717" target="_blank" rel="noopener">67 Prince Street #717, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%23717%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3346 · Studio</div>
@@ -1350,7 +1372,7 @@
   <div class="rank">42</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/1204" target="_blank" rel="noopener">251 Douglass Street #1204, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/251-douglass-street-brooklyn/1204" target="_blank" rel="noopener">251 Douglass Street #1204, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=251+Douglass+Street+%231204%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3600 · 1BR</div>
@@ -1379,7 +1401,7 @@
   <div class="rank">43</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/prosper-brooklyn/9m" target="_blank" rel="noopener">1042 Atlantic Avenue #9M, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/9m" target="_blank" rel="noopener">1042 Atlantic Avenue #9M, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%239M%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.9</div>
     </div>
     <div class="meta">$3634 · 1BR</div>
@@ -1408,7 +1430,7 @@
   <div class="rank">44</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-brook/rental/5106020" target="_blank" rel="noopener">567 Fulton Street #15H, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-brook/rental/5106020" target="_blank" rel="noopener">567 Fulton Street #15H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=567+Fulton+Street+%2315H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.8</div>
     </div>
     <div class="meta">$3895 · Studio · 501 sqft</div>
@@ -1437,7 +1459,7 @@
   <div class="rank">45</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/soma-25-water-street-new_york/2205" target="_blank" rel="noopener">25 Water Street #2205, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/soma-25-water-street-new_york/2205" target="_blank" rel="noopener">25 Water Street #2205, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=25+Water+Street+%232205%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.7</div>
     </div>
     <div class="meta">$3790 · Studio</div>
@@ -1466,7 +1488,7 @@
   <div class="rank">46</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/95-wall-street-new_york/602" target="_blank" rel="noopener">95 Wall Street #602, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/95-wall-street-new_york/602" target="_blank" rel="noopener">95 Wall Street #602, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=95+Wall+Street+%23602%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.7</div>
     </div>
     <div class="meta">$3917 · Studio · 453 sqft</div>
@@ -1495,7 +1517,7 @@
   <div class="rank">47</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/fulton-greene/12e" target="_blank" rel="noopener">570 Fulton Street #12E, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/fulton-greene/12e" target="_blank" rel="noopener">570 Fulton Street #12E, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=570+Fulton+Street+%2312E%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.6</div>
     </div>
     <div class="meta">$3430 · Studio</div>
@@ -1524,7 +1546,7 @@
   <div class="rank">48</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/66-rockwell-place-brooklyn/8d" target="_blank" rel="noopener">66 Rockwell Place #8D, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/66-rockwell-place-brooklyn/8d" target="_blank" rel="noopener">66 Rockwell Place #8D, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=66+Rockwell+Place+%238D%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.6</div>
     </div>
     <div class="meta">$3550 · Studio · 501 sqft</div>
@@ -1553,7 +1575,7 @@
   <div class="rank">49</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/901" target="_blank" rel="noopener">1057 Atlantic Avenue #901, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/901" target="_blank" rel="noopener">1057 Atlantic Avenue #901, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%23901%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.6</div>
     </div>
     <div class="meta">$3681 · 1BR</div>
@@ -1582,7 +1604,7 @@
   <div class="rank">50</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/eighty-nine-dekalb/23d" target="_blank" rel="noopener">89 Dekalb Avenue #23D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/eighty-nine-dekalb/23d" target="_blank" rel="noopener">89 Dekalb Avenue #23D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=89+Dekalb+Avenue+%2323D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.4</div>
     </div>
     <div class="meta">$3827 · Studio</div>
@@ -1611,7 +1633,7 @@
   <div class="rank">51</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/1211-fulton-street-brooklyn/8a" target="_blank" rel="noopener">1211 Fulton Street #8A, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/1211-fulton-street-brooklyn/8a" target="_blank" rel="noopener">1211 Fulton Street #8A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1211+Fulton+Street+%238A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.4</div>
     </div>
     <div class="meta">$3700 · 1BR</div>
@@ -1640,7 +1662,7 @@
   <div class="rank">52</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/prosper-brooklyn/13a" target="_blank" rel="noopener">1042 Atlantic Avenue #13A, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/13a" target="_blank" rel="noopener">1042 Atlantic Avenue #13A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%2313A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.3</div>
     </div>
     <div class="meta">$3710 · 1BR</div>
@@ -1669,7 +1691,7 @@
   <div class="rank">53</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/eighty-nine-dekalb/25d" target="_blank" rel="noopener">89 Dekalb Avenue #25D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/eighty-nine-dekalb/25d" target="_blank" rel="noopener">89 Dekalb Avenue #25D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=89+Dekalb+Avenue+%2325D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3850 · Studio</div>
@@ -1698,7 +1720,7 @@
   <div class="rank">54</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-addison-brooklyn/11d" target="_blank" rel="noopener">225 Schermerhorn Street #11D, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-addison-brooklyn/11d" target="_blank" rel="noopener">225 Schermerhorn Street #11D, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=225+Schermerhorn+Street+%2311D%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3977 · 1BR · 561 sqft</div>
@@ -1727,7 +1749,7 @@
   <div class="rank">55</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/240-willoughby/11r" target="_blank" rel="noopener">240 Willoughby Street #11R, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/240-willoughby/11r" target="_blank" rel="noopener">240 Willoughby Street #11R, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=240+Willoughby+Street+%2311R%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3475 · Studio</div>
@@ -1756,7 +1778,7 @@
   <div class="rank">56</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050" target="_blank" rel="noopener">67 Prince Street #21050, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050" target="_blank" rel="noopener">67 Prince Street #21050, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%2321050%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.1</div>
     </div>
     <div class="meta">$3493 · Studio</div>
@@ -1785,7 +1807,7 @@
   <div class="rank">57</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-addison-brooklyn/21e" target="_blank" rel="noopener">225 Schermerhorn Street #21E, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-addison-brooklyn/21e" target="_blank" rel="noopener">225 Schermerhorn Street #21E, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=225+Schermerhorn+Street+%2321E%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3995 · 1BR · 577 sqft</div>
@@ -1814,7 +1836,7 @@
   <div class="rank">58</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/95-wall-street-new_york/2303" target="_blank" rel="noopener">95 Wall Street #2303, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/95-wall-street-new_york/2303" target="_blank" rel="noopener">95 Wall Street #2303, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=95+Wall+Street+%232303%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3995 · Studio · 454 sqft</div>
@@ -1843,7 +1865,7 @@
   <div class="rank">59</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722" target="_blank" rel="noopener">395 Carroll Street #722, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722" target="_blank" rel="noopener">395 Carroll Street #722, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%23722%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3506 · Studio</div>
@@ -1872,7 +1894,7 @@
   <div class="rank">60</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph225" target="_blank" rel="noopener">12 Halsey Street #PH225, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph225" target="_blank" rel="noopener">12 Halsey Street #PH225, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23PH225%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3750 · 1BR</div>
@@ -1901,7 +1923,7 @@
   <div class="rank">61</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/225-13-street-brooklyn/d2" target="_blank" rel="noopener">225 13th Street #D2, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/225-13-street-brooklyn/d2" target="_blank" rel="noopener">225 13th Street #D2, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=225+13th+Street+%23D2%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3750 · 1BR</div>
@@ -1930,7 +1952,7 @@
   <div class="rank">62</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/499-president/514" target="_blank" rel="noopener">499 President Street #514, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/499-president/514" target="_blank" rel="noopener">499 President Street #514, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=499+President+Street+%23514%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.9</div>
     </div>
     <div class="meta">$3510 · Studio</div>
@@ -1959,7 +1981,7 @@
   <div class="rank">63</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277" target="_blank" rel="noopener">277 Gold Street #9D/277, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277" target="_blank" rel="noopener">277 Gold Street #9D/277, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=277+Gold+Street+%239D%2F277%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.9</div>
     </div>
     <div class="meta">$3758 · 1BR</div>
@@ -1988,7 +2010,7 @@
   <div class="rank">64</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010" target="_blank" rel="noopener">67 Prince Street #22010, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010" target="_blank" rel="noopener">67 Prince Street #22010, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%2322010%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.7</div>
     </div>
     <div class="meta">$3543 · Studio</div>
@@ -2017,7 +2039,7 @@
   <div class="rank">65</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph127" target="_blank" rel="noopener">12 Halsey Street #PH127, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph127" target="_blank" rel="noopener">12 Halsey Street #PH127, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23PH127%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.7</div>
     </div>
     <div class="meta">$3793 · 1BR</div>
@@ -2046,7 +2068,7 @@
   <div class="rank">66</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705" target="_blank" rel="noopener">67 Prince Street #2705, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705" target="_blank" rel="noopener">67 Prince Street #2705, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%232705%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.6</div>
     </div>
     <div class="meta">$3548 · Studio</div>
@@ -2075,7 +2097,7 @@
   <div class="rank">67</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/house-55/3d" target="_blank" rel="noopener">55 Willoughby Street #3D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/house-55/3d" target="_blank" rel="noopener">55 Willoughby Street #3D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=55+Willoughby+Street+%233D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.4</div>
     </div>
     <div class="meta">$3950 · Studio</div>
@@ -2104,7 +2126,7 @@
   <div class="rank">68</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/brooklyn-tower-rentals/48b" target="_blank" rel="noopener">55 Fleet Street #48B, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/brooklyn-tower-rentals/48b" target="_blank" rel="noopener">55 Fleet Street #48B, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=55+Fleet+Street+%2348B%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.3</div>
     </div>
     <div class="meta">$3965 · Studio</div>
@@ -2133,7 +2155,7 @@
   <div class="rank">69</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/1211-fulton-street-brooklyn/ph" target="_blank" rel="noopener">1211 Fulton Street #PH, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/1211-fulton-street-brooklyn/ph" target="_blank" rel="noopener">1211 Fulton Street #PH, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1211+Fulton+Street+%23PH%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.1</div>
     </div>
     <div class="meta">$3857 · 1BR</div>
@@ -2162,7 +2184,7 @@
   <div class="rank">70</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423" target="_blank" rel="noopener">395 Carroll Street #423, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423" target="_blank" rel="noopener">395 Carroll Street #423, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%23423%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.1</div>
     </div>
     <div class="meta">$3866 · 1BR</div>
@@ -2191,7 +2213,7 @@
   <div class="rank">71</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010" target="_blank" rel="noopener">67 Prince Street #7010, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010" target="_blank" rel="noopener">67 Prince Street #7010, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=67+Prince+Street+%237010%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.0</div>
     </div>
     <div class="meta">$3621 · Studio</div>
@@ -2220,7 +2242,7 @@
   <div class="rank">72</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428" target="_blank" rel="noopener">395 Carroll Street #428, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428" target="_blank" rel="noopener">395 Carroll Street #428, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%23428%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">55.0</div>
     </div>
     <div class="meta">$3875 · 1BR</div>
@@ -2249,7 +2271,7 @@
   <div class="rank">73</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/210-east-22-street-new_york/gll" target="_blank" rel="noopener">210 East 22nd Street #GLL, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/210-east-22-street-new_york/gll" target="_blank" rel="noopener">210 East 22nd Street #GLL, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=210+East+22nd+Street+%23GLL%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.8</div>
     </div>
     <div class="meta">$3650 · Studio</div>
@@ -2278,7 +2300,7 @@
   <div class="rank">74</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/499-president/336" target="_blank" rel="noopener">499 President Street #336, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/499-president/336" target="_blank" rel="noopener">499 President Street #336, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=499+President+Street+%23336%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.7</div>
     </div>
     <div class="meta">$3915 · 1BR</div>
@@ -2307,7 +2329,7 @@
   <div class="rank">75</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427" target="_blank" rel="noopener">395 Carroll Street #1427, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427" target="_blank" rel="noopener">395 Carroll Street #1427, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%231427%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.6</div>
     </div>
     <div class="meta">$3925 · 1BR</div>
@@ -2336,7 +2358,7 @@
   <div class="rank">76</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/carmel-place/7a" target="_blank" rel="noopener">335 East 27th Street #7A, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/carmel-place/7a" target="_blank" rel="noopener">335 East 27th Street #7A, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=335+East+27th+Street+%237A%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.5</div>
     </div>
     <div class="meta">$3685 · Studio</div>
@@ -2365,7 +2387,7 @@
   <div class="rank">77</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/300-ashland-place/10m" target="_blank" rel="noopener">300 Ashland Place #10M, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/300-ashland-place/10m" target="_blank" rel="noopener">300 Ashland Place #10M, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=300+Ashland+Place+%2310M%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.4</div>
     </div>
     <div class="meta">$3698 · Studio</div>
@@ -2394,7 +2416,7 @@
   <div class="rank">78</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/461-dean-street-brooklyn/31g" target="_blank" rel="noopener">461 Dean Street #31G, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/461-dean-street-brooklyn/31g" target="_blank" rel="noopener">461 Dean Street #31G, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=461+Dean+Street+%2331G%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.4</div>
     </div>
     <div class="meta">$3825 · Studio · 578 sqft</div>
@@ -2423,7 +2445,7 @@
   <div class="rank">79</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/23h" target="_blank" rel="noopener">505 State Street #23H, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/23h" target="_blank" rel="noopener">505 State Street #23H, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=505+State+Street+%2323H%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.4</div>
     </div>
     <div class="meta">$3950 · 1BR</div>
@@ -2452,7 +2474,7 @@
   <div class="rank">80</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/499-president/347" target="_blank" rel="noopener">499 President Street #347, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/499-president/347" target="_blank" rel="noopener">499 President Street #347, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=499+President+Street+%23347%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">54.3</div>
     </div>
     <div class="meta">$3960 · 1BR</div>
@@ -2481,7 +2503,7 @@
   <div class="rank">81</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/maxwell-downtown/19d" target="_blank" rel="noopener">111 Willoughby Street #19D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/maxwell-downtown/19d" target="_blank" rel="noopener">111 Willoughby Street #19D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=111+Willoughby+Street+%2319D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">53.3</div>
     </div>
     <div class="meta">$3842 · Studio · 448 sqft</div>
@@ -2510,7 +2532,7 @@
   <div class="rank">82</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/maxwell-downtown/30d" target="_blank" rel="noopener">111 Willoughby Street #30D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/maxwell-downtown/30d" target="_blank" rel="noopener">111 Willoughby Street #30D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=111+Willoughby+Street+%2330D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">53.1</div>
     </div>
     <div class="meta">$3859 · Studio · 448 sqft</div>
@@ -2539,7 +2561,7 @@
   <div class="rank">83</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/10-hanover-square-new_york/23h" target="_blank" rel="noopener">10 Hanover Square #23H, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/10-hanover-square-new_york/23h" target="_blank" rel="noopener">10 Hanover Square #23H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=10+Hanover+Square+%2323H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">52.7</div>
     </div>
     <div class="meta">$3917 · Studio · 419 sqft</div>
@@ -2568,7 +2590,7 @@
   <div class="rank">84</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/10-hanover-square-new_york/23x" target="_blank" rel="noopener">10 Hanover Square #23X, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/10-hanover-square-new_york/23x" target="_blank" rel="noopener">10 Hanover Square #23X, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=10+Hanover+Square+%2323X%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">52.6</div>
     </div>
     <div class="meta">$3926 · Studio · 431 sqft</div>
@@ -2597,7 +2619,7 @@
   <div class="rank">85</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b" target="_blank" rel="noopener">196 Willoughby Street #30B, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b" target="_blank" rel="noopener">196 Willoughby Street #30B, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=196+Willoughby+Street+%2330B%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">52.1</div>
     </div>
     <div class="meta">$3983 · Studio · 404 sqft</div>
@@ -2626,7 +2648,7 @@
   <div class="rank">86</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/15f" target="_blank" rel="noopener">505 State Street #15F, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/505-state-street-brooklyn/15f" target="_blank" rel="noopener">505 State Street #15F, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=505+State+Street+%2315F%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">52.0</div>
     </div>
     <div class="meta">$3995 · Studio</div>
@@ -2655,7 +2677,7 @@
   <div class="rank">87</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/475-clermont/0215" target="_blank" rel="noopener">475 Clermont Avenue #215, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/475-clermont/0215" target="_blank" rel="noopener">475 Clermont Avenue #215, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=475+Clermont+Avenue+%23215%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">49.3</div>
     </div>
     <div class="meta">$3959 · Studio · 445 sqft</div>
@@ -2684,7 +2706,7 @@
   <div class="rank">88</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-cypress-park/303" target="_blank" rel="noopener">2715 Fulton Street #303, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-cypress-park/303" target="_blank" rel="noopener">2715 Fulton Street #303, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=2715+Fulton+Street+%23303%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">41.8</div>
     </div>
     <div class="meta">$3150 · 2BR</div>
@@ -2713,7 +2735,7 @@
   <div class="rank">89</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-cypress-park/407" target="_blank" rel="noopener">2715 Fulton Street #407, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-cypress-park/407" target="_blank" rel="noopener">2715 Fulton Street #407, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=2715+Fulton+Street+%23407%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">41.8</div>
     </div>
     <div class="meta">$3150 · 2BR</div>
@@ -2742,7 +2764,7 @@
   <div class="rank">90</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-cypress-park/506" target="_blank" rel="noopener">2715 Fulton Street #506, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-cypress-park/506" target="_blank" rel="noopener">2715 Fulton Street #506, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=2715+Fulton+Street+%23506%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">41.0</div>
     </div>
     <div class="meta">$3250 · 2BR</div>
@@ -2771,7 +2793,7 @@
   <div class="rank">91</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010" target="_blank" rel="noopener">931 Carroll Street #C1010, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010" target="_blank" rel="noopener">931 Carroll Street #C1010, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=931+Carroll+Street+%23C1010%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">38.6</div>
     </div>
     <div class="meta">$2931 · 1BR</div>
@@ -2800,7 +2822,7 @@
   <div class="rank">92</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-arcadian/718" target="_blank" rel="noopener">975 Nostrand Avenue #718, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/718" target="_blank" rel="noopener">975 Nostrand Avenue #718, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23718%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">38.0</div>
     </div>
     <div class="meta">$2750 · Studio</div>
@@ -2829,7 +2851,7 @@
   <div class="rank">93</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309" target="_blank" rel="noopener">931 Carroll Street #C1309, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309" target="_blank" rel="noopener">931 Carroll Street #C1309, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=931+Carroll+Street+%23C1309%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">37.8</div>
     </div>
     <div class="meta">$3019 · 1BR</div>
@@ -2858,7 +2880,7 @@
   <div class="rank">94</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-arcadian/226" target="_blank" rel="noopener">975 Nostrand Avenue #226, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/226" target="_blank" rel="noopener">975 Nostrand Avenue #226, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23226%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">37.5</div>
     </div>
     <div class="meta">$2807 · Studio</div>
@@ -2887,7 +2909,7 @@
   <div class="rank">95</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-hartby/609" target="_blank" rel="noopener">788 Willoughby Avenue #609, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-hartby/609" target="_blank" rel="noopener">788 Willoughby Avenue #609, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=788+Willoughby+Avenue+%23609%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">37.3</div>
     </div>
     <div class="meta">$3084 · 1BR</div>
@@ -2916,7 +2938,7 @@
   <div class="rank">96</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/513-chauncey-street-brooklyn/5" target="_blank" rel="noopener">513 Chauncey Street #5, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/513-chauncey-street-brooklyn/5" target="_blank" rel="noopener">513 Chauncey Street #5, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=513+Chauncey+Street+%235%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">37.0</div>
     </div>
     <div class="meta">$2995 · 1BR · 500 sqft</div>
@@ -2945,7 +2967,7 @@
   <div class="rank">97</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/one-park-point/926" target="_blank" rel="noopener">11 Ocean Parkway #926, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/one-park-point/926" target="_blank" rel="noopener">11 Ocean Parkway #926, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=11+Ocean+Parkway+%23926%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">36.0</div>
     </div>
     <div class="meta">$3250 · 1BR</div>
@@ -2974,7 +2996,7 @@
   <div class="rank">98</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/one-park-point/817" target="_blank" rel="noopener">11 Ocean Parkway #817, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/one-park-point/817" target="_blank" rel="noopener">11 Ocean Parkway #817, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=11+Ocean+Parkway+%23817%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">35.9</div>
     </div>
     <div class="meta">$3258 · 1BR</div>
@@ -3003,7 +3025,7 @@
   <div class="rank">99</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/prisma-house/502" target="_blank" rel="noopener">126 Sandford Street #502, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prisma-house/502" target="_blank" rel="noopener">126 Sandford Street #502, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=126+Sandford+Street+%23502%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">35.6</div>
     </div>
     <div class="meta">$3298 · 1BR</div>
@@ -3032,7 +3054,7 @@
   <div class="rank">100</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/219" target="_blank" rel="noopener">960 Franklin Avenue #219, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/219" target="_blank" rel="noopener">960 Franklin Avenue #219, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23219%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">35.1</div>
     </div>
     <div class="meta">$3362 · 1BR</div>
@@ -3061,7 +3083,7 @@
   <div class="rank">101</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-hartby/211" target="_blank" rel="noopener">788 Willoughby Avenue #211, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-hartby/211" target="_blank" rel="noopener">788 Willoughby Avenue #211, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=788+Willoughby+Avenue+%23211%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">34.7</div>
     </div>
     <div class="meta">$3415 · 1BR</div>
@@ -3090,7 +3112,7 @@
   <div class="rank">102</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/733-lincoln/1204" target="_blank" rel="noopener">733 Lincoln Place #1204, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/733-lincoln/1204" target="_blank" rel="noopener">733 Lincoln Place #1204, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=733+Lincoln+Place+%231204%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">34.2</div>
     </div>
     <div class="meta">$3470 · 1BR</div>
@@ -3119,7 +3141,7 @@
   <div class="rank">103</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-arcadian/534" target="_blank" rel="noopener">975 Nostrand Avenue #534, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/534" target="_blank" rel="noopener">975 Nostrand Avenue #534, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23534%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">34.1</div>
     </div>
     <div class="meta">$3490 · 1BR</div>
@@ -3148,7 +3170,7 @@
   <div class="rank">104</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/271" target="_blank" rel="noopener">960 Franklin Avenue #271, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/271" target="_blank" rel="noopener">960 Franklin Avenue #271, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23271%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">34.0</div>
     </div>
     <div class="meta">$3494 · 1BR</div>
@@ -3177,7 +3199,7 @@
   <div class="rank">105</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-parkline/12h" target="_blank" rel="noopener">626 Flatbush Avenue #12H, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-parkline/12h" target="_blank" rel="noopener">626 Flatbush Avenue #12H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=626+Flatbush+Avenue+%2312H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">34.0</div>
     </div>
     <div class="meta">$3495 · 1BR</div>
@@ -3206,7 +3228,7 @@
   <div class="rank">106</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-arcadian/909" target="_blank" rel="noopener">975 Nostrand Avenue #909, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/909" target="_blank" rel="noopener">975 Nostrand Avenue #909, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23909%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">32.9</div>
     </div>
     <div class="meta">$3389 · Studio</div>
@@ -3235,7 +3257,7 @@
   <div class="rank">107</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12" target="_blank" rel="noopener">54 Crown Street #PH12, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12" target="_blank" rel="noopener">54 Crown Street #PH12, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=54+Crown+Street+%23PH12%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">32.2</div>
     </div>
     <div class="meta">$3721 · 1BR</div>
@@ -3264,7 +3286,7 @@
   <div class="rank">108</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02" target="_blank" rel="noopener">54 Crown Street #PH2, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02" target="_blank" rel="noopener">54 Crown Street #PH2, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=54+Crown+Street+%23PH2%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">31.3</div>
     </div>
     <div class="meta">$3590 · Studio</div>
@@ -3293,7 +3315,7 @@
   <div class="rank">109</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/733-lincoln/1106" target="_blank" rel="noopener">733 Lincoln Place #1106, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/733-lincoln/1106" target="_blank" rel="noopener">733 Lincoln Place #1106, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=733+Lincoln+Place+%231106%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">29.2</div>
     </div>
     <div class="meta">$3850 · Studio</div>
@@ -3322,7 +3344,7 @@
   <div class="rank">110</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-cornice/2c" target="_blank" rel="noopener">224 3rd Avenue #2C, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-cornice/2c" target="_blank" rel="noopener">224 3rd Avenue #2C, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=224+3rd+Avenue+%232C%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">28.2</div>
     </div>
     <div class="meta">$2979 · Studio</div>
@@ -3351,7 +3373,7 @@
   <div class="rank">111</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-cornice/4h" target="_blank" rel="noopener">224 3rd Avenue #4H, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-cornice/4h" target="_blank" rel="noopener">224 3rd Avenue #4H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=224+3rd+Avenue+%234H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">27.1</div>
     </div>
     <div class="meta">$3117 · Studio</div>
@@ -3380,7 +3402,7 @@
   <div class="rank">112</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/113" target="_blank" rel="noopener">960 Franklin Avenue #113, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/113" target="_blank" rel="noopener">960 Franklin Avenue #113, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23113%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">27.1</div>
     </div>
     <div class="meta">$3362 · 1BR</div>
@@ -3409,7 +3431,7 @@
   <div class="rank">113</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/269" target="_blank" rel="noopener">960 Franklin Avenue #269, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/269" target="_blank" rel="noopener">960 Franklin Avenue #269, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23269%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">26.0</div>
     </div>
     <div class="meta">$3494 · 1BR</div>
@@ -3438,7 +3460,7 @@
   <div class="rank">114</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-rocklyn/528s" target="_blank" rel="noopener">20 Rockwell Place #528S, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/528s" target="_blank" rel="noopener">20 Rockwell Place #528S, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%23528S%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">25.8</div>
     </div>
     <div class="meta">$3270 · Studio</div>
@@ -3467,7 +3489,7 @@
   <div class="rank">115</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/336-douglass-street/7f" target="_blank" rel="noopener">336 Douglass Street #7/F, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/336-douglass-street/7f" target="_blank" rel="noopener">336 Douglass Street #7/F, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=336+Douglass+Street+%237%2FF%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">25.7</div>
     </div>
     <div class="meta">$3539 · 1BR</div>
@@ -3496,7 +3518,7 @@
   <div class="rank">116</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/bklyn-air/bkair28h" target="_blank" rel="noopener">309 Gold Street BKAIR28H, Brooklyn, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/bklyn-air/bkair28h" target="_blank" rel="noopener">309 Gold Street BKAIR28H, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=309+Gold+Street+BKAIR28H%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">25.6</div>
     </div>
     <div class="meta">$3300 · Studio</div>
@@ -3525,7 +3547,7 @@
   <div class="rank">117</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-rocklyn/2525r" target="_blank" rel="noopener">20 Rockwell Place #2525R, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/2525r" target="_blank" rel="noopener">20 Rockwell Place #2525R, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%232525R%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">24.5</div>
     </div>
     <div class="meta">$3441 · Studio</div>
@@ -3554,7 +3576,7 @@
   <div class="rank">118</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/282-4-avenue/4b" target="_blank" rel="noopener">282 4th Avenue #4B, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/282-4-avenue/4b" target="_blank" rel="noopener">282 4th Avenue #4B, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=282+4th+Avenue+%234B%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">24.0</div>
     </div>
     <div class="meta">$3619 · 1BR · 500 sqft</div>
@@ -3583,7 +3605,7 @@
   <div class="rank">119</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/451" target="_blank" rel="noopener">960 Franklin Avenue #451, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/451" target="_blank" rel="noopener">960 Franklin Avenue #451, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23451%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">23.6</div>
     </div>
     <div class="meta">$3804 · 1BR</div>
@@ -3612,7 +3634,7 @@
   <div class="rank">120</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/twenty-exchange/20x-427" target="_blank" rel="noopener">20 Exchange Place 20X---427, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/twenty-exchange/20x-427" target="_blank" rel="noopener">20 Exchange Place 20X---427, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Exchange+Place+20X---427%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">23.2</div>
     </div>
     <div class="meta">$3725 · Studio · 457 sqft</div>
@@ -3641,7 +3663,7 @@
   <div class="rank">121</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/960-franklin-avenue/710" target="_blank" rel="noopener">960 Franklin Avenue #710, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/710" target="_blank" rel="noopener">960 Franklin Avenue #710, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23710%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">22.5</div>
     </div>
     <div class="meta">$3937 · 1BR</div>
@@ -3670,7 +3692,7 @@
   <div class="rank">122</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-eleanor/704" target="_blank" rel="noopener">52 4th Avenue #704, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-eleanor/704" target="_blank" rel="noopener">52 4th Avenue #704, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=52+4th+Avenue+%23704%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">22.4</div>
     </div>
     <div class="meta">$3323 · Studio · 420 sqft</div>
@@ -3699,7 +3721,7 @@
   <div class="rank">123</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/185-avenue-b-new_york/3e" target="_blank" rel="noopener">185 Avenue B #3E, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/185-avenue-b-new_york/3e" target="_blank" rel="noopener">185 Avenue B #3E, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=185+Avenue+B+%233E%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">22.4</div>
     </div>
     <div class="meta">$3700 · Studio</div>
@@ -3728,7 +3750,7 @@
   <div class="rank">124</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-rocklyn/2502d" target="_blank" rel="noopener">20 Rockwell Place #2502D, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/2502d" target="_blank" rel="noopener">20 Rockwell Place #2502D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%232502D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">22.4</div>
     </div>
     <div class="meta">$3702 · Studio</div>
@@ -3757,7 +3779,7 @@
   <div class="rank">125</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/the-rocklyn/2310f" target="_blank" rel="noopener">20 Rockwell Place #2310F, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/2310f" target="_blank" rel="noopener">20 Rockwell Place #2310F, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%232310F%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">21.4</div>
     </div>
     <div class="meta">$3822 · Studio</div>
@@ -3786,7 +3808,7 @@
   <div class="rank">126</div>
   <div class="body">
     <div class="topline">
-      <a class="title" href="https://streeteasy.com/building/twenty-exchange/20x-726" target="_blank" rel="noopener">20 Exchange Place 20X--726, New York, NY</a>
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/twenty-exchange/20x-726" target="_blank" rel="noopener">20 Exchange Place 20X--726, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Exchange+Place+20X--726%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
       <div class="score">21.1</div>
     </div>
     <div class="meta">$3488 · Studio · 444 sqft</div>
