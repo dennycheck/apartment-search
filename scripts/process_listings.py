@@ -109,10 +109,40 @@ def read_listings(path: Path) -> list[dict]:
     return read_listings_csv(path)
 
 
-def process_listings(listings: list[dict], bands: dict[int, object], default_cutoff: int) -> list[dict]:
+def process_listings(
+    listings: list[dict],
+    bands: dict[int, object],
+    default_cutoff: int,
+    cache: dict[str, dict] | None = None,
+) -> list[dict]:
     processed = []
+    cache = cache or {}
     for i, listing in enumerate(listings, start=1):
         address = listing["address"]
+        cached = cache.get(address)
+        if (
+            cached
+            and cached.get("lat") is not None
+            and cached.get("lng") is not None
+            and not cached.get("geocode_error")
+        ):
+            lat, lng = cached["lat"], cached["lng"]
+            commute_min = minutes_in_zone(Point(lng, lat), bands)
+            in_zone = commute_min is not None and commute_min <= default_cutoff
+            status = f"≤{commute_min} min" if commute_min else "out of zone"
+            print(f"  [{i}/{len(listings)}] Cache hit: {address} — {status}")
+            processed.append(
+                {
+                    **listing,
+                    "lat": lat,
+                    "lng": lng,
+                    "commute_min": commute_min,
+                    "in_zone": in_zone,
+                    "geocode_error": False,
+                }
+            )
+            continue
+
         print(f"  [{i}/{len(listings)}] Geocoding: {address}")
 
         coords = geocode_address(address, hint_url=listing.get("url", ""))
@@ -167,8 +197,19 @@ def main():
         print("No listings to process.")
         sys.exit(0)
 
-    print("Geocoding (Nominatim, ~1 req/sec)…")
-    processed = process_listings(listings, bands, default_cutoff)
+    cache: dict[str, dict] = {}
+    if LISTINGS_JSON.exists():
+        try:
+            for row in json.loads(LISTINGS_JSON.read_text(encoding="utf-8")):
+                addr = row.get("address")
+                if addr:
+                    cache[addr] = row
+            print(f"  Reusing {len(cache)} cached geocodes when possible")
+        except Exception:
+            pass
+
+    print("Geocoding (Nominatim, ~1 req/sec; cached skipped)…")
+    processed = process_listings(listings, bands, default_cutoff, cache=cache)
 
     LISTINGS_JSON.parent.mkdir(parents=True, exist_ok=True)
     LISTINGS_JSON.write_text(json.dumps(processed, indent=2))
