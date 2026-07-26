@@ -26,7 +26,7 @@ address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,ameniti
 "1211 Fulton Street #8A, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/8a,,,,new development,,,,,streeteasy_html
 "1211 Fulton Street #PH, Brooklyn, NY",$3857,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/ph,,,,new development,,,,base $4500; using net effective rent,streeteasy_html
 "126 Sandford Street #502, New York, NY",$3298,1,1,,https://streeteasy.com/building/prisma-house/502,,,,new development,,,,base $3573; using net effective rent,streeteasy_html
-"130 2nd Street #12H, New York, NY",$3496,1,1,,https://streeteasy.com/building/130-2nd-street/12h,Gowanus,,,,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $4195; using net effective rent,streeteasy_html
+"130 2nd Street #12H, New York, NY",$3496,1,1,,https://streeteasy.com/building/130-2nd-street/12h,Gowanus,,,,Sun Jul 26 · 2:30 PM–3:00 PM,2026-07-26T14:30,2026-07-26T15:00,base $4195; using net effective rent,streeteasy_html
 "150 Lawrence Street #2121, New York, NY",$3930,1,1,,https://streeteasy.com/building/lawrence-tower/2121,,,,new development,Sun Jul 26 · 10:00 AM–7:00 PM,2026-07-26T10:00,2026-07-26T19:00,,streeteasy_html
 "163 Hancock Street #1, Brooklyn, NY",$3950,1,1,750,https://streeteasy.com/building/163-hancock-street-brooklyn/1,Bedford-Stuyvesant,,,,,,,,streeteasy_html
 "185 Avenue B #3E, New York, NY",$3700,0,1,,https://streeteasy.com/building/185-avenue-b-new_york/3e,,,,,,,,,streeteasy_html
@@ -95,7 +95,7 @@ address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,ameniti
 "60 Duffield Street #11H, Brooklyn, NY",$3804,1,1,600,https://streeteasy.com/building/60-duffield-street/11h,Downtown Brooklyn,,,,,,,base $4150; using net effective rent,streeteasy_html
 "626 Flatbush Avenue #12H, New York, NY",$3495,1,1,,https://streeteasy.com/building/the-parkline/12h,Prospect Lefferts Gardens,,,,,,,,streeteasy_html
 "639 Henry Street #2, Brooklyn, NY",$3700,1,1,700,https://streeteasy.com/building/639-henry-street-brooklyn/2,Carroll Gardens,,,,,,,,streeteasy_html
-"654 Saint Marks Avenue #2A, Brooklyn, NY",$2995,1,1,650,https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a,Crown Heights,,,,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,,streeteasy_html
+"654 Saint Marks Avenue #2A, Brooklyn, NY",$2995,1,1,650,https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a,Crown Heights,,,,Sun Jul 26 · 1:15 PM–1:45 PM,2026-07-26T13:15,2026-07-26T13:45,,streeteasy_html
 "66 Rockwell Place #11E, Brooklyn, NY",$3445,0,1,516,https://streeteasy.com/building/66-rockwell-place-brooklyn/11e,Fort Greene,,,,,,,,streeteasy_html
 "66 Rockwell Place #8D, Brooklyn, NY",$3550,0,1,501,https://streeteasy.com/building/66-rockwell-place-brooklyn/8d,Fort Greene,,,,,,,,streeteasy_html
 "67 Prince Street #21050, Brooklyn, NY",$3493,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050,,,,new development,,,,base $3810; using net effective rent,streeteasy_html
@@ -106,8 +106,8 @@ address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,ameniti
 "67 Prince Street #717, Brooklyn, NY",$3346,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/717,,,,new development,,,,base $3650; using net effective rent,streeteasy_html
 "733 Lincoln Place #1106, New York, NY",$3850,0,1,,https://streeteasy.com/building/733-lincoln/1106,,,,new development,,,,base $4200; using net effective rent,streeteasy_html
 "733 Lincoln Place #1204, New York, NY",$3470,1,1,,https://streeteasy.com/building/733-lincoln/1204,,,,new development,,,,base $3785; using net effective rent,streeteasy_html
-"788 Willoughby Avenue #211, New York, NY",$3415,1,1,,https://streeteasy.com/building/the-hartby/211,,,,new development,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $3725; using net effective rent,streeteasy_html
-"788 Willoughby Avenue #609, New York, NY",$3084,1,1,,https://streeteasy.com/building/the-hartby/609,,,,new development,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $3525; using net effective rent,streeteasy_html
+"788 Willoughby Avenue #211, New York, NY",$3415,1,1,,https://streeteasy.com/building/the-hartby/211,,,,new development,Sun Jul 26 · 12:00 PM–3:00 PM,2026-07-26T12:00,2026-07-26T15:00,base $3725; using net effective rent,streeteasy_html
+"788 Willoughby Avenue #609, New York, NY",$3084,1,1,,https://streeteasy.com/building/the-hartby/609,,,,new development,Sun Jul 26 · 12:00 PM–3:00 PM,2026-07-26T12:00,2026-07-26T15:00,base $3525; using net effective rent,streeteasy_html
 "81 Willoughby Street #408, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/81-willoughby-street-brooklyn/408,Downtown Brooklyn,,,,Sat Jul 25 · 11:00 AM–7:00 PM,2026-07-25T11:00,2026-07-25T19:00,,streeteasy_html
 "89 Dekalb Avenue #23D, New York, NY",$3827,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/23d,,,,new development,,,,base $4175; using net effective rent,streeteasy_html
 "89 Dekalb Avenue #25D, New York, NY",$3850,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/25d,,,,new development,,,,base $4200; using net effective rent,streeteasy_html

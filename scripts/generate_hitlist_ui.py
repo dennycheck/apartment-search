@@ -210,6 +210,12 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     upcoming = [(dt, row) for dt, row in with_tours if dt.date() >= now.date()]
     past = [(dt, row) for dt, row in with_tours if dt.date() < now.date()]
 
+    def when_label(dt: datetime, row: dict) -> str:
+        if not row.get("open_house_end"):
+            return "time TBA"
+        hour = dt.hour % 12 or 12
+        return f"{hour}:{dt.strftime('%M')} {dt.strftime('%p')}"
+
     tour_sections: list[str] = []
     current_bucket = None
     for dt, row in upcoming:
@@ -217,9 +223,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
         if bucket != current_bucket:
             current_bucket = bucket
             tour_sections.append(f'<h2 class="day-head">{esc(bucket)}</h2>')
-        hour = dt.hour % 12 or 12
-        when = f"{hour}:{dt.strftime('%M')} {dt.strftime('%p')}"
-        tour_sections.append(render_tour_card(row, when))
+        tour_sections.append(render_tour_card(row, when_label(dt, row)))
 
     if not upcoming:
         tour_sections.append(
@@ -230,9 +234,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     if past:
         tour_sections.append('<h2 class="day-head muted">Earlier (from this ingest)</h2>')
         for dt, row in past:
-            hour = dt.hour % 12 or 12
-            when = f"{hour}:{dt.strftime('%M')} {dt.strftime('%p')}"
-            tour_sections.append(render_tour_card(row, when))
+            tour_sections.append(render_tour_card(row, when_label(dt, row)))
 
     reject_items = "".join(
         f"<li><strong>{esc(r.get('address'))}</strong> — "
