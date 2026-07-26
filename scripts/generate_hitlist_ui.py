@@ -363,7 +363,6 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   .day-head.is-hidden {{
     display: none;
   }}
-  .empty {{ color: var(--muted); }}
   .card {{
     display: grid;
     grid-template-columns: 2.5rem 1fr;
