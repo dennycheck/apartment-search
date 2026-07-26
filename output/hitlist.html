@@ -86,6 +86,40 @@
   }
   .day-head.muted { color: var(--muted); font-weight: 500; }
   .empty { color: var(--muted); }
+  .tour-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin: 0 0 1.1rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .tour-filters label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .tour-filters input {
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--accent);
+  }
+  .tour-count {
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .tour-card.is-hidden,
+  .day-head.is-hidden {
+    display: none;
+  }
+  .empty { color: var(--muted); }
   .card {
     display: grid;
     grid-template-columns: 2.5rem 1fr;
@@ -3885,8 +3919,16 @@
 
   <section class="panel" id="panel-tours" role="tabpanel">
     <p class="sub">Sorted soonest-first. Today / tomorrow grouped at the top.</p>
+    <div class="tour-filters">
+      <label>
+        <input type="checkbox" id="tour-score-filter" checked />
+        Only score ≥ 50
+      </label>
+      <span class="tour-count" id="tour-visible-count"></span>
+    </div>
+    <div id="tour-list">
     <h2 class="day-head">Today</h2>
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="35.1">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3899,7 +3941,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="34.0">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3912,7 +3954,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="27.1">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3925,7 +3967,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="26.0">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3938,7 +3980,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="23.6">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3951,7 +3993,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="22.5">
   <div class="rank tour-when">9:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3964,7 +4006,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="57.6">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3977,7 +4019,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="34.1">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -3990,7 +4032,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="61.3">
   <div class="rank tour-when">11:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4003,7 +4045,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="37.3">
   <div class="rank tour-when">12:00 PM</div>
   <div class="body">
     <div class="topline">
@@ -4016,7 +4058,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="34.7">
   <div class="rank tour-when">12:00 PM</div>
   <div class="body">
     <div class="topline">
@@ -4029,7 +4071,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="65.0">
   <div class="rank tour-when">1:15 PM</div>
   <div class="body">
     <div class="topline">
@@ -4042,7 +4084,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="58.0">
   <div class="rank tour-when">2:30 PM</div>
   <div class="body">
     <div class="topline">
@@ -4055,7 +4097,7 @@
   </div>
 </article>
 <h2 class="day-head">Sun Sep 6</h2>
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="56.2">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4068,7 +4110,7 @@
   </div>
 </article>
 <h2 class="day-head muted">Earlier (from this ingest)</h2>
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="58.1">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4081,7 +4123,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="58.0">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4094,7 +4136,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="58.0">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4107,7 +4149,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="57.8">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4120,7 +4162,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="57.6">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4133,7 +4175,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="57.4">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4146,7 +4188,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="56.6">
   <div class="rank tour-when">9:30 AM</div>
   <div class="body">
     <div class="topline">
@@ -4159,7 +4201,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="57.7">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4172,7 +4214,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="38.0">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4185,7 +4227,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="37.5">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4198,7 +4240,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="32.9">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4211,7 +4253,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="32.2">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4224,7 +4266,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="31.3">
   <div class="rank tour-when">10:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4237,7 +4279,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="59.4">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4250,7 +4292,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="59.1">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4263,7 +4305,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="58.2">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4276,7 +4318,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="56.9">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4289,7 +4331,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="56.3">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4302,7 +4344,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="56.0">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4315,7 +4357,7 @@
   </div>
 </article>
 
-<article class="card tone-mid tour-card">
+<article class="card tone-mid tour-card" data-score="55.4">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4328,7 +4370,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="36.0">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4341,7 +4383,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="25.8">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4354,7 +4396,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="24.5">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4367,7 +4409,7 @@
   </div>
 </article>
 
-<article class="card tone-weak tour-card">
+<article class="card tone-weak tour-card" data-score="21.4">
   <div class="rank tour-when">11:00 AM</div>
   <div class="body">
     <div class="topline">
@@ -4380,6 +4422,8 @@
   </div>
 </article>
 
+    <p class="empty is-hidden" id="tour-empty-filter">No upcoming tours at score ≥ 50.</p>
+    </div>
   </section>
 </main>
 <script>
@@ -4402,6 +4446,65 @@
   }
   tabs.forEach((t) => t.addEventListener('click', () => activate(t.id)));
   if (location.hash === '#tours') activate('tab-tours');
+
+  const scoreFilter = document.getElementById('tour-score-filter');
+  const countEl = document.getElementById('tour-visible-count');
+  const emptyEl = document.getElementById('tour-empty-filter');
+  const tourList = document.getElementById('tour-list');
+  const SCORE_KEY = 'hitlist-tours-score50';
+  const MIN_SCORE = 50;
+
+  function applyTourFilter() {
+    const on = !!(scoreFilter && scoreFilter.checked);
+    try { localStorage.setItem(SCORE_KEY, on ? '1' : '0'); } catch (e) {}
+    const cards = Array.from(tourList.querySelectorAll('.tour-card'));
+    let visible = 0;
+    cards.forEach((card) => {
+      const score = parseFloat(card.getAttribute('data-score') || '0');
+      const hide = on && score < MIN_SCORE;
+      card.classList.toggle('is-hidden', hide);
+      if (!hide) visible += 1;
+    });
+    // Hide day headings with no visible cards until the next heading
+    const nodes = Array.from(tourList.children);
+    let i = 0;
+    while (i < nodes.length) {
+      const node = nodes[i];
+      if (!node.classList || !node.classList.contains('day-head')) {
+        i += 1;
+        continue;
+      }
+      let j = i + 1;
+      let any = false;
+      while (j < nodes.length && !(nodes[j].classList && nodes[j].classList.contains('day-head'))) {
+        if (nodes[j].classList && nodes[j].classList.contains('tour-card') && !nodes[j].classList.contains('is-hidden')) {
+          any = true;
+        }
+        j += 1;
+      }
+      node.classList.toggle('is-hidden', !any);
+      i = j;
+    }
+    if (countEl) {
+      const total = cards.length;
+      countEl.textContent = on
+        ? `Showing ${visible} of ${total} with tours`
+        : `${total} with tours`;
+    }
+    if (emptyEl) {
+      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && cards.length > 0));
+    }
+  }
+
+  if (scoreFilter) {
+    try {
+      const saved = localStorage.getItem(SCORE_KEY);
+      if (saved === '0') scoreFilter.checked = false;
+      if (saved === '1') scoreFilter.checked = true;
+    } catch (e) {}
+    scoreFilter.addEventListener('change', applyTourFilter);
+    applyTourFilter();
+  }
 })();
 </script>
 </body>

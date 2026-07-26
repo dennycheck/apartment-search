@@ -177,7 +177,7 @@ def render_tour_card(row: dict, when: str) -> str:
     commute = row.get("commute_min")
     commute_s = f"≤{commute} min" if commute is not None else "commute ?"
     return f"""
-<article class="card tone-{tone} tour-card">
+<article class="card tone-{tone} tour-card" data-score="{score:.1f}">
   <div class="rank tour-when">{esc(when)}</div>
   <div class="body">
     <div class="topline">
@@ -330,6 +330,40 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   }}
   .day-head.muted {{ color: var(--muted); font-weight: 500; }}
   .empty {{ color: var(--muted); }}
+  .tour-filters {{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin: 0 0 1.1rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }}
+  .tour-filters label {{
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    cursor: pointer;
+    user-select: none;
+  }}
+  .tour-filters input {{
+    width: 1.05rem;
+    height: 1.05rem;
+    accent-color: var(--accent);
+  }}
+  .tour-count {{
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+  }}
+  .tour-card.is-hidden,
+  .day-head.is-hidden {{
+    display: none;
+  }}
+  .empty {{ color: var(--muted); }}
   .card {{
     display: grid;
     grid-template-columns: 2.5rem 1fr;
@@ -475,7 +509,17 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 
   <section class="panel" id="panel-tours" role="tabpanel">
     <p class="sub">Sorted soonest-first. Today / tomorrow grouped at the top.</p>
+    <div class="tour-filters">
+      <label>
+        <input type="checkbox" id="tour-score-filter" checked />
+        Only score ≥ 50
+      </label>
+      <span class="tour-count" id="tour-visible-count"></span>
+    </div>
+    <div id="tour-list">
     {"".join(tour_sections)}
+    <p class="empty is-hidden" id="tour-empty-filter">No upcoming tours at score ≥ 50.</p>
+    </div>
   </section>
 </main>
 <script>
@@ -498,6 +542,65 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   }}
   tabs.forEach((t) => t.addEventListener('click', () => activate(t.id)));
   if (location.hash === '#tours') activate('tab-tours');
+
+  const scoreFilter = document.getElementById('tour-score-filter');
+  const countEl = document.getElementById('tour-visible-count');
+  const emptyEl = document.getElementById('tour-empty-filter');
+  const tourList = document.getElementById('tour-list');
+  const SCORE_KEY = 'hitlist-tours-score50';
+  const MIN_SCORE = 50;
+
+  function applyTourFilter() {{
+    const on = !!(scoreFilter && scoreFilter.checked);
+    try {{ localStorage.setItem(SCORE_KEY, on ? '1' : '0'); }} catch (e) {{}}
+    const cards = Array.from(tourList.querySelectorAll('.tour-card'));
+    let visible = 0;
+    cards.forEach((card) => {{
+      const score = parseFloat(card.getAttribute('data-score') || '0');
+      const hide = on && score < MIN_SCORE;
+      card.classList.toggle('is-hidden', hide);
+      if (!hide) visible += 1;
+    }});
+    // Hide day headings with no visible cards until the next heading
+    const nodes = Array.from(tourList.children);
+    let i = 0;
+    while (i < nodes.length) {{
+      const node = nodes[i];
+      if (!node.classList || !node.classList.contains('day-head')) {{
+        i += 1;
+        continue;
+      }}
+      let j = i + 1;
+      let any = false;
+      while (j < nodes.length && !(nodes[j].classList && nodes[j].classList.contains('day-head'))) {{
+        if (nodes[j].classList && nodes[j].classList.contains('tour-card') && !nodes[j].classList.contains('is-hidden')) {{
+          any = true;
+        }}
+        j += 1;
+      }}
+      node.classList.toggle('is-hidden', !any);
+      i = j;
+    }}
+    if (countEl) {{
+      const total = cards.length;
+      countEl.textContent = on
+        ? `Showing ${{visible}} of ${{total}} with tours`
+        : `${{total}} with tours`;
+    }}
+    if (emptyEl) {{
+      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && cards.length > 0));
+    }}
+  }}
+
+  if (scoreFilter) {{
+    try {{
+      const saved = localStorage.getItem(SCORE_KEY);
+      if (saved === '0') scoreFilter.checked = false;
+      if (saved === '1') scoreFilter.checked = true;
+    }} catch (e) {{}}
+    scoreFilter.addEventListener('change', applyTourFilter);
+    applyTourFilter();
+  }}
 }})();
 </script>
 </body>
