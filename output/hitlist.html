@@ -14,8 +14,8 @@
     --strong: #0f6b4c;
     --mid: #9a6b12;
     --weak: #7a4a3a;
-    --reject: #8a3030;
     --tag: #ebe4d6;
+    --accent: #1c4d3a;
   }
   * { box-sizing: border-box; }
   body {
@@ -39,9 +39,38 @@
   }
   .sub {
     color: var(--muted);
-    margin: 0 0 1.75rem;
+    margin: 0 0 1.25rem;
     max-width: 40rem;
   }
+  .tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    padding: 0.65rem 0 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font: inherit;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+  .tab[aria-selected="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #f7f3ea;
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
   .stats {
     display: flex;
     gap: 1.25rem;
@@ -50,6 +79,13 @@
     font-size: 0.95rem;
   }
   .stats strong { font-variant-numeric: tabular-nums; }
+  .day-head {
+    font-size: 1.05rem;
+    margin: 1.4rem 0 0.65rem;
+    font-weight: 600;
+  }
+  .day-head.muted { color: var(--muted); font-weight: 500; }
+  .empty { color: var(--muted); }
   .card {
     display: grid;
     grid-template-columns: 2.5rem 1fr;
@@ -60,11 +96,19 @@
     padding: 1rem 1rem 0.85rem;
     margin-bottom: 0.85rem;
   }
+  .tour-card {
+    grid-template-columns: 4.25rem 1fr;
+  }
   .rank {
     font-variant-numeric: tabular-nums;
     font-weight: 600;
     color: var(--muted);
     padding-top: 0.15rem;
+  }
+  .tour-when {
+    font-size: 0.78rem;
+    line-height: 1.25;
+    color: var(--accent);
   }
   .topline {
     display: flex;
@@ -88,17 +132,9 @@
     font-size: 1.1rem;
     text-decoration: none;
     opacity: 0.7;
-    transition: opacity 0.2s, transform 0.2s;
     flex-shrink: 0;
     line-height: 1;
     padding: 0.25rem;
-  }
-  .maps-btn:hover {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  .maps-btn:active {
-    transform: scale(0.95);
   }
   .score {
     font-variant-numeric: tabular-nums;
@@ -114,6 +150,11 @@
     color: var(--muted);
     font-size: 0.95rem;
     margin: 0.2rem 0 0.55rem;
+  }
+  .tour-meta {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
   }
   .tags {
     display: flex;
@@ -170,15 +211,21 @@
 <main>
   <h1>Apartment hit list</h1>
   <p class="sub">
-    Ranked by composite score from <code>apartment_preferences.md</code>.
-    Commute uses isochrone bands only — this page is separate from the map.
+    Ranked by preferences · tours pulled from StreetEasy “Open: …” badges.
   </p>
-  <div class="stats">
-    <div><strong>126</strong> ranked</div>
-    <div><strong>0</strong> filtered (hard rules)</div>
-    <div><strong>126</strong> total ingested</div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-ranked" aria-selected="true" aria-controls="panel-ranked">Ranked</button>
+    <button class="tab" role="tab" id="tab-tours" aria-selected="false" aria-controls="panel-tours">Upcoming tours (14)</button>
   </div>
-  
+
+  <section class="panel active" id="panel-ranked" role="tabpanel">
+    <div class="stats">
+      <div><strong>126</strong> ranked</div>
+      <div><strong>14</strong> with upcoming tours</div>
+      <div><strong>0</strong> filtered</div>
+    </div>
+    
 <article class="card tone-mid">
   <div class="rank">1</div>
   <div class="body">
@@ -216,7 +263,7 @@
       <div class="score">65.0</div>
     </div>
     <div class="meta">$2995 · 1BR · 650 sqft</div>
-    <div class="tags"><span class="tag">Crown Heights</span><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Crown Heights</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -361,7 +408,7 @@
       <div class="score">61.3</div>
     </div>
     <div class="meta">$3333 · Studio · 500 sqft</div>
-    <div class="tags"><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 11:30 AM–12:30 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -448,7 +495,7 @@
       <div class="score">60.4</div>
     </div>
     <div class="meta">$3827 · 2BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -535,7 +582,7 @@
       <div class="score">59.8</div>
     </div>
     <div class="meta">$3023 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -564,7 +611,7 @@
       <div class="score">59.4</div>
     </div>
     <div class="meta">$3700 · 1BR</div>
-    <div class="tags"><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–7:00 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -622,7 +669,7 @@
       <div class="score">59.1</div>
     </div>
     <div class="meta">$3115 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -709,7 +756,7 @@
       <div class="score">58.4</div>
     </div>
     <div class="meta">$3321 · Studio · 463 sqft</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -738,7 +785,7 @@
       <div class="score">58.3</div>
     </div>
     <div class="meta">$3218 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -796,7 +843,7 @@
       <div class="score">58.2</div>
     </div>
     <div class="meta">$3225 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -825,7 +872,7 @@
       <div class="score">58.2</div>
     </div>
     <div class="meta">$3231 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -854,7 +901,7 @@
       <div class="score">58.1</div>
     </div>
     <div class="meta">$3739 · Studio · 453 sqft</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -883,7 +930,7 @@
       <div class="score">58.1</div>
     </div>
     <div class="meta">$3488 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -912,7 +959,7 @@
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3496 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -941,7 +988,7 @@
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3496 · 1BR</div>
-    <div class="tags"><span class="tag">Gowanus</span><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Gowanus</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1028,7 +1075,7 @@
       <div class="score">58.0</div>
     </div>
     <div class="meta">$3505 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1057,7 +1104,7 @@
       <div class="score">57.8</div>
     </div>
     <div class="meta">$3275 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1086,7 +1133,7 @@
       <div class="score">57.8</div>
     </div>
     <div class="meta">$3531 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1115,7 +1162,7 @@
       <div class="score">57.7</div>
     </div>
     <div class="meta">$3283 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–6:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1144,7 +1191,7 @@
       <div class="score">57.6</div>
     </div>
     <div class="meta">$3930 · 1BR</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 10:00 AM–7:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1173,7 +1220,7 @@
       <div class="score">57.6</div>
     </div>
     <div class="meta">$3552 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1231,7 +1278,7 @@
       <div class="score">57.4</div>
     </div>
     <div class="meta">$3574 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1318,7 +1365,7 @@
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3346 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1347,7 +1394,7 @@
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3346 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1376,7 +1423,7 @@
       <div class="score">57.2</div>
     </div>
     <div class="meta">$3600 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1405,7 +1452,7 @@
       <div class="score">56.9</div>
     </div>
     <div class="meta">$3634 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1434,7 +1481,7 @@
       <div class="score">56.8</div>
     </div>
     <div class="meta">$3895 · Studio · 501 sqft</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1463,7 +1510,7 @@
       <div class="score">56.7</div>
     </div>
     <div class="meta">$3790 · Studio</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1521,7 +1568,7 @@
       <div class="score">56.6</div>
     </div>
     <div class="meta">$3430 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1579,7 +1626,7 @@
       <div class="score">56.6</div>
     </div>
     <div class="meta">$3681 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1608,7 +1655,7 @@
       <div class="score">56.4</div>
     </div>
     <div class="meta">$3827 · Studio</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1637,7 +1684,7 @@
       <div class="score">56.4</div>
     </div>
     <div class="meta">$3700 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1666,7 +1713,7 @@
       <div class="score">56.3</div>
     </div>
     <div class="meta">$3710 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1695,7 +1742,7 @@
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3850 · Studio</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1724,7 +1771,7 @@
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3977 · 1BR · 561 sqft</div>
-    <div class="tags"><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Sun Sep 6 · 11:00 AM–4:30 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1753,7 +1800,7 @@
       <div class="score">56.2</div>
     </div>
     <div class="meta">$3475 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1782,7 +1829,7 @@
       <div class="score">56.1</div>
     </div>
     <div class="meta">$3493 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1869,7 +1916,7 @@
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3506 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1898,7 +1945,7 @@
       <div class="score">56.0</div>
     </div>
     <div class="meta">$3750 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -1956,7 +2003,7 @@
       <div class="score">55.9</div>
     </div>
     <div class="meta">$3510 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2014,7 +2061,7 @@
       <div class="score">55.7</div>
     </div>
     <div class="meta">$3543 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2043,7 +2090,7 @@
       <div class="score">55.7</div>
     </div>
     <div class="meta">$3793 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2072,7 +2119,7 @@
       <div class="score">55.6</div>
     </div>
     <div class="meta">$3548 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2101,7 +2148,7 @@
       <div class="score">55.4</div>
     </div>
     <div class="meta">$3950 · Studio</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2159,7 +2206,7 @@
       <div class="score">55.1</div>
     </div>
     <div class="meta">$3857 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2188,7 +2235,7 @@
       <div class="score">55.1</div>
     </div>
     <div class="meta">$3866 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2217,7 +2264,7 @@
       <div class="score">55.0</div>
     </div>
     <div class="meta">$3621 · Studio</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2246,7 +2293,7 @@
       <div class="score">55.0</div>
     </div>
     <div class="meta">$3875 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2304,7 +2351,7 @@
       <div class="score">54.7</div>
     </div>
     <div class="meta">$3915 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2333,7 +2380,7 @@
       <div class="score">54.6</div>
     </div>
     <div class="meta">$3925 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2478,7 +2525,7 @@
       <div class="score">54.3</div>
     </div>
     <div class="meta">$3960 · 1BR</div>
-    <div class="tags"><span class="tag">≤30 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2507,7 +2554,7 @@
       <div class="score">53.3</div>
     </div>
     <div class="meta">$3842 · Studio · 448 sqft</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2536,7 +2583,7 @@
       <div class="score">53.1</div>
     </div>
     <div class="meta">$3859 · Studio · 448 sqft</div>
-    <div class="tags"><span class="tag">≤20 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2826,7 +2873,7 @@
       <div class="score">38.0</div>
     </div>
     <div class="meta">$2750 · Studio</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2884,7 +2931,7 @@
       <div class="score">37.5</div>
     </div>
     <div class="meta">$2807 · Studio</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2913,7 +2960,7 @@
       <div class="score">37.3</div>
     </div>
     <div class="meta">$3084 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -2971,7 +3018,7 @@
       <div class="score">36.0</div>
     </div>
     <div class="meta">$3250 · 1BR</div>
-    <div class="tags"><span class="tag">Windsor Terrace</span><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Windsor Terrace</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3029,7 +3076,7 @@
       <div class="score">35.6</div>
     </div>
     <div class="meta">$3298 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3058,7 +3105,7 @@
       <div class="score">35.1</div>
     </div>
     <div class="meta">$3362 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3087,7 +3134,7 @@
       <div class="score">34.7</div>
     </div>
     <div class="meta">$3415 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3116,7 +3163,7 @@
       <div class="score">34.2</div>
     </div>
     <div class="meta">$3470 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3145,7 +3192,7 @@
       <div class="score">34.1</div>
     </div>
     <div class="meta">$3490 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3174,7 +3221,7 @@
       <div class="score">34.0</div>
     </div>
     <div class="meta">$3494 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3232,7 +3279,7 @@
       <div class="score">32.9</div>
     </div>
     <div class="meta">$3389 · Studio</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3261,7 +3308,7 @@
       <div class="score">32.2</div>
     </div>
     <div class="meta">$3721 · 1BR</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3290,7 +3337,7 @@
       <div class="score">31.3</div>
     </div>
     <div class="meta">$3590 · Studio</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3319,7 +3366,7 @@
       <div class="score">29.2</div>
     </div>
     <div class="meta">$3850 · Studio</div>
-    <div class="tags"><span class="tag">≤40 min</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3348,7 +3395,7 @@
       <div class="score">28.2</div>
     </div>
     <div class="meta">$2979 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3377,7 +3424,7 @@
       <div class="score">27.1</div>
     </div>
     <div class="meta">$3117 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3406,7 +3453,7 @@
       <div class="score">27.1</div>
     </div>
     <div class="meta">$3362 · 1BR</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3435,7 +3482,7 @@
       <div class="score">26.0</div>
     </div>
     <div class="meta">$3494 · 1BR</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3464,7 +3511,7 @@
       <div class="score">25.8</div>
     </div>
     <div class="meta">$3270 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3493,7 +3540,7 @@
       <div class="score">25.7</div>
     </div>
     <div class="meta">$3539 · 1BR</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3551,7 +3598,7 @@
       <div class="score">24.5</div>
     </div>
     <div class="meta">$3441 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3580,7 +3627,7 @@
       <div class="score">24.0</div>
     </div>
     <div class="meta">$3619 · 1BR · 500 sqft</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3609,7 +3656,7 @@
       <div class="score">23.6</div>
     </div>
     <div class="meta">$3804 · 1BR</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3667,7 +3714,7 @@
       <div class="score">22.5</div>
     </div>
     <div class="meta">$3937 · 1BR</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3754,7 +3801,7 @@
       <div class="score">22.4</div>
     </div>
     <div class="meta">$3702 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3783,7 +3830,7 @@
       <div class="score">21.4</div>
     </div>
     <div class="meta">$3822 · Studio</div>
-    <div class="tags"><span class="tag">Geocode failed</span></div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
     <div class="cols">
       <div>
         <div class="label">Why it ranks</div>
@@ -3833,7 +3880,529 @@
   </div>
 </article>
 
-  
+    
+  </section>
+
+  <section class="panel" id="panel-tours" role="tabpanel">
+    <p class="sub">Sorted soonest-first. Today / tomorrow grouped at the top.</p>
+    <h2 class="day-head">Today</h2>
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a" target="_blank" rel="noopener">654 Saint Marks Avenue #2A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=654+Saint+Marks+Avenue+%232A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">65.0</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–5:00 PM</div>
+    <div class="meta">$2995 · 1BR · 650 sqft · ≤30 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Crown Heights</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/130-2nd-street/12h" target="_blank" rel="noopener">130 2nd Street #12H, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=130+2nd+Street+%2312H%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">58.0</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–5:00 PM</div>
+    <div class="meta">$3496 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Gowanus</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-hartby/609" target="_blank" rel="noopener">788 Willoughby Avenue #609, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=788+Willoughby+Avenue+%23609%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">37.3</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–5:00 PM</div>
+    <div class="meta">$3084 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/219" target="_blank" rel="noopener">960 Franklin Avenue #219, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23219%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">35.1</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3362 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-hartby/211" target="_blank" rel="noopener">788 Willoughby Avenue #211, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=788+Willoughby+Avenue+%23211%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">34.7</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–5:00 PM</div>
+    <div class="meta">$3415 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/271" target="_blank" rel="noopener">960 Franklin Avenue #271, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23271%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">34.0</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3494 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/113" target="_blank" rel="noopener">960 Franklin Avenue #113, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23113%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">27.1</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3362 · 1BR · commute ?</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/269" target="_blank" rel="noopener">960 Franklin Avenue #269, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23269%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">26.0</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3494 · 1BR · commute ?</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/451" target="_blank" rel="noopener">960 Franklin Avenue #451, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23451%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">23.6</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3804 · 1BR · commute ?</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">9:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/960-franklin-avenue/710" target="_blank" rel="noopener">960 Franklin Avenue #710, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=960+Franklin+Avenue+%23710%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">22.5</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 9:00 AM–8:00 PM</div>
+    <div class="meta">$3937 · 1BR · commute ?</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 9:00 AM–8:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/lawrence-tower/2121" target="_blank" rel="noopener">150 Lawrence Street #2121, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=150+Lawrence+Street+%232121%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">57.6</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 10:00 AM–7:00 PM</div>
+    <div class="meta">$3930 · 1BR · ≤20 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 10:00 AM–7:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/534" target="_blank" rel="noopener">975 Nostrand Avenue #534, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23534%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">34.1</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 10:00 AM–5:00 PM</div>
+    <div class="meta">$3490 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/60-duffield-street/10d" target="_blank" rel="noopener">60 Duffield Street #10D, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=60+Duffield+Street+%2310D%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">61.3</div>
+    </div>
+    <div class="meta tour-meta">Sun Jul 26 · 11:30 AM–12:30 PM</div>
+    <div class="meta">$3333 · Studio · 500 sqft · ≤20 min</div>
+    <div class="tags"><span class="tag">Sun Jul 26 · 11:30 AM–12:30 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+  </div>
+</article>
+<h2 class="day-head">Sun Sep 6</h2>
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-addison-brooklyn/11d" target="_blank" rel="noopener">225 Schermerhorn Street #11D, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=225+Schermerhorn+Street+%2311D%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">56.2</div>
+    </div>
+    <div class="meta tour-meta">Sun Sep 6 · 11:00 AM–4:30 PM</div>
+    <div class="meta">$3977 · 1BR · 561 sqft · ≤20 min</div>
+    <div class="tags"><span class="tag">Sun Sep 6 · 11:00 AM–4:30 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+  </div>
+</article>
+<h2 class="day-head muted">Earlier (from this ingest)</h2>
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1706" target="_blank" rel="noopener">1057 Atlantic Avenue #1706, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231706%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">58.1</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3488 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1712" target="_blank" rel="noopener">1057 Atlantic Avenue #1712, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231712%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">58.0</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3496 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1024" target="_blank" rel="noopener">1057 Atlantic Avenue #1024, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231024%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">58.0</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3505 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/ph18" target="_blank" rel="noopener">1057 Atlantic Avenue #PH18, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%23PH18%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">57.8</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3531 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1022" target="_blank" rel="noopener">1057 Atlantic Avenue #1022, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231022%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">57.6</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3552 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1507" target="_blank" rel="noopener">1057 Atlantic Avenue #1507, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%231507%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">57.4</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3574 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">9:30 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/901" target="_blank" rel="noopener">1057 Atlantic Avenue #901, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1057+Atlantic+Avenue+%23901%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">56.6</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 9:30 AM–5:30 PM</div>
+    <div class="meta">$3681 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 9:30 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/s1022" target="_blank" rel="noopener">395 Carroll Street #S1022, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=395+Carroll+Street+%23S1022%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">57.7</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–6:00 PM</div>
+    <div class="meta">$3283 · Studio · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–6:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/718" target="_blank" rel="noopener">975 Nostrand Avenue #718, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23718%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">38.0</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–5:30 PM</div>
+    <div class="meta">$2750 · Studio · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/226" target="_blank" rel="noopener">975 Nostrand Avenue #226, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23226%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">37.5</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–5:30 PM</div>
+    <div class="meta">$2807 · Studio · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-arcadian/909" target="_blank" rel="noopener">975 Nostrand Avenue #909, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=975+Nostrand+Avenue+%23909%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">32.9</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–5:30 PM</div>
+    <div class="meta">$3389 · Studio · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:30 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12" target="_blank" rel="noopener">54 Crown Street #PH12, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=54+Crown+Street+%23PH12%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">32.2</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–5:00 PM</div>
+    <div class="meta">$3721 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">10:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02" target="_blank" rel="noopener">54 Crown Street #PH2, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=54+Crown+Street+%23PH2%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">31.3</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 10:00 AM–5:00 PM</div>
+    <div class="meta">$3590 · Studio · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 10:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/81-willoughby-street-brooklyn/408" target="_blank" rel="noopener">81 Willoughby Street #408, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=81+Willoughby+Street+%23408%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">59.4</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–7:00 PM</div>
+    <div class="meta">$3700 · 1BR · ≤20 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–7:00 PM</span><span class="tag">Downtown Brooklyn</span><span class="tag">≤20 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/11l" target="_blank" rel="noopener">1042 Atlantic Avenue #11L, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%2311L%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">59.1</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3115 · Studio · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/731" target="_blank" rel="noopener">12 Halsey Street #731, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23731%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">58.2</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3225 · Studio · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/9m" target="_blank" rel="noopener">1042 Atlantic Avenue #9M, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%239M%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">56.9</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3634 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/prosper-brooklyn/13a" target="_blank" rel="noopener">1042 Atlantic Avenue #13A, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=1042+Atlantic+Avenue+%2313A%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">56.3</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3710 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/12-halsey-street-brooklyn/ph225" target="_blank" rel="noopener">12 Halsey Street #PH225, Brooklyn, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=12+Halsey+Street+%23PH225%2C+Brooklyn%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">56.0</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3750 · 1BR · ≤30 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤30 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-mid tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/house-55/3d" target="_blank" rel="noopener">55 Willoughby Street #3D, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=55+Willoughby+Street+%233D%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">55.4</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–5:00 PM</div>
+    <div class="meta">$3950 · Studio · ≤20 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">≤20 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/one-park-point/926" target="_blank" rel="noopener">11 Ocean Parkway #926, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=11+Ocean+Parkway+%23926%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">36.0</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–4:00 PM</div>
+    <div class="meta">$3250 · 1BR · ≤40 min</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–4:00 PM</span><span class="tag">Windsor Terrace</span><span class="tag">≤40 min</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/528s" target="_blank" rel="noopener">20 Rockwell Place #528S, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%23528S%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">25.8</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–5:00 PM</div>
+    <div class="meta">$3270 · Studio · commute ?</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/2525r" target="_blank" rel="noopener">20 Rockwell Place #2525R, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%232525R%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">24.5</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–5:00 PM</div>
+    <div class="meta">$3441 · Studio · commute ?</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+<article class="card tone-weak tour-card">
+  <div class="rank tour-when">11:00 AM</div>
+  <div class="body">
+    <div class="topline">
+      <div class="title-with-maps"><a class="title" href="https://streeteasy.com/building/the-rocklyn/2310f" target="_blank" rel="noopener">20 Rockwell Place #2310F, New York, NY</a><a class="maps-btn" href="https://maps.apple.com/?address=20+Rockwell+Place+%232310F%2C+New+York%2C+NY" target="_blank" rel="noopener" title="Open in Maps">📍</a></div>
+      <div class="score">21.4</div>
+    </div>
+    <div class="meta tour-meta">Sat Jul 25 · 11:00 AM–5:00 PM</div>
+    <div class="meta">$3822 · Studio · commute ?</div>
+    <div class="tags"><span class="tag">Sat Jul 25 · 11:00 AM–5:00 PM</span><span class="tag">Amenity / new dev</span><span class="tag">Geocode failed</span></div>
+  </div>
+</article>
+
+  </section>
 </main>
+<script>
+(function () {
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = {
+    'tab-ranked': document.getElementById('panel-ranked'),
+    'tab-tours': document.getElementById('panel-tours'),
+  };
+  function activate(id) {
+    tabs.forEach((t) => {
+      const on = t.id === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    Object.entries(panels).forEach(([key, panel]) => {
+      panel.classList.toggle('active', key === id);
+    });
+    if (id === 'tab-tours') location.hash = 'tours';
+    else if (location.hash === '#tours') history.replaceState(null, '', location.pathname);
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => activate(t.id)));
+  if (location.hash === '#tours') activate('tab-tours');
+})();
+</script>
 </body>
 </html>

@@ -19,6 +19,9 @@ LISTING_COLUMNS = [
     "dishwasher",
     "in_unit_laundry",
     "amenities",
+    "open_house",
+    "open_house_start",
+    "open_house_end",
     "notes",
     "source",
 ]

@@ -1,127 +1,127 @@
-address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,amenities,notes,source
-"10 Hanover Square #23H, New York, NY",$3917,0,1,419,https://streeteasy.com/building/10-hanover-square-new_york/23h,Financial District,,,,,streeteasy_html
-"10 Hanover Square #23X, New York, NY",$3926,0,1,431,https://streeteasy.com/building/10-hanover-square-new_york/23x,Financial District,,,,,streeteasy_html
-"1042 Atlantic Avenue #11L, Brooklyn, NY",$3115,0,1,,https://streeteasy.com/building/prosper-brooklyn/11l,,,,new development,base $3560; using net effective rent,streeteasy_html
-"1042 Atlantic Avenue #13A, Brooklyn, NY",$3710,1,1,,https://streeteasy.com/building/prosper-brooklyn/13a,,,,new development,base $4240; using net effective rent,streeteasy_html
-"1042 Atlantic Avenue #9M, Brooklyn, NY",$3634,1,1,,https://streeteasy.com/building/prosper-brooklyn/9m,,,,new development,base $4255; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #1022, Brooklyn, NY",$3552,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1022,,,,new development,base $4125; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #1024, Brooklyn, NY",$3505,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1024,,,,new development,base $4070; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #1507, Brooklyn, NY",$3574,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1507,,,,new development,base $4150; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #1706, Brooklyn, NY",$3488,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1706,,,,new development,base $4050; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #1712, Brooklyn, NY",$3496,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1712,,,,new development,base $4060; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #901, Brooklyn, NY",$3681,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/901,,,,new development,base $4275; using net effective rent,streeteasy_html
-"1057 Atlantic Avenue #PH18, Brooklyn, NY",$3531,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/ph18,,,,new development,base $4100; using net effective rent,streeteasy_html
-"106 Fulton Street #9B, New York, NY",$3600,1,1,,https://streeteasy.com/building/106-fulton-street-new_york/9b,Fulton/Seaport,,,,,streeteasy_html
-"11 Ocean Parkway #817, New York, NY",$3258,1,1,,https://streeteasy.com/building/one-park-point/817,Windsor Terrace,,,,base $3850; using net effective rent,streeteasy_html
-"11 Ocean Parkway #926, New York, NY",$3250,1,1,,https://streeteasy.com/building/one-park-point/926,Windsor Terrace,,,,base $3900; using net effective rent,streeteasy_html
-"111 Willoughby Street #19D, New York, NY",$3842,0,1,448,https://streeteasy.com/building/maxwell-downtown/19d,,,,new development,base $4191; using net effective rent,streeteasy_html
-"111 Willoughby Street #22B, New York, NY",$3739,0,1,453,https://streeteasy.com/building/maxwell-downtown/22b,,,,new development,,streeteasy_html
-"111 Willoughby Street #30D, New York, NY",$3859,0,1,448,https://streeteasy.com/building/maxwell-downtown/30d,,,,new development,,streeteasy_html
-"1134 Fulton Street #5T, Brooklyn, NY",$3552,2,1,,https://streeteasy.com/building/1134-fulton-street-brooklyn/5t,Bedford-Stuyvesant,,,,base $3875; using net effective rent,streeteasy_html
-"117 Albany Avenue #2, Brooklyn, NY",$3204,2,1,,https://streeteasy.com/building/117-albany-avenue-brooklyn/2,Crown Heights,,,,base $3495; using net effective rent,streeteasy_html
-"12 Halsey Street #211, Brooklyn, NY",$3827,2,2,,https://streeteasy.com/building/12-halsey-street-brooklyn/211,,,,new development,base $4175; using net effective rent,streeteasy_html
-"12 Halsey Street #731, Brooklyn, NY",$3225,0,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/731,,,,new development,,streeteasy_html
-"12 Halsey Street #PH127, Brooklyn, NY",$3793,1,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/ph127,,,,new development,base $4425; using net effective rent,streeteasy_html
-"12 Halsey Street #PH225, Brooklyn, NY",$3750,1,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/ph225,,,,new development,base $4375; using net effective rent,streeteasy_html
-"1211 Fulton Street #8A, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/8a,,,,new development,,streeteasy_html
-"1211 Fulton Street #PH, Brooklyn, NY",$3857,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/ph,,,,new development,base $4500; using net effective rent,streeteasy_html
-"126 Sandford Street #502, New York, NY",$3298,1,1,,https://streeteasy.com/building/prisma-house/502,,,,new development,base $3573; using net effective rent,streeteasy_html
-"130 2nd Street #12H, New York, NY",$3496,1,1,,https://streeteasy.com/building/130-2nd-street/12h,Gowanus,,,,base $4195; using net effective rent,streeteasy_html
-"150 Lawrence Street #2121, New York, NY",$3930,1,1,,https://streeteasy.com/building/lawrence-tower/2121,,,,new development,,streeteasy_html
-"163 Hancock Street #1, Brooklyn, NY",$3950,1,1,750,https://streeteasy.com/building/163-hancock-street-brooklyn/1,Bedford-Stuyvesant,,,,,streeteasy_html
-"185 Avenue B #3E, New York, NY",$3700,0,1,,https://streeteasy.com/building/185-avenue-b-new_york/3e,,,,,,streeteasy_html
-"196 Willoughby Street #30B, Brooklyn, NY",$3983,0,1,404,https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b,Downtown Brooklyn,,,,,streeteasy_html
-"196 Willoughby Street #5U, Brooklyn, NY",$3381,0,1,472,https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/5u,Downtown Brooklyn,,,,,streeteasy_html
-"20 Exchange Place 20X---427, New York, NY",$3725,0,1,457,https://streeteasy.com/building/twenty-exchange/20x-427,Financial District,,,,,streeteasy_html
-"20 Exchange Place 20X--726, New York, NY",$3488,0,1,444,https://streeteasy.com/building/twenty-exchange/20x-726,Financial District,,,,base $3805; using net effective rent,streeteasy_html
-"20 Rockwell Place #2310F, New York, NY",$3822,0,1,,https://streeteasy.com/building/the-rocklyn/2310f,,,,new development,,streeteasy_html
-"20 Rockwell Place #2502D, New York, NY",$3702,0,1,,https://streeteasy.com/building/the-rocklyn/2502d,,,,new development,,streeteasy_html
-"20 Rockwell Place #2525R, New York, NY",$3441,0,1,,https://streeteasy.com/building/the-rocklyn/2525r,,,,new development,,streeteasy_html
-"20 Rockwell Place #528S, New York, NY",$3270,0,1,,https://streeteasy.com/building/the-rocklyn/528s,,,,new development,,streeteasy_html
-"21 West Street #16F, New York, NY",$3850,0,1,595,https://streeteasy.com/building/21-west-street/16f,Financial District,,,,,streeteasy_html
-"210 East 22nd Street #GLL, New York, NY",$3650,0,1,,https://streeteasy.com/building/210-east-22-street-new_york/gll,Gramercy Park,,,,,streeteasy_html
-"224 3rd Avenue #2C, New York, NY",$2979,0,1,,https://streeteasy.com/building/the-cornice/2c,,,,new development,base $3250; using net effective rent,streeteasy_html
-"224 3rd Avenue #4H, New York, NY",$3117,0,1,,https://streeteasy.com/building/the-cornice/4h,,,,new development,base $3400; using net effective rent,streeteasy_html
-"225 13th Street #D2, Brooklyn, NY",$3750,1,1,,https://streeteasy.com/building/225-13-street-brooklyn/d2,Park Slope,,,,,streeteasy_html
-"225 Schermerhorn Street #11D, Brooklyn, NY",$3977,1,1,561,https://streeteasy.com/building/the-addison-brooklyn/11d,Downtown Brooklyn,,,,,streeteasy_html
-"225 Schermerhorn Street #21E, Brooklyn, NY",$3995,1,1,577,https://streeteasy.com/building/the-addison-brooklyn/21e,Downtown Brooklyn,,,,,streeteasy_html
-"240 Willoughby Street #11R, New York, NY",$3475,0,1,,https://streeteasy.com/building/240-willoughby/11r,,,,new development,,streeteasy_html
-"25 Water Street #2205, New York, NY",$3790,0,1,,https://streeteasy.com/building/soma-25-water-street-new_york/2205,,,,new development,base $4135; using net effective rent,streeteasy_html
-"251 Douglass Street #1204, Brooklyn, NY",$3600,1,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/1204,,,,new development,base $3900; using net effective rent,streeteasy_html
-"251 Douglass Street #411, Brooklyn, NY",$3275,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/411,,,,new development,,streeteasy_html
-"251 Douglass Street #724, Brooklyn, NY",$3231,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/724,,,,new development,base $3500; using net effective rent,streeteasy_html
-"251 Douglass Street #921, Brooklyn, NY",$3023,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/921,,,,new development,base $3275; using net effective rent,streeteasy_html
-"2715 Fulton Street #303, New York, NY",$3150,2,1,,https://streeteasy.com/building/the-cypress-park/303,Cypress Hills,,,,,streeteasy_html
-"2715 Fulton Street #407, New York, NY",$3150,2,1,,https://streeteasy.com/building/the-cypress-park/407,Cypress Hills,,,,,streeteasy_html
-"2715 Fulton Street #506, New York, NY",$3250,2,2,,https://streeteasy.com/building/the-cypress-park/506,Cypress Hills,,,,,streeteasy_html
-"275 Park Avenue #5I, Brooklyn, NY",$3806,1,1,670,https://streeteasy.com/building/275-park-avenue-brooklyn/5i,Clinton Hill,,,,base $4350; using net effective rent,streeteasy_html
-"277 Gold Street #9D/277, Brooklyn, NY",$3758,1,1,,https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277,Downtown Brooklyn,,,,base $4100; using net effective rent,streeteasy_html
-"282 4th Avenue #4B, New York, NY",$3619,1,1,500,https://streeteasy.com/building/282-4-avenue/4b,,,,new development,base $4000; using net effective rent,streeteasy_html
-"300 Ashland Place #10M, New York, NY",$3698,0,1,,https://streeteasy.com/building/300-ashland-place/10m,Fort Greene,,,,,streeteasy_html
-"309 Gold Street #14GAIR, Brooklyn, NY",$3845,1,1,,https://streeteasy.com/building/bklyn-air/14gair,Downtown Brooklyn,,,,base $4195; using net effective rent,streeteasy_html
-"309 Gold Street BKAIR28H, Brooklyn, NY",$3300,0,1,,https://streeteasy.com/building/bklyn-air/bkair28h,Downtown Brooklyn,,,,base $3600; using net effective rent,streeteasy_html
-"335 East 27th Street #7A, New York, NY",$3685,0,1,,https://streeteasy.com/building/carmel-place/7a,Kips Bay,,,,base $4020; using net effective rent,streeteasy_html
-"336 Douglass Street #7/F, New York, NY",$3539,1,1,,https://streeteasy.com/building/336-douglass-street/7f,,,,new development,base $4045; using net effective rent,streeteasy_html
-"395 Carroll Street #1427, Brooklyn, NY",$3925,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427,,,,new development,,streeteasy_html
-"395 Carroll Street #423, Brooklyn, NY",$3866,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423,,,,new development,,streeteasy_html
-"395 Carroll Street #428, Brooklyn, NY",$3875,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428,,,,new development,,streeteasy_html
-"395 Carroll Street #722, Brooklyn, NY",$3506,0,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722,,,,new development,,streeteasy_html
-"395 Carroll Street #S1022, Brooklyn, NY",$3283,0,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/s1022,,,,new development,,streeteasy_html
-"40 Clinton Street #1D, New York, NY",$3795,1,1,,https://streeteasy.com/building/40-clinton-street-new_york/1d,Lower East Side,,,,,streeteasy_html
-"428 Halsey Street #1, Brooklyn, NY",$3000,0,1,,https://streeteasy.com/building/428-halsey-street-brooklyn/1,,,,,,streeteasy_html
-"461 Dean Street #31G, Brooklyn, NY",$3825,0,1,578,https://streeteasy.com/building/461-dean-street-brooklyn/31g,Prospect Heights,,,,,streeteasy_html
-"475 Clermont Avenue #215, New York, NY",$3959,0,1,445,https://streeteasy.com/building/475-clermont/0215,Fort Greene,,,,,streeteasy_html
-"499 President Street #336, New York, NY",$3915,1,1,,https://streeteasy.com/building/499-president/336,,,,new development,base $4350; using net effective rent,streeteasy_html
-"499 President Street #347, New York, NY",$3960,1,1,,https://streeteasy.com/building/499-president/347,,,,new development,base $4400; using net effective rent,streeteasy_html
-"499 President Street #514, New York, NY",$3510,0,1,,https://streeteasy.com/building/499-president/514,,,,new development,base $3900; using net effective rent,streeteasy_html
-"499 President Street #518, New York, NY",$3218,0,1,,https://streeteasy.com/building/499-president/518,,,,new development,base $3575; using net effective rent,streeteasy_html
-"500 Degraw Street #203, Brooklyn, NY",$3321,0,1,463,https://streeteasy.com/building/society-brooklyn-at-degraw/203,,,,new development,base $3795; using net effective rent,streeteasy_html
-"505 State Street #15F, Brooklyn, NY",$3995,0,1,,https://streeteasy.com/building/505-state-street-brooklyn/15f,Downtown Brooklyn,,,,,streeteasy_html
-"505 State Street #18H, Brooklyn, NY",$3575,1,1,,https://streeteasy.com/building/505-state-street-brooklyn/18h,Downtown Brooklyn,,,,base $3900; using net effective rent,streeteasy_html
-"505 State Street #23H, Brooklyn, NY",$3950,1,1,,https://streeteasy.com/building/505-state-street-brooklyn/23h,Downtown Brooklyn,,,,,streeteasy_html
-"513 Chauncey Street #5, Brooklyn, NY",$2995,1,1,500,https://streeteasy.com/building/513-chauncey-street-brooklyn/5,Ocean Hill,,,,,streeteasy_html
-"52 4th Avenue #704, New York, NY",$3323,0,1,420,https://streeteasy.com/building/the-eleanor/704,Boerum Hill,,,,base $3600; using net effective rent,streeteasy_html
-"527 Grand Avenue #411, Brooklyn, NY",$3500,1,1,,https://streeteasy.com/building/527-grand-avenue-brooklyn/411,Crown Heights,,,,,streeteasy_html
-"527 Grand Avenue #6G, Brooklyn, NY",$3500,1,1,,https://streeteasy.com/building/527-grand-avenue-brooklyn/6g,Crown Heights,,,,,streeteasy_html
-"54 Crown Street #PH12, Brooklyn, NY",$3721,1,1,,https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12,,,,new development,base $3870; using net effective rent,streeteasy_html
-"54 Crown Street #PH2, Brooklyn, NY",$3590,0,1,,https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02,,,,new development,,streeteasy_html
-"55 Fleet Street #48B, Brooklyn, NY",$3965,0,1,,https://streeteasy.com/building/brooklyn-tower-rentals/48b,Downtown Brooklyn,,,,base $4531; using net effective rent,streeteasy_html
-"55 Willoughby Street #3D, New York, NY",$3950,0,1,,https://streeteasy.com/building/house-55/3d,,,,new development,,streeteasy_html
-"567 Fulton Street #15H, New York, NY",$3895,0,1,501,https://streeteasy.com/building/the-brook/rental/5106020,,,,new development,,streeteasy_html
-"570 Fulton Street #12E, New York, NY",$3430,0,1,,https://streeteasy.com/building/fulton-greene/12e,,,,new development,,streeteasy_html
-"598 Myrtle Avenue #4A, Brooklyn, NY",$3438,2,1,,https://streeteasy.com/building/598-myrtle-avenue-brooklyn/4a,Bedford-Stuyvesant,,,,,streeteasy_html
-"60 Duffield Street #10D, Brooklyn, NY",$3333,0,1,500,https://streeteasy.com/building/60-duffield-street/10d,Downtown Brooklyn,,,,base $4000; using net effective rent,streeteasy_html
-"60 Duffield Street #10G, Brooklyn, NY",$3850,1,1,619,https://streeteasy.com/building/60-duffield-street/10g,Downtown Brooklyn,,,,base $4200; using net effective rent,streeteasy_html
-"60 Duffield Street #11H, Brooklyn, NY",$3804,1,1,600,https://streeteasy.com/building/60-duffield-street/11h,Downtown Brooklyn,,,,base $4150; using net effective rent,streeteasy_html
-"626 Flatbush Avenue #12H, New York, NY",$3495,1,1,,https://streeteasy.com/building/the-parkline/12h,Prospect Lefferts Gardens,,,,,streeteasy_html
-"639 Henry Street #2, Brooklyn, NY",$3700,1,1,700,https://streeteasy.com/building/639-henry-street-brooklyn/2,Carroll Gardens,,,,,streeteasy_html
-"654 Saint Marks Avenue #2A, Brooklyn, NY",$2995,1,1,650,https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a,Crown Heights,,,,,streeteasy_html
-"66 Rockwell Place #11E, Brooklyn, NY",$3445,0,1,516,https://streeteasy.com/building/66-rockwell-place-brooklyn/11e,Fort Greene,,,,,streeteasy_html
-"66 Rockwell Place #8D, Brooklyn, NY",$3550,0,1,501,https://streeteasy.com/building/66-rockwell-place-brooklyn/8d,Fort Greene,,,,,streeteasy_html
-"67 Prince Street #21050, Brooklyn, NY",$3493,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050,,,,new development,base $3810; using net effective rent,streeteasy_html
-"67 Prince Street #22010, Brooklyn, NY",$3543,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010,,,,new development,base $3865; using net effective rent,streeteasy_html
-"67 Prince Street #2705, Brooklyn, NY",$3548,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705,,,,new development,base $3870; using net effective rent,streeteasy_html
-"67 Prince Street #7010, Brooklyn, NY",$3621,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010,,,,new development,base $3950; using net effective rent,streeteasy_html
-"67 Prince Street #716, Brooklyn, NY",$3346,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/716,,,,new development,base $3650; using net effective rent,streeteasy_html
-"67 Prince Street #717, Brooklyn, NY",$3346,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/717,,,,new development,base $3650; using net effective rent,streeteasy_html
-"733 Lincoln Place #1106, New York, NY",$3850,0,1,,https://streeteasy.com/building/733-lincoln/1106,,,,new development,base $4200; using net effective rent,streeteasy_html
-"733 Lincoln Place #1204, New York, NY",$3470,1,1,,https://streeteasy.com/building/733-lincoln/1204,,,,new development,base $3785; using net effective rent,streeteasy_html
-"788 Willoughby Avenue #211, New York, NY",$3415,1,1,,https://streeteasy.com/building/the-hartby/211,,,,new development,base $3725; using net effective rent,streeteasy_html
-"788 Willoughby Avenue #609, New York, NY",$3084,1,1,,https://streeteasy.com/building/the-hartby/609,,,,new development,base $3525; using net effective rent,streeteasy_html
-"81 Willoughby Street #408, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/81-willoughby-street-brooklyn/408,Downtown Brooklyn,,,,,streeteasy_html
-"89 Dekalb Avenue #23D, New York, NY",$3827,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/23d,,,,new development,base $4175; using net effective rent,streeteasy_html
-"89 Dekalb Avenue #25D, New York, NY",$3850,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/25d,,,,new development,base $4200; using net effective rent,streeteasy_html
-"931 Carroll Street #C1010, Brooklyn, NY",$2931,1,1,,https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010,Crown Heights,,,,base $3350; using net effective rent,streeteasy_html
-"931 Carroll Street #C1309, Brooklyn, NY",$3019,1,1,,https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309,Crown Heights,,,,base $3450; using net effective rent,streeteasy_html
-"95 Wall Street #2303, New York, NY",$3995,0,1,454,https://streeteasy.com/building/95-wall-street-new_york/2303,Financial District,,,,,streeteasy_html
-"95 Wall Street #602, New York, NY",$3917,0,1,453,https://streeteasy.com/building/95-wall-street-new_york/602,Financial District,,,,,streeteasy_html
-"960 Franklin Avenue #113, New York, NY",$3362,1,1,,https://streeteasy.com/building/960-franklin-avenue/113,,,,new development,base $3800; using net effective rent,streeteasy_html
-"960 Franklin Avenue #219, New York, NY",$3362,1,1,,https://streeteasy.com/building/960-franklin-avenue/219,,,,new development,base $3800; using net effective rent,streeteasy_html
-"960 Franklin Avenue #269, New York, NY",$3494,1,1,,https://streeteasy.com/building/960-franklin-avenue/269,,,,new development,base $3950; using net effective rent,streeteasy_html
-"960 Franklin Avenue #271, New York, NY",$3494,1,1,,https://streeteasy.com/building/960-franklin-avenue/271,,,,new development,base $3950; using net effective rent,streeteasy_html
-"960 Franklin Avenue #451, New York, NY",$3804,1,1,,https://streeteasy.com/building/960-franklin-avenue/451,,,,new development,base $4300; using net effective rent,streeteasy_html
-"960 Franklin Avenue #710, New York, NY",$3937,1,1,,https://streeteasy.com/building/960-franklin-avenue/710,,,,new development,base $4450; using net effective rent,streeteasy_html
-"975 Nostrand Avenue #226, New York, NY",$2807,0,1,,https://streeteasy.com/building/the-arcadian/226,,,,new development,base $3275; using net effective rent,streeteasy_html
-"975 Nostrand Avenue #534, New York, NY",$3490,1,1,,https://streeteasy.com/building/the-arcadian/534,,,,new development,base $4125; using net effective rent,streeteasy_html
-"975 Nostrand Avenue #718, New York, NY",$2750,0,1,,https://streeteasy.com/building/the-arcadian/718,,,,new development,base $3300; using net effective rent,streeteasy_html
-"975 Nostrand Avenue #909, New York, NY",$3389,0,1,,https://streeteasy.com/building/the-arcadian/909,,,,new development,base $3650; using net effective rent,streeteasy_html
+address,rent,beds,baths,sqft,url,neighborhood,dishwasher,in_unit_laundry,amenities,open_house,open_house_start,open_house_end,notes,source
+"10 Hanover Square #23H, New York, NY",$3917,0,1,419,https://streeteasy.com/building/10-hanover-square-new_york/23h,Financial District,,,,,,,,streeteasy_html
+"10 Hanover Square #23X, New York, NY",$3926,0,1,431,https://streeteasy.com/building/10-hanover-square-new_york/23x,Financial District,,,,,,,,streeteasy_html
+"1042 Atlantic Avenue #11L, Brooklyn, NY",$3115,0,1,,https://streeteasy.com/building/prosper-brooklyn/11l,,,,new development,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,base $3560; using net effective rent,streeteasy_html
+"1042 Atlantic Avenue #13A, Brooklyn, NY",$3710,1,1,,https://streeteasy.com/building/prosper-brooklyn/13a,,,,new development,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,base $4240; using net effective rent,streeteasy_html
+"1042 Atlantic Avenue #9M, Brooklyn, NY",$3634,1,1,,https://streeteasy.com/building/prosper-brooklyn/9m,,,,new development,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,base $4255; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #1022, Brooklyn, NY",$3552,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1022,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4125; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #1024, Brooklyn, NY",$3505,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1024,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4070; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #1507, Brooklyn, NY",$3574,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1507,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4150; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #1706, Brooklyn, NY",$3488,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1706,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4050; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #1712, Brooklyn, NY",$3496,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1712,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4060; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #901, Brooklyn, NY",$3681,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/901,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4275; using net effective rent,streeteasy_html
+"1057 Atlantic Avenue #PH18, Brooklyn, NY",$3531,1,1,,https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/ph18,,,,new development,Sat Jul 25 · 9:30 AM–5:30 PM,2026-07-25T09:30,2026-07-25T17:30,base $4100; using net effective rent,streeteasy_html
+"106 Fulton Street #9B, New York, NY",$3600,1,1,,https://streeteasy.com/building/106-fulton-street-new_york/9b,Fulton/Seaport,,,,,,,,streeteasy_html
+"11 Ocean Parkway #817, New York, NY",$3258,1,1,,https://streeteasy.com/building/one-park-point/817,Windsor Terrace,,,,,,,base $3850; using net effective rent,streeteasy_html
+"11 Ocean Parkway #926, New York, NY",$3250,1,1,,https://streeteasy.com/building/one-park-point/926,Windsor Terrace,,,,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,base $3900; using net effective rent,streeteasy_html
+"111 Willoughby Street #19D, New York, NY",$3842,0,1,448,https://streeteasy.com/building/maxwell-downtown/19d,,,,new development,,,,base $4191; using net effective rent,streeteasy_html
+"111 Willoughby Street #22B, New York, NY",$3739,0,1,453,https://streeteasy.com/building/maxwell-downtown/22b,,,,new development,,,,,streeteasy_html
+"111 Willoughby Street #30D, New York, NY",$3859,0,1,448,https://streeteasy.com/building/maxwell-downtown/30d,,,,new development,,,,,streeteasy_html
+"1134 Fulton Street #5T, Brooklyn, NY",$3552,2,1,,https://streeteasy.com/building/1134-fulton-street-brooklyn/5t,Bedford-Stuyvesant,,,,,,,base $3875; using net effective rent,streeteasy_html
+"117 Albany Avenue #2, Brooklyn, NY",$3204,2,1,,https://streeteasy.com/building/117-albany-avenue-brooklyn/2,Crown Heights,,,,,,,base $3495; using net effective rent,streeteasy_html
+"12 Halsey Street #211, Brooklyn, NY",$3827,2,2,,https://streeteasy.com/building/12-halsey-street-brooklyn/211,,,,new development,,,,base $4175; using net effective rent,streeteasy_html
+"12 Halsey Street #731, Brooklyn, NY",$3225,0,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/731,,,,new development,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,,streeteasy_html
+"12 Halsey Street #PH127, Brooklyn, NY",$3793,1,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/ph127,,,,new development,,,,base $4425; using net effective rent,streeteasy_html
+"12 Halsey Street #PH225, Brooklyn, NY",$3750,1,1,,https://streeteasy.com/building/12-halsey-street-brooklyn/ph225,,,,new development,Sat Jul 25 · 11:00 AM–4:00 PM,2026-07-25T11:00,2026-07-25T16:00,base $4375; using net effective rent,streeteasy_html
+"1211 Fulton Street #8A, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/8a,,,,new development,,,,,streeteasy_html
+"1211 Fulton Street #PH, Brooklyn, NY",$3857,1,1,,https://streeteasy.com/building/1211-fulton-street-brooklyn/ph,,,,new development,,,,base $4500; using net effective rent,streeteasy_html
+"126 Sandford Street #502, New York, NY",$3298,1,1,,https://streeteasy.com/building/prisma-house/502,,,,new development,,,,base $3573; using net effective rent,streeteasy_html
+"130 2nd Street #12H, New York, NY",$3496,1,1,,https://streeteasy.com/building/130-2nd-street/12h,Gowanus,,,,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $4195; using net effective rent,streeteasy_html
+"150 Lawrence Street #2121, New York, NY",$3930,1,1,,https://streeteasy.com/building/lawrence-tower/2121,,,,new development,Sun Jul 26 · 10:00 AM–7:00 PM,2026-07-26T10:00,2026-07-26T19:00,,streeteasy_html
+"163 Hancock Street #1, Brooklyn, NY",$3950,1,1,750,https://streeteasy.com/building/163-hancock-street-brooklyn/1,Bedford-Stuyvesant,,,,,,,,streeteasy_html
+"185 Avenue B #3E, New York, NY",$3700,0,1,,https://streeteasy.com/building/185-avenue-b-new_york/3e,,,,,,,,,streeteasy_html
+"196 Willoughby Street #30B, Brooklyn, NY",$3983,0,1,404,https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b,Downtown Brooklyn,,,,,,,,streeteasy_html
+"196 Willoughby Street #5U, Brooklyn, NY",$3381,0,1,472,https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/5u,Downtown Brooklyn,,,,,,,,streeteasy_html
+"20 Exchange Place 20X---427, New York, NY",$3725,0,1,457,https://streeteasy.com/building/twenty-exchange/20x-427,Financial District,,,,,,,,streeteasy_html
+"20 Exchange Place 20X--726, New York, NY",$3488,0,1,444,https://streeteasy.com/building/twenty-exchange/20x-726,Financial District,,,,,,,base $3805; using net effective rent,streeteasy_html
+"20 Rockwell Place #2310F, New York, NY",$3822,0,1,,https://streeteasy.com/building/the-rocklyn/2310f,,,,new development,Sat Jul 25 · 11:00 AM–5:00 PM,2026-07-25T11:00,2026-07-25T17:00,,streeteasy_html
+"20 Rockwell Place #2502D, New York, NY",$3702,0,1,,https://streeteasy.com/building/the-rocklyn/2502d,,,,new development,,,,,streeteasy_html
+"20 Rockwell Place #2525R, New York, NY",$3441,0,1,,https://streeteasy.com/building/the-rocklyn/2525r,,,,new development,Sat Jul 25 · 11:00 AM–5:00 PM,2026-07-25T11:00,2026-07-25T17:00,,streeteasy_html
+"20 Rockwell Place #528S, New York, NY",$3270,0,1,,https://streeteasy.com/building/the-rocklyn/528s,,,,new development,Sat Jul 25 · 11:00 AM–5:00 PM,2026-07-25T11:00,2026-07-25T17:00,,streeteasy_html
+"21 West Street #16F, New York, NY",$3850,0,1,595,https://streeteasy.com/building/21-west-street/16f,Financial District,,,,,,,,streeteasy_html
+"210 East 22nd Street #GLL, New York, NY",$3650,0,1,,https://streeteasy.com/building/210-east-22-street-new_york/gll,Gramercy Park,,,,,,,,streeteasy_html
+"224 3rd Avenue #2C, New York, NY",$2979,0,1,,https://streeteasy.com/building/the-cornice/2c,,,,new development,,,,base $3250; using net effective rent,streeteasy_html
+"224 3rd Avenue #4H, New York, NY",$3117,0,1,,https://streeteasy.com/building/the-cornice/4h,,,,new development,,,,base $3400; using net effective rent,streeteasy_html
+"225 13th Street #D2, Brooklyn, NY",$3750,1,1,,https://streeteasy.com/building/225-13-street-brooklyn/d2,Park Slope,,,,,,,,streeteasy_html
+"225 Schermerhorn Street #11D, Brooklyn, NY",$3977,1,1,561,https://streeteasy.com/building/the-addison-brooklyn/11d,Downtown Brooklyn,,,,Sun Sep 6 · 11:00 AM–4:30 PM,2026-09-06T11:00,2026-09-06T16:30,,streeteasy_html
+"225 Schermerhorn Street #21E, Brooklyn, NY",$3995,1,1,577,https://streeteasy.com/building/the-addison-brooklyn/21e,Downtown Brooklyn,,,,,,,,streeteasy_html
+"240 Willoughby Street #11R, New York, NY",$3475,0,1,,https://streeteasy.com/building/240-willoughby/11r,,,,new development,,,,,streeteasy_html
+"25 Water Street #2205, New York, NY",$3790,0,1,,https://streeteasy.com/building/soma-25-water-street-new_york/2205,,,,new development,,,,base $4135; using net effective rent,streeteasy_html
+"251 Douglass Street #1204, Brooklyn, NY",$3600,1,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/1204,,,,new development,,,,base $3900; using net effective rent,streeteasy_html
+"251 Douglass Street #411, Brooklyn, NY",$3275,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/411,,,,new development,,,,,streeteasy_html
+"251 Douglass Street #724, Brooklyn, NY",$3231,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/724,,,,new development,,,,base $3500; using net effective rent,streeteasy_html
+"251 Douglass Street #921, Brooklyn, NY",$3023,0,1,,https://streeteasy.com/building/251-douglass-street-brooklyn/921,,,,new development,,,,base $3275; using net effective rent,streeteasy_html
+"2715 Fulton Street #303, New York, NY",$3150,2,1,,https://streeteasy.com/building/the-cypress-park/303,Cypress Hills,,,,,,,,streeteasy_html
+"2715 Fulton Street #407, New York, NY",$3150,2,1,,https://streeteasy.com/building/the-cypress-park/407,Cypress Hills,,,,,,,,streeteasy_html
+"2715 Fulton Street #506, New York, NY",$3250,2,2,,https://streeteasy.com/building/the-cypress-park/506,Cypress Hills,,,,,,,,streeteasy_html
+"275 Park Avenue #5I, Brooklyn, NY",$3806,1,1,670,https://streeteasy.com/building/275-park-avenue-brooklyn/5i,Clinton Hill,,,,,,,base $4350; using net effective rent,streeteasy_html
+"277 Gold Street #9D/277, Brooklyn, NY",$3758,1,1,,https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277,Downtown Brooklyn,,,,,,,base $4100; using net effective rent,streeteasy_html
+"282 4th Avenue #4B, New York, NY",$3619,1,1,500,https://streeteasy.com/building/282-4-avenue/4b,,,,new development,,,,base $4000; using net effective rent,streeteasy_html
+"300 Ashland Place #10M, New York, NY",$3698,0,1,,https://streeteasy.com/building/300-ashland-place/10m,Fort Greene,,,,,,,,streeteasy_html
+"309 Gold Street #14GAIR, Brooklyn, NY",$3845,1,1,,https://streeteasy.com/building/bklyn-air/14gair,Downtown Brooklyn,,,,,,,base $4195; using net effective rent,streeteasy_html
+"309 Gold Street BKAIR28H, Brooklyn, NY",$3300,0,1,,https://streeteasy.com/building/bklyn-air/bkair28h,Downtown Brooklyn,,,,,,,base $3600; using net effective rent,streeteasy_html
+"335 East 27th Street #7A, New York, NY",$3685,0,1,,https://streeteasy.com/building/carmel-place/7a,Kips Bay,,,,,,,base $4020; using net effective rent,streeteasy_html
+"336 Douglass Street #7/F, New York, NY",$3539,1,1,,https://streeteasy.com/building/336-douglass-street/7f,,,,new development,,,,base $4045; using net effective rent,streeteasy_html
+"395 Carroll Street #1427, Brooklyn, NY",$3925,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427,,,,new development,,,,,streeteasy_html
+"395 Carroll Street #423, Brooklyn, NY",$3866,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423,,,,new development,,,,,streeteasy_html
+"395 Carroll Street #428, Brooklyn, NY",$3875,1,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428,,,,new development,,,,,streeteasy_html
+"395 Carroll Street #722, Brooklyn, NY",$3506,0,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722,,,,new development,,,,,streeteasy_html
+"395 Carroll Street #S1022, Brooklyn, NY",$3283,0,1,,https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/s1022,,,,new development,Sat Jul 25 · 10:00 AM–6:00 PM,2026-07-25T10:00,2026-07-25T18:00,,streeteasy_html
+"40 Clinton Street #1D, New York, NY",$3795,1,1,,https://streeteasy.com/building/40-clinton-street-new_york/1d,Lower East Side,,,,,,,,streeteasy_html
+"428 Halsey Street #1, Brooklyn, NY",$3000,0,1,,https://streeteasy.com/building/428-halsey-street-brooklyn/1,,,,,,,,,streeteasy_html
+"461 Dean Street #31G, Brooklyn, NY",$3825,0,1,578,https://streeteasy.com/building/461-dean-street-brooklyn/31g,Prospect Heights,,,,,,,,streeteasy_html
+"475 Clermont Avenue #215, New York, NY",$3959,0,1,445,https://streeteasy.com/building/475-clermont/0215,Fort Greene,,,,,,,,streeteasy_html
+"499 President Street #336, New York, NY",$3915,1,1,,https://streeteasy.com/building/499-president/336,,,,new development,,,,base $4350; using net effective rent,streeteasy_html
+"499 President Street #347, New York, NY",$3960,1,1,,https://streeteasy.com/building/499-president/347,,,,new development,,,,base $4400; using net effective rent,streeteasy_html
+"499 President Street #514, New York, NY",$3510,0,1,,https://streeteasy.com/building/499-president/514,,,,new development,,,,base $3900; using net effective rent,streeteasy_html
+"499 President Street #518, New York, NY",$3218,0,1,,https://streeteasy.com/building/499-president/518,,,,new development,,,,base $3575; using net effective rent,streeteasy_html
+"500 Degraw Street #203, Brooklyn, NY",$3321,0,1,463,https://streeteasy.com/building/society-brooklyn-at-degraw/203,,,,new development,,,,base $3795; using net effective rent,streeteasy_html
+"505 State Street #15F, Brooklyn, NY",$3995,0,1,,https://streeteasy.com/building/505-state-street-brooklyn/15f,Downtown Brooklyn,,,,,,,,streeteasy_html
+"505 State Street #18H, Brooklyn, NY",$3575,1,1,,https://streeteasy.com/building/505-state-street-brooklyn/18h,Downtown Brooklyn,,,,,,,base $3900; using net effective rent,streeteasy_html
+"505 State Street #23H, Brooklyn, NY",$3950,1,1,,https://streeteasy.com/building/505-state-street-brooklyn/23h,Downtown Brooklyn,,,,,,,,streeteasy_html
+"513 Chauncey Street #5, Brooklyn, NY",$2995,1,1,500,https://streeteasy.com/building/513-chauncey-street-brooklyn/5,Ocean Hill,,,,,,,,streeteasy_html
+"52 4th Avenue #704, New York, NY",$3323,0,1,420,https://streeteasy.com/building/the-eleanor/704,Boerum Hill,,,,,,,base $3600; using net effective rent,streeteasy_html
+"527 Grand Avenue #411, Brooklyn, NY",$3500,1,1,,https://streeteasy.com/building/527-grand-avenue-brooklyn/411,Crown Heights,,,,,,,,streeteasy_html
+"527 Grand Avenue #6G, Brooklyn, NY",$3500,1,1,,https://streeteasy.com/building/527-grand-avenue-brooklyn/6g,Crown Heights,,,,,,,,streeteasy_html
+"54 Crown Street #PH12, Brooklyn, NY",$3721,1,1,,https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12,,,,new development,Sat Jul 25 · 10:00 AM–5:00 PM,2026-07-25T10:00,2026-07-25T17:00,base $3870; using net effective rent,streeteasy_html
+"54 Crown Street #PH2, Brooklyn, NY",$3590,0,1,,https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02,,,,new development,Sat Jul 25 · 10:00 AM–5:00 PM,2026-07-25T10:00,2026-07-25T17:00,,streeteasy_html
+"55 Fleet Street #48B, Brooklyn, NY",$3965,0,1,,https://streeteasy.com/building/brooklyn-tower-rentals/48b,Downtown Brooklyn,,,,,,,base $4531; using net effective rent,streeteasy_html
+"55 Willoughby Street #3D, New York, NY",$3950,0,1,,https://streeteasy.com/building/house-55/3d,,,,new development,Sat Jul 25 · 11:00 AM–5:00 PM,2026-07-25T11:00,2026-07-25T17:00,,streeteasy_html
+"567 Fulton Street #15H, New York, NY",$3895,0,1,501,https://streeteasy.com/building/the-brook/rental/5106020,,,,new development,,,,,streeteasy_html
+"570 Fulton Street #12E, New York, NY",$3430,0,1,,https://streeteasy.com/building/fulton-greene/12e,,,,new development,,,,,streeteasy_html
+"598 Myrtle Avenue #4A, Brooklyn, NY",$3438,2,1,,https://streeteasy.com/building/598-myrtle-avenue-brooklyn/4a,Bedford-Stuyvesant,,,,,,,,streeteasy_html
+"60 Duffield Street #10D, Brooklyn, NY",$3333,0,1,500,https://streeteasy.com/building/60-duffield-street/10d,Downtown Brooklyn,,,,Sun Jul 26 · 11:30 AM–12:30 PM,2026-07-26T11:30,2026-07-26T12:30,base $4000; using net effective rent,streeteasy_html
+"60 Duffield Street #10G, Brooklyn, NY",$3850,1,1,619,https://streeteasy.com/building/60-duffield-street/10g,Downtown Brooklyn,,,,,,,base $4200; using net effective rent,streeteasy_html
+"60 Duffield Street #11H, Brooklyn, NY",$3804,1,1,600,https://streeteasy.com/building/60-duffield-street/11h,Downtown Brooklyn,,,,,,,base $4150; using net effective rent,streeteasy_html
+"626 Flatbush Avenue #12H, New York, NY",$3495,1,1,,https://streeteasy.com/building/the-parkline/12h,Prospect Lefferts Gardens,,,,,,,,streeteasy_html
+"639 Henry Street #2, Brooklyn, NY",$3700,1,1,700,https://streeteasy.com/building/639-henry-street-brooklyn/2,Carroll Gardens,,,,,,,,streeteasy_html
+"654 Saint Marks Avenue #2A, Brooklyn, NY",$2995,1,1,650,https://streeteasy.com/building/654-st-marks-avenue-brooklyn/2a,Crown Heights,,,,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,,streeteasy_html
+"66 Rockwell Place #11E, Brooklyn, NY",$3445,0,1,516,https://streeteasy.com/building/66-rockwell-place-brooklyn/11e,Fort Greene,,,,,,,,streeteasy_html
+"66 Rockwell Place #8D, Brooklyn, NY",$3550,0,1,501,https://streeteasy.com/building/66-rockwell-place-brooklyn/8d,Fort Greene,,,,,,,,streeteasy_html
+"67 Prince Street #21050, Brooklyn, NY",$3493,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050,,,,new development,,,,base $3810; using net effective rent,streeteasy_html
+"67 Prince Street #22010, Brooklyn, NY",$3543,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010,,,,new development,,,,base $3865; using net effective rent,streeteasy_html
+"67 Prince Street #2705, Brooklyn, NY",$3548,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705,,,,new development,,,,base $3870; using net effective rent,streeteasy_html
+"67 Prince Street #7010, Brooklyn, NY",$3621,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010,,,,new development,,,,base $3950; using net effective rent,streeteasy_html
+"67 Prince Street #716, Brooklyn, NY",$3346,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/716,,,,new development,,,,base $3650; using net effective rent,streeteasy_html
+"67 Prince Street #717, Brooklyn, NY",$3346,0,1,,https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/717,,,,new development,,,,base $3650; using net effective rent,streeteasy_html
+"733 Lincoln Place #1106, New York, NY",$3850,0,1,,https://streeteasy.com/building/733-lincoln/1106,,,,new development,,,,base $4200; using net effective rent,streeteasy_html
+"733 Lincoln Place #1204, New York, NY",$3470,1,1,,https://streeteasy.com/building/733-lincoln/1204,,,,new development,,,,base $3785; using net effective rent,streeteasy_html
+"788 Willoughby Avenue #211, New York, NY",$3415,1,1,,https://streeteasy.com/building/the-hartby/211,,,,new development,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $3725; using net effective rent,streeteasy_html
+"788 Willoughby Avenue #609, New York, NY",$3084,1,1,,https://streeteasy.com/building/the-hartby/609,,,,new development,Sun Jul 26 · 9:00 AM–5:00 PM,2026-07-26T09:00,2026-07-26T17:00,base $3525; using net effective rent,streeteasy_html
+"81 Willoughby Street #408, Brooklyn, NY",$3700,1,1,,https://streeteasy.com/building/81-willoughby-street-brooklyn/408,Downtown Brooklyn,,,,Sat Jul 25 · 11:00 AM–7:00 PM,2026-07-25T11:00,2026-07-25T19:00,,streeteasy_html
+"89 Dekalb Avenue #23D, New York, NY",$3827,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/23d,,,,new development,,,,base $4175; using net effective rent,streeteasy_html
+"89 Dekalb Avenue #25D, New York, NY",$3850,0,1,,https://streeteasy.com/building/eighty-nine-dekalb/25d,,,,new development,,,,base $4200; using net effective rent,streeteasy_html
+"931 Carroll Street #C1010, Brooklyn, NY",$2931,1,1,,https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010,Crown Heights,,,,,,,base $3350; using net effective rent,streeteasy_html
+"931 Carroll Street #C1309, Brooklyn, NY",$3019,1,1,,https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309,Crown Heights,,,,,,,base $3450; using net effective rent,streeteasy_html
+"95 Wall Street #2303, New York, NY",$3995,0,1,454,https://streeteasy.com/building/95-wall-street-new_york/2303,Financial District,,,,,,,,streeteasy_html
+"95 Wall Street #602, New York, NY",$3917,0,1,453,https://streeteasy.com/building/95-wall-street-new_york/602,Financial District,,,,,,,,streeteasy_html
+"960 Franklin Avenue #113, New York, NY",$3362,1,1,,https://streeteasy.com/building/960-franklin-avenue/113,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $3800; using net effective rent,streeteasy_html
+"960 Franklin Avenue #219, New York, NY",$3362,1,1,,https://streeteasy.com/building/960-franklin-avenue/219,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $3800; using net effective rent,streeteasy_html
+"960 Franklin Avenue #269, New York, NY",$3494,1,1,,https://streeteasy.com/building/960-franklin-avenue/269,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $3950; using net effective rent,streeteasy_html
+"960 Franklin Avenue #271, New York, NY",$3494,1,1,,https://streeteasy.com/building/960-franklin-avenue/271,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $3950; using net effective rent,streeteasy_html
+"960 Franklin Avenue #451, New York, NY",$3804,1,1,,https://streeteasy.com/building/960-franklin-avenue/451,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $4300; using net effective rent,streeteasy_html
+"960 Franklin Avenue #710, New York, NY",$3937,1,1,,https://streeteasy.com/building/960-franklin-avenue/710,,,,new development,Sun Jul 26 · 9:00 AM–8:00 PM,2026-07-26T09:00,2026-07-26T20:00,base $4450; using net effective rent,streeteasy_html
+"975 Nostrand Avenue #226, New York, NY",$2807,0,1,,https://streeteasy.com/building/the-arcadian/226,,,,new development,Sat Jul 25 · 10:00 AM–5:30 PM,2026-07-25T10:00,2026-07-25T17:30,base $3275; using net effective rent,streeteasy_html
+"975 Nostrand Avenue #534, New York, NY",$3490,1,1,,https://streeteasy.com/building/the-arcadian/534,,,,new development,Sun Jul 26 · 10:00 AM–5:00 PM,2026-07-26T10:00,2026-07-26T17:00,base $4125; using net effective rent,streeteasy_html
+"975 Nostrand Avenue #718, New York, NY",$2750,0,1,,https://streeteasy.com/building/the-arcadian/718,,,,new development,Sat Jul 25 · 10:00 AM–5:30 PM,2026-07-25T10:00,2026-07-25T17:30,base $3300; using net effective rent,streeteasy_html
+"975 Nostrand Avenue #909, New York, NY",$3389,0,1,,https://streeteasy.com/building/the-arcadian/909,,,,new development,Sat Jul 25 · 10:00 AM–5:30 PM,2026-07-25T10:00,2026-07-25T17:30,base $3650; using net effective rent,streeteasy_html

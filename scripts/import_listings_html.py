@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from config import LISTINGS_CSV, LISTINGS_INCOMING_DIR
 from scripts.listing_utils import append_listings_csv, cell_value, listing_row
+from scripts.open_house import extract_open_house_from_card
 
 
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
@@ -243,6 +244,8 @@ def extract_streeteasy_cards(soup: BeautifulSoup) -> list[dict]:
         if "no fee" in card_text.lower():
             amenities = ", ".join(filter(None, [amenities, "no fee"]))
 
+        tour = extract_open_house_from_card(card)
+
         city = _streeteasy_borough(f"{title} {url} {neighborhood}")
         full_address = address if ", NY" in address else f"{address}, {city}"
 
@@ -264,6 +267,9 @@ def extract_streeteasy_cards(soup: BeautifulSoup) -> list[dict]:
                     "dishwasher": meta["dishwasher"],
                     "in_unit_laundry": meta["in_unit_laundry"],
                     "amenities": amenities or meta["amenities"],
+                    "open_house": tour["open_house"],
+                    "open_house_start": tour["open_house_start"],
+                    "open_house_end": tour["open_house_end"],
                     "notes": "; ".join(notes),
                     "source": "streeteasy_html",
                 }
