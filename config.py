@@ -48,6 +48,9 @@ HIT_LIST_MD = OUTPUT_DIR / "hit_list.md"
 # Soft scoring baseline: current apartment ~ darker orange (~40 min band).
 CURRENT_COMMUTE_MIN = 40
 MAX_RENT = 4000
+# Prefer west of Nostrand Ave (A/C corridor eastern boundary in central Brooklyn).
+# Approx longitude of Nostrand Ave near Atlantic / St Marks (~40.675–40.68).
+NOSTRAND_AVE_LNG = -73.9507
 MAP_HTML = OUTPUT_DIR / "index.html"
 OVERLAY_HTML = OUTPUT_DIR / "overlay.html"
 OVERLAY_DEFAULT_OPACITY = 0.5

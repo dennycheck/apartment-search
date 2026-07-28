@@ -20,6 +20,7 @@ from config import (
     LISTINGS_JSON,
     LISTINGS_SCORED_JSON,
     MAX_RENT,
+    NOSTRAND_AVE_LNG,
     PREFERENCES_MD,
 )
 from scripts.listing_utils import (
@@ -142,6 +143,22 @@ def building_amenity_points(listing: dict) -> tuple[float, list[str]]:
     return pts, hits
 
 
+def geography_adjustment(lng: float | None) -> tuple[float, str | None]:
+    """Soft preference: west of Nostrand Ave. Returns (delta, note).
+
+    East of Nostrand along the A/C spur is a meaningful demotion (not a hard reject).
+    At NYC latitudes, ~0.01° longitude ≈ 0.5 miles.
+    """
+    if lng is None:
+        return 0.0, None
+    if lng <= NOSTRAND_AVE_LNG:
+        return 0.0, "west of Nostrand Ave (preferred belt)"
+    miles_east = (lng - NOSTRAND_AVE_LNG) * 52.0
+    # Albany Ave (~0.6 mi east) → ~17 pt hit; farther east escalates to ~22.
+    penalty = min(22.0, 10.0 + miles_east * 12.0)
+    return -round(penalty, 1), f"east of Nostrand Ave (~{miles_east:.1f} mi) — prefer west"
+
+
 def score_listing(listing: dict) -> dict:
     rent = parse_rent(listing.get("rent"))
     beds = parse_int(listing.get("beds"))
@@ -149,6 +166,12 @@ def score_listing(listing: dict) -> dict:
     commute = listing.get("commute_min")
     if isinstance(commute, str) and commute.isdigit():
         commute = int(commute)
+    lng = listing.get("lng")
+    if isinstance(lng, str):
+        try:
+            lng = float(lng)
+        except ValueError:
+            lng = None
 
     hard_reject = False
     reject_reasons: list[str] = []
@@ -161,8 +184,9 @@ def score_listing(listing: dict) -> dict:
     r_pts, r_note = rent_points(rent)
     u_pts, u_likes = unit_amenity_points(listing)
     b_pts, b_likes = building_amenity_points(listing)
+    g_delta, g_note = geography_adjustment(lng if isinstance(lng, float) else None)
 
-    total = round(c_pts + s_pts + r_pts + u_pts + b_pts, 1)
+    total = round(c_pts + s_pts + r_pts + u_pts + b_pts + g_delta, 1)
     if hard_reject:
         total = 0.0
 
@@ -187,6 +211,10 @@ def score_listing(listing: dict) -> dict:
     likes.extend(u_likes)
     if b_likes:
         likes.append("building: " + ", ".join(b_likes))
+    if g_delta < 0 and g_note:
+        concerns.append(g_note)
+    elif g_note and g_delta == 0 and lng is not None and lng <= NOSTRAND_AVE_LNG:
+        likes.append(g_note)
     concerns.extend(reject_reasons)
 
     return {
@@ -198,6 +226,7 @@ def score_listing(listing: dict) -> dict:
             "rent": round(r_pts, 1),
             "unit_amenities": round(u_pts, 1),
             "building_extras": round(b_pts, 1),
+            "geography": round(g_delta, 1),
         },
         "hard_reject": hard_reject,
         "likes": likes,
@@ -258,7 +287,8 @@ def render_hit_list(scored: list[dict], prefs_path: Path) -> str:
             lines.append(
                 f"_Breakdown:_ commute {bd.get('commute', 0)} / "
                 f"size {bd.get('size', 0)} / rent {bd.get('rent', 0)} / "
-                f"unit {bd.get('unit_amenities', 0)} / building {bd.get('building_extras', 0)}"
+                f"unit {bd.get('unit_amenities', 0)} / building {bd.get('building_extras', 0)} / "
+                f"geo {bd.get('geography', 0)}"
             )
             lines.append("")
             if row.get("likes"):

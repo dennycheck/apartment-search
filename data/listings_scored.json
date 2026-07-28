@@ -1,45 +1,5 @@
 [
   {
-    "address": "117 Albany Avenue #2, Brooklyn, NY",
-    "rent": "$3204",
-    "beds": "2",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/117-albany-avenue-brooklyn/2",
-    "neighborhood": "Crown Heights",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "base $3495; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.6766474,
-    "lng": -73.9385076,
-    "commute_min": 30,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 65.4,
-    "score_breakdown": {
-      "commute": 40.0,
-      "size": 16.0,
-      "rent": 9.4,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "2BR (sqft unknown \u2014 bed label only)",
-      "$3204/mo"
-    ],
-    "concerns": [],
-    "rent_num": 3204,
-    "beds_num": 2,
-    "sqft_num": null
-  },
-  {
     "address": "654 Saint Marks Avenue #2A, Brooklyn, NY",
     "rent": "$2995",
     "beds": "1",
@@ -66,13 +26,15 @@
       "size": 14.0,
       "rent": 11.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "decent size (~650 sqft)",
-      "$2995/mo"
+      "$2995/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 2995,
@@ -106,13 +68,15 @@
       "size": 16.0,
       "rent": 7.5,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "2BR (sqft unknown \u2014 bed label only)",
-      "$3438/mo"
+      "$3438/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3438,
@@ -146,13 +110,15 @@
       "size": 16.0,
       "rent": 6.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "2BR (sqft unknown \u2014 bed label only)",
-      "$3552/mo"
+      "$3552/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3552,
@@ -186,12 +152,14 @@
       "size": 11.0,
       "rent": 6.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226410)",
-      "$3600/mo"
+      "$3600/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -227,13 +195,15 @@
       "size": 14.0,
       "rent": 4.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
       "decent size (~600 sqft)",
-      "$3804/mo"
+      "$3804/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3804,
@@ -267,12 +237,14 @@
       "size": 10.0,
       "rent": 8.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3333/mo"
+      "$3333/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~500 sqft)"
@@ -308,13 +280,15 @@
       "size": 14.0,
       "rent": 4.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
       "decent size (~619 sqft)",
-      "$3850/mo"
+      "$3850/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3850,
@@ -348,12 +322,14 @@
       "size": 10.0,
       "rent": 8.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3381/mo"
+      "$3381/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~472 sqft)"
@@ -389,98 +365,19 @@
       "size": 16.0,
       "rent": 4.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "2BR (sqft unknown \u2014 bed label only)",
-      "$3827/mo"
+      "$3827/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3827,
     "beds_num": 2,
-    "sqft_num": null
-  },
-  {
-    "address": "163 Hancock Street #1, Brooklyn, NY",
-    "rent": "$3950",
-    "beds": "1",
-    "baths": "1",
-    "sqft": "750",
-    "url": "https://streeteasy.com/building/163-hancock-street-brooklyn/1",
-    "neighborhood": "Bedford-Stuyvesant",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "",
-    "source": "streeteasy_html",
-    "lat": 40.6828018,
-    "lng": -73.9493911,
-    "commute_min": 30,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 60.4,
-    "score_breakdown": {
-      "commute": 40.0,
-      "size": 17.0,
-      "rent": 3.4,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "solid size (~750 sqft)",
-      "$3950/mo"
-    ],
-    "concerns": [],
-    "rent_num": 3950,
-    "beds_num": 1,
-    "sqft_num": 750
-  },
-  {
-    "address": "428 Halsey Street #1, Brooklyn, NY",
-    "rent": "$3000",
-    "beds": "0",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/428-halsey-street-brooklyn/1",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "",
-    "source": "streeteasy_html",
-    "lat": 40.6831459,
-    "lng": -73.9368346,
-    "commute_min": 30,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 60.0,
-    "score_breakdown": {
-      "commute": 40.0,
-      "size": 9.0,
-      "rent": 11.0,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3000/mo"
-    ],
-    "concerns": [
-      "studio (sqft unknown)"
-    ],
-    "rent_num": 3000,
-    "beds_num": 0,
     "sqft_num": null
   },
   {
@@ -510,12 +407,14 @@
       "size": 9.0,
       "rent": 10.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3023/mo"
+      "$3023/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -551,12 +450,14 @@
       "size": 11.0,
       "rent": 5.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3700/mo"
+      "$3700/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -592,13 +493,15 @@
       "size": 14.0,
       "rent": 5.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "decent size (~700 sqft)",
-      "$3700/mo"
+      "$3700/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3700,
@@ -632,12 +535,14 @@
       "size": 9.0,
       "rent": 10.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3115/mo"
+      "$3115/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -673,12 +578,14 @@
       "size": 11.0,
       "rent": 4.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3795/mo"
+      "$3795/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -714,13 +621,15 @@
       "size": 14.0,
       "rent": 4.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "decent size (~670 sqft)",
-      "$3806/mo"
+      "$3806/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [],
     "rent_num": 3806,
@@ -754,12 +663,14 @@
       "size": 10.0,
       "rent": 8.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3321/mo"
+      "$3321/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~463 sqft)"
@@ -795,12 +706,14 @@
       "size": 9.0,
       "rent": 9.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3218/mo"
+      "$3218/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -836,12 +749,14 @@
       "size": 11.0,
       "rent": 4.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3845/mo"
+      "$3845/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -877,12 +792,14 @@
       "size": 9.0,
       "rent": 9.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3225/mo"
+      "$3225/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -918,12 +835,14 @@
       "size": 9.0,
       "rent": 9.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3231/mo"
+      "$3231/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -959,12 +878,14 @@
       "size": 10.0,
       "rent": 5.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3739/mo"
+      "$3739/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~453 sqft)"
@@ -1000,12 +921,14 @@
       "size": 11.0,
       "rent": 7.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3488/mo"
+      "$3488/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1041,12 +964,14 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3496/mo"
+      "$3496/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1082,12 +1007,14 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3496/mo"
+      "$3496/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1123,12 +1050,14 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3500/mo"
+      "$3500/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1164,12 +1093,14 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3500/mo"
+      "$3500/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1205,12 +1136,14 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3505/mo"
+      "$3505/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1246,12 +1179,14 @@
       "size": 9.0,
       "rent": 8.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3275/mo"
+      "$3275/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1287,12 +1222,14 @@
       "size": 11.0,
       "rent": 6.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3531/mo"
+      "$3531/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1328,12 +1265,14 @@
       "size": 9.0,
       "rent": 8.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3283/mo"
+      "$3283/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1369,12 +1308,14 @@
       "size": 11.0,
       "rent": 3.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3930/mo"
+      "$3930/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1410,12 +1351,14 @@
       "size": 11.0,
       "rent": 6.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3552/mo"
+      "$3552/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1451,12 +1394,14 @@
       "size": 10.0,
       "rent": 7.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3445/mo"
+      "$3445/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~516 sqft)"
@@ -1492,12 +1437,14 @@
       "size": 11.0,
       "rent": 6.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3574/mo"
+      "$3574/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1533,12 +1480,14 @@
       "size": 11.0,
       "rent": 6.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3575/mo"
+      "$3575/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1574,12 +1523,14 @@
       "size": 10.0,
       "rent": 4.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3850/mo"
+      "$3850/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~595 sqft)"
@@ -1615,12 +1566,14 @@
       "size": 9.0,
       "rent": 8.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3346/mo"
+      "$3346/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1656,12 +1609,14 @@
       "size": 9.0,
       "rent": 8.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3346/mo"
+      "$3346/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1697,12 +1652,14 @@
       "size": 11.0,
       "rent": 6.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3600/mo"
+      "$3600/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1738,12 +1695,14 @@
       "size": 11.0,
       "rent": 5.9,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3634/mo"
+      "$3634/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -1779,12 +1738,14 @@
       "size": 10.0,
       "rent": 3.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3895/mo"
+      "$3895/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~501 sqft)"
@@ -1820,12 +1781,14 @@
       "size": 9.0,
       "rent": 4.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3790/mo"
+      "$3790/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1861,12 +1824,14 @@
       "size": 10.0,
       "rent": 3.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3917/mo"
+      "$3917/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~453 sqft)"
@@ -1902,12 +1867,14 @@
       "size": 9.0,
       "rent": 7.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3430/mo"
+      "$3430/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -1943,12 +1910,14 @@
       "size": 10.0,
       "rent": 6.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3550/mo"
+      "$3550/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~501 sqft)"
@@ -1984,12 +1953,14 @@
       "size": 11.0,
       "rent": 5.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3681/mo"
+      "$3681/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2025,12 +1996,14 @@
       "size": 9.0,
       "rent": 4.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3827/mo"
+      "$3827/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2066,12 +2039,14 @@
       "size": 11.0,
       "rent": 5.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3700/mo"
+      "$3700/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2107,12 +2082,14 @@
       "size": 11.0,
       "rent": 5.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3710/mo"
+      "$3710/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2148,12 +2125,14 @@
       "size": 9.0,
       "rent": 4.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3850/mo"
+      "$3850/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2189,12 +2168,14 @@
       "size": 10.0,
       "rent": 3.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3977/mo"
+      "$3977/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~561 sqft)"
@@ -2230,12 +2211,14 @@
       "size": 9.0,
       "rent": 7.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3475/mo"
+      "$3475/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2271,12 +2254,14 @@
       "size": 9.0,
       "rent": 7.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3493/mo"
+      "$3493/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2312,12 +2297,14 @@
       "size": 10.0,
       "rent": 3.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3995/mo"
+      "$3995/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~577 sqft)"
@@ -2353,12 +2340,14 @@
       "size": 10.0,
       "rent": 3.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3995/mo"
+      "$3995/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~454 sqft)"
@@ -2394,12 +2383,14 @@
       "size": 9.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3506/mo"
+      "$3506/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2435,12 +2426,14 @@
       "size": 11.0,
       "rent": 5.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3750/mo"
+      "$3750/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2476,12 +2469,14 @@
       "size": 11.0,
       "rent": 5.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3750/mo"
+      "$3750/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2517,12 +2512,14 @@
       "size": 9.0,
       "rent": 6.9,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3510/mo"
+      "$3510/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2558,12 +2555,14 @@
       "size": 11.0,
       "rent": 4.9,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3758/mo"
+      "$3758/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2599,12 +2598,14 @@
       "size": 9.0,
       "rent": 6.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3543/mo"
+      "$3543/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2640,12 +2641,14 @@
       "size": 11.0,
       "rent": 4.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3793/mo"
+      "$3793/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2681,12 +2684,14 @@
       "size": 9.0,
       "rent": 6.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3548/mo"
+      "$3548/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2722,12 +2727,14 @@
       "size": 9.0,
       "rent": 3.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3950/mo"
+      "$3950/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2763,12 +2770,14 @@
       "size": 9.0,
       "rent": 3.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3965/mo"
+      "$3965/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2804,12 +2813,14 @@
       "size": 11.0,
       "rent": 4.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3857/mo"
+      "$3857/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2845,12 +2856,14 @@
       "size": 11.0,
       "rent": 4.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3866/mo"
+      "$3866/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2886,12 +2899,14 @@
       "size": 9.0,
       "rent": 6.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3621/mo"
+      "$3621/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -2927,12 +2942,14 @@
       "size": 11.0,
       "rent": 4.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3875/mo"
+      "$3875/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -2968,12 +2985,14 @@
       "size": 9.0,
       "rent": 5.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3650/mo"
+      "$3650/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -3009,12 +3028,14 @@
       "size": 11.0,
       "rent": 3.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3915/mo"
+      "$3915/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -3050,12 +3071,14 @@
       "size": 11.0,
       "rent": 3.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3925/mo"
+      "$3925/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -3091,12 +3114,14 @@
       "size": 9.0,
       "rent": 5.5,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3685/mo"
+      "$3685/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -3132,12 +3157,14 @@
       "size": 9.0,
       "rent": 5.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3698/mo"
+      "$3698/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -3173,12 +3200,14 @@
       "size": 10.0,
       "rent": 4.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3825/mo"
+      "$3825/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "compact (~578 sqft)"
@@ -3214,12 +3243,14 @@
       "size": 11.0,
       "rent": 3.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3950/mo"
+      "$3950/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -3255,12 +3286,14 @@
       "size": 11.0,
       "rent": 3.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3960/mo"
+      "$3960/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "1BR (sqft unknown)"
@@ -3296,12 +3329,14 @@
       "size": 6.0,
       "rent": 4.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3842/mo"
+      "$3842/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~448 sqft)"
@@ -3337,12 +3372,14 @@
       "size": 6.0,
       "rent": 4.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3859/mo"
+      "$3859/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~448 sqft)"
@@ -3378,12 +3415,14 @@
       "size": 6.0,
       "rent": 3.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3917/mo"
+      "$3917/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~419 sqft)"
@@ -3419,12 +3458,14 @@
       "size": 6.0,
       "rent": 3.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3926/mo"
+      "$3926/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~431 sqft)"
@@ -3460,12 +3501,14 @@
       "size": 6.0,
       "rent": 3.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "excellent commute (\u226420)",
-      "$3983/mo"
+      "$3983/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~404 sqft)"
@@ -3501,12 +3544,14 @@
       "size": 9.0,
       "rent": 3.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3995/mo"
+      "$3995/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "studio (sqft unknown)"
@@ -3514,6 +3559,49 @@
     "rent_num": 3995,
     "beds_num": 0,
     "sqft_num": null
+  },
+  {
+    "address": "163 Hancock Street #1, Brooklyn, NY",
+    "rent": "$3950",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "750",
+    "url": "https://streeteasy.com/building/163-hancock-street-brooklyn/1",
+    "neighborhood": "Bedford-Stuyvesant",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6828018,
+    "lng": -73.9493911,
+    "commute_min": 30,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 49.6,
+    "score_breakdown": {
+      "commute": 40.0,
+      "size": 17.0,
+      "rent": 3.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -10.8
+    },
+    "hard_reject": false,
+    "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "solid size (~750 sqft)",
+      "$3950/mo"
+    ],
+    "concerns": [
+      "east of Nostrand Ave (~0.1 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3950,
+    "beds_num": 1,
+    "sqft_num": 750
   },
   {
     "address": "475 Clermont Avenue #215, New York, NY",
@@ -3542,12 +3630,14 @@
       "size": 6.0,
       "rent": 3.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
       "ideal band (\u226430) \u2014 worthwhile vs current ~40",
-      "$3959/mo"
+      "$3959/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "small (~445 sqft)"
@@ -3557,54 +3647,56 @@
     "sqft_num": 445
   },
   {
-    "address": "2715 Fulton Street #303, New York, NY",
-    "rent": "$3150",
+    "address": "117 Albany Avenue #2, Brooklyn, NY",
+    "rent": "$3204",
     "beds": "2",
     "baths": "1",
     "sqft": "",
-    "url": "https://streeteasy.com/building/the-cypress-park/303",
-    "neighborhood": "Cypress Hills",
+    "url": "https://streeteasy.com/building/117-albany-avenue-brooklyn/2",
+    "neighborhood": "Crown Heights",
     "dishwasher": "",
     "in_unit_laundry": "",
     "amenities": "",
     "open_house": "",
     "open_house_start": "",
     "open_house_end": "",
-    "notes": "",
+    "notes": "base $3495; using net effective rent",
     "source": "streeteasy_html",
-    "lat": 40.6777406,
-    "lng": -73.8945681,
-    "commute_min": 40,
+    "lat": 40.6766474,
+    "lng": -73.9385076,
+    "commute_min": 30,
     "in_zone": true,
     "geocode_error": false,
-    "score": 41.8,
+    "score": 47.8,
     "score_breakdown": {
-      "commute": 16.0,
+      "commute": 40.0,
       "size": 16.0,
-      "rent": 9.8,
+      "rent": 9.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": -17.6
     },
     "hard_reject": false,
     "likes": [
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
       "2BR (sqft unknown \u2014 bed label only)",
-      "$3150/mo"
+      "$3204/mo"
     ],
     "concerns": [
-      "similar to current (~40) \u2014 weak reason to move"
+      "east of Nostrand Ave (~0.6 mi) \u2014 prefer west"
     ],
-    "rent_num": 3150,
+    "rent_num": 3204,
     "beds_num": 2,
     "sqft_num": null
   },
   {
-    "address": "2715 Fulton Street #407, New York, NY",
-    "rent": "$3150",
-    "beds": "2",
+    "address": "428 Halsey Street #1, Brooklyn, NY",
+    "rent": "$3000",
+    "beds": "0",
     "baths": "1",
     "sqft": "",
-    "url": "https://streeteasy.com/building/the-cypress-park/407",
-    "neighborhood": "Cypress Hills",
+    "url": "https://streeteasy.com/building/428-halsey-street-brooklyn/1",
+    "neighborhood": "",
     "dishwasher": "",
     "in_unit_laundry": "",
     "amenities": "",
@@ -3613,70 +3705,31 @@
     "open_house_end": "",
     "notes": "",
     "source": "streeteasy_html",
-    "lat": 40.6777406,
-    "lng": -73.8945681,
-    "commute_min": 40,
+    "lat": 40.6831459,
+    "lng": -73.9368346,
+    "commute_min": 30,
     "in_zone": true,
     "geocode_error": false,
-    "score": 41.8,
+    "score": 41.3,
     "score_breakdown": {
-      "commute": 16.0,
-      "size": 16.0,
-      "rent": 9.8,
+      "commute": 40.0,
+      "size": 9.0,
+      "rent": 11.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": -18.7
     },
     "hard_reject": false,
     "likes": [
-      "2BR (sqft unknown \u2014 bed label only)",
-      "$3150/mo"
+      "ideal band (\u226430) \u2014 worthwhile vs current ~40",
+      "$3000/mo"
     ],
     "concerns": [
-      "similar to current (~40) \u2014 weak reason to move"
+      "studio (sqft unknown)",
+      "east of Nostrand Ave (~0.7 mi) \u2014 prefer west"
     ],
-    "rent_num": 3150,
-    "beds_num": 2,
-    "sqft_num": null
-  },
-  {
-    "address": "2715 Fulton Street #506, New York, NY",
-    "rent": "$3250",
-    "beds": "2",
-    "baths": "2",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-cypress-park/506",
-    "neighborhood": "Cypress Hills",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "",
-    "source": "streeteasy_html",
-    "lat": 40.6777406,
-    "lng": -73.8945681,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 41.0,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 16.0,
-      "rent": 9.0,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "2BR (sqft unknown \u2014 bed label only)",
-      "$3250/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move"
-    ],
-    "rent_num": 3250,
-    "beds_num": 2,
+    "rent_num": 3000,
+    "beds_num": 0,
     "sqft_num": null
   },
   {
@@ -3706,11 +3759,13 @@
       "size": 11.0,
       "rent": 11.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$2931/mo"
+      "$2931/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -3718,47 +3773,6 @@
     ],
     "rent_num": 2931,
     "beds_num": 1,
-    "sqft_num": null
-  },
-  {
-    "address": "975 Nostrand Avenue #718, New York, NY",
-    "rent": "$2750",
-    "beds": "0",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-arcadian/718",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
-    "open_house_start": "2026-07-25T10:00",
-    "open_house_end": "2026-07-25T17:30",
-    "notes": "base $3300; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.664622,
-    "lng": -73.9503644,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 38.0,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 9.0,
-      "rent": 13.0,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$2750/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "studio (sqft unknown)"
-    ],
-    "rent_num": 2750,
-    "beds_num": 0,
     "sqft_num": null
   },
   {
@@ -3788,11 +3802,13 @@
       "size": 11.0,
       "rent": 10.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3019/mo"
+      "$3019/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -3801,129 +3817,6 @@
     "rent_num": 3019,
     "beds_num": 1,
     "sqft_num": null
-  },
-  {
-    "address": "975 Nostrand Avenue #226, New York, NY",
-    "rent": "$2807",
-    "beds": "0",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-arcadian/226",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
-    "open_house_start": "2026-07-25T10:00",
-    "open_house_end": "2026-07-25T17:30",
-    "notes": "base $3275; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.664622,
-    "lng": -73.9503644,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 37.5,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 9.0,
-      "rent": 12.5,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$2807/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "studio (sqft unknown)"
-    ],
-    "rent_num": 2807,
-    "beds_num": 0,
-    "sqft_num": null
-  },
-  {
-    "address": "788 Willoughby Avenue #609, New York, NY",
-    "rent": "$3084",
-    "beds": "1",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-hartby/609",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sun Jul 26 \u00b7 12:00 PM\u20133:00 PM",
-    "open_house_start": "2026-07-26T12:00",
-    "open_house_end": "2026-07-26T15:00",
-    "notes": "base $3525; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.6950814,
-    "lng": -73.9379538,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 37.3,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 11.0,
-      "rent": 10.3,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$3084/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "1BR (sqft unknown)"
-    ],
-    "rent_num": 3084,
-    "beds_num": 1,
-    "sqft_num": null
-  },
-  {
-    "address": "513 Chauncey Street #5, Brooklyn, NY",
-    "rent": "$2995",
-    "beds": "1",
-    "baths": "1",
-    "sqft": "500",
-    "url": "https://streeteasy.com/building/513-chauncey-street-brooklyn/5",
-    "neighborhood": "Ocean Hill",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "",
-    "source": "streeteasy_html",
-    "lat": 40.682352,
-    "lng": -73.9140254,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 37.0,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 10.0,
-      "rent": 11.0,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$2995/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "compact (~500 sqft)"
-    ],
-    "rent_num": 2995,
-    "beds_num": 1,
-    "sqft_num": 500
   },
   {
     "address": "11 Ocean Parkway #926, New York, NY",
@@ -3952,11 +3845,13 @@
       "size": 11.0,
       "rent": 9.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3250/mo"
+      "$3250/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -3993,11 +3888,13 @@
       "size": 11.0,
       "rent": 8.9,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3258/mo"
+      "$3258/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4034,11 +3931,13 @@
       "size": 11.0,
       "rent": 8.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3298/mo"
+      "$3298/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4075,58 +3974,19 @@
       "size": 11.0,
       "rent": 8.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3362/mo"
+      "$3362/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
       "1BR (sqft unknown)"
     ],
     "rent_num": 3362,
-    "beds_num": 1,
-    "sqft_num": null
-  },
-  {
-    "address": "788 Willoughby Avenue #211, New York, NY",
-    "rent": "$3415",
-    "beds": "1",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-hartby/211",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sun Jul 26 \u00b7 12:00 PM\u20133:00 PM",
-    "open_house_start": "2026-07-26T12:00",
-    "open_house_end": "2026-07-26T15:00",
-    "notes": "base $3725; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.6950814,
-    "lng": -73.9379538,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 34.7,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 11.0,
-      "rent": 7.7,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$3415/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "1BR (sqft unknown)"
-    ],
-    "rent_num": 3415,
     "beds_num": 1,
     "sqft_num": null
   },
@@ -4157,58 +4017,19 @@
       "size": 11.0,
       "rent": 7.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3470/mo"
+      "$3470/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
       "1BR (sqft unknown)"
     ],
     "rent_num": 3470,
-    "beds_num": 1,
-    "sqft_num": null
-  },
-  {
-    "address": "975 Nostrand Avenue #534, New York, NY",
-    "rent": "$3490",
-    "beds": "1",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-arcadian/534",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sun Jul 26 \u00b7 10:00 AM\u20135:00 PM",
-    "open_house_start": "2026-07-26T10:00",
-    "open_house_end": "2026-07-26T17:00",
-    "notes": "base $4125; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.664622,
-    "lng": -73.9503644,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 34.1,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 11.0,
-      "rent": 7.1,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$3490/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "1BR (sqft unknown)"
-    ],
-    "rent_num": 3490,
     "beds_num": 1,
     "sqft_num": null
   },
@@ -4239,11 +4060,13 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3494/mo"
+      "$3494/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4280,11 +4103,13 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3495/mo"
+      "$3495/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4292,47 +4117,6 @@
     ],
     "rent_num": 3495,
     "beds_num": 1,
-    "sqft_num": null
-  },
-  {
-    "address": "975 Nostrand Avenue #909, New York, NY",
-    "rent": "$3389",
-    "beds": "0",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/the-arcadian/909",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "new development",
-    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
-    "open_house_start": "2026-07-25T10:00",
-    "open_house_end": "2026-07-25T17:30",
-    "notes": "base $3650; using net effective rent",
-    "source": "streeteasy_html",
-    "lat": 40.664622,
-    "lng": -73.9503644,
-    "commute_min": 40,
-    "in_zone": true,
-    "geocode_error": false,
-    "score": 32.9,
-    "score_breakdown": {
-      "commute": 16.0,
-      "size": 9.0,
-      "rent": 7.9,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$3389/mo"
-    ],
-    "concerns": [
-      "similar to current (~40) \u2014 weak reason to move",
-      "studio (sqft unknown)"
-    ],
-    "rent_num": 3389,
-    "beds_num": 0,
     "sqft_num": null
   },
   {
@@ -4362,11 +4146,13 @@
       "size": 11.0,
       "rent": 5.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3721/mo"
+      "$3721/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4403,11 +4189,13 @@
       "size": 9.0,
       "rent": 6.3,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3590/mo"
+      "$3590/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4444,11 +4232,13 @@
       "size": 9.0,
       "rent": 4.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
-      "$3850/mo"
+      "$3850/mo",
+      "west of Nostrand Ave (preferred belt)"
     ],
     "concerns": [
       "similar to current (~40) \u2014 weak reason to move",
@@ -4485,7 +4275,8 @@
       "size": 9.0,
       "rent": 11.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4496,6 +4287,92 @@
       "studio (sqft unknown)"
     ],
     "rent_num": 2979,
+    "beds_num": 0,
+    "sqft_num": null
+  },
+  {
+    "address": "975 Nostrand Avenue #718, New York, NY",
+    "rent": "$2750",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-arcadian/718",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
+    "open_house_start": "2026-07-25T10:00",
+    "open_house_end": "2026-07-25T17:30",
+    "notes": "base $3300; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.664622,
+    "lng": -73.9503644,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 27.8,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 9.0,
+      "rent": 13.0,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -10.2
+    },
+    "hard_reject": false,
+    "likes": [
+      "$2750/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "studio (sqft unknown)",
+      "east of Nostrand Ave (~0.0 mi) \u2014 prefer west"
+    ],
+    "rent_num": 2750,
+    "beds_num": 0,
+    "sqft_num": null
+  },
+  {
+    "address": "975 Nostrand Avenue #226, New York, NY",
+    "rent": "$2807",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-arcadian/226",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
+    "open_house_start": "2026-07-25T10:00",
+    "open_house_end": "2026-07-25T17:30",
+    "notes": "base $3275; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.664622,
+    "lng": -73.9503644,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 27.3,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 9.0,
+      "rent": 12.5,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -10.2
+    },
+    "hard_reject": false,
+    "likes": [
+      "$2807/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "studio (sqft unknown)",
+      "east of Nostrand Ave (~0.0 mi) \u2014 prefer west"
+    ],
+    "rent_num": 2807,
     "beds_num": 0,
     "sqft_num": null
   },
@@ -4526,7 +4403,8 @@
       "size": 9.0,
       "rent": 10.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4567,7 +4445,8 @@
       "size": 11.0,
       "rent": 8.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4608,7 +4487,8 @@
       "size": 11.0,
       "rent": 7.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4649,7 +4529,8 @@
       "size": 9.0,
       "rent": 8.8,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4690,7 +4571,8 @@
       "size": 11.0,
       "rent": 6.7,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4731,7 +4613,8 @@
       "size": 9.0,
       "rent": 8.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4772,7 +4655,8 @@
       "size": 9.0,
       "rent": 7.5,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4813,7 +4697,8 @@
       "size": 10.0,
       "rent": 6.0,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4826,6 +4711,49 @@
     "rent_num": 3619,
     "beds_num": 1,
     "sqft_num": 500
+  },
+  {
+    "address": "975 Nostrand Avenue #534, New York, NY",
+    "rent": "$3490",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-arcadian/534",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sun Jul 26 \u00b7 10:00 AM\u20135:00 PM",
+    "open_house_start": "2026-07-26T10:00",
+    "open_house_end": "2026-07-26T17:00",
+    "notes": "base $4125; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.664622,
+    "lng": -73.9503644,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 23.9,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 7.1,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -10.2
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3490/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)",
+      "east of Nostrand Ave (~0.0 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3490,
+    "beds_num": 1,
+    "sqft_num": null
   },
   {
     "address": "960 Franklin Avenue #451, New York, NY",
@@ -4854,7 +4782,8 @@
       "size": 11.0,
       "rent": 4.6,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4895,7 +4824,8 @@
       "size": 10.0,
       "rent": 5.2,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4908,6 +4838,49 @@
     "rent_num": 3725,
     "beds_num": 0,
     "sqft_num": 457
+  },
+  {
+    "address": "975 Nostrand Avenue #909, New York, NY",
+    "rent": "$3389",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-arcadian/909",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sat Jul 25 \u00b7 10:00 AM\u20135:30 PM",
+    "open_house_start": "2026-07-25T10:00",
+    "open_house_end": "2026-07-25T17:30",
+    "notes": "base $3650; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.664622,
+    "lng": -73.9503644,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 22.7,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 9.0,
+      "rent": 7.9,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -10.2
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3389/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "studio (sqft unknown)",
+      "east of Nostrand Ave (~0.0 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3389,
+    "beds_num": 0,
+    "sqft_num": null
   },
   {
     "address": "960 Franklin Avenue #710, New York, NY",
@@ -4936,7 +4909,8 @@
       "size": 11.0,
       "rent": 3.5,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4977,7 +4951,8 @@
       "size": 6.0,
       "rent": 8.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -4990,47 +4965,6 @@
     "rent_num": 3323,
     "beds_num": 0,
     "sqft_num": 420
-  },
-  {
-    "address": "185 Avenue B #3E, New York, NY",
-    "rent": "$3700",
-    "beds": "0",
-    "baths": "1",
-    "sqft": "",
-    "url": "https://streeteasy.com/building/185-avenue-b-new_york/3e",
-    "neighborhood": "",
-    "dishwasher": "",
-    "in_unit_laundry": "",
-    "amenities": "",
-    "open_house": "",
-    "open_house_start": "",
-    "open_house_end": "",
-    "notes": "",
-    "source": "streeteasy_html",
-    "lat": 40.6870812,
-    "lng": -73.7197433,
-    "commute_min": null,
-    "in_zone": false,
-    "geocode_error": false,
-    "score": 22.4,
-    "score_breakdown": {
-      "commute": 8.0,
-      "size": 9.0,
-      "rent": 5.4,
-      "unit_amenities": 0.0,
-      "building_extras": 0.0
-    },
-    "hard_reject": false,
-    "likes": [
-      "$3700/mo"
-    ],
-    "concerns": [
-      "commute unknown (geocode/band miss)",
-      "studio (sqft unknown)"
-    ],
-    "rent_num": 3700,
-    "beds_num": 0,
-    "sqft_num": null
   },
   {
     "address": "20 Rockwell Place #2502D, New York, NY",
@@ -5059,7 +4993,8 @@
       "size": 9.0,
       "rent": 5.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -5100,7 +5035,8 @@
       "size": 9.0,
       "rent": 4.4,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -5141,7 +5077,8 @@
       "size": 6.0,
       "rent": 7.1,
       "unit_amenities": 0.0,
-      "building_extras": 0.0
+      "building_extras": 0.0,
+      "geography": 0.0
     },
     "hard_reject": false,
     "likes": [
@@ -5154,5 +5091,306 @@
     "rent_num": 3488,
     "beds_num": 0,
     "sqft_num": 444
+  },
+  {
+    "address": "2715 Fulton Street #303, New York, NY",
+    "rent": "$3150",
+    "beds": "2",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-cypress-park/303",
+    "neighborhood": "Cypress Hills",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6777406,
+    "lng": -73.8945681,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 19.8,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 16.0,
+      "rent": 9.8,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -22.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "2BR (sqft unknown \u2014 bed label only)",
+      "$3150/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "east of Nostrand Ave (~2.9 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3150,
+    "beds_num": 2,
+    "sqft_num": null
+  },
+  {
+    "address": "2715 Fulton Street #407, New York, NY",
+    "rent": "$3150",
+    "beds": "2",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-cypress-park/407",
+    "neighborhood": "Cypress Hills",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6777406,
+    "lng": -73.8945681,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 19.8,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 16.0,
+      "rent": 9.8,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -22.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "2BR (sqft unknown \u2014 bed label only)",
+      "$3150/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "east of Nostrand Ave (~2.9 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3150,
+    "beds_num": 2,
+    "sqft_num": null
+  },
+  {
+    "address": "788 Willoughby Avenue #609, New York, NY",
+    "rent": "$3084",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-hartby/609",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sun Jul 26 \u00b7 12:00 PM\u20133:00 PM",
+    "open_house_start": "2026-07-26T12:00",
+    "open_house_end": "2026-07-26T15:00",
+    "notes": "base $3525; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6950814,
+    "lng": -73.9379538,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 19.3,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 10.3,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -18.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3084/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)",
+      "east of Nostrand Ave (~0.7 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3084,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "2715 Fulton Street #506, New York, NY",
+    "rent": "$3250",
+    "beds": "2",
+    "baths": "2",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-cypress-park/506",
+    "neighborhood": "Cypress Hills",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6777406,
+    "lng": -73.8945681,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 19.0,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 16.0,
+      "rent": 9.0,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -22.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "2BR (sqft unknown \u2014 bed label only)",
+      "$3250/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "east of Nostrand Ave (~2.9 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3250,
+    "beds_num": 2,
+    "sqft_num": null
+  },
+  {
+    "address": "788 Willoughby Avenue #211, New York, NY",
+    "rent": "$3415",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/the-hartby/211",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "new development",
+    "open_house": "Sun Jul 26 \u00b7 12:00 PM\u20133:00 PM",
+    "open_house_start": "2026-07-26T12:00",
+    "open_house_end": "2026-07-26T15:00",
+    "notes": "base $3725; using net effective rent",
+    "source": "streeteasy_html",
+    "lat": 40.6950814,
+    "lng": -73.9379538,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 16.7,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 11.0,
+      "rent": 7.7,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -18.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3415/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "1BR (sqft unknown)",
+      "east of Nostrand Ave (~0.7 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3415,
+    "beds_num": 1,
+    "sqft_num": null
+  },
+  {
+    "address": "513 Chauncey Street #5, Brooklyn, NY",
+    "rent": "$2995",
+    "beds": "1",
+    "baths": "1",
+    "sqft": "500",
+    "url": "https://streeteasy.com/building/513-chauncey-street-brooklyn/5",
+    "neighborhood": "Ocean Hill",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.682352,
+    "lng": -73.9140254,
+    "commute_min": 40,
+    "in_zone": true,
+    "geocode_error": false,
+    "score": 15.0,
+    "score_breakdown": {
+      "commute": 16.0,
+      "size": 10.0,
+      "rent": 11.0,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -22.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$2995/mo"
+    ],
+    "concerns": [
+      "similar to current (~40) \u2014 weak reason to move",
+      "compact (~500 sqft)",
+      "east of Nostrand Ave (~1.9 mi) \u2014 prefer west"
+    ],
+    "rent_num": 2995,
+    "beds_num": 1,
+    "sqft_num": 500
+  },
+  {
+    "address": "185 Avenue B #3E, New York, NY",
+    "rent": "$3700",
+    "beds": "0",
+    "baths": "1",
+    "sqft": "",
+    "url": "https://streeteasy.com/building/185-avenue-b-new_york/3e",
+    "neighborhood": "",
+    "dishwasher": "",
+    "in_unit_laundry": "",
+    "amenities": "",
+    "open_house": "",
+    "open_house_start": "",
+    "open_house_end": "",
+    "notes": "",
+    "source": "streeteasy_html",
+    "lat": 40.6870812,
+    "lng": -73.7197433,
+    "commute_min": null,
+    "in_zone": false,
+    "geocode_error": false,
+    "score": 0.4,
+    "score_breakdown": {
+      "commute": 8.0,
+      "size": 9.0,
+      "rent": 5.4,
+      "unit_amenities": 0.0,
+      "building_extras": 0.0,
+      "geography": -22.0
+    },
+    "hard_reject": false,
+    "likes": [
+      "$3700/mo"
+    ],
+    "concerns": [
+      "commute unknown (geocode/band miss)",
+      "studio (sqft unknown)",
+      "east of Nostrand Ave (~12.0 mi) \u2014 prefer west"
+    ],
+    "rent_num": 3700,
+    "beds_num": 0,
+    "sqft_num": null
   }
 ]

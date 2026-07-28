@@ -49,9 +49,15 @@ The commute map is not involved — only the isochrone polygons for `commute_min
 - Luxury building amenity package (gym, pool, etc.): bonus only
 - Absence is not a dealbreaker
 
+### Geography — soft adjustment (not in the 100-pt base)
+
+- Prefer **west of Nostrand Ave** (eastern edge of the preferred A/C belt in central Brooklyn).
+- East of Nostrand is a soft demotion (not a hard reject) — e.g. Albany Ave / deeper Bed-Stuy.
+- Applied after the base score using geocoded longitude.
+
 ## Tie-breaks
 
-When composite scores are close: (1) better commute, (2) more usable size, (3) in-unit W/D or dishwasher, (4) lower rent.
+When composite scores are close: (1) better commute, (2) west of Nostrand, (3) more usable size, (4) in-unit W/D or dishwasher, (5) lower rent.
 
 ## Hit-list output
 

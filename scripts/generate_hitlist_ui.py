@@ -78,6 +78,12 @@ def score_tone(score: float) -> str:
     return "weak"
 
 
+def listing_key(row: dict) -> str:
+    url = (row.get("url") or "").strip().lower()
+    addr = (row.get("address") or "").strip().lower()
+    return url or addr
+
+
 def title_block(row: dict) -> str:
     title = row.get("address") or "(no address)"
     url = row.get("url") or ""
@@ -92,6 +98,21 @@ def title_block(row: dict) -> str:
         else f'<span class="title">{esc(title)}</span>'
     )
     return f'<div class="title-with-maps">{title_html}{maps_button}</div>'
+
+
+def action_row(row: dict, *, toured: bool = False) -> str:
+    key = esc(listing_key(row))
+    if toured:
+        return (
+            f'<div class="actions">'
+            f'<button type="button" class="action-btn" data-untour="{key}">'
+            f'Restore to active</button></div>'
+        )
+    return (
+        f'<div class="actions">'
+        f'<button type="button" class="action-btn" data-tour="{key}">'
+        f'Mark as toured</button></div>'
+    )
 
 
 def size_line(row: dict) -> str:
@@ -138,8 +159,9 @@ def render_ranked_card(i: int, row: dict) -> str:
     likes_html = "".join(f"<li>{esc(x)}</li>" for x in likes[:6])
     concerns_html = "".join(f"<li>{esc(x)}</li>" for x in concerns[:4])
     bd = row.get("score_breakdown") or {}
+    key = esc(listing_key(row))
     return f"""
-<article class="card tone-{tone}">
+<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}">
   <div class="rank">{i}</div>
   <div class="body">
     <div class="topline">
@@ -164,7 +186,9 @@ def render_ranked_card(i: int, row: dict) -> str:
       · rent {esc(bd.get("rent", "—"))}
       · unit {esc(bd.get("unit_amenities", "—"))}
       · building {esc(bd.get("building_extras", "—"))}
+      · geo {esc(bd.get("geography", 0))}
     </div>
+    {action_row(row)}
   </div>
 </article>
 """
@@ -176,8 +200,9 @@ def render_tour_card(row: dict, when: str) -> str:
     tag_html = "".join(f'<span class="tag">{esc(t)}</span>' for t in tags_for(row))
     commute = row.get("commute_min")
     commute_s = f"≤{commute} min" if commute is not None else "commute ?"
+    key = esc(listing_key(row))
     return f"""
-<article class="card tone-{tone} tour-card" data-score="{score:.1f}">
+<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}">
   <div class="rank tour-when">{esc(when)}</div>
   <div class="body">
     <div class="topline">
@@ -187,6 +212,31 @@ def render_tour_card(row: dict, when: str) -> str:
     <div class="meta tour-meta">{esc(row.get("open_house") or "")}</div>
     <div class="meta">{size_line(row)} · {esc(commute_s)}</div>
     <div class="tags">{tag_html}</div>
+    {action_row(row)}
+  </div>
+</article>
+"""
+
+
+def render_toured_card(row: dict) -> str:
+    score = float(row.get("score") or 0)
+    tone = score_tone(score)
+    tag_html = "".join(f'<span class="tag">{esc(t)}</span>' for t in tags_for(row))
+    key = esc(listing_key(row))
+    open_house = row.get("open_house") or ""
+    extra = f'<div class="meta tour-meta">{esc(open_house)}</div>' if open_house else ""
+    return f"""
+<article class="card tone-{tone} listing-card toured-card" data-key="{key}" data-score="{score:.1f}">
+  <div class="rank">✓</div>
+  <div class="body">
+    <div class="topline">
+      {title_block(row)}
+      <div class="score">{score:.1f}</div>
+    </div>
+    {extra}
+    <div class="meta">{size_line(row)}</div>
+    <div class="tags">{tag_html}</div>
+    {action_row(row, toured=True)}
   </div>
 </article>
 """
@@ -198,6 +248,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     rejected = [r for r in scored if r.get("hard_reject")]
 
     ranked_cards = [render_ranked_card(i, row) for i, row in enumerate(kept, start=1)]
+    toured_cards = [render_toured_card(row) for row in kept]
 
     with_tours = []
     for row in kept:
@@ -360,8 +411,27 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     font-variant-numeric: tabular-nums;
   }}
   .tour-card.is-hidden,
-  .day-head.is-hidden {{
+  .day-head.is-hidden,
+  .listing-card.is-hidden,
+  .listing-card.is-toured-hidden {{
     display: none;
+  }}
+  .actions {{
+    margin-top: 0.75rem;
+  }}
+  .action-btn {{
+    appearance: none;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+  }}
+  .action-btn:active {{
+    background: var(--tag);
   }}
   .card {{
     display: grid;
@@ -494,6 +564,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-ranked" aria-selected="true" aria-controls="panel-ranked">Ranked</button>
     <button class="tab" role="tab" id="tab-tours" aria-selected="false" aria-controls="panel-tours">Upcoming tours ({len(upcoming)})</button>
+    <button class="tab" role="tab" id="tab-toured" aria-selected="false" aria-controls="panel-toured">Already toured <span id="toured-tab-count"></span></button>
   </div>
 
   <section class="panel active" id="panel-ranked" role="tabpanel">
@@ -502,7 +573,9 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       <div><strong>{len(upcoming)}</strong> with upcoming tours</div>
       <div><strong>{len(rejected)}</strong> filtered</div>
     </div>
+    <div id="ranked-list">
     {"".join(ranked_cards) if ranked_cards else "<p>No listings passed hard filters.</p>"}
+    </div>
     {f'<section class="filtered"><h2>Filtered out</h2><ul>{reject_items}</ul></section>' if rejected else ""}
   </section>
 
@@ -520,13 +593,41 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     <p class="empty is-hidden" id="tour-empty-filter">No upcoming tours at score ≥ 50.</p>
     </div>
   </section>
+
+  <section class="panel" id="panel-toured" role="tabpanel">
+    <p class="sub">Places you’ve already seen. Stored on this phone/browser — tap Restore to put them back in Ranked / Tours.</p>
+    <div id="toured-list">
+    {"".join(toured_cards)}
+    <p class="empty" id="toured-empty">No toured listings yet. Use “Mark as toured” on Ranked or Tours.</p>
+    </div>
+  </section>
 </main>
 <script>
 (function () {{
+  const TOURED_KEY = 'hitlist-toured-keys';
+  const SCORE_KEY = 'hitlist-tours-score50';
+  const MIN_SCORE = 50;
+
+  function loadToured() {{
+    try {{
+      const raw = localStorage.getItem(TOURED_KEY);
+      const arr = raw ? JSON.parse(raw) : [];
+      return new Set(Array.isArray(arr) ? arr : []);
+    }} catch (e) {{
+      return new Set();
+    }}
+  }}
+  function saveToured(set) {{
+    try {{ localStorage.setItem(TOURED_KEY, JSON.stringify(Array.from(set))); }} catch (e) {{}}
+  }}
+
+  let toured = loadToured();
+
   const tabs = Array.from(document.querySelectorAll('.tab'));
   const panels = {{
     'tab-ranked': document.getElementById('panel-ranked'),
     'tab-tours': document.getElementById('panel-tours'),
+    'tab-toured': document.getElementById('panel-toured'),
   }};
   function activate(id) {{
     tabs.forEach((t) => {{
@@ -536,18 +637,36 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     Object.entries(panels).forEach(([key, panel]) => {{
       panel.classList.toggle('active', key === id);
     }});
-    if (id === 'tab-tours') location.hash = 'tours';
-    else if (location.hash === '#tours') history.replaceState(null, '', location.pathname);
+    const hash = id === 'tab-tours' ? 'tours' : (id === 'tab-toured' ? 'toured' : '');
+    if (hash) location.hash = hash;
+    else if (location.hash === '#tours' || location.hash === '#toured') {{
+      history.replaceState(null, '', location.pathname);
+    }}
   }}
   tabs.forEach((t) => t.addEventListener('click', () => activate(t.id)));
   if (location.hash === '#tours') activate('tab-tours');
+  if (location.hash === '#toured') activate('tab-toured');
 
   const scoreFilter = document.getElementById('tour-score-filter');
   const countEl = document.getElementById('tour-visible-count');
   const emptyEl = document.getElementById('tour-empty-filter');
   const tourList = document.getElementById('tour-list');
-  const SCORE_KEY = 'hitlist-tours-score50';
-  const MIN_SCORE = 50;
+  const touredEmpty = document.getElementById('toured-empty');
+  const touredTabCount = document.getElementById('toured-tab-count');
+
+  function applyTouredVisibility() {{
+    document.querySelectorAll('#ranked-list .listing-card, #tour-list .listing-card').forEach((card) => {{
+      const key = card.getAttribute('data-key') || '';
+      card.classList.toggle('is-toured-hidden', toured.has(key));
+    }});
+    document.querySelectorAll('#toured-list .listing-card').forEach((card) => {{
+      const key = card.getAttribute('data-key') || '';
+      card.classList.toggle('is-hidden', !toured.has(key));
+    }});
+    const n = toured.size;
+    if (touredTabCount) touredTabCount.textContent = n ? `(${{n}})` : '';
+    if (touredEmpty) touredEmpty.classList.toggle('is-hidden', n > 0);
+  }}
 
   function applyTourFilter() {{
     const on = !!(scoreFilter && scoreFilter.checked);
@@ -556,11 +675,13 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     let visible = 0;
     cards.forEach((card) => {{
       const score = parseFloat(card.getAttribute('data-score') || '0');
-      const hide = on && score < MIN_SCORE;
-      card.classList.toggle('is-hidden', hide);
+      const hideScore = on && score < MIN_SCORE;
+      const hideToured = card.classList.contains('is-toured-hidden');
+      const hide = hideScore || hideToured;
+      // score filter uses is-hidden; toured uses is-toured-hidden — combine for day heads
+      card.classList.toggle('is-hidden', hideScore);
       if (!hide) visible += 1;
     }});
-    // Hide day headings with no visible cards until the next heading
     const nodes = Array.from(tourList.children);
     let i = 0;
     while (i < nodes.length) {{
@@ -572,7 +693,10 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       let j = i + 1;
       let any = false;
       while (j < nodes.length && !(nodes[j].classList && nodes[j].classList.contains('day-head'))) {{
-        if (nodes[j].classList && nodes[j].classList.contains('tour-card') && !nodes[j].classList.contains('is-hidden')) {{
+        const c = nodes[j];
+        if (c.classList && c.classList.contains('tour-card')
+            && !c.classList.contains('is-hidden')
+            && !c.classList.contains('is-toured-hidden')) {{
           any = true;
         }}
         j += 1;
@@ -581,15 +705,34 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       i = j;
     }}
     if (countEl) {{
-      const total = cards.length;
+      const totalActive = cards.filter((c) => !c.classList.contains('is-toured-hidden')).length;
       countEl.textContent = on
-        ? `Showing ${{visible}} of ${{total}} with tours`
-        : `${{total}} with tours`;
+        ? `Showing ${{visible}} of ${{totalActive}} with tours`
+        : `${{totalActive}} with tours`;
     }}
     if (emptyEl) {{
-      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && cards.length > 0));
+      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && cards.some((c) => !c.classList.contains('is-toured-hidden'))));
     }}
   }}
+
+  function refresh() {{
+    applyTouredVisibility();
+    applyTourFilter();
+  }}
+
+  document.addEventListener('click', (ev) => {{
+    const tourBtn = ev.target.closest('[data-tour]');
+    const untourBtn = ev.target.closest('[data-untour]');
+    if (tourBtn) {{
+      toured.add(tourBtn.getAttribute('data-tour'));
+      saveToured(toured);
+      refresh();
+    }} else if (untourBtn) {{
+      toured.delete(untourBtn.getAttribute('data-untour'));
+      saveToured(toured);
+      refresh();
+    }}
+  }});
 
   if (scoreFilter) {{
     try {{
@@ -598,8 +741,8 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       if (saved === '1') scoreFilter.checked = true;
     }} catch (e) {{}}
     scoreFilter.addEventListener('change', applyTourFilter);
-    applyTourFilter();
   }}
+  refresh();
 }})();
 </script>
 </body>
