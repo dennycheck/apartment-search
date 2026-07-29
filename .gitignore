@@ -17,3 +17,20 @@ data/listings/incoming/*.htm
 data/listings/incoming/_pdf/
 data/listings/incoming/_shots/
 StreetEasy HTMLs/
+.playwright-streeteasy/
+
+# Application packet: keep folder structure; never commit sensitive docs
+application-package/**/*.pdf
+application-package/**/*.png
+application-package/**/*.jpg
+application-package/**/*.jpeg
+application-package/**/*.webp
+application-package/**/*.tif
+application-package/**/*.tiff
+application-package/**/*.heic
+application-package/**/*.zip
+application-package/_ready_to_send/**
+!application-package/_ready_to_send/.gitkeep
+!application-package/_ready_to_send/README.md
+!application-package/**/.gitkeep
+!application-package/**/README.md

@@ -7,3 +7,12 @@ node_modules/
 data/*.geojson
 data/*.json
 output/
+application-package/**/*.pdf
+application-package/**/*.png
+application-package/**/*.jpg
+application-package/**/*.jpeg
+application-package/**/*.webp
+application-package/**/*.zip
+application-package/_ready_to_send/**
+!application-package/_ready_to_send/README.md
+!application-package/_ready_to_send/.gitkeep

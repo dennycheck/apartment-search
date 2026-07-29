@@ -100,18 +100,38 @@ def title_block(row: dict) -> str:
     return f'<div class="title-with-maps">{title_html}{maps_button}</div>'
 
 
-def action_row(row: dict, *, toured: bool = False) -> str:
+def listing_status(row: dict) -> str:
+    raw = (row.get("status") or "active").strip().lower().replace("-", "_")
+    if raw in {"offmarket", "off_the_market", "rented", "gone"}:
+        return "off_market"
+    if raw in {"active", "toured", "off_market"}:
+        return raw
+    return "active"
+
+
+def action_row(row: dict, *, mode: str = "active") -> str:
+    """mode: active | toured | off_market"""
     key = esc(listing_key(row))
-    if toured:
+    if mode == "toured":
         return (
             f'<div class="actions">'
-            f'<button type="button" class="action-btn" data-untour="{key}">'
+            f'<button type="button" class="action-btn" data-status-set="active" data-key="{key}">'
+            f'Restore to active</button>'
+            f'<button type="button" class="action-btn" data-status-set="off_market" data-key="{key}">'
+            f'Off the market</button></div>'
+        )
+    if mode == "off_market":
+        return (
+            f'<div class="actions">'
+            f'<button type="button" class="action-btn" data-status-set="active" data-key="{key}">'
             f'Restore to active</button></div>'
         )
     return (
         f'<div class="actions">'
-        f'<button type="button" class="action-btn" data-tour="{key}">'
-        f'Mark as toured</button></div>'
+        f'<button type="button" class="action-btn" data-status-set="toured" data-key="{key}">'
+        f'Mark as toured</button>'
+        f'<button type="button" class="action-btn" data-status-set="off_market" data-key="{key}">'
+        f'Off the market</button></div>'
     )
 
 
@@ -160,8 +180,9 @@ def render_ranked_card(i: int, row: dict) -> str:
     concerns_html = "".join(f"<li>{esc(x)}</li>" for x in concerns[:4])
     bd = row.get("score_breakdown") or {}
     key = esc(listing_key(row))
+    status = listing_status(row)
     return f"""
-<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}">
+<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}">
   <div class="rank">{i}</div>
   <div class="body">
     <div class="topline">
@@ -188,7 +209,7 @@ def render_ranked_card(i: int, row: dict) -> str:
       · building {esc(bd.get("building_extras", "—"))}
       · geo {esc(bd.get("geography", 0))}
     </div>
-    {action_row(row)}
+    {action_row(row, mode="active")}
   </div>
 </article>
 """
@@ -201,8 +222,9 @@ def render_tour_card(row: dict, when: str) -> str:
     commute = row.get("commute_min")
     commute_s = f"≤{commute} min" if commute is not None else "commute ?"
     key = esc(listing_key(row))
+    status = listing_status(row)
     return f"""
-<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}">
+<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}">
   <div class="rank tour-when">{esc(when)}</div>
   <div class="body">
     <div class="topline">
@@ -212,22 +234,24 @@ def render_tour_card(row: dict, when: str) -> str:
     <div class="meta tour-meta">{esc(row.get("open_house") or "")}</div>
     <div class="meta">{size_line(row)} · {esc(commute_s)}</div>
     <div class="tags">{tag_html}</div>
-    {action_row(row)}
+    {action_row(row, mode="active")}
   </div>
 </article>
 """
 
 
-def render_toured_card(row: dict) -> str:
+def render_archive_card(row: dict, *, mode: str) -> str:
     score = float(row.get("score") or 0)
     tone = score_tone(score)
     tag_html = "".join(f'<span class="tag">{esc(t)}</span>' for t in tags_for(row))
     key = esc(listing_key(row))
+    status = listing_status(row)
     open_house = row.get("open_house") or ""
     extra = f'<div class="meta tour-meta">{esc(open_house)}</div>' if open_house else ""
+    mark = "✓" if mode == "toured" else "—"
     return f"""
-<article class="card tone-{tone} listing-card toured-card" data-key="{key}" data-score="{score:.1f}">
-  <div class="rank">✓</div>
+<article class="card tone-{tone} listing-card archive-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-bucket="{mode}">
+  <div class="rank">{mark}</div>
   <div class="body">
     <div class="topline">
       {title_block(row)}
@@ -236,7 +260,7 @@ def render_toured_card(row: dict) -> str:
     {extra}
     <div class="meta">{size_line(row)}</div>
     <div class="tags">{tag_html}</div>
-    {action_row(row, toured=True)}
+    {action_row(row, mode=mode)}
   </div>
 </article>
 """
@@ -244,22 +268,41 @@ def render_toured_card(row: dict) -> str:
 
 def render(scored: list[dict], now: datetime | None = None) -> str:
     now = now or datetime.now()
-    kept = [r for r in scored if not r.get("hard_reject")]
+    viable = [r for r in scored if not r.get("hard_reject")]
     rejected = [r for r in scored if r.get("hard_reject")]
 
-    ranked_cards = [render_ranked_card(i, row) for i, row in enumerate(kept, start=1)]
-    toured_cards = [render_toured_card(row) for row in kept]
+    # Pipeline status is source of truth; phone localStorage overlays on top.
+    active = [r for r in viable if listing_status(r) == "active"]
+    csv_toured = [r for r in viable if listing_status(r) == "toured"]
+    csv_off = [r for r in viable if listing_status(r) == "off_market"]
+
+    # All viable cards are in the DOM; JS shows/hides by CSV status + localStorage overlay.
+    # Ranked/tours include non-active rows so "Restore" can resurface them without a rebuild.
+    ranked_cards = [render_ranked_card(i, row) for i, row in enumerate(viable, start=1)]
+    toured_cards = [render_archive_card(row, mode="toured") for row in viable]
+    off_market_cards = [render_archive_card(row, mode="off_market") for row in viable]
 
     with_tours = []
-    for row in kept:
+    for row in viable:
         start = parse_tour_start(row)
         if start is None:
             continue
         with_tours.append((start, row))
     with_tours.sort(key=lambda x: x[0])
 
-    upcoming = [(dt, row) for dt, row in with_tours if dt.date() >= now.date()]
-    past = [(dt, row) for dt, row in with_tours if dt.date() < now.date()]
+    upcoming = [
+        (dt, row)
+        for dt, row in with_tours
+        if dt.date() >= now.date() and listing_status(row) == "active"
+    ]
+    past = [
+        (dt, row)
+        for dt, row in with_tours
+        if dt.date() < now.date() and listing_status(row) == "active"
+    ]
+    # Inactive tour cards stay in the DOM (JS-hidden) so Restore can resurface them.
+    upcoming_dom = [(dt, row) for dt, row in with_tours if dt.date() >= now.date()]
+    past_dom = [(dt, row) for dt, row in with_tours if dt.date() < now.date()]
 
     def when_label(dt: datetime, row: dict) -> str:
         if not row.get("open_house_end"):
@@ -269,22 +312,22 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 
     tour_sections: list[str] = []
     current_bucket = None
-    for dt, row in upcoming:
+    for dt, row in upcoming_dom:
         bucket = day_bucket(dt, now)
         if bucket != current_bucket:
             current_bucket = bucket
             tour_sections.append(f'<h2 class="day-head">{esc(bucket)}</h2>')
         tour_sections.append(render_tour_card(row, when_label(dt, row)))
 
-    if not upcoming:
+    if not upcoming_dom:
         tour_sections.append(
             "<p class=\"empty\">No upcoming open houses in the current ingest. "
             "Re-save StreetEasy pages that show an “Open: …” badge.</p>"
         )
 
-    if past:
+    if past_dom:
         tour_sections.append('<h2 class="day-head muted">Earlier (from this ingest)</h2>')
-        for dt, row in past:
+        for dt, row in past_dom:
             tour_sections.append(render_tour_card(row, when_label(dt, row)))
 
     reject_items = "".join(
@@ -292,6 +335,13 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
         f"{esc('; '.join(r.get('concerns') or ['filtered']))}</li>"
         for r in rejected
     )
+
+    seed_statuses = {
+        listing_key(r): listing_status(r)
+        for r in viable
+        if listing_status(r) != "active"
+    }
+    seed_json = json.dumps(seed_statuses).replace("</", "<\\/")
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -335,11 +385,12 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   .sub {{
     color: var(--muted);
     margin: 0 0 1.25rem;
-    max-width: 40rem;
+    max-width: 42rem;
   }}
   .tabs {{
     display: flex;
     gap: 0.4rem;
+    flex-wrap: wrap;
     margin-bottom: 1.25rem;
     position: sticky;
     top: 0;
@@ -356,7 +407,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     border-radius: 999px;
     padding: 0.45rem 0.9rem;
     font: inherit;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     cursor: pointer;
   }}
   .tab[aria-selected="true"] {{
@@ -410,14 +461,21 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     font-size: 0.88rem;
     font-variant-numeric: tabular-nums;
   }}
-  .tour-card.is-hidden,
-  .day-head.is-hidden,
+  .sync-bar {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+  }}
   .listing-card.is-hidden,
-  .listing-card.is-toured-hidden {{
+  .day-head.is-hidden {{
     display: none;
   }}
   .actions {{
     margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }}
   .action-btn {{
     appearance: none;
@@ -558,23 +616,31 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 <main>
   <h1>Apartment hit list</h1>
   <p class="sub">
-    Ranked by preferences · tours pulled from StreetEasy “Open: …” badges.
+    Ranked by preferences · tours from StreetEasy badges · status survives re-ingest
+    (CSV is source of truth; phone marks overlay until you download status.json and apply it).
   </p>
 
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" id="tab-ranked" aria-selected="true" aria-controls="panel-ranked">Ranked</button>
     <button class="tab" role="tab" id="tab-tours" aria-selected="false" aria-controls="panel-tours">Upcoming tours ({len(upcoming)})</button>
     <button class="tab" role="tab" id="tab-toured" aria-selected="false" aria-controls="panel-toured">Already toured <span id="toured-tab-count"></span></button>
+    <button class="tab" role="tab" id="tab-off" aria-selected="false" aria-controls="panel-off">Off the market <span id="off-tab-count"></span></button>
+  </div>
+
+  <div class="sync-bar">
+    <button type="button" class="action-btn" id="download-status">Download status.json</button>
   </div>
 
   <section class="panel active" id="panel-ranked" role="tabpanel">
     <div class="stats">
-      <div><strong>{len(kept)}</strong> ranked</div>
+      <div><strong id="ranked-count">{len(active)}</strong> active ranked</div>
       <div><strong>{len(upcoming)}</strong> with upcoming tours</div>
+      <div><strong>{len(csv_toured)}</strong> toured in CSV</div>
+      <div><strong>{len(csv_off)}</strong> off-market in CSV</div>
       <div><strong>{len(rejected)}</strong> filtered</div>
     </div>
     <div id="ranked-list">
-    {"".join(ranked_cards) if ranked_cards else "<p>No listings passed hard filters.</p>"}
+    {"".join(ranked_cards) if ranked_cards else "<p>No active listings passed hard filters.</p>"}
     </div>
     {f'<section class="filtered"><h2>Filtered out</h2><ul>{reject_items}</ul></section>' if rejected else ""}
   </section>
@@ -595,77 +661,128 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   </section>
 
   <section class="panel" id="panel-toured" role="tabpanel">
-    <p class="sub">Places you’ve already seen. Stored on this phone/browser — tap Restore to put them back in Ranked / Tours.</p>
+    <p class="sub">Places you’ve already seen. Restore puts them back in Ranked / Tours.</p>
     <div id="toured-list">
     {"".join(toured_cards)}
-    <p class="empty" id="toured-empty">No toured listings yet. Use “Mark as toured” on Ranked or Tours.</p>
+    <p class="empty" id="toured-empty">No toured listings yet.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-off" role="tabpanel">
+    <p class="sub">Rented / taken down. Restore if the listing comes back.</p>
+    <div id="off-list">
+    {"".join(off_market_cards)}
+    <p class="empty" id="off-empty">No off-market listings yet.</p>
     </div>
   </section>
 </main>
+<script type="application/json" id="seed-statuses">{seed_json}</script>
 <script>
 (function () {{
-  const TOURED_KEY = 'hitlist-toured-keys';
+  const STATUS_KEY = 'hitlist-status-map';
   const SCORE_KEY = 'hitlist-tours-score50';
   const MIN_SCORE = 50;
+  const LEGACY_TOURED = 'hitlist-toured-keys';
 
-  function loadToured() {{
+  function loadStatusMap() {{
+    let map = {{}};
     try {{
-      const raw = localStorage.getItem(TOURED_KEY);
-      const arr = raw ? JSON.parse(raw) : [];
-      return new Set(Array.isArray(arr) ? arr : []);
-    }} catch (e) {{
-      return new Set();
-    }}
-  }}
-  function saveToured(set) {{
-    try {{ localStorage.setItem(TOURED_KEY, JSON.stringify(Array.from(set))); }} catch (e) {{}}
+      const seedEl = document.getElementById('seed-statuses');
+      if (seedEl && seedEl.textContent) {{
+        map = {{ ...JSON.parse(seedEl.textContent) }};
+      }}
+    }} catch (e) {{}}
+    try {{
+      const raw = localStorage.getItem(STATUS_KEY);
+      if (raw) map = {{ ...map, ...JSON.parse(raw) }};
+    }} catch (e) {{}}
+    // Migrate older toured-only localStorage
+    try {{
+      const legacy = localStorage.getItem(LEGACY_TOURED);
+      if (legacy) {{
+        const arr = JSON.parse(legacy);
+        if (Array.isArray(arr)) {{
+          arr.forEach((k) => {{ if (k && !map[k]) map[k] = 'toured'; }});
+        }}
+      }}
+    }} catch (e) {{}}
+    return map;
   }}
 
-  let toured = loadToured();
+  function saveStatusMap(map) {{
+    try {{ localStorage.setItem(STATUS_KEY, JSON.stringify(map)); }} catch (e) {{}}
+  }}
+
+  let statusMap = loadStatusMap();
+
+  function effectiveStatus(card) {{
+    const key = card.getAttribute('data-key') || '';
+    if (statusMap[key]) return statusMap[key];
+    return card.getAttribute('data-status') || 'active';
+  }}
 
   const tabs = Array.from(document.querySelectorAll('.tab'));
   const panels = {{
     'tab-ranked': document.getElementById('panel-ranked'),
     'tab-tours': document.getElementById('panel-tours'),
     'tab-toured': document.getElementById('panel-toured'),
+    'tab-off': document.getElementById('panel-off'),
   }};
   function activate(id) {{
-    tabs.forEach((t) => {{
-      const on = t.id === id;
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-    }});
+    tabs.forEach((t) => t.setAttribute('aria-selected', t.id === id ? 'true' : 'false'));
     Object.entries(panels).forEach(([key, panel]) => {{
       panel.classList.toggle('active', key === id);
     }});
-    const hash = id === 'tab-tours' ? 'tours' : (id === 'tab-toured' ? 'toured' : '');
+    const hashMap = {{ 'tab-tours': 'tours', 'tab-toured': 'toured', 'tab-off': 'off' }};
+    const hash = hashMap[id] || '';
     if (hash) location.hash = hash;
-    else if (location.hash === '#tours' || location.hash === '#toured') {{
+    else if (['#tours', '#toured', '#off'].includes(location.hash)) {{
       history.replaceState(null, '', location.pathname);
     }}
   }}
   tabs.forEach((t) => t.addEventListener('click', () => activate(t.id)));
   if (location.hash === '#tours') activate('tab-tours');
   if (location.hash === '#toured') activate('tab-toured');
+  if (location.hash === '#off') activate('tab-off');
 
   const scoreFilter = document.getElementById('tour-score-filter');
   const countEl = document.getElementById('tour-visible-count');
   const emptyEl = document.getElementById('tour-empty-filter');
   const tourList = document.getElementById('tour-list');
   const touredEmpty = document.getElementById('toured-empty');
+  const offEmpty = document.getElementById('off-empty');
   const touredTabCount = document.getElementById('toured-tab-count');
+  const offTabCount = document.getElementById('off-tab-count');
 
-  function applyTouredVisibility() {{
-    document.querySelectorAll('#ranked-list .listing-card, #tour-list .listing-card').forEach((card) => {{
-      const key = card.getAttribute('data-key') || '';
-      card.classList.toggle('is-toured-hidden', toured.has(key));
+  function applyVisibility() {{
+    let touredN = 0;
+    let offN = 0;
+
+    document.querySelectorAll('#ranked-list .listing-card').forEach((card) => {{
+      card.classList.toggle('is-hidden', effectiveStatus(card) !== 'active');
     }});
+
+    document.querySelectorAll('#tour-list .listing-card').forEach((card) => {{
+      const inactive = effectiveStatus(card) !== 'active';
+      card.classList.toggle('is-hidden', inactive);
+    }});
+
     document.querySelectorAll('#toured-list .listing-card').forEach((card) => {{
-      const key = card.getAttribute('data-key') || '';
-      card.classList.toggle('is-hidden', !toured.has(key));
+      const show = effectiveStatus(card) === 'toured';
+      card.classList.toggle('is-hidden', !show);
+      if (show) touredN += 1;
     }});
-    const n = toured.size;
-    if (touredTabCount) touredTabCount.textContent = n ? `(${{n}})` : '';
-    if (touredEmpty) touredEmpty.classList.toggle('is-hidden', n > 0);
+
+    document.querySelectorAll('#off-list .listing-card').forEach((card) => {{
+      const show = effectiveStatus(card) === 'off_market';
+      card.classList.toggle('is-hidden', !show);
+      if (show) offN += 1;
+    }});
+
+    if (touredTabCount) touredTabCount.textContent = touredN ? `(${{touredN}})` : '';
+    if (offTabCount) offTabCount.textContent = offN ? `(${{offN}})` : '';
+    if (touredEmpty) touredEmpty.classList.toggle('is-hidden', touredN > 0);
+    if (offEmpty) offEmpty.classList.toggle('is-hidden', offN > 0);
   }}
 
   function applyTourFilter() {{
@@ -675,12 +792,15 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     let visible = 0;
     cards.forEach((card) => {{
       const score = parseFloat(card.getAttribute('data-score') || '0');
+      const inactive = effectiveStatus(card) !== 'active';
       const hideScore = on && score < MIN_SCORE;
-      const hideToured = card.classList.contains('is-toured-hidden');
-      const hide = hideScore || hideToured;
-      // score filter uses is-hidden; toured uses is-toured-hidden — combine for day heads
+      // Keep inactive hidden; score filter only among active
+      if (inactive) {{
+        card.classList.add('is-hidden');
+        return;
+      }}
       card.classList.toggle('is-hidden', hideScore);
-      if (!hide) visible += 1;
+      if (!hideScore) visible += 1;
     }});
     const nodes = Array.from(tourList.children);
     let i = 0;
@@ -694,9 +814,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       let any = false;
       while (j < nodes.length && !(nodes[j].classList && nodes[j].classList.contains('day-head'))) {{
         const c = nodes[j];
-        if (c.classList && c.classList.contains('tour-card')
-            && !c.classList.contains('is-hidden')
-            && !c.classList.contains('is-toured-hidden')) {{
+        if (c.classList && c.classList.contains('tour-card') && !c.classList.contains('is-hidden')) {{
           any = true;
         }}
         j += 1;
@@ -704,35 +822,45 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       node.classList.toggle('is-hidden', !any);
       i = j;
     }}
+    const totalActive = cards.filter((c) => effectiveStatus(c) === 'active').length;
     if (countEl) {{
-      const totalActive = cards.filter((c) => !c.classList.contains('is-toured-hidden')).length;
       countEl.textContent = on
         ? `Showing ${{visible}} of ${{totalActive}} with tours`
         : `${{totalActive}} with tours`;
     }}
     if (emptyEl) {{
-      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && cards.some((c) => !c.classList.contains('is-toured-hidden'))));
+      emptyEl.classList.toggle('is-hidden', !(on && visible === 0 && totalActive > 0));
     }}
   }}
 
   function refresh() {{
-    applyTouredVisibility();
+    applyVisibility();
     applyTourFilter();
   }}
 
   document.addEventListener('click', (ev) => {{
-    const tourBtn = ev.target.closest('[data-tour]');
-    const untourBtn = ev.target.closest('[data-untour]');
-    if (tourBtn) {{
-      toured.add(tourBtn.getAttribute('data-tour'));
-      saveToured(toured);
-      refresh();
-    }} else if (untourBtn) {{
-      toured.delete(untourBtn.getAttribute('data-untour'));
-      saveToured(toured);
-      refresh();
-    }}
+    const btn = ev.target.closest('[data-status-set]');
+    if (!btn) return;
+    const key = btn.getAttribute('data-key');
+    const status = btn.getAttribute('data-status-set');
+    if (!key || !status) return;
+    // Always store explicitly so Restore wins over data-status from CSV seed.
+    statusMap[key] = status;
+    saveStatusMap(statusMap);
+    refresh();
   }});
+
+  const dl = document.getElementById('download-status');
+  if (dl) {{
+    dl.addEventListener('click', () => {{
+      const blob = new Blob([JSON.stringify({{ statuses: statusMap }}, null, 2)], {{ type: 'application/json' }});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'hitlist_status.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }});
+  }}
 
   if (scoreFilter) {{
     try {{
@@ -748,7 +876,6 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 </body>
 </html>
 """
-
 
 def main():
     parser = argparse.ArgumentParser(description="Build hit-list HTML UI")

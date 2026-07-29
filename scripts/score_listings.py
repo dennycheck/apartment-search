@@ -24,7 +24,9 @@ from config import (
     PREFERENCES_MD,
 )
 from scripts.listing_utils import (
+    STATUS_ACTIVE,
     amenity_list,
+    normalize_status,
     parse_bool,
     parse_int,
     parse_rent,
@@ -219,6 +221,7 @@ def score_listing(listing: dict) -> dict:
 
     return {
         **listing,
+        "status": normalize_status(listing.get("status")),
         "score": total,
         "score_breakdown": {
             "commute": round(c_pts, 1),
@@ -256,8 +259,17 @@ def render_hit_list(scored: list[dict], prefs_path: Path) -> str:
         "",
     ]
 
-    kept = [s for s in scored if not s.get("hard_reject")]
+    kept = [
+        s
+        for s in scored
+        if not s.get("hard_reject") and normalize_status(s.get("status")) == STATUS_ACTIVE
+    ]
     rejected = [s for s in scored if s.get("hard_reject")]
+    archived = [
+        s
+        for s in scored
+        if not s.get("hard_reject") and normalize_status(s.get("status")) != STATUS_ACTIVE
+    ]
 
     if not kept:
         lines.append("_No listings passed the hard filters._")
@@ -301,6 +313,16 @@ def render_hit_list(scored: list[dict], prefs_path: Path) -> str:
                 for item in row["concerns"]:
                     lines.append(f"- {item}")
                 lines.append("")
+
+    if archived:
+        lines.append("---")
+        lines.append("")
+        lines.append(f"## Toured / off market ({len(archived)})")
+        lines.append("")
+        for row in archived:
+            st = normalize_status(row.get("status"))
+            lines.append(f"- [{st}] {row.get('address', '?')}")
+        lines.append("")
 
     if rejected:
         lines.append("---")
@@ -368,8 +390,14 @@ def main():
     args.output.write_text(render_hit_list(md_rows, PREFERENCES_MD), encoding="utf-8")
 
     kept = [s for s in scored if not s.get("hard_reject")]
+    active = [
+        s for s in kept if normalize_status(s.get("status")) == STATUS_ACTIVE
+    ]
     print(f"Scored {len(scored)} listings → {args.output}")
-    print(f"  {len(kept)} passed hard filters; top score: {kept[0]['score'] if kept else '—'}")
+    print(
+        f"  {len(active)} active / {len(kept)} passed hard filters; "
+        f"top score: {active[0]['score'] if active else '—'}"
+    )
     print(f"  Full scored data → {LISTINGS_SCORED_JSON}")
     if PREFERENCES_MD.exists():
         print(f"  Preferences → {PREFERENCES_MD}")

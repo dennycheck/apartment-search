@@ -121,38 +121,70 @@ open output/index.html
 The map is for exploring neighborhoods and commute bands. **Listing ingest + ranking does not plot on the map** — it only reuses `data/isochrones.geojson` to tag each address with `commute_min`, then scores against `data/apartment_preferences.md`.
 
 ```
-Zillow/SE dump (HTML or screenshot→JSON)
-  → data/listings.csv
-  → geocode + isochrone band
+StreetEasy search URL
+  → save_streeteasy_pages.py  (HTML into StreetEasy HTMLs/)
+  → import → merge/dedupe by URL (status preserved)
+  → geocode (cached) + isochrone band
   → composite score
-  → output/hit_list.md
+  → output/hitlist.html + hit_list.md
 ```
 
-### One-shot
+Listings carry a **status**: `active` | `toured` | `off_market`. Re-importing the same unit updates rent/open house/`last_seen_at` but **does not** resurrect something you marked toured or off-market. Missing from a crawl is not auto-deleted.
+
+### Daily refresh
 
 ```bash
-# Drop saved search HTML (and/or JSON extracts) into data/listings/incoming/
+# 1) Capture search pages — StreetEasy blocks Playwright's Chromium.
+#    Use your real Chrome with remote debugging instead:
+#
+#    Quit Chrome, then in Terminal:
+#      /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+#        --remote-debugging-port=9222 \
+#        --user-data-dir="$HOME/chrome-streeteasy-debug"
+#    Open your search URL, pass any captcha, confirm listing cards show.
+#
+#    Then:
+python scripts/save_streeteasy_pages.py --cdp http://127.0.0.1:9222 --pages 15
+
+# 2) Merge → geocode new only → score → hitlist.html
 python scripts/run_hitlist_pipeline.py
-open output/hit_list.md
+# (defaults to StreetEasy HTMLs/ when that folder has .html files)
+
+# 3) On phone: triage Ranked / Tours; Mark as toured or Off the market
+#    https://dennycheck.github.io/apartment-search/hitlist.html
+
+# 4) Optional: make phone marks durable in CSV (Download status.json from the hit list)
+python scripts/apply_hitlist_status.py ~/Downloads/hitlist_status.json
+python scripts/score_listings.py && python scripts/generate_hitlist_ui.py
+```
+
+Publish: commit `output/hitlist.html` (or use `python scripts/publish_hitlist.py`) so GitHub Pages updates.
+
+### One-shot (folder already saved)
+
+```bash
+python scripts/run_hitlist_pipeline.py
+# or: python scripts/run_hitlist_pipeline.py "StreetEasy HTMLs"
+open output/hitlist.html
 ```
 
 Or step by step:
 
 ```bash
-python scripts/import_listings_html.py data/listings/incoming/
+python scripts/import_listings_html.py "StreetEasy HTMLs"
 python scripts/process_listings.py      # commute_min only — no map write
-python scripts/score_listings.py        # → output/hit_list.md
+python scripts/score_listings.py
+python scripts/generate_hitlist_ui.py
 ```
 
 ### How to feed listings (no one-by-one paste)
 
 | Method | What you do | Best for |
 |--------|-------------|----------|
-| **Saved HTML** | File → Save Page As into `data/listings/incoming/` | Batch structured extract (automated) |
-| **Screenshots in Cursor chat** | Attach results-page screenshots here | Easiest vision extract; I write JSON into `incoming/` then you run the pipeline |
+| **Playwright saver** | `save_streeteasy_pages.py --url … --pages N` → `StreetEasy HTMLs/` | Daily multi-page refresh |
+| **Saved HTML** | File → Save Page As into `StreetEasy HTMLs/` or `data/listings/incoming/` | Ad-hoc batch |
+| **Screenshots in Cursor chat** | Attach results-page screenshots here | Vision extract → JSON → pipeline |
 | **JSON extract** | Drop a list like `sample/listings_from_screenshot.sample.json` into `incoming/` | When you already have structured rows |
-
-A dedicated drop GUI is optional later — chat screenshots + HTML folder cover the bottleneck for now.
 
 Preferences / weights live in [`data/apartment_preferences.md`](data/apartment_preferences.md) (max rent $4k; commute weight 45; soft bands, not a hard 30-min wall).
 
@@ -176,12 +208,21 @@ Listings merge into `data/listings.csv` with `source=rentcast`. Not StreetEasy/Z
 
 ### Tier 2 — Saved HTML from Zillow / StreetEasy (semi-auto)
 
+**Preferred (StreetEasy):** paginate with Playwright into `StreetEasy HTMLs/`:
+
+```bash
+python scripts/save_streeteasy_pages.py --url 'https://streeteasy.com/for-rent/nyc/...' --pages 15
+python scripts/run_hitlist_pipeline.py
+```
+
+Or manually:
+
 1. Run a search on Zillow or StreetEasy in your browser
-2. Save the results page as HTML (File → Save Page As) into `data/listings/incoming/`
+2. Save the results page as HTML (File → Save Page As) into `StreetEasy HTMLs/` or `data/listings/incoming/`
 3. Import:
 
 ```bash
-python scripts/import_listings_html.py data/listings/incoming/zillow_search.html
+python scripts/import_listings_html.py "StreetEasy HTMLs"
 python scripts/process_listings.py
 ```
 
@@ -219,6 +260,12 @@ Export or hand-build a CSV with these columns:
 | dishwasher | no | yes |
 | in_unit_laundry | no | yes |
 | amenities | no | gym, pool, elevator |
+| open_house | no | Open: Sat 1–2pm |
+| open_house_start | no | 2026-07-26T13:00:00 |
+| open_house_end | no | 2026-07-26T14:00:00 |
+| status | no | `active` (default), `toured`, or `off_market` |
+| first_seen_at | no | 2026-07-20 (set on first import) |
+| last_seen_at | no | 2026-07-26 (refreshed on each merge) |
 | notes | no | Has laundry |
 | source | no | rentcast, zillow_html, screenshot_json, manual |
 
@@ -267,22 +314,25 @@ apartment-search/
 ├── config.py
 ├── run.py
 ├── scripts/
-│   ├── fetch_isochrones.py
-│   ├── fetch_listings_rentcast.py
+│   ├── save_streeteasy_pages.py   # Playwright bulk HTML capture
 │   ├── import_listings_html.py
+│   ├── apply_hitlist_status.py    # merge phone status.json → CSV
+│   ├── run_hitlist_pipeline.py
+│   ├── score_listings.py
+│   ├── generate_hitlist_ui.py
 │   ├── listing_utils.py
 │   ├── process_listings.py
-│   ├── process_pois.py
-│   ├── report_commute.py
 │   └── generate_map.py
+├── StreetEasy HTMLs/              # gitignored; Playwright / Save Page As drops
 ├── data/
-│   ├── listings.csv
-│   ├── listings/incoming/   # saved Zillow/StreetEasy HTML
+│   ├── listings.csv               # status + first/last_seen_at
+│   ├── listings/incoming/
 │   └── isochrones.geojson
 ├── output/
+│   ├── hitlist.html
+│   ├── hit_list.md
 │   ├── index.html
-│   ├── overlay.html       # transparent isochrone-only overlay
-│   └── within_30_min.csv
+│   └── overlay.html
 └── sample/
     └── listings_sample.csv
 ```
