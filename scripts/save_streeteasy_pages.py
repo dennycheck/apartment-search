@@ -50,6 +50,14 @@ def sanitize_stem(url: str) -> str:
     return host or "streeteasy"
 
 
+def strip_page_param(url: str) -> str:
+    parsed = urlparse(url)
+    qs = parse_qs(parsed.query, keep_blank_values=True)
+    qs.pop("page", None)
+    query = urlencode({k: v[-1] if isinstance(v, list) else v for k, v in qs.items()})
+    return urlunparse(parsed._replace(query=query))
+
+
 def find_streeteasy_page(context):
     """Prefer a tab that already shows listing cards; else any streeteasy tab."""
     with_cards = []
@@ -94,7 +102,7 @@ def wait_for_listings(page, *, timeout_s: int, allow_manual: bool) -> bool:
     print(
         "  No listing cards yet"
         + (" (captcha detected)" if denied else "")
-        + f". Finish any challenge in Chrome — waiting up to {timeout_s}s…"
+        + f". Finish any challenge in the FRONT Chrome window — waiting up to {timeout_s}s…"
     )
     deadline = time.time() + timeout_s
     while time.time() < deadline:
@@ -107,14 +115,27 @@ def wait_for_listings(page, *, timeout_s: int, allow_manual: bool) -> bool:
     return False
 
 
-def save_pages(page, *, base_url: str, out_dir: Path, start: int, count: int, delay: float) -> int:
+def save_pages(
+    page,
+    *,
+    base_url: str,
+    out_dir: Path,
+    start: int,
+    count: int,
+    delay: float,
+    captcha_wait: int,
+) -> int:
     stem = sanitize_stem(base_url)
     saved = 0
     for page_num in range(start, start + count):
         target = with_page(base_url, page_num)
         print(f"[{page_num}] {target}")
+        try:
+            page.bring_to_front()
+        except Exception:
+            pass
         page.goto(target, wait_until="domcontentloaded", timeout=60000)
-        ok = wait_for_listings(page, timeout_s=60, allow_manual=True)
+        ok = wait_for_listings(page, timeout_s=captcha_wait, allow_manual=True)
         if not ok:
             html = page.content()
             if page_num > start and "listing-card" not in html:
@@ -217,13 +238,20 @@ Recommended (bypasses bot Chromium):
                     )
                     sys.exit(1)
 
-            base_url = args.url.strip() or page.url
-            # Drop page= from whatever tab you're on so pagination starts clean
+            try:
+                page.bring_to_front()
+            except Exception:
+                pass
+            print(f"Attached tab: {page.title()!r}")
+            print(f"Attached URL: {page.url}")
+
+            base_url = strip_page_param(args.url.strip() or page.url)
             if "streeteasy.com" not in base_url.lower():
                 print(f"Current tab is not StreetEasy: {base_url}", file=sys.stderr)
                 sys.exit(1)
 
             print(f"Using base URL: {base_url}")
+            print("Watch THIS Chrome window — pages will flip here.")
             ok = wait_for_listings(page, timeout_s=args.captcha_wait, allow_manual=True)
             if not ok and not args.url:
                 print("Still no listings — open the results page, then re-run.", file=sys.stderr)
@@ -236,6 +264,7 @@ Recommended (bypasses bot Chromium):
                 start=args.start_page,
                 count=args.pages,
                 delay=args.delay,
+                captcha_wait=args.captcha_wait,
             )
             # Do not browser.close() — that would quit the user's Chrome
         else:
@@ -258,6 +287,7 @@ Recommended (bypasses bot Chromium):
                 start=args.start_page,
                 count=args.pages,
                 delay=args.delay,
+                captcha_wait=args.captcha_wait,
             )
             context.close()
 
