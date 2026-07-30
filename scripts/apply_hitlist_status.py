@@ -65,8 +65,8 @@ def main() -> None:
 
     updates = load_updates(args.status_json)
     if not updates:
-        print("No status updates found in file.", file=sys.stderr)
-        sys.exit(1)
+        print(f"No status updates in {args.status_json} — skipping.")
+        return
 
     changed, total = apply_status_updates(args.csv, updates)
     print(f"Updated {changed} of {total} listings in {args.csv}")
