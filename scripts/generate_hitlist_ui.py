@@ -110,6 +110,146 @@ def neighborhood_of(row: dict) -> str:
     return text if text else "Unknown"
 
 
+# Broader geography for chip filters (StreetEasy neighborhoods → area).
+NEIGHBORHOOD_TO_AREA = {
+    # Manhattan
+    "financial district": "Lower Manhattan",
+    "fulton/seaport": "Lower Manhattan",
+    "seaport": "Lower Manhattan",
+    "battery park city": "Lower Manhattan",
+    "civic center": "Lower Manhattan",
+    "tribeca": "Lower Manhattan",
+    "chinatown": "Lower Manhattan",
+    "two bridges": "Lower Manhattan",
+    "soho": "Downtown Manhattan",
+    "nolita": "Downtown Manhattan",
+    "little italy": "Downtown Manhattan",
+    "greenwich village": "Downtown Manhattan",
+    "west village": "Downtown Manhattan",
+    "east village": "East Village / LES",
+    "lower east side": "East Village / LES",
+    "alphabet city": "East Village / LES",
+    "kips bay": "Midtown South",
+    "gramercy park": "Midtown South",
+    "gramercy": "Midtown South",
+    "murray hill": "Midtown South",
+    "flatiron": "Midtown South",
+    "chelsea": "Midtown South",
+    # Brooklyn — downtown / northwest
+    "downtown brooklyn": "Downtown Brooklyn",
+    "brooklyn heights": "Downtown Brooklyn",
+    "dumbo": "Downtown Brooklyn",
+    "vinegar hill": "Downtown Brooklyn",
+    "fort greene": "Fort Greene / Clinton Hill",
+    "clinton hill": "Fort Greene / Clinton Hill",
+    "boerum hill": "Fort Greene / Clinton Hill",
+    # Slope / Gowanus corridor
+    "gowanus": "Park Slope / Gowanus",
+    "park slope": "Park Slope / Gowanus",
+    "south slope": "Park Slope / Gowanus",
+    "carroll gardens": "Park Slope / Gowanus",
+    "cobble hill": "Park Slope / Gowanus",
+    "windsor terrace": "Park Slope / Gowanus",
+    "red hook": "Park Slope / Gowanus",
+    # Central Brooklyn
+    "crown heights": "Central Brooklyn",
+    "prospect heights": "Central Brooklyn",
+    "prospect lefferts gardens": "Central Brooklyn",
+    "weeksville": "Central Brooklyn",
+    "prospect park south": "Central Brooklyn",
+    # Bed-Stuy belt
+    "bedford-stuyvesant": "Bed-Stuy",
+    "bed-stuy": "Bed-Stuy",
+    "stuyvesant heights": "Bed-Stuy",
+    "ocean hill": "Bed-Stuy",
+    # North Brooklyn
+    "greenpoint": "North Brooklyn",
+    "williamsburg": "North Brooklyn",
+    "east williamsburg": "North Brooklyn",
+    "bushwick": "North Brooklyn",
+    # East / further out
+    "cypress hills": "East Brooklyn",
+    "east new york": "East Brooklyn",
+    "brownsville": "East Brooklyn",
+}
+
+# Stable display order for chips
+AREA_ORDER = [
+    "Lower Manhattan",
+    "Downtown Manhattan",
+    "East Village / LES",
+    "Midtown South",
+    "Downtown Brooklyn",
+    "Fort Greene / Clinton Hill",
+    "Park Slope / Gowanus",
+    "Central Brooklyn",
+    "Bed-Stuy",
+    "North Brooklyn",
+    "East Brooklyn",
+    "Other",
+]
+
+
+def _area_from_coords(lat: float | None, lng: float | None, address: str) -> str:
+    """Rough lat/lng buckets when StreetEasy neighborhood is missing."""
+    addr = (address or "").lower()
+    if lat is None or lng is None:
+        if "brooklyn" in addr:
+            return "Other"
+        if "new york" in addr or "manhattan" in addr:
+            return "Other"
+        return "Other"
+
+    # Manhattan (west of East River roughly)
+    if lng < -73.97 and lat >= 40.70:
+        if lat < 40.72:
+            return "Lower Manhattan"
+        if lat < 40.735 and lng > -74.00:
+            return "East Village / LES"
+        if lat < 40.735:
+            return "Downtown Manhattan"
+        if lat < 40.755:
+            return "Midtown South"
+        return "Other"
+
+    # Brooklyn
+    if lat >= 40.71 and lng >= -73.96:
+        return "North Brooklyn"
+    if lat >= 40.685 and lng < -73.975:
+        return "Downtown Brooklyn"
+    if 40.685 <= lat < 40.705 and -73.975 <= lng < -73.945:
+        return "Fort Greene / Clinton Hill"
+    if 40.68 <= lat < 40.70 and lng >= -73.945:
+        return "Bed-Stuy"
+    if 40.66 <= lat < 40.685 and lng < -73.97:
+        return "Park Slope / Gowanus"
+    if 40.66 <= lat < 40.685 and -73.97 <= lng < -73.93:
+        return "Central Brooklyn"
+    if lat < 40.68 and lng >= -73.93:
+        return "East Brooklyn" if lng >= -73.90 else "Bed-Stuy"
+    if "brooklyn" in addr:
+        return "Other"
+    return "Other"
+
+
+def area_of(row: dict) -> str:
+    nbhd = (row.get("neighborhood") or "").strip().lower()
+    if nbhd:
+        if nbhd in NEIGHBORHOOD_TO_AREA:
+            return NEIGHBORHOOD_TO_AREA[nbhd]
+        for key, area in NEIGHBORHOOD_TO_AREA.items():
+            if len(key) >= 4 and (key in nbhd or nbhd in key):
+                return area
+    lat = row.get("lat")
+    lng = row.get("lng")
+    try:
+        lat_f = float(lat) if lat is not None else None
+        lng_f = float(lng) if lng is not None else None
+    except (TypeError, ValueError):
+        lat_f, lng_f = None, None
+    return _area_from_coords(lat_f, lng_f, str(row.get("address") or ""))
+
+
 def load_status_overlay(path: Path) -> dict[str, str]:
     if not path.exists():
         return {}
@@ -220,9 +360,9 @@ def render_ranked_card(i: int, row: dict) -> str:
     bd = row.get("score_breakdown") or {}
     key = esc(listing_key(row))
     status = listing_status(row)
-    nbhd = esc(neighborhood_of(row))
+    area = esc(area_of(row))
     return f"""
-<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}">
+<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-area="{area}">
   <div class="rank">{i}</div>
   <div class="body">
     <div class="topline">
@@ -263,9 +403,9 @@ def render_tour_card(row: dict, when: str) -> str:
     commute_s = f"≤{commute} min" if commute is not None else "commute ?"
     key = esc(listing_key(row))
     status = listing_status(row)
-    nbhd = esc(neighborhood_of(row))
+    area = esc(area_of(row))
     return f"""
-<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}">
+<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-area="{area}">
   <div class="rank tour-when">{esc(when)}</div>
   <div class="body">
     <div class="topline">
@@ -287,12 +427,12 @@ def render_archive_card(row: dict, *, mode: str) -> str:
     tag_html = "".join(f'<span class="tag">{esc(t)}</span>' for t in tags_for(row))
     key = esc(listing_key(row))
     status = listing_status(row)
-    nbhd = esc(neighborhood_of(row))
+    area = esc(area_of(row))
     open_house = row.get("open_house") or ""
     extra = f'<div class="meta tour-meta">{esc(open_house)}</div>' if open_house else ""
     mark = "✓" if mode == "toured" else "—"
     return f"""
-<article class="card tone-{tone} listing-card archive-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}" data-bucket="{mode}">
+<article class="card tone-{tone} listing-card archive-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-area="{area}" data-bucket="{mode}">
   <div class="rank">{mark}</div>
   <div class="body">
     <div class="topline">
@@ -385,13 +525,19 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     }
     seed_json = json.dumps(seed_statuses).replace("</", "<\\/")
 
-    neighborhoods = sorted(
-        {neighborhood_of(r) for r in viable},
-        key=lambda n: (n == "Unknown", n.lower()),
+    areas_present = {area_of(r) for r in viable}
+    area_chips = "".join(
+        f'<button type="button" class="area-chip" data-area="{esc(a)}" aria-pressed="false">'
+        f'{esc(a)}</button>'
+        for a in AREA_ORDER
+        if a in areas_present
     )
-    nbhd_options = "".join(
-        f'<option value="{esc(n)}">{esc(n)}</option>' for n in neighborhoods
-    )
+    # Any unexpected areas still get a chip
+    for extra in sorted(areas_present - set(AREA_ORDER)):
+        area_chips += (
+            f'<button type="button" class="area-chip" data-area="{esc(extra)}" aria-pressed="false">'
+            f'{esc(extra)}</button>'
+        )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -664,6 +810,16 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     background: var(--card);
     border: 1px solid var(--line);
   }}
+  .rank-controls {{
+    flex-direction: column;
+    align-items: stretch;
+  }}
+  .rank-controls-row {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    align-items: center;
+  }}
   .rank-controls label, .sync-bar label {{
     display: flex;
     flex-wrap: wrap;
@@ -679,6 +835,32 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     border: 1px solid var(--line);
     padding: 0.35rem 0.5rem;
     max-width: 12rem;
+  }}
+  .area-chip-label {{
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0 0 0.35rem;
+  }}
+  .area-chips {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }}
+  .area-chip {{
+    appearance: none;
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    border-radius: 2px;
+    cursor: pointer;
+  }}
+  .area-chip[aria-pressed="true"] {{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #f7f3ea;
   }}
   .nbhd-head {{
     margin: 1.25rem 0 0.5rem;
@@ -728,18 +910,21 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 
   <section class="panel active" id="panel-ranked" role="tabpanel">
     <div class="rank-controls">
-      <label>Sort
-        <select id="rank-sort" aria-label="Sort ranked list">
-          <option value="score">Score (high → low)</option>
-          <option value="neighborhood">Neighborhood A–Z</option>
-        </select>
-      </label>
-      <label>Neighborhood
-        <select id="rank-nbhd" aria-label="Filter by neighborhood">
-          <option value="">All</option>
-          {nbhd_options}
-        </select>
-      </label>
+      <div class="rank-controls-row">
+        <label>Sort
+          <select id="rank-sort" aria-label="Sort ranked list">
+            <option value="score">Score (high → low)</option>
+            <option value="area">Area A–Z</option>
+          </select>
+        </label>
+        <button type="button" class="action-btn" id="area-chips-clear">Clear areas</button>
+      </div>
+      <div>
+        <div class="area-chip-label">Areas (tap one or more)</div>
+        <div class="area-chips" id="area-chips" role="group" aria-label="Filter by area">
+          {area_chips}
+        </div>
+      </div>
     </div>
     <div class="stats">
       <div><strong id="ranked-count">{len(active)}</strong> active ranked</div>
@@ -791,9 +976,10 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   const STATUS_KEY = 'hitlist-status-map';
   const SCORE_KEY = 'hitlist-tours-score50';
   const SORT_KEY = 'hitlist-rank-sort';
-  const NBHD_KEY = 'hitlist-rank-nbhd';
+  const AREA_KEY = 'hitlist-rank-areas';
   const MIN_SCORE = 50;
   const LEGACY_TOURED = 'hitlist-toured-keys';
+  const AREA_ORDER = {json.dumps(AREA_ORDER)};
 
   function loadStatusMap() {{
     let map = {{}};
@@ -879,11 +1065,28 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   const rankedList = document.getElementById('ranked-list');
   const rankedCount = document.getElementById('ranked-count');
   const sortSel = document.getElementById('rank-sort');
-  const nbhdSel = document.getElementById('rank-nbhd');
+  const areaChipsEl = document.getElementById('area-chips');
+  const areaClearBtn = document.getElementById('area-chips-clear');
   const touredEmpty = document.getElementById('toured-empty');
   const offEmpty = document.getElementById('off-empty');
   const touredTabCount = document.getElementById('toured-tab-count');
   const offTabCount = document.getElementById('off-tab-count');
+
+  function selectedAreas() {{
+    if (!areaChipsEl) return [];
+    return Array.from(areaChipsEl.querySelectorAll('.area-chip[aria-pressed="true"]'))
+      .map((b) => b.getAttribute('data-area') || '')
+      .filter(Boolean);
+  }}
+
+  function setSelectedAreas(areas) {{
+    if (!areaChipsEl) return;
+    const set = new Set(areas || []);
+    areaChipsEl.querySelectorAll('.area-chip').forEach((btn) => {{
+      const on = set.has(btn.getAttribute('data-area') || '');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }});
+  }}
 
   function clearNbhdHeads() {{
     if (!rankedList) return;
@@ -893,36 +1096,40 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   function applyRankLayout() {{
     if (!rankedList) return;
     const sortBy = sortSel ? sortSel.value : 'score';
-    const nbhdFilter = nbhdSel ? nbhdSel.value : '';
+    const areas = selectedAreas();
     try {{
       if (sortSel) localStorage.setItem(SORT_KEY, sortBy);
-      if (nbhdSel) localStorage.setItem(NBHD_KEY, nbhdFilter);
+      localStorage.setItem(AREA_KEY, JSON.stringify(areas));
     }} catch (e) {{}}
 
     clearNbhdHeads();
     const cards = Array.from(rankedList.querySelectorAll('.listing-card'));
     cards.forEach((card) => rankedList.appendChild(card));
 
-    if (sortBy === 'neighborhood') {{
+    const areaRank = (name) => {{
+      const i = AREA_ORDER.indexOf(name);
+      return i >= 0 ? i : 999;
+    }};
+
+    if (sortBy === 'area') {{
       cards.sort((a, b) => {{
-        const na = a.getAttribute('data-neighborhood') || 'Unknown';
-        const nb = b.getAttribute('data-neighborhood') || 'Unknown';
-        const ua = na === 'Unknown' ? 1 : 0;
-        const ub = nb === 'Unknown' ? 1 : 0;
-        if (ua !== ub) return ua - ub;
+        const na = a.getAttribute('data-area') || 'Other';
+        const nb = b.getAttribute('data-area') || 'Other';
+        const ra = areaRank(na) - areaRank(nb);
+        if (ra) return ra;
         const c = na.localeCompare(nb);
         if (c) return c;
         return parseFloat(b.getAttribute('data-score') || '0') - parseFloat(a.getAttribute('data-score') || '0');
       }});
       let current = null;
       cards.forEach((card) => {{
-        const n = card.getAttribute('data-neighborhood') || 'Unknown';
+        const n = card.getAttribute('data-area') || 'Other';
         if (n !== current) {{
           current = n;
           const h = document.createElement('h2');
           h.className = 'nbhd-head';
           h.textContent = n;
-          h.dataset.neighborhood = n;
+          h.dataset.area = n;
           rankedList.appendChild(h);
         }}
         rankedList.appendChild(card);
@@ -935,19 +1142,19 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     let visible = 0;
     cards.forEach((card) => {{
       const active = effectiveStatus(card) === 'active';
-      const n = card.getAttribute('data-neighborhood') || 'Unknown';
-      const matchNbhd = !nbhdFilter || n === nbhdFilter;
-      const show = active && matchNbhd;
+      const n = card.getAttribute('data-area') || 'Other';
+      const matchArea = areas.length === 0 || areas.includes(n);
+      const show = active && matchArea;
       card.classList.toggle('is-hidden', !show);
       if (show) visible += 1;
     }});
     rankedList.querySelectorAll('.nbhd-head').forEach((h) => {{
-      const n = h.dataset.neighborhood || '';
+      const n = h.dataset.area || '';
       const any = cards.some((c) =>
         !c.classList.contains('is-hidden') &&
-        (c.getAttribute('data-neighborhood') || 'Unknown') === n
+        (c.getAttribute('data-area') || 'Other') === n
       );
-      const matchFilter = !nbhdFilter || n === nbhdFilter;
+      const matchFilter = areas.length === 0 || areas.includes(n);
       h.classList.toggle('is-hidden', !any || !matchFilter);
     }});
     if (rankedCount) rankedCount.textContent = String(visible);
@@ -1095,16 +1302,29 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   if (sortSel) {{
     try {{
       const s = localStorage.getItem(SORT_KEY);
-      if (s) sortSel.value = s;
+      if (s === 'area' || s === 'score') sortSel.value = s;
+      if (s === 'neighborhood') sortSel.value = 'area';
     }} catch (e) {{}}
     sortSel.addEventListener('change', () => applyRankLayout());
   }}
-  if (nbhdSel) {{
+  if (areaChipsEl) {{
     try {{
-      const n = localStorage.getItem(NBHD_KEY);
-      if (n) nbhdSel.value = n;
+      const raw = localStorage.getItem(AREA_KEY);
+      if (raw) setSelectedAreas(JSON.parse(raw));
     }} catch (e) {{}}
-    nbhdSel.addEventListener('change', () => applyRankLayout());
+    areaChipsEl.addEventListener('click', (ev) => {{
+      const btn = ev.target.closest('.area-chip');
+      if (!btn) return;
+      const on = btn.getAttribute('aria-pressed') === 'true';
+      btn.setAttribute('aria-pressed', on ? 'false' : 'true');
+      applyRankLayout();
+    }});
+  }}
+  if (areaClearBtn) {{
+    areaClearBtn.addEventListener('click', () => {{
+      setSelectedAreas([]);
+      applyRankLayout();
+    }});
   }}
 
   if (scoreFilter) {{
