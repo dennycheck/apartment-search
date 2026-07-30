@@ -20,7 +20,8 @@ from urllib.parse import quote_plus
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from config import HIT_LIST_MD, LISTINGS_SCORED_JSON, OUTPUT_DIR
+from config import HIT_LIST_MD, HITLIST_STATUS_JSON, LISTINGS_CSV, LISTINGS_SCORED_JSON, OUTPUT_DIR
+from scripts.listing_utils import apply_status_updates, normalize_status
 
 
 def esc(value) -> str:
@@ -101,12 +102,50 @@ def title_block(row: dict) -> str:
 
 
 def listing_status(row: dict) -> str:
-    raw = (row.get("status") or "active").strip().lower().replace("-", "_")
-    if raw in {"offmarket", "off_the_market", "rented", "gone"}:
-        return "off_market"
-    if raw in {"active", "toured", "off_market"}:
-        return raw
-    return "active"
+    return normalize_status(row.get("status"))
+
+
+def neighborhood_of(row: dict) -> str:
+    text = (row.get("neighborhood") or "").strip()
+    return text if text else "Unknown"
+
+
+def load_status_overlay(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    if isinstance(data, dict) and "statuses" in data:
+        data = data["statuses"]
+    if not isinstance(data, dict):
+        return {}
+    out: dict[str, str] = {}
+    for key, value in data.items():
+        if key and value:
+            out[str(key).strip().lower()] = normalize_status(value)
+    return out
+
+
+def write_status_overlay(path: Path, statuses: dict[str, str]) -> None:
+    payload = {
+        "statuses": {
+            k: v for k, v in sorted(statuses.items()) if v and v != "active"
+        }
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def merge_status_into_rows(rows: list[dict], overlay: dict[str, str]) -> list[dict]:
+    if not overlay:
+        return rows
+    for row in rows:
+        key = listing_key(row)
+        if key in overlay:
+            row["status"] = overlay[key]
+    return rows
 
 
 def action_row(row: dict, *, mode: str = "active") -> str:
@@ -181,8 +220,9 @@ def render_ranked_card(i: int, row: dict) -> str:
     bd = row.get("score_breakdown") or {}
     key = esc(listing_key(row))
     status = listing_status(row)
+    nbhd = esc(neighborhood_of(row))
     return f"""
-<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}">
+<article class="card tone-{tone} listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}">
   <div class="rank">{i}</div>
   <div class="body">
     <div class="topline">
@@ -223,8 +263,9 @@ def render_tour_card(row: dict, when: str) -> str:
     commute_s = f"≤{commute} min" if commute is not None else "commute ?"
     key = esc(listing_key(row))
     status = listing_status(row)
+    nbhd = esc(neighborhood_of(row))
     return f"""
-<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}">
+<article class="card tone-{tone} tour-card listing-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}">
   <div class="rank tour-when">{esc(when)}</div>
   <div class="body">
     <div class="topline">
@@ -246,11 +287,12 @@ def render_archive_card(row: dict, *, mode: str) -> str:
     tag_html = "".join(f'<span class="tag">{esc(t)}</span>' for t in tags_for(row))
     key = esc(listing_key(row))
     status = listing_status(row)
+    nbhd = esc(neighborhood_of(row))
     open_house = row.get("open_house") or ""
     extra = f'<div class="meta tour-meta">{esc(open_house)}</div>' if open_house else ""
     mark = "✓" if mode == "toured" else "—"
     return f"""
-<article class="card tone-{tone} listing-card archive-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-bucket="{mode}">
+<article class="card tone-{tone} listing-card archive-card" data-key="{key}" data-score="{score:.1f}" data-status="{status}" data-neighborhood="{nbhd}" data-bucket="{mode}">
   <div class="rank">{mark}</div>
   <div class="body">
     <div class="topline">
@@ -342,6 +384,14 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
         if listing_status(r) != "active"
     }
     seed_json = json.dumps(seed_statuses).replace("</", "<\\/")
+
+    neighborhoods = sorted(
+        {neighborhood_of(r) for r in viable},
+        key=lambda n: (n == "Unknown", n.lower()),
+    )
+    nbhd_options = "".join(
+        f'<option value="{esc(n)}">{esc(n)}</option>' for n in neighborhoods
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -460,12 +510,6 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     color: var(--muted);
     font-size: 0.88rem;
     font-variant-numeric: tabular-nums;
-  }}
-  .sync-bar {{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0 0 1rem;
   }}
   .listing-card.is-hidden,
   .day-head.is-hidden {{
@@ -610,14 +654,62 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     font-size: 1rem;
     margin: 0 0 0.5rem;
   }}
+  .rank-controls, .sync-bar {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    align-items: center;
+    margin: 0 0 1rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }}
+  .rank-controls label, .sync-bar label {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }}
+  .rank-controls select {{
+    font: inherit;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 0.35rem 0.5rem;
+    max-width: 12rem;
+  }}
+  .nbhd-head {{
+    margin: 1.25rem 0 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 650;
+    color: var(--accent);
+  }}
+  .nbhd-head.is-hidden {{ display: none; }}
+  .sync-note {{
+    font-size: 0.82rem;
+    color: var(--muted);
+    flex: 1 1 14rem;
+  }}
+  .local-status-count {{
+    font-size: 0.85rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }}
+  .sync-bar input[type="file"] {{
+    font-size: 0.8rem;
+    max-width: 11rem;
+  }}
 </style>
 </head>
 <body>
 <main>
   <h1>Apartment hit list</h1>
   <p class="sub">
-    Ranked by preferences · tours from StreetEasy badges · status survives re-ingest
-    (CSV is source of truth; phone marks overlay until you download status.json and apply it).
+    Ranked by preferences · tours from StreetEasy badges.
+    Marks (toured / off market) save on this phone immediately; Download status.json
+    so the next rebuild keeps them in the CSV.
   </p>
 
   <div class="tabs" role="tablist">
@@ -628,10 +720,27 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   </div>
 
   <div class="sync-bar">
+    <span class="local-status-count" id="local-status-count"></span>
     <button type="button" class="action-btn" id="download-status">Download status.json</button>
+    <label>Import <input type="file" id="import-status" accept="application/json,.json" /></label>
+    <span class="sync-note">Import restores marks on a new phone/browser. After download, ask the agent to apply it so Pages rebuilds keep your marks.</span>
   </div>
 
   <section class="panel active" id="panel-ranked" role="tabpanel">
+    <div class="rank-controls">
+      <label>Sort
+        <select id="rank-sort" aria-label="Sort ranked list">
+          <option value="score">Score (high → low)</option>
+          <option value="neighborhood">Neighborhood A–Z</option>
+        </select>
+      </label>
+      <label>Neighborhood
+        <select id="rank-nbhd" aria-label="Filter by neighborhood">
+          <option value="">All</option>
+          {nbhd_options}
+        </select>
+      </label>
+    </div>
     <div class="stats">
       <div><strong id="ranked-count">{len(active)}</strong> active ranked</div>
       <div><strong>{len(upcoming)}</strong> with upcoming tours</div>
@@ -681,6 +790,8 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 (function () {{
   const STATUS_KEY = 'hitlist-status-map';
   const SCORE_KEY = 'hitlist-tours-score50';
+  const SORT_KEY = 'hitlist-rank-sort';
+  const NBHD_KEY = 'hitlist-rank-nbhd';
   const MIN_SCORE = 50;
   const LEGACY_TOURED = 'hitlist-toured-keys';
 
@@ -696,7 +807,6 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       const raw = localStorage.getItem(STATUS_KEY);
       if (raw) map = {{ ...map, ...JSON.parse(raw) }};
     }} catch (e) {{}}
-    // Migrate older toured-only localStorage
     try {{
       const legacy = localStorage.getItem(LEGACY_TOURED);
       if (legacy) {{
@@ -711,6 +821,7 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
 
   function saveStatusMap(map) {{
     try {{ localStorage.setItem(STATUS_KEY, JSON.stringify(map)); }} catch (e) {{}}
+    updateLocalCount();
   }}
 
   let statusMap = loadStatusMap();
@@ -719,6 +830,22 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     const key = card.getAttribute('data-key') || '';
     if (statusMap[key]) return statusMap[key];
     return card.getAttribute('data-status') || 'active';
+  }}
+
+  function updateLocalCount() {{
+    const el = document.getElementById('local-status-count');
+    if (!el) return;
+    let toured = 0, off = 0;
+    const seen = new Set();
+    document.querySelectorAll('.listing-card[data-key]').forEach((card) => {{
+      const key = card.getAttribute('data-key');
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      const st = effectiveStatus(card);
+      if (st === 'toured') toured += 1;
+      if (st === 'off_market') off += 1;
+    }});
+    el.textContent = `Marked: ${{toured}} toured · ${{off}} off market`;
   }}
 
   const tabs = Array.from(document.querySelectorAll('.tab'));
@@ -749,18 +876,86 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
   const countEl = document.getElementById('tour-visible-count');
   const emptyEl = document.getElementById('tour-empty-filter');
   const tourList = document.getElementById('tour-list');
+  const rankedList = document.getElementById('ranked-list');
+  const rankedCount = document.getElementById('ranked-count');
+  const sortSel = document.getElementById('rank-sort');
+  const nbhdSel = document.getElementById('rank-nbhd');
   const touredEmpty = document.getElementById('toured-empty');
   const offEmpty = document.getElementById('off-empty');
   const touredTabCount = document.getElementById('toured-tab-count');
   const offTabCount = document.getElementById('off-tab-count');
 
+  function clearNbhdHeads() {{
+    if (!rankedList) return;
+    rankedList.querySelectorAll('.nbhd-head').forEach((h) => h.remove());
+  }}
+
+  function applyRankLayout() {{
+    if (!rankedList) return;
+    const sortBy = sortSel ? sortSel.value : 'score';
+    const nbhdFilter = nbhdSel ? nbhdSel.value : '';
+    try {{
+      if (sortSel) localStorage.setItem(SORT_KEY, sortBy);
+      if (nbhdSel) localStorage.setItem(NBHD_KEY, nbhdFilter);
+    }} catch (e) {{}}
+
+    clearNbhdHeads();
+    const cards = Array.from(rankedList.querySelectorAll('.listing-card'));
+    cards.forEach((card) => rankedList.appendChild(card));
+
+    if (sortBy === 'neighborhood') {{
+      cards.sort((a, b) => {{
+        const na = a.getAttribute('data-neighborhood') || 'Unknown';
+        const nb = b.getAttribute('data-neighborhood') || 'Unknown';
+        const ua = na === 'Unknown' ? 1 : 0;
+        const ub = nb === 'Unknown' ? 1 : 0;
+        if (ua !== ub) return ua - ub;
+        const c = na.localeCompare(nb);
+        if (c) return c;
+        return parseFloat(b.getAttribute('data-score') || '0') - parseFloat(a.getAttribute('data-score') || '0');
+      }});
+      let current = null;
+      cards.forEach((card) => {{
+        const n = card.getAttribute('data-neighborhood') || 'Unknown';
+        if (n !== current) {{
+          current = n;
+          const h = document.createElement('h2');
+          h.className = 'nbhd-head';
+          h.textContent = n;
+          h.dataset.neighborhood = n;
+          rankedList.appendChild(h);
+        }}
+        rankedList.appendChild(card);
+      }});
+    }} else {{
+      cards.sort((a, b) => parseFloat(b.getAttribute('data-score') || '0') - parseFloat(a.getAttribute('data-score') || '0'));
+      cards.forEach((card) => rankedList.appendChild(card));
+    }}
+
+    let visible = 0;
+    cards.forEach((card) => {{
+      const active = effectiveStatus(card) === 'active';
+      const n = card.getAttribute('data-neighborhood') || 'Unknown';
+      const matchNbhd = !nbhdFilter || n === nbhdFilter;
+      const show = active && matchNbhd;
+      card.classList.toggle('is-hidden', !show);
+      if (show) visible += 1;
+    }});
+    rankedList.querySelectorAll('.nbhd-head').forEach((h) => {{
+      const n = h.dataset.neighborhood || '';
+      const any = cards.some((c) =>
+        !c.classList.contains('is-hidden') &&
+        (c.getAttribute('data-neighborhood') || 'Unknown') === n
+      );
+      const matchFilter = !nbhdFilter || n === nbhdFilter;
+      h.classList.toggle('is-hidden', !any || !matchFilter);
+    }});
+    if (rankedCount) rankedCount.textContent = String(visible);
+  }}
+
   function applyVisibility() {{
     let touredN = 0;
     let offN = 0;
-
-    document.querySelectorAll('#ranked-list .listing-card').forEach((card) => {{
-      card.classList.toggle('is-hidden', effectiveStatus(card) !== 'active');
-    }});
 
     document.querySelectorAll('#tour-list .listing-card').forEach((card) => {{
       const inactive = effectiveStatus(card) !== 'active';
@@ -783,6 +978,8 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     if (offTabCount) offTabCount.textContent = offN ? `(${{offN}})` : '';
     if (touredEmpty) touredEmpty.classList.toggle('is-hidden', touredN > 0);
     if (offEmpty) offEmpty.classList.toggle('is-hidden', offN > 0);
+    applyRankLayout();
+    updateLocalCount();
   }}
 
   function applyTourFilter() {{
@@ -794,7 +991,6 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
       const score = parseFloat(card.getAttribute('data-score') || '0');
       const inactive = effectiveStatus(card) !== 'active';
       const hideScore = on && score < MIN_SCORE;
-      // Keep inactive hidden; score filter only among active
       if (inactive) {{
         card.classList.add('is-hidden');
         return;
@@ -844,22 +1040,71 @@ def render(scored: list[dict], now: datetime | None = None) -> str:
     const key = btn.getAttribute('data-key');
     const status = btn.getAttribute('data-status-set');
     if (!key || !status) return;
-    // Always store explicitly so Restore wins over data-status from CSV seed.
     statusMap[key] = status;
     saveStatusMap(statusMap);
     refresh();
   }});
 
+  function exportStatuses() {{
+    const out = {{ ...statusMap }};
+    const seen = new Set();
+    document.querySelectorAll('.listing-card[data-key]').forEach((card) => {{
+      const key = card.getAttribute('data-key');
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      const st = effectiveStatus(card);
+      if (st !== 'active') out[key] = st;
+    }});
+    return out;
+  }}
+
   const dl = document.getElementById('download-status');
   if (dl) {{
     dl.addEventListener('click', () => {{
-      const blob = new Blob([JSON.stringify({{ statuses: statusMap }}, null, 2)], {{ type: 'application/json' }});
+      const blob = new Blob([JSON.stringify({{ statuses: exportStatuses() }}, null, 2)], {{ type: 'application/json' }});
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'hitlist_status.json';
       a.click();
       URL.revokeObjectURL(a.href);
     }});
+  }}
+
+  const importInput = document.getElementById('import-status');
+  if (importInput) {{
+    importInput.addEventListener('change', async () => {{
+      const file = importInput.files && importInput.files[0];
+      if (!file) return;
+      try {{
+        const text = await file.text();
+        let data = JSON.parse(text);
+        if (data && data.statuses) data = data.statuses;
+        if (!data || typeof data !== 'object') throw new Error('bad format');
+        Object.entries(data).forEach(([k, v]) => {{
+          if (k && v) statusMap[String(k).toLowerCase()] = String(v);
+        }});
+        saveStatusMap(statusMap);
+        refresh();
+      }} catch (e) {{
+        alert('Could not import status.json');
+      }}
+      importInput.value = '';
+    }});
+  }}
+
+  if (sortSel) {{
+    try {{
+      const s = localStorage.getItem(SORT_KEY);
+      if (s) sortSel.value = s;
+    }} catch (e) {{}}
+    sortSel.addEventListener('change', () => applyRankLayout());
+  }}
+  if (nbhdSel) {{
+    try {{
+      const n = localStorage.getItem(NBHD_KEY);
+      if (n) nbhdSel.value = n;
+    }} catch (e) {{}}
+    nbhdSel.addEventListener('change', () => applyRankLayout());
   }}
 
   if (scoreFilter) {{
@@ -891,11 +1136,33 @@ def main():
         sys.exit(1)
 
     scored = json.loads(args.input.read_text(encoding="utf-8"))
+    overlay = load_status_overlay(HITLIST_STATUS_JSON)
+    if overlay:
+        # Durable marks: write into CSV so ingest/rescore keep them.
+        changed, total = apply_status_updates(LISTINGS_CSV, overlay)
+        print(f"Applied {changed} status override(s) from {HITLIST_STATUS_JSON.name} → {LISTINGS_CSV} ({total} rows)")
+        scored = merge_status_into_rows(scored, overlay)
+        LISTINGS_SCORED_JSON.write_text(json.dumps(scored, indent=2), encoding="utf-8")
+
+    # Refresh durable status file from whatever is now non-active in scored data.
+    persisted = {
+        listing_key(r): listing_status(r)
+        for r in scored
+        if listing_status(r) != "active" and listing_key(r)
+    }
+    # Keep overlay keys even if listing temporarily missing from scored set
+    for key, status in overlay.items():
+        if status != "active":
+            persisted.setdefault(key, status)
+    write_status_overlay(HITLIST_STATUS_JSON, persisted)
+
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(render(scored), encoding="utf-8")
     print(f"Wrote {args.output} ({len(scored)} listings)")
     tours = sum(1 for r in scored if r.get("open_house_start"))
     print(f"  Open-house badges: {tours}")
+    non_active = sum(1 for r in scored if listing_status(r) != "active")
+    print(f"  Status: {non_active} toured/off-market seeded into UI ({HITLIST_STATUS_JSON.name})")
     if HIT_LIST_MD.exists():
         print(f"Also see {HIT_LIST_MD}")
 

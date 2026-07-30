@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from config import LISTINGS_INCOMING_DIR, ROOT, STREETEASY_HTMLS_DIR
+from config import HITLIST_STATUS_JSON, LISTINGS_INCOMING_DIR, ROOT, STREETEASY_HTMLS_DIR
 
 
 def run(script: str, *extra: str) -> None:
@@ -34,15 +34,16 @@ def main():
     incoming = args[0] if args else default_incoming()
 
     run("import_listings_html.py", incoming)
+    if HITLIST_STATUS_JSON.exists():
+        run("apply_hitlist_status.py", str(HITLIST_STATUS_JSON))
     run("process_listings.py")
     run("score_listings.py")
     run("generate_hitlist_ui.py")
     print("\nDone. Open output/hitlist.html (and output/hit_list.md)")
     print("Phone: https://dennycheck.github.io/apartment-search/hitlist.html")
     print(
-        "If you marked status on your phone, Download status.json then:\n"
-        "  python scripts/apply_hitlist_status.py path/to/hitlist_status.json\n"
-        "  python scripts/score_listings.py && python scripts/generate_hitlist_ui.py"
+        "Phone marks: Download status.json → save as data/hitlist_status.json "
+        "(or: python scripts/apply_hitlist_status.py ~/Downloads/hitlist_status.json)"
     )
 
 

@@ -44,6 +44,7 @@ COMMUTE_CONTOURS_MIN = [15, 25, 35, 45]
 LISTINGS_CSV = DATA_DIR / "listings.csv"
 LISTINGS_JSON = DATA_DIR / "listings_processed.json"
 LISTINGS_SCORED_JSON = DATA_DIR / "listings_scored.json"
+HITLIST_STATUS_JSON = DATA_DIR / "hitlist_status.json"
 PREFERENCES_MD = DATA_DIR / "apartment_preferences.md"
 HIT_LIST_MD = OUTPUT_DIR / "hit_list.md"
 # Soft scoring baseline: current apartment ~ darker orange (~40 min band).
