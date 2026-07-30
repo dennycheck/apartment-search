@@ -2242,7 +2242,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 5.3 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 164. [567 Fulton Street #5G, New York, NY](https://streeteasy.com/building/the-brook/05g)
+## 164. [89 Dekalb Avenue #25D, New York, NY](https://streeteasy.com/building/eighty-nine-dekalb/25d)
 
 **Score 56.2** · ≤20 min · $3850 · studio
 
@@ -2256,21 +2256,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 4.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 165. [89 Dekalb Avenue #25D, New York, NY](https://streeteasy.com/building/eighty-nine-dekalb/25d)
-
-**Score 56.2** · ≤20 min · $3850 · studio
-
-_Breakdown:_ commute 43.0 / size 9.0 / rent 4.2 / unit 0.0 / building 0.0 / geo 0.0
-
-**Likes**
-- excellent commute (≤20)
-- $3850/mo
-- west of Nostrand Ave (preferred belt)
-
-**Concerns**
-- studio (sqft unknown)
-
-## 166. [95 Wall Street #2303, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/2303)
+## 165. [95 Wall Street #2303, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/2303)
 
 **Score 56.2** · ≤20 min · $3974 · studio, 454 sqft
 
@@ -2284,7 +2270,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~454 sqft)
 
-## 167. [225 Schermerhorn Street #11D, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/11d)
+## 166. [225 Schermerhorn Street #11D, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/11d)
 
 **Score 56.2** · ≤20 min · $3977 · 1BR, 561 sqft
 
@@ -2298,7 +2284,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~561 sqft)
 
-## 168. [95 Wall Street #1017, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/1017)
+## 167. [95 Wall Street #1017, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/1017)
 
 **Score 56.2** · ≤20 min · $3979 · studio, 475 sqft
 
@@ -2312,7 +2298,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~475 sqft)
 
-## 169. [95 Wall Street #316, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/316)
+## 168. [95 Wall Street #316, New York, NY](https://streeteasy.com/building/95-wall-street-new_york/316)
 
 **Score 56.2** · ≤20 min · $3979 · studio, 487 sqft
 
@@ -2326,7 +2312,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~487 sqft)
 
-## 170. [240 Willoughby Street #11R, New York, NY](https://streeteasy.com/building/240-willoughby/11r)
+## 169. [240 Willoughby Street #11R, New York, NY](https://streeteasy.com/building/240-willoughby/11r)
 
 **Score 56.2** · ≤30 min · $3475 · studio
 
@@ -2340,7 +2326,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 7.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 171. [500 Degraw Street #439, Brooklyn, NY](https://streeteasy.com/building/society-brooklyn-at-degraw/439)
+## 170. [500 Degraw Street #439, Brooklyn, NY](https://streeteasy.com/building/society-brooklyn-at-degraw/439)
 
 **Score 56.1** · ≤30 min · $3491 · studio
 
@@ -2354,7 +2340,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 7.1 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 172. [67 Prince Street #21050, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050)
+## 171. [67 Prince Street #21050, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/21050)
 
 **Score 56.1** · ≤30 min · $3493 · studio
 
@@ -2368,7 +2354,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 7.1 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 173. [340 Nevins Street #524, New York, NY](https://streeteasy.com/building/nevins-landing-south/524)
+## 172. [340 Nevins Street #524, New York, NY](https://streeteasy.com/building/nevins-landing-south/524)
 
 **Score 56.1** · ≤30 min · $3738 · 1BR
 
@@ -2382,7 +2368,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 5.1 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 174. [55 Fleet Street #18O, Brooklyn, NY](https://streeteasy.com/building/brooklyn-tower-rentals/18o)
+## 173. [55 Fleet Street #18O, Brooklyn, NY](https://streeteasy.com/building/brooklyn-tower-rentals/18o)
 
 **Score 56.0** · ≤20 min · $3870 · studio
 
@@ -2396,7 +2382,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 4.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 175. [225 Schermerhorn Street #17E, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/17e)
+## 174. [225 Schermerhorn Street #17E, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/17e)
 
 **Score 56.0** · ≤20 min · $3995 · 1BR, 577 sqft
 
@@ -2410,7 +2396,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~577 sqft)
 
-## 176. [225 Schermerhorn Street #21E, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/21e)
+## 175. [225 Schermerhorn Street #21E, Brooklyn, NY](https://streeteasy.com/building/the-addison-brooklyn/21e)
 
 **Score 56.0** · ≤20 min · $3995 · 1BR, 577 sqft
 
@@ -2424,7 +2410,7 @@ _Breakdown:_ commute 43.0 / size 10.0 / rent 3.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~577 sqft)
 
-## 177. [335 East 27th Street #6E, New York, NY](https://streeteasy.com/building/carmel-place/6e)
+## 176. [335 East 27th Street #6E, New York, NY](https://streeteasy.com/building/carmel-place/6e)
 
 **Score 56.0** · ≤30 min · $3496 · studio
 
@@ -2438,7 +2424,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 7.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 178. [395 Carroll Street #722, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722)
+## 177. [395 Carroll Street #722, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/722)
 
 **Score 56.0** · ≤30 min · $3506 · studio
 
@@ -2452,7 +2438,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 7.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 179. [12 Halsey Street #PH225, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph225)
+## 178. [12 Halsey Street #PH225, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph225)
 
 **Score 56.0** · ≤30 min · $3750 · 1BR
 
@@ -2466,7 +2452,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 5.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 180. [225 13th Street #D2, Brooklyn, NY](https://streeteasy.com/building/225-13-street-brooklyn/d2)
+## 179. [225 13th Street #D2, Brooklyn, NY](https://streeteasy.com/building/225-13-street-brooklyn/d2)
 
 **Score 56.0** · ≤30 min · $3750 · 1BR
 
@@ -2480,7 +2466,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 5.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 181. [546 Henry Street #4B, New York, NY](https://streeteasy.com/building/546-henry-street/4b)
+## 180. [546 Henry Street #4B, New York, NY](https://streeteasy.com/building/546-henry-street/4b)
 
 **Score 56.0** · ≤30 min · $3750 · 1BR
 
@@ -2494,7 +2480,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 5.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 182. [99 Fleet Place #19I, Brooklyn, NY](https://streeteasy.com/building/99-fleet-place-brooklyn/19i)
+## 181. [99 Fleet Place #19I, Brooklyn, NY](https://streeteasy.com/building/99-fleet-place-brooklyn/19i)
 
 **Score 55.9** · ≤20 min · $3890 · studio
 
@@ -2508,7 +2494,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 3.9 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 183. [499 President Street #514, New York, NY](https://streeteasy.com/building/499-president/514)
+## 182. [499 President Street #514, New York, NY](https://streeteasy.com/building/499-president/514)
 
 **Score 55.9** · ≤30 min · $3510 · studio
 
@@ -2522,7 +2508,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.9 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 184. [257 Gold Street #4N, Brooklyn, NY](https://streeteasy.com/building/bklyn-gold-257-gold-street-brooklyn/4n)
+## 183. [257 Gold Street #4N, Brooklyn, NY](https://streeteasy.com/building/bklyn-gold-257-gold-street-brooklyn/4n)
 
 **Score 55.9** · ≤30 min · $3758 · 1BR
 
@@ -2536,7 +2522,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.9 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 185. [277 Gold Street #9D/277, Brooklyn, NY](https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277)
+## 184. [277 Gold Street #9D/277, Brooklyn, NY](https://streeteasy.com/building/bklyn-gold-277-gold-street-brooklyn/9d277)
 
 **Score 55.9** · ≤30 min · $3758 · 1BR
 
@@ -2550,7 +2536,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.9 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 186. [67 Prince Street #22010, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010)
+## 185. [67 Prince Street #22010, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/22010)
 
 **Score 55.7** · ≤30 min · $3543 · studio
 
@@ -2564,7 +2550,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.7 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 187. [12 Halsey Street #PH127, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph127)
+## 186. [12 Halsey Street #PH127, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph127)
 
 **Score 55.7** · ≤30 min · $3793 · 1BR
 
@@ -2578,7 +2564,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.7 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 188. [67 Prince Street #2705, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705)
+## 187. [67 Prince Street #2705, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2705)
 
 **Score 55.6** · ≤30 min · $3548 · studio
 
@@ -2592,7 +2578,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.6 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 189. [413 East 9th Street #2C, New York, NY](https://streeteasy.com/building/413-east-9-street-new_york/2c)
+## 188. [413 East 9th Street #2C, New York, NY](https://streeteasy.com/building/413-east-9-street-new_york/2c)
 
 **Score 55.6** · ≤30 min · $3795 · 1BR
 
@@ -2606,7 +2592,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 190. [395 Carroll Street #1005, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1005)
+## 189. [395 Carroll Street #1005, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1005)
 
 **Score 55.6** · ≤30 min · $3798 · 1BR
 
@@ -2620,7 +2606,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 191. [202 8th Street #7C, Brooklyn, NY](https://streeteasy.com/building/202-8-street-brooklyn/7c)
+## 190. [202 8th Street #7C, Brooklyn, NY](https://streeteasy.com/building/202-8-street-brooklyn/7c)
 
 **Score 55.5** · ≤30 min · $3810 · 1BR
 
@@ -2634,7 +2620,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.5 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 192. [55 Broad Street #2705, New York, NY](https://streeteasy.com/building/fifty-five/2705)
+## 191. [55 Broad Street #2705, New York, NY](https://streeteasy.com/building/fifty-five/2705)
 
 **Score 55.4** · ≤20 min · $3945 · studio
 
@@ -2648,7 +2634,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 3.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 193. [55 Willoughby Street #3D, New York, NY](https://streeteasy.com/building/house-55/3d)
+## 192. [55 Willoughby Street #3D, New York, NY](https://streeteasy.com/building/house-55/3d)
 
 **Score 55.4** · ≤20 min · $3950 · studio
 
@@ -2662,7 +2648,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 3.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 194. [67 Prince Street #6030, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/6030)
+## 193. [67 Prince Street #6030, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/6030)
 
 **Score 55.4** · ≤30 min · $3570 · studio
 
@@ -2676,7 +2662,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 195. [67 Prince Street #6040, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/6040)
+## 194. [67 Prince Street #6040, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/6040)
 
 **Score 55.4** · ≤30 min · $3570 · studio
 
@@ -2690,7 +2676,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 196. [66 Rockwell Place #29F, Brooklyn, NY](https://streeteasy.com/building/66-rockwell-place-brooklyn/29f)
+## 195. [66 Rockwell Place #29F, Brooklyn, NY](https://streeteasy.com/building/66-rockwell-place-brooklyn/29f)
 
 **Score 55.4** · ≤30 min · $3695 · studio, 511 sqft
 
@@ -2704,7 +2690,7 @@ _Breakdown:_ commute 40.0 / size 10.0 / rent 5.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~511 sqft)
 
-## 197. [340 Nevins Street #325, New York, NY](https://streeteasy.com/building/nevins-landing-south/325)
+## 196. [340 Nevins Street #325, New York, NY](https://streeteasy.com/building/nevins-landing-south/325)
 
 **Score 55.4** · ≤30 min · $3831 · 1BR
 
@@ -2718,7 +2704,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 198. [55 Fleet Street #48B, Brooklyn, NY](https://streeteasy.com/building/brooklyn-tower-rentals/48b)
+## 197. [55 Fleet Street #48B, Brooklyn, NY](https://streeteasy.com/building/brooklyn-tower-rentals/48b)
 
 **Score 55.3** · ≤20 min · $3965 · studio
 
@@ -2732,7 +2718,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 3.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 199. [395 Carroll Street #642, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/642)
+## 198. [395 Carroll Street #642, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/642)
 
 **Score 55.3** · ≤30 min · $3588 · studio
 
@@ -2746,7 +2732,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 200. [15 William Street #14D, New York, NY](https://streeteasy.com/building/15-william-street-new_york/14d)
+## 199. [15 William Street #14D, New York, NY](https://streeteasy.com/building/15-william-street-new_york/14d)
 
 **Score 55.2** · ≤20 min · $3969 · studio
 
@@ -2760,7 +2746,7 @@ _Breakdown:_ commute 43.0 / size 9.0 / rent 3.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 201. [240 Willoughby Street #28D, New York, NY](https://streeteasy.com/building/240-willoughby/28d)
+## 200. [240 Willoughby Street #28D, New York, NY](https://streeteasy.com/building/240-willoughby/28d)
 
 **Score 55.2** · ≤30 min · $3595 · studio
 
@@ -2774,7 +2760,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 202. [365 Bond Street #B204, New York, NY](https://streeteasy.com/building/365-bond/b204)
+## 201. [365 Bond Street #B204, New York, NY](https://streeteasy.com/building/365-bond/b204)
 
 **Score 55.2** · ≤30 min · $3595 · studio
 
@@ -2788,7 +2774,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 203. [570 Fulton Street #3J, New York, NY](https://streeteasy.com/building/fulton-greene/3j)
+## 202. [570 Fulton Street #3J, New York, NY](https://streeteasy.com/building/fulton-greene/3j)
 
 **Score 55.2** · ≤30 min · $3850 · 1BR
 
@@ -2802,7 +2788,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 204. [250 Ashland Place #31B, New York, NY](https://streeteasy.com/building/the-ashland/31b)
+## 203. [250 Ashland Place #31B, New York, NY](https://streeteasy.com/building/the-ashland/31b)
 
 **Score 55.1** · ≤30 min · $3607 · studio
 
@@ -2816,7 +2802,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.1 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 205. [395 Carroll Street #423, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423)
+## 204. [395 Carroll Street #423, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/423)
 
 **Score 55.1** · ≤30 min · $3866 · 1BR
 
@@ -2830,7 +2816,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.1 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 206. [67 Prince Street #7010, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010)
+## 205. [67 Prince Street #7010, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7010)
 
 **Score 55.0** · ≤30 min · $3621 · studio
 
@@ -2844,7 +2830,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 6.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 207. [1057 Atlantic Avenue #1211, Brooklyn, NY](https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1211)
+## 206. [1057 Atlantic Avenue #1211, Brooklyn, NY](https://streeteasy.com/building/atlanticbk-1057-atlantic-avenue-brooklyn/1211)
 
 **Score 55.0** · ≤30 min · $3871 · 1BR
 
@@ -2858,7 +2844,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 208. [395 Carroll Street #428, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428)
+## 207. [395 Carroll Street #428, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/428)
 
 **Score 55.0** · ≤30 min · $3875 · 1BR
 
@@ -2872,7 +2858,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 209. [340 Nevins Street #422, New York, NY](https://streeteasy.com/building/nevins-landing-south/422)
+## 208. [340 Nevins Street #422, New York, NY](https://streeteasy.com/building/nevins-landing-south/422)
 
 **Score 55.0** · ≤30 min · $3877 · 1BR
 
@@ -2886,7 +2872,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 210. [340 Nevins Street #428, New York, NY](https://streeteasy.com/building/nevins-landing-south/428)
+## 209. [340 Nevins Street #428, New York, NY](https://streeteasy.com/building/nevins-landing-south/428)
 
 **Score 55.0** · ≤30 min · $3877 · 1BR
 
@@ -2900,7 +2886,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 211. [12 Halsey Street #PH129, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph129)
+## 210. [12 Halsey Street #PH129, Brooklyn, NY](https://streeteasy.com/building/12-halsey-street-brooklyn/ph129)
 
 **Score 55.0** · ≤30 min · $3879 · 1BR
 
@@ -2914,7 +2900,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 4.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 212. [505 State Street #16H, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/16h)
+## 211. [505 State Street #16H, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/16h)
 
 **Score 54.9** · ≤30 min · $3888 · 1BR
 
@@ -2928,7 +2914,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.9 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 213. [210 East 22nd Street #GLL, New York, NY](https://streeteasy.com/building/210-east-22-street-new_york/gll)
+## 212. [210 East 22nd Street #GLL, New York, NY](https://streeteasy.com/building/210-east-22-street-new_york/gll)
 
 **Score 54.8** · ≤30 min · $3650 · studio
 
@@ -2942,7 +2928,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.8 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 214. [218 Avenue A #3RN, New York, NY](https://streeteasy.com/building/218-avenue-a-new_york/3rn)
+## 213. [218 Avenue A #3RN, New York, NY](https://streeteasy.com/building/218-avenue-a-new_york/3rn)
 
 **Score 54.8** · ≤30 min · $3895 · 1BR
 
@@ -2956,7 +2942,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 215. [262 9th Street #650, New York, NY](https://streeteasy.com/building/the-deermar/650)
+## 214. [262 9th Street #650, New York, NY](https://streeteasy.com/building/the-deermar/650)
 
 **Score 54.8** · ≤30 min · $3900 · 1BR
 
@@ -2970,7 +2956,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 216. [429 East 6th Street #A4, New York, NY](https://streeteasy.com/building/429-east-6-street-new_york/a4)
+## 215. [429 East 6th Street #A4, New York, NY](https://streeteasy.com/building/429-east-6-street-new_york/a4)
 
 **Score 54.8** · ≤30 min · $3900 · 1BR
 
@@ -2984,7 +2970,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 217. [499 President Street #336, New York, NY](https://streeteasy.com/building/499-president/336)
+## 216. [499 President Street #336, New York, NY](https://streeteasy.com/building/499-president/336)
 
 **Score 54.7** · ≤30 min · $3915 · 1BR
 
@@ -2998,7 +2984,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.7 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 218. [880 Atlantic Avenue #4K, Brooklyn, NY](https://streeteasy.com/building/eight80-880-atlantic-avenue-brooklyn/4k)
+## 217. [880 Atlantic Avenue #4K, Brooklyn, NY](https://streeteasy.com/building/eight80-880-atlantic-avenue-brooklyn/4k)
 
 **Score 54.7** · ≤30 min · $3916 · 1BR
 
@@ -3012,7 +2998,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.7 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 219. [340 Nevins Street #521, New York, NY](https://streeteasy.com/building/nevins-landing-south/521)
+## 218. [340 Nevins Street #521, New York, NY](https://streeteasy.com/building/nevins-landing-south/521)
 
 **Score 54.6** · ≤30 min · $3923 · 1BR
 
@@ -3026,7 +3012,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 220. [395 Carroll Street #1427, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427)
+## 219. [395 Carroll Street #1427, Brooklyn, NY](https://streeteasy.com/building/westmark-395-carroll-street-brooklyn/1427)
 
 **Score 54.6** · ≤30 min · $3925 · 1BR
 
@@ -3040,7 +3026,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 221. [335 East 27th Street #7A, New York, NY](https://streeteasy.com/building/carmel-place/7a)
+## 220. [335 East 27th Street #7A, New York, NY](https://streeteasy.com/building/carmel-place/7a)
 
 **Score 54.5** · ≤30 min · $3685 · studio
 
@@ -3054,7 +3040,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.5 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 222. [340 Nevins Street #808, New York, NY](https://streeteasy.com/building/nevins-landing-south/808)
+## 221. [340 Nevins Street #808, New York, NY](https://streeteasy.com/building/nevins-landing-south/808)
 
 **Score 54.5** · ≤30 min · $3692 · studio
 
@@ -3068,7 +3054,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.5 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 223. [420 Carroll Street #606, New York, NY](https://streeteasy.com/building/420-carroll/606)
+## 222. [420 Carroll Street #606, New York, NY](https://streeteasy.com/building/420-carroll/606)
 
 **Score 54.5** · ≤30 min · $3943 · 1BR
 
@@ -3082,7 +3068,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.5 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 224. [153 Avenue A #5A, New York, NY](https://streeteasy.com/building/153-avenue-a-new_york/5a)
+## 223. [153 Avenue A #5A, New York, NY](https://streeteasy.com/building/153-avenue-a-new_york/5a)
 
 **Score 54.4** · ≤30 min · $3695 · studio
 
@@ -3096,7 +3082,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 225. [209 East 10th Street #5AA, New York, NY](https://streeteasy.com/building/209-east-10-street-new_york/5aa)
+## 224. [209 East 10th Street #5AA, New York, NY](https://streeteasy.com/building/209-east-10-street-new_york/5aa)
 
 **Score 54.4** · ≤30 min · $3695 · studio
 
@@ -3110,7 +3096,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 226. [300 Ashland Place #10M, New York, NY](https://streeteasy.com/building/300-ashland-place/10m)
+## 225. [300 Ashland Place #10M, New York, NY](https://streeteasy.com/building/300-ashland-place/10m)
 
 **Score 54.4** · ≤30 min · $3698 · studio
 
@@ -3124,7 +3110,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 5.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 227. [461 Dean Street #31G, Brooklyn, NY](https://streeteasy.com/building/461-dean-street-brooklyn/31g)
+## 226. [461 Dean Street #31G, Brooklyn, NY](https://streeteasy.com/building/461-dean-street-brooklyn/31g)
 
 **Score 54.4** · ≤30 min · $3825 · studio, 578 sqft
 
@@ -3138,7 +3124,7 @@ _Breakdown:_ commute 40.0 / size 10.0 / rent 4.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~578 sqft)
 
-## 228. [445 Grand Avenue #603, New York, NY](https://streeteasy.com/building/arris-grand/603)
+## 227. [445 Grand Avenue #603, New York, NY](https://streeteasy.com/building/arris-grand/603)
 
 **Score 54.4** · ≤30 min · $3950 · 1BR
 
@@ -3152,7 +3138,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 229. [505 State Street #23H, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/23h)
+## 228. [505 State Street #23H, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/23h)
 
 **Score 54.4** · ≤30 min · $3950 · 1BR
 
@@ -3166,7 +3152,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 230. [111 Willoughby Street #17D, New York, NY](https://streeteasy.com/building/maxwell-downtown/17d)
+## 229. [111 Willoughby Street #17D, New York, NY](https://streeteasy.com/building/maxwell-downtown/17d)
 
 **Score 54.3** · ≤20 min · $3707 · studio, 448 sqft
 
@@ -3180,7 +3166,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 5.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 231. [499 President Street #347, New York, NY](https://streeteasy.com/building/499-president/347)
+## 230. [499 President Street #347, New York, NY](https://streeteasy.com/building/499-president/347)
 
 **Score 54.3** · ≤30 min · $3960 · 1BR
 
@@ -3194,7 +3180,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.3 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 232. [10 Hanover Square #8X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/08x)
+## 231. [10 Hanover Square #8X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/08x)
 
 **Score 54.2** · ≤20 min · $3721 · studio, 431 sqft
 
@@ -3208,7 +3194,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 5.2 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~431 sqft)
 
-## 233. [527 Grand Avenue #904, Brooklyn, NY](https://streeteasy.com/building/527-grand-avenue-brooklyn/904)
+## 232. [527 Grand Avenue #904, Brooklyn, NY](https://streeteasy.com/building/527-grand-avenue-brooklyn/904)
 
 **Score 54.2** · ≤30 min · $3975 · 1BR
 
@@ -3222,7 +3208,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 234. [1211 Fulton Street #PH, Brooklyn, NY](https://streeteasy.com/building/1211-fulton-street-brooklyn/ph)
+## 233. [1211 Fulton Street #PH, Brooklyn, NY](https://streeteasy.com/building/1211-fulton-street-brooklyn/ph)
 
 **Score 54.1** · ≤30 min · $3993 · 1BR
 
@@ -3236,7 +3222,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 3.1 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - 1BR (sqft unknown)
 
-## 235. [10 Hanover Square #19X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/19x)
+## 234. [10 Hanover Square #19X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/19x)
 
 **Score 53.9** · ≤20 min · $3767 · studio, 431 sqft
 
@@ -3250,7 +3236,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.9 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~431 sqft)
 
-## 236. [67 Prince Street #2807, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2807)
+## 235. [67 Prince Street #2807, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/2807)
 
 **Score 53.8** · ≤30 min · $3781 · studio
 
@@ -3264,7 +3250,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 4.8 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 237. [475 Clermont Avenue #301, New York, NY](https://streeteasy.com/building/475-clermont/0301)
+## 236. [475 Clermont Avenue #301, New York, NY](https://streeteasy.com/building/475-clermont/0301)
 
 **Score 53.8** · ≤30 min · $3899 · studio, 500 sqft
 
@@ -3278,7 +3264,7 @@ _Breakdown:_ commute 40.0 / size 10.0 / rent 3.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~500 sqft)
 
-## 238. [111 Willoughby Street #23D, New York, NY](https://streeteasy.com/building/maxwell-downtown/23d)
+## 237. [111 Willoughby Street #23D, New York, NY](https://streeteasy.com/building/maxwell-downtown/23d)
 
 **Score 53.5** · ≤20 min · $3807 · studio, 448 sqft
 
@@ -3292,7 +3278,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.5 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 239. [111 Willoughby Street #24D, New York, NY](https://streeteasy.com/building/maxwell-downtown/24d)
+## 238. [111 Willoughby Street #24D, New York, NY](https://streeteasy.com/building/maxwell-downtown/24d)
 
 **Score 53.5** · ≤20 min · $3817 · studio, 448 sqft
 
@@ -3306,7 +3292,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.5 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 240. [150 East 34th Street #706, New York, NY](https://streeteasy.com/building/150-east-34-street-new_york/706)
+## 239. [150 East 34th Street #706, New York, NY](https://streeteasy.com/building/150-east-34-street-new_york/706)
 
 **Score 53.4** · ≤30 min · $3952 · studio, 516 sqft
 
@@ -3320,7 +3306,7 @@ _Breakdown:_ commute 40.0 / size 10.0 / rent 3.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~516 sqft)
 
-## 241. [111 Willoughby Street #25D, New York, NY](https://streeteasy.com/building/maxwell-downtown/25d)
+## 240. [111 Willoughby Street #25D, New York, NY](https://streeteasy.com/building/maxwell-downtown/25d)
 
 **Score 53.3** · ≤20 min · $3832 · studio, 448 sqft
 
@@ -3334,7 +3320,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 242. [111 Willoughby Street #19D, New York, NY](https://streeteasy.com/building/maxwell-downtown/19d)
+## 241. [111 Willoughby Street #19D, New York, NY](https://streeteasy.com/building/maxwell-downtown/19d)
 
 **Score 53.3** · ≤20 min · $3842 · studio, 448 sqft
 
@@ -3348,7 +3334,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 243. [111 Willoughby Street #30D, New York, NY](https://streeteasy.com/building/maxwell-downtown/30d)
+## 242. [111 Willoughby Street #30D, New York, NY](https://streeteasy.com/building/maxwell-downtown/30d)
 
 **Score 53.1** · ≤20 min · $3859 · studio, 448 sqft
 
@@ -3362,7 +3348,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 4.1 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~448 sqft)
 
-## 244. [250 Ashland Place #35J, New York, NY](https://streeteasy.com/building/the-ashland/35j)
+## 243. [250 Ashland Place #35J, New York, NY](https://streeteasy.com/building/the-ashland/35j)
 
 **Score 53.1** · ≤30 min · $3859 · studio
 
@@ -3376,7 +3362,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 4.1 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 245. [316 Bergen Street #210, New York, NY](https://streeteasy.com/building/the-bergen/0210)
+## 244. [316 Bergen Street #210, New York, NY](https://streeteasy.com/building/the-bergen/0210)
 
 **Score 53.0** · ≤30 min · $3995 · 1BR, 539 sqft
 
@@ -3390,7 +3376,7 @@ _Breakdown:_ commute 40.0 / size 10.0 / rent 3.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - compact (~539 sqft)
 
-## 246. [10 Hanover Square #23X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/23x)
+## 245. [10 Hanover Square #23X, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/23x)
 
 **Score 52.9** · ≤20 min · $3885 · studio, 431 sqft
 
@@ -3404,7 +3390,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 3.9 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~431 sqft)
 
-## 247. [10 Hanover Square #23H, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/23h)
+## 246. [10 Hanover Square #23H, New York, NY](https://streeteasy.com/building/10-hanover-square-new_york/23h)
 
 **Score 52.7** · ≤20 min · $3917 · studio, 419 sqft
 
@@ -3418,7 +3404,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 3.7 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~419 sqft)
 
-## 248. [196 Willoughby Street #30B, Brooklyn, NY](https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b)
+## 247. [196 Willoughby Street #30B, Brooklyn, NY](https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/30b)
 
 **Score 52.6** · ≤20 min · $3929 · studio, 404 sqft
 
@@ -3432,7 +3418,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 3.6 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~404 sqft)
 
-## 249. [67 Prince Street #7190, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7190)
+## 248. [67 Prince Street #7190, Brooklyn, NY](https://streeteasy.com/building/dwtn-67-prince-street-brooklyn/7190)
 
 **Score 52.5** · ≤30 min · $3937 · studio
 
@@ -3446,7 +3432,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 3.5 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 250. [196 Willoughby Street #32B, Brooklyn, NY](https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/32b)
+## 249. [196 Willoughby Street #32B, Brooklyn, NY](https://streeteasy.com/building/willoughby-196-willoughby-street-brooklyn___/32b)
 
 **Score 52.4** · ≤20 min · $3956 · studio, 404 sqft
 
@@ -3460,7 +3446,7 @@ _Breakdown:_ commute 43.0 / size 6.0 / rent 3.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~404 sqft)
 
-## 251. [505 State Street #15F, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/15f)
+## 250. [505 State Street #15F, Brooklyn, NY](https://streeteasy.com/building/505-state-street-brooklyn/15f)
 
 **Score 52.0** · ≤30 min · $3995 · studio
 
@@ -3474,7 +3460,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 3.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - studio (sqft unknown)
 
-## 252. [461 Dean Street #19C, Brooklyn, NY](https://streeteasy.com/building/461-dean-street-brooklyn/19c)
+## 251. [461 Dean Street #19C, Brooklyn, NY](https://streeteasy.com/building/461-dean-street-brooklyn/19c)
 
 **Score 51.8** · ≤30 min · $3645 · studio, 441 sqft
 
@@ -3488,7 +3474,7 @@ _Breakdown:_ commute 40.0 / size 6.0 / rent 5.8 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~441 sqft)
 
-## 253. [49 Kingston Avenue #2L, Brooklyn, NY](https://streeteasy.com/building/49-kingston-avenue-brooklyn/2l)
+## 252. [49 Kingston Avenue #2L, Brooklyn, NY](https://streeteasy.com/building/49-kingston-avenue-brooklyn/2l)
 
 **Score 51.1** · ≤30 min · $2999 · 2BR
 
@@ -3502,7 +3488,7 @@ _Breakdown:_ commute 40.0 / size 16.0 / rent 11.0 / unit 0.0 / building 0.0 / ge
 **Concerns**
 - east of Nostrand Ave (~0.5 mi) — prefer west
 
-## 254. [1494 Fulton Street #3, Brooklyn, NY](https://streeteasy.com/building/1494-fulton-street-brooklyn/3)
+## 253. [1494 Fulton Street #3, Brooklyn, NY](https://streeteasy.com/building/1494-fulton-street-brooklyn/3)
 
 **Score 50.9** · ≤30 min · $3500 · 3BR, 1100 sqft
 
@@ -3516,7 +3502,7 @@ _Breakdown:_ commute 40.0 / size 20.0 / rent 7.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~0.5 mi) — prefer west
 
-## 255. [475 Clermont Avenue #439, New York, NY](https://streeteasy.com/building/475-clermont/0439)
+## 254. [475 Clermont Avenue #439, New York, NY](https://streeteasy.com/building/475-clermont/0439)
 
 **Score 50.0** · ≤30 min · $3875 · studio, 446 sqft
 
@@ -3530,7 +3516,7 @@ _Breakdown:_ commute 40.0 / size 6.0 / rent 4.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~446 sqft)
 
-## 256. [163 Hancock Street #1, Brooklyn, NY](https://streeteasy.com/building/163-hancock-street-brooklyn/1)
+## 255. [163 Hancock Street #1, Brooklyn, NY](https://streeteasy.com/building/163-hancock-street-brooklyn/1)
 
 **Score 49.6** · ≤30 min · $3950 · 1BR, 750 sqft
 
@@ -3544,7 +3530,7 @@ _Breakdown:_ commute 40.0 / size 17.0 / rent 3.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~0.1 mi) — prefer west
 
-## 257. [475 Clermont Avenue #215, New York, NY](https://streeteasy.com/building/475-clermont/0215)
+## 256. [475 Clermont Avenue #215, New York, NY](https://streeteasy.com/building/475-clermont/0215)
 
 **Score 49.3** · ≤30 min · $3959 · studio, 445 sqft
 
@@ -3558,7 +3544,7 @@ _Breakdown:_ commute 40.0 / size 6.0 / rent 3.3 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - small (~445 sqft)
 
-## 258. [117 Albany Avenue #2, Brooklyn, NY](https://streeteasy.com/building/117-albany-avenue-brooklyn/2)
+## 257. [117 Albany Avenue #2, Brooklyn, NY](https://streeteasy.com/building/117-albany-avenue-brooklyn/2)
 
 **Score 47.8** · ≤30 min · $3204 · 2BR
 
@@ -3572,7 +3558,7 @@ _Breakdown:_ commute 40.0 / size 16.0 / rent 9.4 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~0.6 mi) — prefer west
 
-## 259. [221 Howard Avenue #1R, Brooklyn, NY](https://streeteasy.com/building/221-howard-avenue-brooklyn/1r)
+## 258. [221 Howard Avenue #1R, Brooklyn, NY](https://streeteasy.com/building/221-howard-avenue-brooklyn/1r)
 
 **Score 46.6** · ≤30 min · $3300 · 3BR, 1100 sqft
 
@@ -3586,7 +3572,7 @@ _Breakdown:_ commute 40.0 / size 20.0 / rent 8.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~1.6 mi) — prefer west
 
-## 260. [1875 Atlantic Avenue #4J, Brooklyn, NY](https://streeteasy.com/building/1875-atlantic-avenue-brooklyn/4j)
+## 259. [1875 Atlantic Avenue #4J, Brooklyn, NY](https://streeteasy.com/building/1875-atlantic-avenue-brooklyn/4j)
 
 **Score 44.2** · ≤30 min · $3100 · 2BR
 
@@ -3600,7 +3586,7 @@ _Breakdown:_ commute 40.0 / size 16.0 / rent 10.2 / unit 0.0 / building 0.0 / ge
 **Concerns**
 - east of Nostrand Ave (~1.4 mi) — prefer west
 
-## 261. [1469 Dean Street #4F, Brooklyn, NY](https://streeteasy.com/building/1469-dean-street-brooklyn/4f)
+## 260. [1469 Dean Street #4F, Brooklyn, NY](https://streeteasy.com/building/1469-dean-street-brooklyn/4f)
 
 **Score 43.1** · ≤30 min · $4000 · 2BR, 800 sqft
 
@@ -3614,7 +3600,7 @@ _Breakdown:_ commute 40.0 / size 17.0 / rent 3.0 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~0.6 mi) — prefer west
 
-## 262. [428 Halsey Street #1, Brooklyn, NY](https://streeteasy.com/building/428-halsey-street-brooklyn/1)
+## 261. [428 Halsey Street #1, Brooklyn, NY](https://streeteasy.com/building/428-halsey-street-brooklyn/1)
 
 **Score 41.3** · ≤30 min · $3000 · studio
 
@@ -3628,7 +3614,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 11.0 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.7 mi) — prefer west
 
-## 263. [1100 Myrtle Avenue #911, New York, NY](https://streeteasy.com/building/the-mc/911)
+## 262. [1100 Myrtle Avenue #911, New York, NY](https://streeteasy.com/building/the-mc/911)
 
 **Score 40.9** · ≤30 min · $3299 · 1BR
 
@@ -3642,7 +3628,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 8.6 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.7 mi) — prefer west
 
-## 264. [1520 Fulton Street #8D, Brooklyn, NY](https://streeteasy.com/building/1520-fulton-street-brooklyn/8d)
+## 263. [1520 Fulton Street #8D, Brooklyn, NY](https://streeteasy.com/building/1520-fulton-street-brooklyn/8d)
 
 **Score 40.7** · ≤30 min · $3574 · 1BR
 
@@ -3656,7 +3642,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 6.4 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.6 mi) — prefer west
 
-## 265. [822 Saint Johns Place #3R, Brooklyn, NY](https://streeteasy.com/building/822-st-johns-place-brooklyn/3r)
+## 264. [822 Saint Johns Place #3R, Brooklyn, NY](https://streeteasy.com/building/822-st-johns-place-brooklyn/3r)
 
 **Score 40.6** · ≤40 min · $3300 · 2BR
 
@@ -3670,7 +3656,7 @@ _Breakdown:_ commute 16.0 / size 16.0 / rent 8.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - similar to current (~40) — weak reason to move
 
-## 266. [946 Herkimer Street #1A, Brooklyn, NY](https://streeteasy.com/building/946-herkimer-street-brooklyn/1a)
+## 265. [946 Herkimer Street #1A, Brooklyn, NY](https://streeteasy.com/building/946-herkimer-street-brooklyn/1a)
 
 **Score 40.0** · ≤30 min · $2745 · studio
 
@@ -3684,7 +3670,7 @@ _Breakdown:_ commute 40.0 / size 9.0 / rent 13.0 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~1.5 mi) — prefer west
 
-## 267. [180 Bainbridge Street #307, Brooklyn, NY](https://streeteasy.com/building/180-bainbridge-street-brooklyn/307)
+## 266. [180 Bainbridge Street #307, Brooklyn, NY](https://streeteasy.com/building/180-bainbridge-street-brooklyn/307)
 
 **Score 39.1** · ≤30 min · $3112 · 1BR
 
@@ -3698,7 +3684,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 10.1 / unit 0.0 / building 0.0 / ge
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~1.1 mi) — prefer west
 
-## 268. [321 Malcolm X Boulevard #2F, Brooklyn, NY](https://streeteasy.com/building/321-malcolm-x-boulevard-brooklyn/2f)
+## 267. [321 Malcolm X Boulevard #2F, Brooklyn, NY](https://streeteasy.com/building/321-malcolm-x-boulevard-brooklyn/2f)
 
 **Score 38.6** · ≤30 min · $3795 · 3BR
 
@@ -3712,7 +3698,7 @@ _Breakdown:_ commute 40.0 / size 16.0 / rent 4.6 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - east of Nostrand Ave (~1.2 mi) — prefer west
 
-## 269. [931 Carroll Street #202D, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/202d)
+## 268. [931 Carroll Street #202D, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/202d)
 
 **Score 38.6** · ≤40 min · $2669 · studio
 
@@ -3726,7 +3712,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 13.6 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 270. [931 Carroll Street #C1010, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010)
+## 269. [931 Carroll Street #C1010, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1010)
 
 **Score 38.6** · ≤40 min · $2931 · 1BR
 
@@ -3740,7 +3726,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 11.6 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 271. [931 Carroll Street #C1012, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1012)
+## 270. [931 Carroll Street #C1012, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1012)
 
 **Score 38.6** · ≤40 min · $2931 · 1BR
 
@@ -3754,7 +3740,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 11.6 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 272. [931 Carroll Street #C1211, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1211)
+## 271. [931 Carroll Street #C1211, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1211)
 
 **Score 38.2** · ≤40 min · $2975 · 1BR
 
@@ -3768,7 +3754,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 11.2 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 273. [180 Bainbridge Street #209, Brooklyn, NY](https://streeteasy.com/building/180-bainbridge-street-brooklyn/209)
+## 272. [180 Bainbridge Street #209, Brooklyn, NY](https://streeteasy.com/building/180-bainbridge-street-brooklyn/209)
 
 **Score 38.0** · ≤30 min · $3254 · 1BR
 
@@ -3782,7 +3768,7 @@ _Breakdown:_ commute 40.0 / size 11.0 / rent 9.0 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~1.1 mi) — prefer west
 
-## 274. [1499 Bedford Avenue #10T, Brooklyn, NY](https://streeteasy.com/building/1499-bedford-avenue-brooklyn/10t)
+## 273. [1499 Bedford Avenue #10T, Brooklyn, NY](https://streeteasy.com/building/1499-bedford-avenue-brooklyn/10t)
 
 **Score 38.0** · ≤40 min · $2750 · studio
 
@@ -3796,7 +3782,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 13.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 275. [931 Carroll Street #C1309, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309)
+## 274. [931 Carroll Street #C1309, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1309)
 
 **Score 37.8** · ≤40 min · $3019 · 1BR
 
@@ -3810,7 +3796,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 10.8 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 276. [931 Carroll Street #C1104, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1104)
+## 275. [931 Carroll Street #C1104, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1104)
 
 **Score 36.4** · ≤40 min · $3194 · 1BR
 
@@ -3824,7 +3810,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.4 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 277. [558 19th Street #1, Brooklyn, NY](https://streeteasy.com/building/558-19-street-brooklyn/1)
+## 276. [558 19th Street #1, Brooklyn, NY](https://streeteasy.com/building/558-19-street-brooklyn/1)
 
 **Score 36.2** · ≤40 min · $3600 · 2BR, 700 sqft
 
@@ -3838,7 +3824,7 @@ _Breakdown:_ commute 16.0 / size 14.0 / rent 6.2 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - similar to current (~40) — weak reason to move
 
-## 278. [126 Sandford Street #511, New York, NY](https://streeteasy.com/building/prisma-house/511)
+## 277. [126 Sandford Street #511, New York, NY](https://streeteasy.com/building/prisma-house/511)
 
 **Score 36.1** · ≤40 min · $3234 · 1BR
 
@@ -3852,7 +3838,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.1 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 279. [931 Carroll Street #C1604, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1604)
+## 278. [931 Carroll Street #C1604, Brooklyn, NY](https://streeteasy.com/building/botanica-931-carroll-street-brooklyn/c1604)
 
 **Score 36.1** · ≤40 min · $3238 · 1BR
 
@@ -3866,7 +3852,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.1 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 280. [54 Crown Street #210, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/210)
+## 279. [54 Crown Street #210, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/210)
 
 **Score 36.0** · ≤40 min · $3000 · studio
 
@@ -3880,7 +3866,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 11.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 281. [11 Ocean Parkway #926, New York, NY](https://streeteasy.com/building/one-park-point/926)
+## 280. [11 Ocean Parkway #926, New York, NY](https://streeteasy.com/building/one-park-point/926)
 
 **Score 36.0** · ≤40 min · $3250 · 1BR
 
@@ -3894,7 +3880,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 282. [126 Sandford Street #504, New York, NY](https://streeteasy.com/building/prisma-house/504)
+## 281. [126 Sandford Street #504, New York, NY](https://streeteasy.com/building/prisma-house/504)
 
 **Score 36.0** · ≤40 min · $3250 · 1BR
 
@@ -3908,7 +3894,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 283. [126 Sandford Street #408, New York, NY](https://streeteasy.com/building/prisma-house/408)
+## 282. [126 Sandford Street #408, New York, NY](https://streeteasy.com/building/prisma-house/408)
 
 **Score 36.0** · ≤40 min · $3254 · 1BR
 
@@ -3922,7 +3908,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 284. [11 Ocean Parkway #817, New York, NY](https://streeteasy.com/building/one-park-point/817)
+## 283. [11 Ocean Parkway #817, New York, NY](https://streeteasy.com/building/one-park-point/817)
 
 **Score 35.9** · ≤40 min · $3258 · 1BR
 
@@ -3936,7 +3922,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 8.9 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 285. [126 Sandford Street #502, New York, NY](https://streeteasy.com/building/prisma-house/502)
+## 284. [126 Sandford Street #502, New York, NY](https://streeteasy.com/building/prisma-house/502)
 
 **Score 35.6** · ≤40 min · $3298 · 1BR
 
@@ -3950,7 +3936,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 8.6 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 286. [960 Franklin Avenue #219, New York, NY](https://streeteasy.com/building/960-franklin-avenue/219)
+## 285. [960 Franklin Avenue #219, New York, NY](https://streeteasy.com/building/960-franklin-avenue/219)
 
 **Score 35.1** · ≤40 min · $3362 · 1BR
 
@@ -3964,7 +3950,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 287. [11 Ocean Parkway #630, New York, NY](https://streeteasy.com/building/one-park-point/630)
+## 286. [11 Ocean Parkway #630, New York, NY](https://streeteasy.com/building/one-park-point/630)
 
 **Score 34.9** · ≤40 min · $3392 · 1BR
 
@@ -3978,7 +3964,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.9 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 288. [497 3rd Avenue #8, New York, NY](https://streeteasy.com/building/497-3-avenue-new_york/8)
+## 287. [497 3rd Avenue #8, New York, NY](https://streeteasy.com/building/497-3-avenue-new_york/8)
 
 **Score 34.8** · ≤40 min · $3395 · 1BR
 
@@ -3992,7 +3978,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.8 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 289. [180 Franklin Avenue #303, Brooklyn, NY](https://streeteasy.com/building/180-franklin-avenue-brooklyn/303)
+## 288. [180 Franklin Avenue #303, Brooklyn, NY](https://streeteasy.com/building/180-franklin-avenue-brooklyn/303)
 
 **Score 34.8** · ≤40 min · $3779 · 1BR, 653 sqft
 
@@ -4006,7 +3992,7 @@ _Breakdown:_ commute 16.0 / size 14.0 / rent 4.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - similar to current (~40) — weak reason to move
 
-## 290. [301 Sullivan Place #3R, New York, NY](https://streeteasy.com/building/the-plex/3r)
+## 289. [301 Sullivan Place #3R, New York, NY](https://streeteasy.com/building/the-plex/3r)
 
 **Score 34.7** · ≤40 min · $3410 · 1BR
 
@@ -4020,7 +4006,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.7 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 291. [11 Ocean Parkway #924, New York, NY](https://streeteasy.com/building/one-park-point/924)
+## 290. [11 Ocean Parkway #924, New York, NY](https://streeteasy.com/building/one-park-point/924)
 
 **Score 34.7** · ≤40 min · $3413 · 1BR
 
@@ -4034,7 +4020,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.7 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 292. [360 Rutland Road #1R, Brooklyn, NY](https://streeteasy.com/building/360-rutland-road-brooklyn/1r)
+## 291. [360 Rutland Road #1R, Brooklyn, NY](https://streeteasy.com/building/360-rutland-road-brooklyn/1r)
 
 **Score 34.4** · ≤40 min · $2800 · 2BR, 750 sqft
 
@@ -4048,7 +4034,7 @@ _Breakdown:_ commute 16.0 / size 17.0 / rent 12.6 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - east of Nostrand Ave (~0.1 mi) — prefer west
 
-## 293. [733 Lincoln Place #1204, New York, NY](https://streeteasy.com/building/733-lincoln/1204)
+## 292. [733 Lincoln Place #1204, New York, NY](https://streeteasy.com/building/733-lincoln/1204)
 
 **Score 34.2** · ≤40 min · $3470 · 1BR
 
@@ -4062,7 +4048,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.2 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 294. [733 Lincoln Place #1502, New York, NY](https://streeteasy.com/building/733-lincoln/1502)
+## 293. [733 Lincoln Place #1502, New York, NY](https://streeteasy.com/building/733-lincoln/1502)
 
 **Score 34.2** · ≤40 min · $3470 · 1BR
 
@@ -4076,7 +4062,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.2 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 295. [54 Crown Street #735, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/735)
+## 294. [54 Crown Street #735, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/735)
 
 **Score 34.0** · ≤40 min · $3250 · studio
 
@@ -4090,7 +4076,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 9.0 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 296. [960 Franklin Avenue #271, New York, NY](https://streeteasy.com/building/960-franklin-avenue/271)
+## 295. [960 Franklin Avenue #271, New York, NY](https://streeteasy.com/building/960-franklin-avenue/271)
 
 **Score 34.0** · ≤40 min · $3494 · 1BR
 
@@ -4104,7 +4090,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 297. [626 Flatbush Avenue #12H, New York, NY](https://streeteasy.com/building/the-parkline/12h)
+## 296. [626 Flatbush Avenue #12H, New York, NY](https://streeteasy.com/building/the-parkline/12h)
 
 **Score 34.0** · ≤40 min · $3495 · 1BR
 
@@ -4118,7 +4104,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 298. [126 Sandford Street #414, New York, NY](https://streeteasy.com/building/prisma-house/414)
+## 297. [126 Sandford Street #414, New York, NY](https://streeteasy.com/building/prisma-house/414)
 
 **Score 33.9** · ≤40 min · $3514 · 1BR
 
@@ -4132,7 +4118,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 6.9 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 299. [733 Lincoln Place #1208, New York, NY](https://streeteasy.com/building/733-lincoln/1208)
+## 298. [733 Lincoln Place #1208, New York, NY](https://streeteasy.com/building/733-lincoln/1208)
 
 **Score 33.8** · ≤40 min · $3529 · 1BR
 
@@ -4146,7 +4132,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 6.8 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 300. [133 Washington Avenue #3, Brooklyn, NY](https://streeteasy.com/building/133-washington-avenue-brooklyn/3)
+## 299. [133 Washington Avenue #3, Brooklyn, NY](https://streeteasy.com/building/133-washington-avenue-brooklyn/3)
 
 **Score 33.8** · ≤40 min · $3900 · 2BR, 700 sqft
 
@@ -4160,7 +4146,7 @@ _Breakdown:_ commute 16.0 / size 14.0 / rent 3.8 / unit 0.0 / building 0.0 / geo
 **Concerns**
 - similar to current (~40) — weak reason to move
 
-## 301. [54 Crown Street #PH12, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12)
+## 300. [54 Crown Street #PH12, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph12)
 
 **Score 33.4** · ≤40 min · $3572 · 1BR
 
@@ -4174,7 +4160,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 6.4 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 302. [641 Saint Mark's Avenue #3E, Brooklyn, NY](https://streeteasy.com/building/641-st-marks-avenue-brooklyn/3e)
+## 301. [641 Saint Mark's Avenue #3E, Brooklyn, NY](https://streeteasy.com/building/641-st-marks-avenue-brooklyn/3e)
 
 **Score 33.1** · unknown · $2613 · 1BR
 
@@ -4187,7 +4173,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 14.1 / unit 0.0 / building 0.0 / geo
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 303. [365a 14th Street #GARDEN, Brooklyn, NY](https://streeteasy.com/building/365a-14-street-brooklyn/garden)
+## 302. [365a 14th Street #GARDEN, Brooklyn, NY](https://streeteasy.com/building/365a-14-street-brooklyn/garden)
 
 **Score 33.0** · ≤40 min · $3500 · 1BR, 500 sqft
 
@@ -4201,7 +4187,7 @@ _Breakdown:_ commute 16.0 / size 10.0 / rent 7.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - compact (~500 sqft)
 
-## 304. [54 Crown Street #428, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/428)
+## 303. [54 Crown Street #428, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/428)
 
 **Score 32.8** · ≤40 min · $3646 · 1BR
 
@@ -4215,7 +4201,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 5.8 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 305. [129 Mcdonald Avenue #3E, New York, NY](https://streeteasy.com/building/the-vander/3e)
+## 304. [129 Mcdonald Avenue #3E, New York, NY](https://streeteasy.com/building/the-vander/3e)
 
 **Score 32.8** · ≤40 min · $3650 · 1BR
 
@@ -4229,7 +4215,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 5.8 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 306. [54 Crown Street #220, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/220)
+## 305. [54 Crown Street #220, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/220)
 
 **Score 32.4** · ≤40 min · $3700 · 1BR
 
@@ -4243,7 +4229,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 5.4 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 307. [11 Ocean Parkway #729, New York, NY](https://streeteasy.com/building/one-park-point/729)
+## 306. [11 Ocean Parkway #729, New York, NY](https://streeteasy.com/building/one-park-point/729)
 
 **Score 32.0** · ≤40 min · $3750 · 1BR
 
@@ -4257,7 +4243,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 5.0 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 308. [400 6th Avenue #4A, Brooklyn, NY](https://streeteasy.com/building/400-6-avenue-brooklyn/4a)
+## 307. [400 6th Avenue #4A, Brooklyn, NY](https://streeteasy.com/building/400-6-avenue-brooklyn/4a)
 
 **Score 31.9** · ≤40 min · $3512 · studio
 
@@ -4271,7 +4257,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 6.9 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 309. [147 Rogers Avenue #4R, Brooklyn, NY](https://streeteasy.com/building/147-rogers-avenue-brooklyn/4r)
+## 308. [147 Rogers Avenue #4R, Brooklyn, NY](https://streeteasy.com/building/147-rogers-avenue-brooklyn/4r)
 
 **Score 31.6** · ≤40 min · $3800 · 1BR
 
@@ -4285,7 +4271,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 4.6 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 310. [54 Crown Street #PH2, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02)
+## 309. [54 Crown Street #PH2, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph02)
 
 **Score 31.3** · ≤40 min · $3590 · studio
 
@@ -4299,7 +4285,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 6.3 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 311. [595 Dean Street #2140, Brooklyn, NY](https://streeteasy.com/building/595-dean-street-brooklyn/2140)
+## 310. [595 Dean Street #2140, Brooklyn, NY](https://streeteasy.com/building/595-dean-street-brooklyn/2140)
 
 **Score 31.2** · ≤40 min · $3598 · studio
 
@@ -4313,7 +4299,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 6.2 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 312. [54 Crown Street #PH13, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph13)
+## 311. [54 Crown Street #PH13, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph13)
 
 **Score 31.0** · ≤40 min · $3630 · studio
 
@@ -4327,7 +4313,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 6.0 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 313. [955 Sterling Place #701, New York, NY](https://streeteasy.com/building/mason-gray/701)
+## 312. [955 Sterling Place #701, New York, NY](https://streeteasy.com/building/mason-gray/701)
 
 **Score 31.0** · unknown · $2871 · 1BR
 
@@ -4340,7 +4326,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 12.0 / unit 0.0 / building 0.0 / geo
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 314. [279 Kosciusko Street #403, Brooklyn, NY](https://streeteasy.com/building/279-kosciuszko-street-brooklyn/403)
+## 313. [279 Kosciusko Street #403, Brooklyn, NY](https://streeteasy.com/building/279-kosciuszko-street-brooklyn/403)
 
 **Score 31.0** · unknown · $3500 · 2BR
 
@@ -4353,7 +4339,7 @@ _Breakdown:_ commute 8.0 / size 16.0 / rent 7.0 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - commute unknown (geocode/band miss)
 
-## 315. [54 Crown Street #PH16, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph16)
+## 314. [54 Crown Street #PH16, Brooklyn, NY](https://streeteasy.com/building/loden-54-crown-street-brooklyn/ph16)
 
 **Score 30.6** · ≤40 min · $3928 · 1BR
 
@@ -4367,7 +4353,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 3.6 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 316. [1136 Saint Mark's Avenue #2F, Brooklyn, NY](https://streeteasy.com/building/1136-st-marks-avenue-brooklyn/2f)
+## 315. [1136 Saint Mark's Avenue #2F, Brooklyn, NY](https://streeteasy.com/building/1136-st-marks-avenue-brooklyn/2f)
 
 **Score 30.4** · unknown · $3575 · 3BR
 
@@ -4380,7 +4366,7 @@ _Breakdown:_ commute 8.0 / size 16.0 / rent 6.4 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - commute unknown (geocode/band miss)
 
-## 317. [11 Ocean Parkway #1104, New York, NY](https://streeteasy.com/building/one-park-point/1104)
+## 316. [11 Ocean Parkway #1104, New York, NY](https://streeteasy.com/building/one-park-point/1104)
 
 **Score 30.3** · ≤40 min · $3958 · 1BR
 
@@ -4394,7 +4380,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 3.3 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 318. [97 Grand Avenue #5H, Brooklyn, NY](https://streeteasy.com/building/97-grand-avenue-brooklyn/5h)
+## 317. [97 Grand Avenue #5H, Brooklyn, NY](https://streeteasy.com/building/97-grand-avenue-brooklyn/5h)
 
 **Score 30.2** · ≤40 min · $3980 · 1BR
 
@@ -4408,7 +4394,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 3.2 / unit 0.0 / building 0.0 / geo
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 
-## 319. [733 Lincoln Place #1106, New York, NY](https://streeteasy.com/building/733-lincoln/1106)
+## 318. [733 Lincoln Place #1106, New York, NY](https://streeteasy.com/building/733-lincoln/1106)
 
 **Score 29.2** · ≤40 min · $3850 · studio
 
@@ -4422,7 +4408,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 4.2 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - studio (sqft unknown)
 
-## 320. [1042 President Street PENTHOUSE-G, New York, NY](https://streeteasy.com/building/prospect-pointe/penthouse-g)
+## 319. [1042 President Street PENTHOUSE-G, New York, NY](https://streeteasy.com/building/prospect-pointe/penthouse-g)
 
 **Score 28.8** · unknown · $2900 · studio
 
@@ -4435,7 +4421,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 11.8 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 321. [224 3rd Avenue #2C, New York, NY](https://streeteasy.com/building/the-cornice/2c)
+## 320. [224 3rd Avenue #2C, New York, NY](https://streeteasy.com/building/the-cornice/2c)
 
 **Score 28.2** · unknown · $2979 · studio
 
@@ -4448,7 +4434,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 11.2 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 322. [975 Nostrand Avenue #718, New York, NY](https://streeteasy.com/building/the-arcadian/718)
+## 321. [975 Nostrand Avenue #718, New York, NY](https://streeteasy.com/building/the-arcadian/718)
 
 **Score 27.8** · ≤40 min · $2750 · studio
 
@@ -4462,7 +4448,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 13.0 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 323. [30 Waterside Plaza #409L, New York, NY](https://streeteasy.com/building/waterside-plaza/4009l)
+## 322. [30 Waterside Plaza #409L, New York, NY](https://streeteasy.com/building/waterside-plaza/4009l)
 
 **Score 27.8** · ≤40 min · $3645 · studio, 424 sqft
 
@@ -4476,7 +4462,7 @@ _Breakdown:_ commute 16.0 / size 6.0 / rent 5.8 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - small (~424 sqft)
 
-## 324. [975 Nostrand Avenue #220, New York, NY](https://streeteasy.com/building/the-arcadian/220)
+## 323. [975 Nostrand Avenue #220, New York, NY](https://streeteasy.com/building/the-arcadian/220)
 
 **Score 27.6** · ≤40 min · $2771 · studio
 
@@ -4490,7 +4476,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 12.8 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 325. [240 Third Avenue #5L, New York, NY](https://streeteasy.com/building/union-channel/5l)
+## 324. [240 Third Avenue #5L, New York, NY](https://streeteasy.com/building/union-channel/5l)
 
 **Score 27.6** · unknown · $3046 · studio
 
@@ -4503,7 +4489,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 10.6 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 326. [975 Nostrand Avenue #226, New York, NY](https://streeteasy.com/building/the-arcadian/226)
+## 325. [975 Nostrand Avenue #226, New York, NY](https://streeteasy.com/building/the-arcadian/226)
 
 **Score 27.3** · ≤40 min · $2807 · studio
 
@@ -4517,7 +4503,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 12.5 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 327. [30 Waterside Plaza #4028L, New York, NY](https://streeteasy.com/building/waterside-plaza/4028l)
+## 326. [30 Waterside Plaza #4028L, New York, NY](https://streeteasy.com/building/waterside-plaza/4028l)
 
 **Score 27.1** · ≤40 min · $3740 · studio, 424 sqft
 
@@ -4531,7 +4517,7 @@ _Breakdown:_ commute 16.0 / size 6.0 / rent 5.1 / unit 0.0 / building 0.0 / geo 
 - similar to current (~40) — weak reason to move
 - small (~424 sqft)
 
-## 328. [224 3rd Avenue #4H, New York, NY](https://streeteasy.com/building/the-cornice/4h)
+## 327. [224 3rd Avenue #4H, New York, NY](https://streeteasy.com/building/the-cornice/4h)
 
 **Score 27.1** · unknown · $3117 · studio
 
@@ -4544,7 +4530,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 10.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 329. [960 Franklin Avenue #113, New York, NY](https://streeteasy.com/building/960-franklin-avenue/113)
+## 328. [960 Franklin Avenue #113, New York, NY](https://streeteasy.com/building/960-franklin-avenue/113)
 
 **Score 27.1** · unknown · $3362 · 1BR
 
@@ -4557,7 +4543,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 330. [960 Franklin Avenue #120, New York, NY](https://streeteasy.com/building/960-franklin-avenue/120)
+## 329. [960 Franklin Avenue #120, New York, NY](https://streeteasy.com/building/960-franklin-avenue/120)
 
 **Score 27.1** · unknown · $3362 · 1BR
 
@@ -4570,7 +4556,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 331. [960 Franklin Avenue #219N, New York, NY](https://streeteasy.com/building/960-franklin-avenue/219n)
+## 330. [960 Franklin Avenue #219N, New York, NY](https://streeteasy.com/building/960-franklin-avenue/219n)
 
 **Score 27.1** · unknown · $3362 · 1BR
 
@@ -4583,7 +4569,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 332. [960 Franklin Avenue #221N, New York, NY](https://streeteasy.com/building/960-franklin-avenue/221n)
+## 331. [960 Franklin Avenue #221N, New York, NY](https://streeteasy.com/building/960-franklin-avenue/221n)
 
 **Score 27.1** · unknown · $3362 · 1BR
 
@@ -4596,7 +4582,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 333. [960 Franklin Avenue #270, New York, NY](https://streeteasy.com/building/960-franklin-avenue/270)
+## 332. [960 Franklin Avenue #270, New York, NY](https://streeteasy.com/building/960-franklin-avenue/270)
 
 **Score 27.1** · unknown · $3362 · 1BR
 
@@ -4609,7 +4595,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 8.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 334. [240 Third Avenue #7D, New York, NY](https://streeteasy.com/building/union-channel/7d)
+## 333. [240 Third Avenue #7D, New York, NY](https://streeteasy.com/building/union-channel/7d)
 
 **Score 26.9** · unknown · $3135 · studio
 
@@ -4622,7 +4608,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 9.9 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 335. [20 Exchange Place 810---20X, New York, NY](https://streeteasy.com/building/twenty-exchange/810-20x)
+## 334. [20 Exchange Place 810---20X, New York, NY](https://streeteasy.com/building/twenty-exchange/810-20x)
 
 **Score 26.7** · unknown · $3790 · studio, 655 sqft
 
@@ -4635,7 +4621,7 @@ _Breakdown:_ commute 8.0 / size 14.0 / rent 4.7 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - commute unknown (geocode/band miss)
 
-## 336. [150 Fourth Avenue #3J, New York, NY](https://streeteasy.com/building/instrata-park-slope/3j)
+## 335. [150 Fourth Avenue #3J, New York, NY](https://streeteasy.com/building/instrata-park-slope/3j)
 
 **Score 26.5** · unknown · $3318 · studio, 489 sqft
 
@@ -4648,7 +4634,7 @@ _Breakdown:_ commute 8.0 / size 10.0 / rent 8.5 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - compact (~489 sqft)
 
-## 337. [960 Franklin Avenue #620, New York, NY](https://streeteasy.com/building/960-franklin-avenue/620)
+## 336. [960 Franklin Avenue #620, New York, NY](https://streeteasy.com/building/960-franklin-avenue/620)
 
 **Score 26.4** · unknown · $3450 · 1BR
 
@@ -4661,7 +4647,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 7.4 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 338. [240 Third Avenue #2Q, New York, NY](https://streeteasy.com/building/union-channel/2q)
+## 337. [240 Third Avenue #2Q, New York, NY](https://streeteasy.com/building/union-channel/2q)
 
 **Score 26.2** · unknown · $3471 · 1BR
 
@@ -4674,7 +4660,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 7.2 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 339. [960 Franklin Avenue #268, New York, NY](https://streeteasy.com/building/960-franklin-avenue/268)
+## 338. [960 Franklin Avenue #268, New York, NY](https://streeteasy.com/building/960-franklin-avenue/268)
 
 **Score 26.0** · unknown · $3494 · 1BR
 
@@ -4687,7 +4673,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 7.0 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 340. [960 Franklin Avenue #269, New York, NY](https://streeteasy.com/building/960-franklin-avenue/269)
+## 339. [960 Franklin Avenue #269, New York, NY](https://streeteasy.com/building/960-franklin-avenue/269)
 
 **Score 26.0** · unknown · $3494 · 1BR
 
@@ -4700,7 +4686,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 7.0 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 341. [20 Rockwell Place #528S, New York, NY](https://streeteasy.com/building/the-rocklyn/528s)
+## 340. [20 Rockwell Place #528S, New York, NY](https://streeteasy.com/building/the-rocklyn/528s)
 
 **Score 25.8** · unknown · $3270 · studio
 
@@ -4713,7 +4699,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 8.8 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 342. [336 Douglass Street #7/F, New York, NY](https://streeteasy.com/building/336-douglass-street/7f)
+## 341. [336 Douglass Street #7/F, New York, NY](https://streeteasy.com/building/336-douglass-street/7f)
 
 **Score 25.7** · unknown · $3539 · 1BR
 
@@ -4726,7 +4712,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 6.7 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 343. [309 Gold Street BKAIR26H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair26h)
+## 342. [309 Gold Street BKAIR26H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair26h)
 
 **Score 25.6** · unknown · $3295 · studio
 
@@ -4739,7 +4725,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 8.6 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 344. [309 Gold Street BKAIR28H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair28h)
+## 343. [309 Gold Street BKAIR28H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair28h)
 
 **Score 25.6** · unknown · $3300 · studio
 
@@ -4752,7 +4738,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 8.6 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 345. [52 4th Avenue #405, New York, NY](https://streeteasy.com/building/the-eleanor/405)
+## 344. [52 4th Avenue #405, New York, NY](https://streeteasy.com/building/the-eleanor/405)
 
 **Score 25.6** · unknown · $3923 · 1BR, 600 sqft
 
@@ -4765,7 +4751,7 @@ _Breakdown:_ commute 8.0 / size 14.0 / rent 3.6 / unit 0.0 / building 0.0 / geo 
 **Concerns**
 - commute unknown (geocode/band miss)
 
-## 346. [20 Rockwell Place #606G, New York, NY](https://streeteasy.com/building/the-rocklyn/606g)
+## 345. [20 Rockwell Place #606G, New York, NY](https://streeteasy.com/building/the-rocklyn/606g)
 
 **Score 25.4** · unknown · $3322 · studio
 
@@ -4778,7 +4764,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 8.4 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 347. [960 Franklin Avenue #354, New York, NY](https://streeteasy.com/building/960-franklin-avenue/354)
+## 346. [960 Franklin Avenue #354, New York, NY](https://streeteasy.com/building/960-franklin-avenue/354)
 
 **Score 25.3** · unknown · $3583 · 1BR
 
@@ -4791,7 +4777,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 6.3 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 348. [960 Franklin Avenue #357, New York, NY](https://streeteasy.com/building/960-franklin-avenue/357)
+## 347. [960 Franklin Avenue #357, New York, NY](https://streeteasy.com/building/960-franklin-avenue/357)
 
 **Score 25.3** · unknown · $3583 · 1BR
 
@@ -4804,7 +4790,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 6.3 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 349. [960 Franklin Avenue #523, New York, NY](https://streeteasy.com/building/960-franklin-avenue/523)
+## 348. [960 Franklin Avenue #523, New York, NY](https://streeteasy.com/building/960-franklin-avenue/523)
 
 **Score 25.3** · unknown · $3583 · 1BR
 
@@ -4817,7 +4803,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 6.3 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 350. [240 Third Avenue #9BA, New York, NY](https://streeteasy.com/building/union-channel/9ba)
+## 349. [240 Third Avenue #9BA, New York, NY](https://streeteasy.com/building/union-channel/9ba)
 
 **Score 24.8** · unknown · $3404 · studio
 
@@ -4830,7 +4816,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 7.8 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 351. [955 Sterling Place #606, New York, NY](https://streeteasy.com/building/mason-gray/606)
+## 350. [955 Sterling Place #606, New York, NY](https://streeteasy.com/building/mason-gray/606)
 
 **Score 24.7** · ≤40 min · $3109 · 1BR
 
@@ -4844,7 +4830,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 10.1 / unit 0.0 / building 0.0 / ge
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.2 mi) — prefer west
 
-## 352. [955 Sterling Place #518, New York, NY](https://streeteasy.com/building/mason-gray/518)
+## 351. [955 Sterling Place #518, New York, NY](https://streeteasy.com/building/mason-gray/518)
 
 **Score 24.5** · ≤40 min · $2893 · studio
 
@@ -4858,7 +4844,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 11.9 / unit 0.0 / building 0.0 / geo
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.2 mi) — prefer west
 
-## 353. [20 Rockwell Place #2525R, New York, NY](https://streeteasy.com/building/the-rocklyn/2525r)
+## 352. [20 Rockwell Place #2525R, New York, NY](https://streeteasy.com/building/the-rocklyn/2525r)
 
 **Score 24.5** · unknown · $3441 · studio
 
@@ -4871,7 +4857,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 7.5 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 354. [955 Sterling Place #602, New York, NY](https://streeteasy.com/building/mason-gray/602)
+## 353. [955 Sterling Place #602, New York, NY](https://streeteasy.com/building/mason-gray/602)
 
 **Score 24.4** · ≤40 min · $3152 · 1BR
 
@@ -4885,7 +4871,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 9.8 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.2 mi) — prefer west
 
-## 355. [104 Fleet Place #4B, New York, NY](https://streeteasy.com/building/the-fleet-104-fleet-place/4b)
+## 354. [104 Fleet Place #4B, New York, NY](https://streeteasy.com/building/the-fleet-104-fleet-place/4b)
 
 **Score 24.3** · unknown · $3462 · studio
 
@@ -4898,7 +4884,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 7.3 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 356. [282 4th Avenue #4B, New York, NY](https://streeteasy.com/building/282-4-avenue/4b)
+## 355. [282 4th Avenue #4B, New York, NY](https://streeteasy.com/building/282-4-avenue/4b)
 
 **Score 24.0** · unknown · $3619 · 1BR, 500 sqft
 
@@ -4911,7 +4897,7 @@ _Breakdown:_ commute 8.0 / size 10.0 / rent 6.0 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - compact (~500 sqft)
 
-## 357. [975 Nostrand Avenue #534, New York, NY](https://streeteasy.com/building/the-arcadian/534)
+## 356. [975 Nostrand Avenue #534, New York, NY](https://streeteasy.com/building/the-arcadian/534)
 
 **Score 23.9** · ≤40 min · $3490 · 1BR
 
@@ -4925,7 +4911,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 7.1 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 358. [960 Franklin Avenue #451, New York, NY](https://streeteasy.com/building/960-franklin-avenue/451)
+## 357. [960 Franklin Avenue #451, New York, NY](https://streeteasy.com/building/960-franklin-avenue/451)
 
 **Score 23.6** · unknown · $3804 · 1BR
 
@@ -4938,7 +4924,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 4.6 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 359. [200 Macdougal Street #2F, Brooklyn, NY](https://streeteasy.com/building/200-mac-dougal-street-brooklyn/2f)
+## 358. [200 Macdougal Street #2F, Brooklyn, NY](https://streeteasy.com/building/200-mac-dougal-street-brooklyn/2f)
 
 **Score 23.4** · ≤40 min · $2700 · 2BR
 
@@ -4952,7 +4938,7 @@ _Breakdown:_ commute 16.0 / size 16.0 / rent 13.4 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - east of Nostrand Ave (~2.0 mi) — prefer west
 
-## 360. [104 Fleet Place #12D, New York, NY](https://streeteasy.com/building/the-fleet-104-fleet-place/12d)
+## 359. [104 Fleet Place #12D, New York, NY](https://streeteasy.com/building/the-fleet-104-fleet-place/12d)
 
 **Score 23.2** · unknown · $3600 · studio
 
@@ -4965,7 +4951,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 6.2 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 361. [20 Exchange Place 20X---427, New York, NY](https://streeteasy.com/building/twenty-exchange/20x-427)
+## 360. [20 Exchange Place 20X---427, New York, NY](https://streeteasy.com/building/twenty-exchange/20x-427)
 
 **Score 23.2** · unknown · $3725 · studio, 457 sqft
 
@@ -4978,7 +4964,7 @@ _Breakdown:_ commute 8.0 / size 10.0 / rent 5.2 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - compact (~457 sqft)
 
-## 362. [18 Sixth Avenue #4501, Brooklyn, NY](https://streeteasy.com/building/brooklyn-crossing/4501)
+## 361. [18 Sixth Avenue #4501, Brooklyn, NY](https://streeteasy.com/building/brooklyn-crossing/4501)
 
 **Score 23.0** · unknown · $3625 · studio
 
@@ -4991,7 +4977,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 6.0 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 363. [282 4th Avenue #6C, New York, NY](https://streeteasy.com/building/282-4-avenue/6c)
+## 362. [282 4th Avenue #6C, New York, NY](https://streeteasy.com/building/282-4-avenue/6c)
 
 **Score 22.9** · unknown · $3758 · 1BR, 500 sqft
 
@@ -5004,7 +4990,7 @@ _Breakdown:_ commute 8.0 / size 10.0 / rent 4.9 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - compact (~500 sqft)
 
-## 364. [975 Nostrand Avenue #909, New York, NY](https://streeteasy.com/building/the-arcadian/909)
+## 363. [975 Nostrand Avenue #909, New York, NY](https://streeteasy.com/building/the-arcadian/909)
 
 **Score 22.7** · ≤40 min · $3389 · studio
 
@@ -5018,7 +5004,7 @@ _Breakdown:_ commute 16.0 / size 9.0 / rent 7.9 / unit 0.0 / building 0.0 / geo 
 - studio (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 365. [240 Third Avenue #5Z, New York, NY](https://streeteasy.com/building/union-channel/5z)
+## 364. [240 Third Avenue #5Z, New York, NY](https://streeteasy.com/building/union-channel/5z)
 
 **Score 22.5** · unknown · $3936 · 1BR
 
@@ -5031,7 +5017,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.5 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 366. [960 Franklin Avenue #710, New York, NY](https://streeteasy.com/building/960-franklin-avenue/710)
+## 365. [960 Franklin Avenue #710, New York, NY](https://streeteasy.com/building/960-franklin-avenue/710)
 
 **Score 22.5** · unknown · $3937 · 1BR
 
@@ -5044,7 +5030,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.5 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 367. [960 Franklin Avenue #716, New York, NY](https://streeteasy.com/building/960-franklin-avenue/716)
+## 366. [960 Franklin Avenue #716, New York, NY](https://streeteasy.com/building/960-franklin-avenue/716)
 
 **Score 22.5** · unknown · $3937 · 1BR
 
@@ -5057,7 +5043,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.5 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 368. [224 3rd Avenue #9G, New York, NY](https://streeteasy.com/building/the-cornice/9g)
+## 367. [224 3rd Avenue #9G, New York, NY](https://streeteasy.com/building/the-cornice/9g)
 
 **Score 22.5** · unknown · $3942 · 1BR
 
@@ -5070,7 +5056,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.5 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 369. [52 4th Avenue #704, New York, NY](https://streeteasy.com/building/the-eleanor/704)
+## 368. [52 4th Avenue #704, New York, NY](https://streeteasy.com/building/the-eleanor/704)
 
 **Score 22.4** · unknown · $3323 · studio, 420 sqft
 
@@ -5083,7 +5069,7 @@ _Breakdown:_ commute 8.0 / size 6.0 / rent 8.4 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - small (~420 sqft)
 
-## 370. [20 Rockwell Place #2502D, New York, NY](https://streeteasy.com/building/the-rocklyn/2502d)
+## 369. [20 Rockwell Place #2502D, New York, NY](https://streeteasy.com/building/the-rocklyn/2502d)
 
 **Score 22.4** · unknown · $3702 · studio
 
@@ -5096,7 +5082,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 5.4 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 371. [309 Gold Street BKAIR14A, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair14a)
+## 370. [309 Gold Street BKAIR14A, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair14a)
 
 **Score 22.1** · unknown · $3988 · 1BR
 
@@ -5109,7 +5095,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.1 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 372. [309 Gold Street BKAIR34H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair34h)
+## 371. [309 Gold Street BKAIR34H, Brooklyn, NY](https://streeteasy.com/building/bklyn-air/bkair34h)
 
 **Score 22.0** · unknown · $3750 · studio
 
@@ -5122,7 +5108,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 5.0 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 373. [20 Rockwell Place #1709S, New York, NY](https://streeteasy.com/building/the-rocklyn/1709s)
+## 372. [20 Rockwell Place #1709S, New York, NY](https://streeteasy.com/building/the-rocklyn/1709s)
 
 **Score 22.0** · unknown · $3999 · 1BR
 
@@ -5135,7 +5121,7 @@ _Breakdown:_ commute 8.0 / size 11.0 / rent 3.0 / unit 0.0 / building 0.0 / geo 
 - commute unknown (geocode/band miss)
 - 1BR (sqft unknown)
 
-## 374. [975 Nostrand Avenue #712, New York, NY](https://streeteasy.com/building/the-arcadian/712)
+## 373. [975 Nostrand Avenue #712, New York, NY](https://streeteasy.com/building/the-arcadian/712)
 
 **Score 21.8** · ≤40 min · $3744 · 1BR
 
@@ -5149,7 +5135,7 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 5.0 / unit 0.0 / building 0.0 / geo
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.0 mi) — prefer west
 
-## 375. [20 Rockwell Place #1810H, New York, NY](https://streeteasy.com/building/the-rocklyn/1810h)
+## 374. [20 Rockwell Place #1810H, New York, NY](https://streeteasy.com/building/the-rocklyn/1810h)
 
 **Score 21.6** · unknown · $3798 · studio
 
@@ -5162,7 +5148,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 4.6 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 376. [20 Rockwell Place #2310D, New York, NY](https://streeteasy.com/building/the-rocklyn/2310d)
+## 375. [20 Rockwell Place #2310D, New York, NY](https://streeteasy.com/building/the-rocklyn/2310d)
 
 **Score 21.4** · unknown · $3822 · studio
 
@@ -5175,7 +5161,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 4.4 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 377. [20 Rockwell Place #2310F, New York, NY](https://streeteasy.com/building/the-rocklyn/2310f)
+## 376. [20 Rockwell Place #2310F, New York, NY](https://streeteasy.com/building/the-rocklyn/2310f)
 
 **Score 21.4** · unknown · $3822 · studio
 
@@ -5188,7 +5174,7 @@ _Breakdown:_ commute 8.0 / size 9.0 / rent 4.4 / unit 0.0 / building 0.0 / geo 0
 - commute unknown (geocode/band miss)
 - studio (sqft unknown)
 
-## 378. [208 Lewis Avenue #2F, Brooklyn, NY](https://streeteasy.com/building/208-lewis-avenue-brooklyn/2f)
+## 377. [208 Lewis Avenue #2F, Brooklyn, NY](https://streeteasy.com/building/208-lewis-avenue-brooklyn/2f)
 
 **Score 21.2** · ≤40 min · $2750 · 1BR
 
@@ -5201,6 +5187,19 @@ _Breakdown:_ commute 16.0 / size 11.0 / rent 13.0 / unit 0.0 / building 0.0 / ge
 - similar to current (~40) — weak reason to move
 - 1BR (sqft unknown)
 - east of Nostrand Ave (~0.7 mi) — prefer west
+
+## 378. [567 Fulton Street #5G, New York, NY](https://streeteasy.com/building/the-brook/05g)
+
+**Score 21.2** · unknown · $3850 · studio
+
+_Breakdown:_ commute 8.0 / size 9.0 / rent 4.2 / unit 0.0 / building 0.0 / geo 0.0
+
+**Likes**
+- $3850/mo
+
+**Concerns**
+- commute unknown (geocode/band miss)
+- studio (sqft unknown)
 
 ## 379. [20 Exchange Place 20X--726, New York, NY](https://streeteasy.com/building/twenty-exchange/20x-726)
 
