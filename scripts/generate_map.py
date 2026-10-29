@@ -661,12 +661,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     const map = L.map("map", { zoomControl: true }).setView([WORK.lat, WORK.lng], 12);
     window.map = map;
 
-    // Basemap (no labels). Streets sit under zones; neighborhoods/places sit above.
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
-      attribution: "&copy; OpenStreetMap &copy; CARTO &copy; OpenFreeMap",
-      subdomains: "abcd",
-      maxZoom: 20
-    }).addTo(map);
+    // Dark basemap without API keys (CARTO now watermarks unpaid requests).
+    // ArcGIS tile order is z/y/x.
+    L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      {
+        attribution: "&copy; Esri &copy; OpenStreetMap &copy; OpenFreeMap",
+        maxZoom: 16,
+        maxNativeZoom: 16
+      }
+    ).addTo(map);
 
     map.createPane("streetLabelsPane");
     map.getPane("streetLabelsPane").style.zIndex = 250;
@@ -694,15 +698,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     function addVectorLabelLayer(baseStyle, { pane, zIndex, keepLayer, paint, clearMaxZoom }) {
       const style = JSON.parse(JSON.stringify(baseStyle));
       delete style.sources.ne2_shaded;
-      // Use the page's IBM Plex Mono via local TinySDF (no remote glyph atlas).
-      delete style.glyphs;
+      // Keep OpenFreeMap glyph atlas (Noto Sans). Do not point at paid font hosts.
+      style.glyphs = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
       style.layers = (style.layers || [])
         .filter(l => l.type === "symbol" && keepLayer(l))
         .map(l => {
-          const layout = {
-            ...stripIcons(l.layout),
-            "text-font": ["IBM Plex Mono"]
-          };
+          const layout = stripIcons(l.layout);
           const layer = {
             ...l,
             layout,
@@ -777,13 +778,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         });
       })
       .catch(() => {
-        // Fallback: full Carto label stack under zones if vector tiles fail.
-        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png", {
-          pane: "streetLabelsPane",
-          subdomains: "abcd",
-          maxZoom: 20,
-          opacity: 0.85
-        }).addTo(map);
+        // Fallback labels if OpenFreeMap style fails (also key-free).
+        L.tileLayer(
+          "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+          {
+            pane: "streetLabelsPane",
+            maxZoom: 16,
+            maxNativeZoom: 16,
+            opacity: 0.85
+          }
+        ).addTo(map);
       });
 
     L.marker([WORK.lat, WORK.lng], {
